@@ -3,14 +3,21 @@
 @section('content')
 
 <div class="drawer row">
-{{--
-   <div style="width: 75%; margin: 0 auto 10px auto">
+  @if($broadcast)
+  <div style="width: 75%; margin: 0 auto 10px auto">
     <h2 class="tk-seravek-web" style="float: left; color: #FFF">Live Stream</h2>
     <br style="clear: both"/>
-<div id="boxcast-widget-9-27-15"><script type="text/javascript"> var s = document.createElement('script'); var a = String.fromCharCode; var h = (('https:' == document.location.protocol) ? 'https:' : 'http:'); s.setAttribute('data-action', 'boxcast-widget-load'); s.setAttribute('data-handle', '9-27-15'); s.setAttribute('data-options', 'version=3'); s.src = h + '//assets.boxcast.com/widget.js'; document.getElementsByTagName('head')[0].appendChild(s); </script></div>
-<br/>
-    </div>
---}}
+    <div id="boxcast-widget-{{$broadcast->channel_id}}"></div>
+    <script src="https://assets.boxcast.com/widget.js" 
+            data-action="boxcast-widget-load"
+            data-handle="{{$broadcast->channel_id}}"
+            data-options="version=3"
+            async>
+    </script>
+    <br/>
+  </div>
+  @endif
+
   <div class="col-sm-9" style="padding: 0; background-color: #E5E4E2; margin-bottom: 11px">
     <div style="padding: 6px; background-color: #555;">
       <a class="clickable latestsermon" href="{{ route('sermons.show', $prevsermon->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $prevsermon->othumbnail }}); background-position: center;">

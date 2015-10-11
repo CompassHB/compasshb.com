@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'CompassHB\Www\Console\Commands\DatabaseBackup',
         'CompassHB\Www\Console\Commands\PassagePush',
+        'CompassHB\Www\Console\Commands\BroadcastRefresh',
     ];
 
     /**
@@ -25,7 +26,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('db:backup')
                     ->dailyAt('23:59')
                     ->thenPing(env('ENVOYER_HEARTBEAT'));
+
         $schedule->command('push:passage')
                     ->dailyAt('06:45');
+
+        $schedule->command('broadcast:refresh')
+                    ->everyThirtyMinutes();
     }
 }

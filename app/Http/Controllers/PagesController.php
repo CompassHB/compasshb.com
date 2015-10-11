@@ -4,6 +4,8 @@ namespace CompassHB\Www\Http\Controllers;
 
 use Log;
 use Cache;
+use Carbon\Carbon;
+use GuzzleHttp;
 use Request;
 use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
@@ -111,7 +113,10 @@ class PagesController extends Controller
          */
         $results = $photos->getPhotos(8);
 
+        $broadcast = Cache::get('broadcast');
+
         return view('pages.index', compact(
+            'broadcast',
             'sermons',
             'fevents',
             'nextsermon',
