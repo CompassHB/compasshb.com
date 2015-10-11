@@ -4,8 +4,6 @@ namespace CompassHB\Www\Http\Controllers;
 
 use Log;
 use Cache;
-use Carbon\Carbon;
-use GuzzleHttp;
 use Request;
 use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
@@ -278,10 +276,5 @@ class PagesController extends Controller
 
         return redirect()
             ->route('home');
-    }
-
-    public function live()
-    {
-        return view('pages.live');
     }
 }

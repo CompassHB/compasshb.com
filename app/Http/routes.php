@@ -63,11 +63,6 @@ Route::get('/', [
     'uses' => 'PagesController@home',
 ]);
 
-Route::get('live', [
-    'as' => 'live',
-    'uses' => 'PagesController@live',
-]);
-
 /*
  * Route for photos
  */
