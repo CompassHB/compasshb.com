@@ -135,6 +135,10 @@ Route::group(['prefix' => 'api/v1'], function () {
         'as' => 'cleareventcache',
         'uses' => 'PagesController@cleareventcache',
     ]);
+    Route::get('clearvideothumbcache/{auth?}', [
+        'as' => 'clearvideothumbcache',
+        'uses' => 'PagesController@clearvideothumbcache',
+    ]);
 });
 
 Route::group(['prefix' => 'api/1.0'], function () {

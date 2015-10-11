@@ -277,4 +277,17 @@ class PagesController extends Controller
         return redirect()
             ->route('home');
     }
+
+    /**
+     * Clear the event cache when event management system sends a webhook callback.
+     */
+    public function clearvideothumbcache($auth)
+    {
+        if ($auth == env('EVENTBRITE_CALLBACK')) {
+            $latestsermon = Sermon::where('ministry', '=', null)->latest('published_at')->published()->get()->first();
+            Cache::forget($latestsermon->video);
+        }
+
+        return redirect('https://developers.facebook.com/tools/debug/og/object?q=https://www.compasshb.com/sermons/'.$latestsermon->slug);
+    }
 }
