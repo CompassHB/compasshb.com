@@ -59,10 +59,10 @@ class EventbriteEventRepository implements EventRepository
 
             try {
                 // Get first four pages of results
-                $page1 = $this->client->get('users/me/owned_events/?status=live%2Cstarted&order_by=start_asc&page=1&token='.env('EVENTBRITE_OAUTH_TOKEN'));
-                $page2 = $this->client->get('users/me/owned_events/?status=live%2Cstarted&order_by=start_asc&page=2&token='.env('EVENTBRITE_OAUTH_TOKEN'));
-                $page3 = $this->client->get('users/me/owned_events/?status=live%2Cstarted&order_by=start_asc&page=3&token='.env('EVENTBRITE_OAUTH_TOKEN'));
-                $page4 = $this->client->get('users/me/owned_events/?status=live%2Cstarted&order_by=start_asc&page=4&token='.env('EVENTBRITE_OAUTH_TOKEN'));
+                $page1 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=1&token='.env('EVENTBRITE_OAUTH_TOKEN'));
+                $page2 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=2&token='.env('EVENTBRITE_OAUTH_TOKEN'));
+                $page3 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=3&token='.env('EVENTBRITE_OAUTH_TOKEN'));
+                $page4 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=4&token='.env('EVENTBRITE_OAUTH_TOKEN'));
 
                 $page1 = json_decode($page1->getBody());
                 $page2 = json_decode($page2->getBody());
@@ -93,7 +93,7 @@ class EventbriteEventRepository implements EventRepository
     public function event($id)
     {
         $res = Cache::remember($id, $this->minutes, function () use ($id) {
-            $res = $this->client->get('events/'.$id.'/?token='.env('EVENTBRITE_OAUTH_TOKEN'));
+            $res = $this->client->get('events/'.$id.'/?expand=organizer,venue&token='.env('EVENTBRITE_OAUTH_TOKEN'));
 
             return json_decode($res->getBody());
         });

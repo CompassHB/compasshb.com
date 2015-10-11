@@ -18,8 +18,8 @@
 		    <p><a href="{{ $event->url }}?ref=ebtnebregn" target="_blank" class="btn btn-warning">Click Here to Register</a></p>
 		    @endif --}}
 	    	<ul style="list-style: none; margin: 0; padding: 0;">
-		    	<li><strong>Hosted by:</strong> {{ $event->organizer_id }}</li>
-		    	<li><strong>Venue:</strong> {{ $event->venue_id }}</li>
+		    	<li><strong>Hosted by:</strong> {{ $event->organizer->name }}</li>
+		    	<li><strong>Venue:</strong> {{ $event->venue->name }}</li>
 		    	<li><strong>Start:</strong> {{ date("g:iA", strtotime($event->start->local)) }}</li>
 		    	<li><strong>End:</strong> {{ date("g:iA", strtotime($event->end->local)) }}</li>
 				<li><br/>
