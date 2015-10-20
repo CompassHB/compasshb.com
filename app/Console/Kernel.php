@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Console;
+<?php
+
+namespace CompassHB\Www\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -13,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'CompassHB\Www\Console\Commands\DatabaseBackup',
         'CompassHB\Www\Console\Commands\PassagePush',
+        'CompassHB\Www\Console\Commands\PassageReminder',
         'CompassHB\Www\Console\Commands\BroadcastRefresh',
     ];
 
@@ -29,6 +32,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('push:passage')
                     ->dailyAt('06:45');
+
+        $schedule->command('passage:reminder')
+                    ->dailyAt('20:00');
 
         $schedule->command('broadcast:refresh')
                     ->everyThirtyMinutes();
