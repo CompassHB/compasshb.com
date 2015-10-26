@@ -8,7 +8,7 @@
     <h2 class="tk-seravek-web" style="float: left; color: #FFF">Live Stream</h2>
     <br style="clear: both"/>
     <div id="boxcast-widget-{{$broadcast->channel_id}}"></div>
-    <script src="https://assets.boxcast.com/widget.js" 
+    <script src="https://assets.boxcast.com/widget.js"
             data-action="boxcast-widget-load"
             data-handle="{{$broadcast->channel_id}}"
             data-options="version=3"
@@ -94,7 +94,7 @@ style="position: absolute; text-transform: none; top: -13px; right: 55px; paddin
 
 {{-- Parallax --}}
 <div class="row">
-    <div style="background-image: url(https://compasshb.smugmug.com/PhotoArchive/Worship-Services/1st-Service-New-Building-01111/i-KLP4pcT/2/X2/150111_Wor_SS-093-X2.jpg);padding-top: 250px; background-attachment: fixed; background-position: 50% 0px; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat;"></div>
+    <div style="background-image: url(https://compasshb.smugmug.com/photos/i-WMM77kp/0/X3/i-WMM77kp-X3.jpg);padding-top: 250px; background-attachment: fixed; background-position: 50% 0px; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat;"></div>
 </div>
 
 {{-- Recent Sermons --}}
