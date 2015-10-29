@@ -1,26 +1,25 @@
+# Compass Bible Church Huntington Beach
 [![Build Status](https://travis-ci.org/CompassHB/compasshb.com.svg?branch=master)](https://travis-ci.org/CompassHB/compasshb.com) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/?branch=master)
 
-# CompassHB.com
-This is the source code for [compassHB.com](http://www.compasshb.com/). Contributions and involvement are welcomed! Attend a monthly in-person tech. night at the church campus.
+CompassHB is the main website app and source code for [compassHB.com](http://www.compasshb.com/).
+## Getting Started
+##### Local Server
+Run the following one-time commands to spin up a local instance of the application. Requires VirtualBox and Vagrant.
 
-## Organization
-The folder structure is a Laravel 5 project and the main folders are:
-* `app\Repositories` - Holds all the code for talking to third-party services via API including, Vimeo, Youtube, Google Analytics, EventBrite, Google Calendar, Smugmug, Planning Center Online, ESV scripture, Zencoder, Amazon AWS S3 storage, and Elasticsearch. Most of these require a valid token to be in your .env file to work and should fail gracefully if the token is missing.
-* `resources\views` - Holds all the HTML template code. Uses Laravel Blade and the master layout is in the `layouts` sub-folder. Any edits to the site HTML will go here.
-* `resources\assets\less` - Holds all the stylesheets built on Bootstrap. Any updates to this folder need to be pre-processed (LESS to CSS) before they will show up. Running `gulp watch` works.
+	git clone git@github.com:CompassHB/compasshb.com.git
+	composer install
+	php vendor/bin/homestead make --name compasshb.com --hostname compasshb.local
 
-## Development Environment
-You can have a copy running on your computer at http://compasshb.local with these commands:
+Next, run the `vagrant up` command in your terminal and access your project at `http://homestead.app` in your browser. Remember, you will still need to add an `/etc/hosts` file entry for `homestead.app` or the domain of your choice. [Source](http://laravel.com/docs/master/homestead#introduction)
 
-1. Clone the repo (or a fork)
-2. Run: composer install
-3. Run: vagrant up
-4. Run: composer db:reset (from inside the VM). (You may also want to run bower install, npm install and gulp). Visit the [wiki](https://github.com/CompassHB/compasshb.com/wiki) for instructions on getting started developing in other local environments.
+You will also want to run these commands:
 
+	npm install
+	gulp
+	php artisan migrate:refresh --seed
+
+##### Staging Server
 The master branch is automatically deployed to [http://staging.compasshb.com/](http://staging.compasshb.com/).
 
-## Get Involved
-
-* [Fork](https://help.github.com/articles/fork-a-repo/) the repository on github
-* Commit and push until you are happy with your contribution
-* Make a [pull request](https://help.github.com/articles/using-pull-requests/)
+## Contribution
+Thank you for considering contributing to CompassHB.com. Send in a [pull request](https://help.github.com/articles/using-pull-requests/) or attend the next "tech night" to get involved.
