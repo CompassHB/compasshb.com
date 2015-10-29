@@ -8,8 +8,7 @@ class AdminTest extends TestCase
             ->type('user@example.com', 'email')
             ->type('secret', 'password')
             ->press('Login')
-            ->see('Admin page')
-            ->onPage('/admin');
+            ->see('Admin page');
     }
 
     public function testCreateSermon()

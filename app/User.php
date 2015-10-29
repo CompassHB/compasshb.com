@@ -80,4 +80,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->hasMany('CompassHB\Www\Series');
     }
+
+    /*
+     * Teams
+     */
+        /**
+     * Get all of the teams that the user belongs to.
+     */
+    public function teams()
+    {
+        return $this->belongsToMany('ComapssHB\Www\Team', 'team_user', 'user_id', 'team_id')->withPivot(['role'])->orderBy('name', 'asc');
+    }
 }

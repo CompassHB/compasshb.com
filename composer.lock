@@ -4,13 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "68ba1311c0a73a55374f0f7ccd576678",
-    "content-hash": "8c6c479ce46929b4bd84271e0b6d2d79",
-=======
-    "hash": "06feecd7cfb72880b079e1f33d9b69bc",
+    "hash": "e36c7193eaefaa61f09ae59cc78c4184",
     "content-hash": "7714c3c36576f29546e577d76889a1cc",
->>>>>>> homestead
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1254,50 +1249,6 @@
                 "laravel"
             ],
             "time": "2015-10-28 21:58:18"
-<<<<<<< HEAD
-        },
-        {
-            "name": "laravel/homestead",
-            "version": "v2.1.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/homestead.git",
-                "reference": "301484041e062bb62b42d2bbbf0d636408d0f6b4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/homestead/zipball/301484041e062bb62b42d2bbbf0d636408d0f6b4",
-                "reference": "301484041e062bb62b42d2bbbf0d636408d0f6b4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4",
-                "symfony/console": "~2.0",
-                "symfony/process": "~2.0"
-            },
-            "bin": [
-                "homestead"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Homestead\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "A virtual machine for web artisans.",
-            "time": "2015-10-01 17:07:30"
-=======
->>>>>>> homestead
         },
         {
             "name": "league/flysystem",
@@ -3198,8 +3149,6 @@
             "time": "2015-08-19 14:29:06"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "laravel/homestead",
             "version": "v2.1.8",
             "source": {
@@ -3241,7 +3190,6 @@
             "time": "2015-10-01 17:07:30"
         },
         {
->>>>>>> homestead
             "name": "mockery/mockery",
             "version": "0.9.4",
             "source": {

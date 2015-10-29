@@ -14,11 +14,11 @@ class CreateTeamUserPivotTable extends Migration
     {
         Schema::create('team_user', function (Blueprint $table) {
             $table->integer('team_id')->unsigned()->index();
-            $table->integer('user_id')->unsigned()->index();
-            $table->string('role', 25);
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unique(['team_id', 'user_id']);
+            $table->string('role', 25);
+            $table->primary(['team_id', 'user_id']);
         });
     }
 

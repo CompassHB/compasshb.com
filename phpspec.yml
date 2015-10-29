@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: CompassHB\Www
-        psr4_prefix: CompassHB\Www
-        src_path: app
