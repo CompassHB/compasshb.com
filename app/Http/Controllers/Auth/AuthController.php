@@ -2,6 +2,7 @@
 
 use User;
 use Validator;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use CompassHB\Www\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -18,7 +19,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect upon successful registration.
