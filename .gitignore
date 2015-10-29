@@ -13,3 +13,5 @@ public/js
 storage/keys
 tests/logs
 vendor
+/Homestead.yaml
+/Vagrantfile
