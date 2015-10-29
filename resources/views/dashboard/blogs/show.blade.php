@@ -34,15 +34,7 @@
   <p>{!! $blog->body !!}</p>
   @endunless
 
-<br/>
-  @if ($blog->video)
-    <br/><hr/><p>Click the button below to contribute a transcription or translation of this video. You will need to create a free account.</p>
-    <form action="https://transcribe.compasshb.com/en/videos/create/" method="POST">
-      <input type="hidden" name="video_url" value="{{ $blog->video }}"/>
-      <input type="submit" value="Transcribe/Translate" class="btn btn-default"/>
-    </form>
-  @endif
-<br/><br/>
+<br/><br/><br/>
   @include('layouts.scripts-transcript')
 
 @endsection
