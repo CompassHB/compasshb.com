@@ -15,10 +15,8 @@
 	<div class="videocontainer">{!! $blog->iframe !!}</div>
 
 
-  @if ($blog->video)
-    <br/><hr/>
-    <h3>Subtitles and Transcripts</h3>
-    <p>Select lanaguage:
+  @if ($languages)
+    <p>Choose your language:
     @foreach ($languages as $language)
       <a href="/blog/{{ $blog->slug }}/{{ $language }}">{{ $language }}</a>,
     @endforeach
