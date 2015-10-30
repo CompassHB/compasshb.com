@@ -56,7 +56,7 @@ class SmugmugPhotoRepository implements PhotoRepository
         }
 
         // Smugmug
-        $feedUrl = 'http://compasshb.smugmug.com/hack/feed.mg?Type=nicknameRecentPhotos&Data=compasshb&format=rss200&Size=Medium';
+        $feedUrl = 'https://compasshb.smugmug.com/hack/feed.mg?Type=userkeyword&NickName=compasshb&Data=featured&format=rss200&Size=Medium';
 
         $rawfeed = '';
         $results = array();
