@@ -69,23 +69,23 @@ class SmugmugPhotoRepository implements PhotoRepository
 
             return $results;
         }
+        $count = ($xml->channel->item->count() <= $num) ? $xml->channel->item->count() : $num;
 
-        for ($i = 0; $i < $num; $i++) {
+        $i = 0;
+        while ($i < $count)
+{
             // Parse Image Link
-            $link = $xml->channel->item->link;
+            $link = $xml->channel->item[$i]->link;
             $link = substr($link->asXML(), 6, -7);
 
-            // Parse Image Source
-            $namespaces = $xml->channel->item[$i]->getNameSpaces(true);
-            $media = $xml->channel->item[$i]->children($namespaces['media']);
-            $image = $media->group->content[3]->attributes();
-            $image = $image['url']->asXML();
-            $image = substr($image, 6, -1);
+            // Parse Image URL
+            $image = $xml->channel->item[$i]->guid;
 
             // Replace HTTP call with HTTPS
             $image = str_replace('http://', 'https://', $image);
 
             $results[] = array($link, $image);
+            $i++;
         }
 
         Cache::add('getphotos'.$num, $results, '340');
