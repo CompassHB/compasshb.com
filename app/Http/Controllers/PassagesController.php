@@ -60,7 +60,7 @@ class PassagesController extends Controller
         if ($today || $passage->published_at->isToday()) {
             $postflash = '';
             $title = 'Scripture of the Day';
-            if (date('D') == 'Sun' || date('D') == 'Sat') {
+            if ((date('D') == 'Sun' || date('D') == 'Sat') && ! $passage->published_at->isToday()) {
                 $postflash = '<div class="alert alert-info" role="alert">Scripture of the Day is posted Monday through Friday.</div>';
             }
         } else {
