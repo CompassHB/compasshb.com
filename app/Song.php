@@ -34,7 +34,7 @@ class Song extends Model implements Searchable
      */
     public function user()
     {
-        return $this->belongsTo('CompassHB\Www\Song');
+        return $this->belongsTo(Song::class);
     }
 
     public function setPublishedAtAttribute($date)

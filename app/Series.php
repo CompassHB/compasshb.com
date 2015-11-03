@@ -32,7 +32,7 @@ class Series extends Model implements Searchable
      */
     public function user()
     {
-        return $this->belongsTo('CompassHB\Www\Series');
+        return $this->belongsTo(Series::class);
     }
 
     /**
@@ -42,7 +42,7 @@ class Series extends Model implements Searchable
      */
     public function sermons()
     {
-        return $this->hasMany('CompassHB\Www\Sermon');
+        return $this->hasMany(Sermon::class);
     }
 
     /**

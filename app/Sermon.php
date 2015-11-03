@@ -97,7 +97,7 @@ class Sermon extends Model implements Searchable
      */
     public function user()
     {
-        return $this->belongsTo('CompassHB\Www\Sermon');
+        return $this->belongsTo(Sermon::class);
     }
 
     /**
@@ -107,7 +107,7 @@ class Sermon extends Model implements Searchable
      */
     public function series()
     {
-        return $this->belongsTo('CompassHB\Www\Series');
+        return $this->belongsTo(Series::class);
     }
 
     public function setPublishedAtAttribute($date)

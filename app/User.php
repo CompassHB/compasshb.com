@@ -38,7 +38,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function songs()
     {
-        return $this->hasMany('CompassHB\Www\Song');
+        return $this->hasMany(CompassHB\Www\Song::class);
     }
 
     /**
@@ -48,7 +48,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function passages()
     {
-        return $this->hasMany('CompassHB\Www\Passage');
+        return $this->hasMany(Passage::class);
     }
 
     /**
@@ -58,7 +58,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function sermons()
     {
-        return $this->hasMany('CompassHB\Www\Sermon');
+        return $this->hasMany(Sermon::class);
     }
 
     /**
@@ -68,7 +68,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function blogs()
     {
-        return $this->hasMany('CompassHB\Www\Blog');
+        return $this->hasMany(Blog::class);
     }
 
     /**
@@ -78,7 +78,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function series()
     {
-        return $this->hasMany('CompassHB\Www\Series');
+        return $this->hasMany(Series::class);
     }
 
     /*
@@ -89,6 +89,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function teams()
     {
-        return $this->belongsToMany('ComapssHB\Www\Team', 'team_user', 'user_id', 'team_id')->withPivot(['role'])->orderBy('name', 'asc');
+        return $this->belongsToMany(Team::class, 'team_user', 'user_id', 'team_id')->withPivot(['role'])->orderBy('name', 'asc');
     }
 }

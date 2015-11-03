@@ -11,8 +11,6 @@ class Team extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(
-            'CompassHB\Www\User', 'team_user', 'team_id', 'user_id'
-        )->withPivot('role');
+        return $this->belongsToMany(User::class, 'team_user', 'team_id', 'user_id')->withPivot('role');
     }
 }

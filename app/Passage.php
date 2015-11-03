@@ -22,7 +22,7 @@ class Passage extends Model implements Searchable
      */
     public function user()
     {
-        return $this->belongsTo('CompassHB\Www\Passage');
+        return $this->belongsTo(Passage::class);
     }
 
     public function setPublishedAtAttribute($date)

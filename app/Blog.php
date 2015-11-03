@@ -52,7 +52,7 @@ class Blog extends Model implements Searchable
      */
     public function user()
     {
-        return $this->belongsTo('CompassHB\Www\Blog');
+        return $this->belongsTo(Blog::class);
     }
 
     public function setPublishedAtAttribute($date)
