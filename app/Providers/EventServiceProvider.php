@@ -2,7 +2,6 @@
 
 namespace CompassHB\Www\Providers;
 
-use SearchIndex;
 use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
 use CompassHB\Www\Series;
@@ -53,27 +52,6 @@ class EventServiceProvider extends ServiceProvider
 
         Blog::saving(function ($object) {
             $object->slug = isset($object->slug) == true ? $object->slug : makeSlugFromTitle(new Blog(), $object->title);
-        });
-
-        // Index in search on model save
-        Sermon::saved(function ($object) {
-            SearchIndex::upsertToIndex($object);
-        });
-
-        Song::saved(function ($object) {
-            SearchIndex::upsertToIndex($object);
-        });
-
-        Series::saved(function ($object) {
-            SearchIndex::upsertToIndex($object);
-        });
-
-        Passage::saved(function ($object) {
-            SearchIndex::upsertToIndex($object);
-        });
-
-        Blog::saved(function ($object) {
-            SearchIndex::upsertToIndex($object);
         });
     }
 }

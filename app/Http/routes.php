@@ -80,6 +80,13 @@ Route::get('pray', [
 ]);
 
 /*
+ * Route for search
+ */
+Route::get('search', [
+    'as' => 'search',
+    'uses' => 'PagesController@search',
+]);
+/*
  * Routes for feeds
  */
 Route::group(['prefix' => 'feed', 'as' => 'feed.'], function () {
@@ -231,11 +238,6 @@ Route::get('sitemap.xml', [
 Route::get('manifest.json', [
     'as' => 'manifest',
     'uses' => 'PagesController@manifest',
-]);
-
-Route::match(array('GET', 'POST'), '/search', [
-    'as' => 'search',
-    'uses' => 'PagesController@search',
 ]);
 
 /*

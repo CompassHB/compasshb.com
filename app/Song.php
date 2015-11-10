@@ -2,10 +2,9 @@
 
 namespace CompassHB\Www;
 
-use Spatie\SearchIndex\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
-class Song extends Model implements Searchable
+class Song extends Model
 {
     protected $fillable = [
         'title',
@@ -34,7 +33,7 @@ class Song extends Model implements Searchable
      */
     public function user()
     {
-        return $this->belongsTo(Song::class);
+        return $this->belongsTo(self::class);
     }
 
     public function setPublishedAtAttribute($date)
@@ -62,42 +61,5 @@ class Song extends Model implements Searchable
     public function scopePublished($query)
     {
         $query->where('published_at', '<=', \Carbon\Carbon::now());
-    }
-
-    /**
-     * Returns an array with properties which must be indexed.
-     *
-     * @return array
-     */
-    public function getSearchableBody()
-    {
-        $searchableProperties = [
-            'title' => $this->title,
-            'body' => $this->body,
-            'excerpt' => $this->excerpt,
-            'slug' => $this->slug,
-        ];
-
-        return $searchableProperties;
-    }
-
-    /**
-     * Return the type of the searchable subject.
-     *
-     * @return string
-     */
-    public function getSearchableType()
-    {
-        return 'worship';
-    }
-
-    /**
-     * Return the id of the searchable subject.
-     *
-     * @return string
-     */
-    public function getSearchableId()
-    {
-        return $this->id;
     }
 }

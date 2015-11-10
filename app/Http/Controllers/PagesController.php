@@ -4,7 +4,6 @@ namespace CompassHB\Www\Http\Controllers;
 
 use Log;
 use Cache;
-use Request;
 use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
 use CompassHB\Www\Series;
@@ -13,7 +12,6 @@ use CompassHB\Www\Passage;
 use CompassHB\Www\Repositories\Video\VideoRepository;
 use CompassHB\Www\Repositories\Photo\PhotoRepository;
 use CompassHB\Www\Repositories\Event\EventRepository;
-use CompassHB\Www\Repositories\Search\SearchRepository;
 
 class PagesController extends Controller
 {
@@ -183,19 +181,6 @@ class PagesController extends Controller
         return view('feeds.manifest');
     }
 
-    public function search(SearchRepository $search)
-    {
-        $results = ['hits' => ['hits' => []]];
-
-        $query = Request::get('q');
-
-        if (isset($query)) {
-            $results = $search->search($query);
-        }
-
-        return view('dashboard.search.index', compact('results', 'query'));
-    }
-
     public function sitemap(VideoRepository $video, EventRepository $event)
     {
         $blogs = Blog::published()->get();
@@ -276,6 +261,11 @@ class PagesController extends Controller
 
         return redirect()
             ->route('home');
+    }
+
+    public function search()
+    {
+        return redirect()->route('home');
     }
 
     /**

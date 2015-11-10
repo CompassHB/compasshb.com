@@ -9,9 +9,6 @@ matrix:
     - php: 7.0
   fast_finish: true
 
-services:
-   - elasticsearch
-
 sudo: false
 
 before_install: composer selfupdate

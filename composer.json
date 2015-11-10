@@ -18,7 +18,6 @@
 	  	"google/apiclient": "~1.1",
 	  	"graham-campbell/parse": "~2.0",
 		"graham-campbell/htmlmin": "^3.0",
-		"spatie/searchindex": "^2.0",
 		"roumen/feed": "^2.9",
 		"zencoder/zencoder-php": "~2.2.0"
 	},

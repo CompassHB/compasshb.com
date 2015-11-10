@@ -40,14 +40,6 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /*
-         * SearchRepository
-         */
-        $this->app->bind(
-            'CompassHB\Www\Repositories\Search\SearchRepository',
-            'CompassHB\Www\Repositories\Search\ElasticSearchRepository'
-        );
-
-        /*
          * EventRepository
          */
         $this->app->bind(

@@ -6,7 +6,6 @@ use Auth;
 use Redirect;
 use CompassHB\Www\Passage;
 use CompassHB\Www\Http\Requests\PassageRequest;
-use CompassHB\Www\Repositories\Search\SearchRepository;
 use CompassHB\Www\Repositories\Analytics\AnalyticRepository;
 use CompassHB\Www\Repositories\Scripture\ScriptureRepository;
 
@@ -17,13 +16,11 @@ class PassagesController extends Controller
      */
     protected $analytics;
     protected $scripture;
-    protected $search;
 
-    public function __construct(AnalyticRepository $analytics, ScriptureRepository $scripture, SearchRepository $search)
+    public function __construct(AnalyticRepository $analytics, ScriptureRepository $scripture)
     {
         $this->analytics = $analytics;
         $this->scripture = $scripture;
-        $this->search = $search;
         $this->middleware('auth', ['only' => ['edit', 'update', 'create', 'store', 'destroy']]);
     }
 
@@ -60,7 +57,7 @@ class PassagesController extends Controller
         if ($today || $passage->published_at->isToday()) {
             $postflash = '';
             $title = 'Scripture of the Day';
-            if ((date('D') == 'Sun' || date('D') == 'Sat') && ! $passage->published_at->isToday()) {
+            if ((date('D') == 'Sun' || date('D') == 'Sat') && !$passage->published_at->isToday()) {
                 $postflash = '<div class="alert alert-info" role="alert">Scripture of the Day is posted Monday through Friday.</div>';
             }
         } else {

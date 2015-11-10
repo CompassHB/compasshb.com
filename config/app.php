@@ -149,7 +149,6 @@ return [
         Illuminate\Html\HtmlServiceProvider::class,
         GrahamCampbell\Parse\ParseServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
-        Spatie\SearchIndex\SearchIndexServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
     ],
 
