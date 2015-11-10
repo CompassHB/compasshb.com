@@ -67,7 +67,6 @@
     <a href="{{ route('evangelism') }}" style="color: #FFF; padding-right: 10px;">Ice Cream Evangelism</a>
     <a href="{{ route('events.index') }}" style="color: #FFF; padding-right: 10px;">Events</a>
     <a href="https://github.com/compasshb" style="color: #FFF; padding-right: 10px;">GitHub</a>
-    <a href="https://transcribe.compasshb.com" style="color: #FFF; padding-right: 10px;">Transcribe</a>
     <a href="{{ route('search') }}" style="color: #FFF; padding-right: 10px;">Search</a>
     <span style="float: right; color: #AAA; font-weight: normal">© 2014-{{ date('Y') }} Compass Bible Church</span>
   </div>

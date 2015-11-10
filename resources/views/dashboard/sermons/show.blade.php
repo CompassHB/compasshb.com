@@ -36,13 +36,7 @@
   <p>{!! $sermon->body !!}</p>
   @endunless
 
-  <br/>
-    <form action="https://transcribe.compasshb.com/en/videos/create/" method="POST">
-    <input type="hidden" name="video_url" value="{{ $sermon->video }}"/>
-    <p style="float: right"><input type="submit" value="Transcribe" class="btn btn-default"/></p>
-  </form>
-
-  <br/><br/>
+  <br/><br/><br/>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title tk-seravek-web">Links</h3>
