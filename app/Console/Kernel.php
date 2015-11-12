@@ -26,9 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('db:backup')
-                    ->dailyAt('23:59')
-                    ->thenPing(env('ENVOYER_HEARTBEAT'));
+        $schedule->call('Substrike\Forestall\DatabaseBackup@now')
+                        ->dailyAt('23:59')
+                        ->thenPing(env('ENVOYER_HEARTBEAT'));
 
         $schedule->command('push:passage')
                     ->dailyAt('06:45');

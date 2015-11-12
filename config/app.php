@@ -150,6 +150,7 @@ return [
         GrahamCampbell\Parse\ParseServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
+        Substrike\Forestall\ForestallServiceProvider::class,
     ],
 
     /*
