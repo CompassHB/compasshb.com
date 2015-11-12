@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ef896a7e25eff6a0beaec21fd1e95b2",
-    "content-hash": "4f0316af3cbfb07080a6728db230ffbc",
+    "hash": "757b10c8c24cc24c9a3e83ae8b1edaa7",
+    "content-hash": "c6af12a37e422ddec159dde8a37542e3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1861,8 +1861,8 @@
             "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "/Users/bdo9/Code/forestall",
-                "reference": "bc0e6276c53c96c049d327a48c300067b6111e77"
+                "url": "https://github.com/substrike/forestall.git",
+                "reference": "c2484ebd9f89769e823d0de324e88efc3f09982a"
             },
             "require": {
                 "illuminate/support": "^5.1"
