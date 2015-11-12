@@ -6,10 +6,6 @@
 	},
 	"type": "project",
 	"license": "MIT",
-	"repositories": [{
-		"type": "vcs",
-		"url": "/Users/bdo9/Code/forestall"
-	}],
 	"require": {
 		"php": ">=5.5.9",
 		"laravel/framework": "5.1.*",
