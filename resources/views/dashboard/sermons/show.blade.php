@@ -12,7 +12,9 @@
   @endif
 
   <div class="videocontainer">{!! $sermon->iframe !!}</div>
-  <p>Text: {!! $sermon->text !!}<br>Plays: {{ $sermon->plays }}</p>
+  <p>Text: {!! $sermon->text !!} |
+    <a href="{{  Request::url() }}/download">Download</a> | 
+    Plays: {{ $sermon->plays }}</p>
 
   <p>
   @if ($sermon->worksheet != null)
