@@ -33,3 +33,13 @@ $(window).resize(function(){
 })
 .resize();//trigger the resize event on page load.
 </script>
+
+<!-- feedback -->
+<script type="text/javascript">
+    window.doorbellOptions = {
+        appKey: 'wp5dZcpdWhnELhqHklLRgRa5GTwyQhHxbDaDicEx1yqjyFJomtza2ke4JaADWJHV'
+    };
+    (function(d, t) {
+        var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://embed.doorbell.io/button/2583?t='+(new Date().getTime());(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g);
+    }(document, 'script'));
+</script>
