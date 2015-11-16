@@ -38,6 +38,12 @@ class DashboardTest extends TestCase
  //       $this->assertEquals(302, $this->statusCode());
     }
 
+    public function testVideoDownload()
+    {
+        $this->call('GET', '/video/what-is-repentance/download');
+ //       $this->assertEquals(302, $this->statusCode());
+    }
+
     public function testBlog()
     {
         $this->visit('/blog');
