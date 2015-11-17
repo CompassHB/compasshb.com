@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         'CompassHB\Www\Console\Commands\PassagePush',
         'CompassHB\Www\Console\Commands\PassageReminder',
         'CompassHB\Www\Console\Commands\WorksheetReminder',
+        'CompassHB\Www\Console\Commands\BoxcastReminder',
         'CompassHB\Www\Console\Commands\BroadcastRefresh',
     ];
 
@@ -37,10 +38,13 @@ class Kernel extends ConsoleKernel
         $schedule->command('passage:reminder')
                     ->dailyAt('20:00');
 
+        $schedule->command('boxcast:reminder')
+                    ->dailyAt('20:01');
+
         $schedule->command('worksheet:reminder')
                     ->weekly()
                     ->Sundays()
-                    ->at('20:00');
+                    ->at('20:02');
 
         $schedule->command('broadcast:refresh')
                     ->everyThirtyMinutes();
