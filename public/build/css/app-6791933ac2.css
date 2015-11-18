@@ -1,3 +1,6 @@
+/*
+ * Bootstrap CSS...
+ */
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -6696,6 +6699,9 @@ button.close {
     display: none !important;
   }
 }
+/*
+ * Medium-Editor...
+ */
 @-webkit-keyframes medium-editor-image-loading {
   0% {
     -webkit-transform: scale(0);
@@ -6848,6 +6854,9 @@ button.close {
   position: fixed;
   top: 1px; }
 
+.medium-editor-relative-toolbar {
+  position: relative; }
+
 .medium-editor-toolbar-active.medium-editor-stalker-toolbar {
   -webkit-animation: medium-editor-pop-upwards 160ms forwards linear;
           animation: medium-editor-pop-upwards 160ms forwards linear; }
@@ -6863,6 +6872,10 @@ button.close {
   .medium-editor-toolbar-form input,
   .medium-editor-toolbar-form a {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .medium-editor-toolbar-form .medium-editor-toolbar-form-row {
+    line-height: 14px;
+    margin-left: 5px;
+    padding-bottom: 5px; }
   .medium-editor-toolbar-form .medium-editor-toolbar-input,
   .medium-editor-toolbar-form label {
     border: none;
@@ -6870,17 +6883,16 @@ button.close {
     font-size: 14px;
     margin: 0;
     padding: 6px;
-    width: 316px; }
+    width: 316px;
+    display: inline-block; }
     .medium-editor-toolbar-form .medium-editor-toolbar-input:focus,
     .medium-editor-toolbar-form label:focus {
       -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
+         -moz-appearance: none;
+              appearance: none;
       border: none;
       box-shadow: none;
       outline: 0; }
-  .medium-editor-toolbar-form label {
-    display: block; }
   .medium-editor-toolbar-form a {
     display: inline-block;
     font-size: 24px;

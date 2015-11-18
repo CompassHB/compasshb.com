@@ -1,46 +1,25 @@
+
 var elixir = require('laravel-elixir');
 
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Less
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
+
 elixir(function(mix) {
-
-	// Stylesheets
-    mix.less(
-        'app.less',
-        'public/css/',
-        {
-            paths: [
-                './bower_components/bootstrap/less/',
-                './bower_components/medium-editor/dist/css/',
-            ]
-        }
-    );
-
-	// Scripts
-	mix.babel([
-        '../../../bower_components/jquery/dist/jquery.min.js',
-        '../../../bower_components/lazysizes/lazysizes.min.js',
-        '../../../bower_components/bootstrap/dist/js/bootstrap.min.js',
-        'compasshb-search.js',
-//        '../../../bower_components/player-api/javascript/froogaloop.min.js',
-    //    '../../../bower_components/medium-editor/dist/js/medium-editor.js',
-    //    'compasshb-editor.js',
-    //    'compasshb-serviceworker.js',
-    ]);
-
-	// Tests
-
-//    mix.phpUnit();
-
-    mix.phpSpec();
-
-    mix.version(['public/css/app.css', 'public/js/all.js']);
+    mix.less('app.less')
+       .browserify('app.js')
+       .version(['css/app.css', 'js/app.js']);
 
     mix.copy(
-        'bower_components/jquery/dist/jquery.min.map',
-        'public/build/js/jquery.min.map'
-    )
+       'node_modules/bootstrap/dist/fonts',
+       'public/build/fonts'
+   )
 
-    mix.copy(
-        'bower_components/bootstrap/fonts/',
-        'public/build/fonts/'
-    )
 });

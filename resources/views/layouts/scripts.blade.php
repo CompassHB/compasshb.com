@@ -1,5 +1,5 @@
 <!-- our scripts come first because they affect primary UI features -->
-<script src="{{ elixir('js/all.js') }}"></script>
+<script src="{{ elixir('js/app.js') }}"></script>
 
 <!-- third-party widgets come next because they are secondary UI features -->
 <div id="fb-root"></div>

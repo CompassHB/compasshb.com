@@ -1,13 +1,17 @@
-// Boostrap
-@import 'bootstrap';
+/*
+ * Bootstrap CSS...
+ */
+@import "node_modules/bootstrap/less/bootstrap";
 
 // Custom Bootstrap Variables
 @grid-float-breakpoint: 	@screen-md-min; // Point at which the navbar switches between collapsed and horizontal mode. Changing this from the small default to medium.
 @brand-primary:         	#497F9E;
 
-// Other vendor CSS that should be pre-processed
-@import (inline) 'medium-editor.css';
-@import (inline) 'themes/default.css';
+/*
+ * Medium-Editor...
+ */
+@import (inline) "node_modules/medium-editor/dist/css/medium-editor.css";
+@import (inline) "node_modules/medium-editor/dist/css/themes/default.css";
 
 // Custom styles for CompassHB.com
 @import '_navigation'; 		  // Menus
