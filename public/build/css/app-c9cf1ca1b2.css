@@ -6979,7 +6979,14 @@ button.close {
 
 /* Top of every page */
 .navbar {
-  border-bottom: 5px solid #497f9e;
+  min-height: auto;
+  margin-bottom: auto;
+}
+.navbar-default {
+  border: none;
+}
+.navbar {
+  border-top: 5px solid #497f9e;
   height: 79px;
   background-color: #FFF;
 }
@@ -6999,10 +7006,6 @@ button.close {
 }
 #navbar {
   margin-right: 30px;
-}
-.navbar {
-  min-height: auto;
-  margin-bottom: auto;
 }
 @media (min-width: 992px) {
   .dropdown:hover .dropdown-menu {
@@ -7030,14 +7033,6 @@ button.close {
   box-shadow: none;
   border-radius: 0;
   border: 1px solid #EDEDED;
-}
-.side-nav {
-  width: 300px;
-  float: left;
-  padding: 40px 75px;
-  text-align: right;
-  font-size: 1.3em;
-  line-height: .85em;
 }
 .dropdown-menu .divider {
   margin: 0;

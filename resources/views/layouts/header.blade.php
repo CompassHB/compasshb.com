@@ -11,6 +11,9 @@
     <title>{{{ $title or 'Compass HB' }}} - Compass Bible Church</title>
 
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link href="/build/css/app2.css" rel="stylesheet">
+
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Scripts usually shouldn't come in <head> for performance, but this is
          a font, so we need to load in <head> to avoid flash of unstyled text -->

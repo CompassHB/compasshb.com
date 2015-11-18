@@ -1,7 +1,19 @@
 /* Top of every page */
+
+// Reset to override defaults
+.navbar {
+	min-height: auto;
+	margin-bottom: auto;
+}
+
+.navbar-default
+{
+  border: none;
+}
+
 .navbar
 {
-  border-bottom: 5px solid #497f9e;
+  border-top: 5px solid #497f9e;
   height: 79px;
   background-color: #FFF;
 }
@@ -26,12 +38,6 @@
 
 #navbar {
 	margin-right: 30px;
-}
-
-// Reset to override defaults
-.navbar {
-	min-height: auto;
-	margin-bottom: auto;
 }
 
 @media (min-width: @grid-float-breakpoint) {
@@ -71,15 +77,6 @@
 	box-shadow: none;
 	border-radius: 0;
 	border: 1px solid #EDEDED;
-}
-
-.side-nav {
-	width: 300px;
-	float: left;
-	padding: 40px 75px;
-	text-align: right;
-	font-size: 1.3em;
-	line-height: .85em;
 }
 
 .dropdown-menu .divider {

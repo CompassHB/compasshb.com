@@ -1,6 +1,8 @@
 
 var elixir = require('laravel-elixir');
 
+require('laravel-elixir-stylus');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -12,6 +14,10 @@ var elixir = require('laravel-elixir');
  |
  */
 
+
+/**
+  * Bootstrap / Less styles (old)
+  **/
 elixir(function(mix) {
     mix.less('app.less')
        .browserify('app.js')
@@ -22,4 +28,11 @@ elixir(function(mix) {
        'public/build/fonts'
    )
 
+});
+
+/**
+ * Stylus (new)
+ **/
+elixir(function(mix) {
+   mix.stylus('app.styl', './public/build/css/app2.css')
 });

@@ -1,12 +1,27 @@
-<div col="col-sm-3">
-  <ul class="nav nav-pills nav-stacked side-nav">
-  <br/>
-    <li class="{{ setActive('admin/mainservice') }}"><a href="{{ route('admin.mainservice') }}">Main Service</a></li>
-    <li class="{{ setActive('admin/read') }}"><a href="{{ route('admin.read') }}">Scripture of the Day</a></li>
-    <li class="{{ setActive('admin/sundayschool') }}"><a href="{{ route('admin.video') }}">Post a Video</a></li>
-    <li class="{{ setActive('admin/songs') }}"><a href="{{ route('admin.songs') }}">Worship</a></li>
-    <li><a href="/auth/logout">Logout</a></li>
-  </ul>
-</div>
+<br/><br/><br/><br/>
+<section class="Settings utility-flex-container">
+  <nav id="main-nav" class="Box Box--Large Box--bright">
+    <ul>
+      <li class="{{ setActive('admin/mainservice') }}">
+        <a href="{{ route('admin.mainservice') }}">Main Service</a>
 
+        <i class="material-icons">keyboard_arrow_right</i>
+      </li>
+      <li class="{{ setActive('admin/read') }}">
+        <a href="{{ route('admin.read') }}">Scripture of the Day</a>
 
+        <i class="material-icons">keyboard_arrow_right</i>
+      </li>
+      <li class="{{ setActive('admin/video') }}">
+        <a href="{{ route('admin.video') }}">Post a Video</a>
+
+        <i class="material-icons">keyboard_arrow_right</i>
+      </li>
+      <li class="{{ setActive('admin/songs') }}">
+        <a href="{{ route('admin.songs') }}">Worship</a>
+
+        <i class="material-icons">keyboard_arrow_right</i>
+      </li>
+    </ul>
+  </nav>
+</section>
