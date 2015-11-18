@@ -39,6 +39,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Passage::since($this->user->last_login)
+                    ->published()
                     ->latest('published_at')
                     ->get();
 
