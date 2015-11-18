@@ -27,6 +27,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        parent::__construct();
     }
 
     /**
@@ -36,7 +38,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home')->with('title', 'Admin');
+        $posts = Passage::since($this->user->last_login)
+                    ->latest('published_at')
+                    ->get();
+
+        return view('admin.home', compact('posts'))
+            ->with('title', 'Admin');
     }
 
     public function mainservice()

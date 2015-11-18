@@ -50,4 +50,9 @@ class Passage extends Model
     {
         $query->where('published_at', '<=', \Carbon\Carbon::now());
     }
+
+    public function scopeSince($query, $date)
+    {
+        return $query->where('published_at', '>', $date);
+    }
 }

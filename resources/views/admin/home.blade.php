@@ -17,7 +17,15 @@
 	<strong>Shortcuts:</strong><br/>
 	<a href="/api/v1/cleareventcache/{{ env('EVENTBRITE_CALLBACK') }}">Force Eventbrite Sync (Clears all event page caches)</a><br/>
 	<a href="/api/v1/clearvideothumbcache/{{ env('EVENTBRITE_CALLBACK') }}">Force Video Thumbnail Sync (Clears latest sermon thumb cache)</a><br/>
+</p>
 
-	</p>
+<h3>New since last login</h3>
+@if (count($posts) > 0)
+  @foreach($posts as $post)
+    <p>{{ $post->title }} - Published {{ $post->published_at->diffForHumans() }}</p>
+  @endforeach
+@else
+  <p>Nothing new</p>
+@endif
 
 @endsection
