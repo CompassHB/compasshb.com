@@ -9,7 +9,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-	factory(User::class, 9)->create();
+        factory(User::class, 9)->create();
 
         User::create([
             'name' => 'admin',

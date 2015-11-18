@@ -1,6 +1,12 @@
 <?php
 
+use Carbon\Carbon;
+use CompassHB\Www\Blog;
 use CompassHB\Www\User;
+use CompassHB\Www\Sermon;
+use CompassHB\Www\Series;
+use CompassHB\Www\Passage;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -12,11 +18,57 @@ use CompassHB\Www\User;
 |
 */
 
+
 $factory->define(User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(Passage::class, function (Faker\Generator $faker) {
+    return [
+        'title' => 'Psalm ' . rand(1, 150),
+        'body' => $faker->paragraph,
+        'published_at' => Carbon::now()->subDays(30),
+        'user_id' => factory(User::class)->create()->id,
+    ];
+});
+
+$factory->define(Blog::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph,
+        'published_at' => Carbon::now()->subDays(30),
+        'user_id' => factory(User::class)->create()->id,
+    ];
+});
+
+$factory->define(Series::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph,
+        'user_id' => factory(User::class)->create()->id,
+        'ministry' => head($faker->shuffle(array(null, 'sundayschool', 'youth'))),
+        'image' => 'https://dummyimage.com/600x400/000/fff.jpg'
+    ];
+});
+
+$factory->define(Sermon::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph,
+        'excerpt' => $faker->paragraph,
+        'user_id' => factory(User::class)->create()->id,
+        'teacher' => $faker->name,
+        'text' => 'Psalm ' . rand(1, 150),
+        'worksheet' => 'https://compasshb.s3.amazonaws.com/worksheets/1-And-the-Gospel-Rings-Out.pdf',
+        'video' => 'https://vimeo.com/143216705',
+        'audio' => 'http://compasshb.s3.amazonaws.com/media/and-the-gospel-rings-out.mp3',
+        'published_at' => Carbon::now()->subDays(30),
+        'ministry' => head($faker->shuffle(array(null, 'sundayschool', 'youth'))),
+//        'series_id' => factory(Series::class)->create()->id,
     ];
 });
