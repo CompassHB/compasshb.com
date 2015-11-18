@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Repositories\Scripture;
+<?php
+
+namespace CompassHB\Www\Repositories\Scripture;
 
 use Log;
 use Cache;
@@ -6,9 +8,9 @@ use Cache;
 class EsvScriptureRepository implements ScriptureRepository
 {
     private $apikey;
-    private $options = "include-footnotes=false&include-audio-link=false&audio-format=mp3";
-    private $audioOptions = "output-format=mp3";
-    private $url = "http://www.esvapi.org/v2/rest/passageQuery";
+    private $options = 'include-footnotes=false&include-audio-link=false&audio-format=mp3';
+    private $audioOptions = 'output-format=mp3';
+    private $url = 'http://www.esvapi.org/v2/rest/passageQuery';
 
     public function __construct()
     {
@@ -19,7 +21,7 @@ class EsvScriptureRepository implements ScriptureRepository
     {
         $response = Cache::remember('getscripture'.$passage, '2880', function () use ($passage) {
 
-            $request = $this->url."?key=".$this->apikey."&passage=".urlencode($passage)."&".$this->options;
+            $request = $this->url.'?key='.$this->apikey.'&passage='.urlencode($passage).'&'.$this->options;
 
             $ch = curl_init($request);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -46,7 +48,7 @@ class EsvScriptureRepository implements ScriptureRepository
     {
         $response = Cache::rememberForever('getaudioscripture'.$passage, function () use ($passage) {
 
-            $url = $this->url."?key=".$this->apikey."&passage=".urlencode($passage)."&".$this->audioOptions;
+            $url = $this->url.'?key='.$this->apikey.'&passage='.urlencode($passage).'&'.$this->audioOptions;
             $headers = get_headers($url, 1);
 
             return end($headers['Location']);

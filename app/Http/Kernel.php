@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Http;
+<?php
+
+namespace CompassHB\Www\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-     /**
+    /**
      * Get all of the users that belong to the team.
      */
     public function users()

@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Repositories\Analytics;
+<?php
+
+namespace CompassHB\Www\Repositories\Analytics;
 
 class FakeAnalyticRepository implements AnalyticRepository
 {

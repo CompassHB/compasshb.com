@@ -1,5 +1,6 @@
-<?php namespace CompassHB\Www\Http\Requests;
+<?php
 
+namespace CompassHB\Www\Http\Requests;
 
 class PassageRequest extends Request
 {

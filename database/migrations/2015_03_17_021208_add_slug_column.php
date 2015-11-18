@@ -10,23 +10,23 @@ class AddSlugColumn extends Migration
      */
     public function up()
     {
-        Schema::table('songs', function(Blueprint $table) {
+        Schema::table('songs', function (Blueprint $table) {
             $table->string('slug')->nullable();
         });
 
-        Schema::table('sermons', function(Blueprint $table) {
+        Schema::table('sermons', function (Blueprint $table) {
             $table->string('slug')->nullable();
         });
 
-        Schema::table('passages', function(Blueprint $table) {
+        Schema::table('passages', function (Blueprint $table) {
             $table->string('slug')->nullable();
         });
 
-        Schema::table('fellowships', function(Blueprint $table) {
+        Schema::table('fellowships', function (Blueprint $table) {
             $table->string('slug')->nullable();
         });
 
-        Schema::table('blogs', function(Blueprint $table) {
+        Schema::table('blogs', function (Blueprint $table) {
             $table->string('slug')->nullable();
         });
     }
@@ -36,23 +36,23 @@ class AddSlugColumn extends Migration
      */
     public function down()
     {
-        Schema::table('songs', function(Blueprint $table) {
+        Schema::table('songs', function (Blueprint $table) {
             $table->dropColumn('slug');
         });
 
-        Schema::table('sermons', function(Blueprint $table) {
+        Schema::table('sermons', function (Blueprint $table) {
             $table->dropColumn('slug');
         });
 
-        Schema::table('passages', function(Blueprint $table) {
+        Schema::table('passages', function (Blueprint $table) {
             $table->dropColumn('slug');
         });
 
-        Schema::table('fellowships', function(Blueprint $table) {
+        Schema::table('fellowships', function (Blueprint $table) {
             $table->dropColumn('slug');
         });
 
-        Schema::table('blogs', function(Blueprint $table) {
+        Schema::table('blogs', function (Blueprint $table) {
             $table->dropColumn('slug');
         });
     }

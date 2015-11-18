@@ -12,7 +12,7 @@ class AdminControllerTest extends TestCase
     /** @test **/
     public function a_user_must_be_signed_in_to_view_their_dashboard()
     {
-      $this->visit('admin')
+        $this->visit('admin')
            ->seePageIs('/auth/login');
     }
 
@@ -24,12 +24,12 @@ class AdminControllerTest extends TestCase
 
         // And one new post created in the last few days
         $newPassage = factory(Passage::class)->create([
-          'published_at' => Carbon::now()
+          'published_at' => Carbon::now(),
         ]);
 
         // And a user who hasn't logged in in the last week
         $user = factory(User::class)->create([
-          'last_login' => Carbon::now()->subDays(7)
+          'last_login' => Carbon::now()->subDays(7),
         ]);
 
         $this->be($user);
@@ -41,5 +41,4 @@ class AdminControllerTest extends TestCase
              ->dontsee($oldPassage[0]->title)
              ->dontsee($oldPassage[1]->title);
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Repositories\Event;
+<?php
+
+namespace CompassHB\Www\Repositories\Event;
 
 interface EventRepository
 {

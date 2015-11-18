@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Console\Commands;
+<?php
+
+namespace CompassHB\Www\Console\Commands;
 
 use Cache;
 use GuzzleHttp;
@@ -21,7 +23,6 @@ class BroadcastRefresh extends Command
      */
     protected $description = 'Update cache with current live broadcast if available';
 
-
     /**
      * Returns the current (or very next upcoming) broadcast.
      *
@@ -32,6 +33,7 @@ class BroadcastRefresh extends Command
         $client = new GuzzleHttp\Client();
         $broadcastsResponse = $client->get('https://api.boxcast.com/channels/gnskfahu15wlwpvroe22/broadcasts?q=timeframe:current%20timeframe:future&l=1');
         $broadcasts = json_decode($broadcastsResponse->getBody());
+
         return $broadcasts[0];
     }
 
@@ -54,6 +56,5 @@ class BroadcastRefresh extends Command
         } else {
             Cache::forget('broadcast');
         }
-
     }
 }

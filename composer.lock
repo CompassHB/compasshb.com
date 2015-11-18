@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.10.0",
+            "version": "3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7b369751845660edb983edded7e6b3d697baba4c"
+                "reference": "16258334537e989a65b682141cc027e1c3464017"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7b369751845660edb983edded7e6b3d697baba4c",
-                "reference": "7b369751845660edb983edded7e6b3d697baba4c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/16258334537e989a65b682141cc027e1c3464017",
+                "reference": "16258334537e989a65b682141cc027e1c3464017",
                 "shasum": ""
             },
             "require": {
@@ -83,20 +83,20 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-11-10 21:14:24"
+            "time": "2015-11-13 00:45:01"
         },
         {
             "name": "bugsnag/bugsnag",
-            "version": "v2.5.5",
+            "version": "v2.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bugsnag/bugsnag-php.git",
-                "reference": "30af9dfc67c42bd3c392c7917b4b35d08a53da74"
+                "reference": "ed96765227a65e9959454e402852de74b77cd300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bugsnag/bugsnag-php/zipball/30af9dfc67c42bd3c392c7917b4b35d08a53da74",
-                "reference": "30af9dfc67c42bd3c392c7917b4b35d08a53da74",
+                "url": "https://api.github.com/repos/bugsnag/bugsnag-php/zipball/ed96765227a65e9959454e402852de74b77cd300",
+                "reference": "ed96765227a65e9959454e402852de74b77cd300",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                 "logging",
                 "tracking"
             ],
-            "time": "2015-07-01 02:43:15"
+            "time": "2015-11-18 03:48:11"
         },
         {
             "name": "bugsnag/bugsnag-laravel",
@@ -498,32 +498,32 @@
         },
         {
             "name": "graham-campbell/parse",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-Parse.git",
-                "reference": "c8658205134b5443074b15ca49fa422fd0c5bdfe"
+                "reference": "d7a3bbe5b89a7d6f15391728803bfdfb2c5eed18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Parse/zipball/c8658205134b5443074b15ca49fa422fd0c5bdfe",
-                "reference": "c8658205134b5443074b15ca49fa422fd0c5bdfe",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Parse/zipball/d7a3bbe5b89a7d6f15391728803bfdfb2c5eed18",
+                "reference": "d7a3bbe5b89a7d6f15391728803bfdfb2c5eed18",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "5.0.*|5.1.*",
-                "illuminate/support": "5.0.*|5.1.*",
-                "parse/php-sdk": "~1.0",
+                "illuminate/contracts": "5.1.*|5.2.*",
+                "illuminate/support": "5.1.*|5.2.*",
+                "parse/php-sdk": "^1.0",
                 "php": ">=5.5.9"
             },
             "require-dev": {
-                "graham-campbell/testbench": "~3.0",
-                "phpunit/phpunit": "~4.8|~5.0"
+                "graham-campbell/testbench": "^3.1",
+                "phpunit/phpunit": "^4.8|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -557,7 +557,7 @@
                 "parse sdk bridge",
                 "parse-sdk"
             ],
-            "time": "2015-10-06 16:55:31"
+            "time": "2015-11-14 11:57:33"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1735,16 +1735,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.6.0",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "cab3aa3750d451c6e8d002433af583d88fd64862"
+                "reference": "0f04df0b23663799a8941fae13cd8e6299bde3ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/cab3aa3750d451c6e8d002433af583d88fd64862",
-                "reference": "cab3aa3750d451c6e8d002433af583d88fd64862",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0f04df0b23663799a8941fae13cd8e6299bde3ed",
+                "reference": "0f04df0b23663799a8941fae13cd8e6299bde3ed",
                 "shasum": ""
             },
             "require": {
@@ -1803,7 +1803,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2015-11-08 22:24:35"
+            "time": "2015-11-12 16:18:56"
         },
         {
             "name": "roumen/feed",

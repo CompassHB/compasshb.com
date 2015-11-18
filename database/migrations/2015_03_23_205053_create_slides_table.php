@@ -10,7 +10,7 @@ class CreateSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function(Blueprint $table) {
+        Schema::create('slides', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('title');

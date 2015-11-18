@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Exceptions;
+<?php
+
+namespace CompassHB\Www\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;

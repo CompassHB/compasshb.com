@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Repositories\Analytics;
+<?php
+
+namespace CompassHB\Www\Repositories\Analytics;
 
 use Log;
 
@@ -13,7 +15,7 @@ class GoogleAnalyticRepository implements AnalyticRepository
     {
         $this->email = getenv('GOOGLE_ANALYTICS_EMAIL');
         $this->client = new \Google_Client();
-        $this->client->setApplicationName("Compass HB");
+        $this->client->setApplicationName('Compass HB');
 
         if (file_exists(storage_path('keys/CompassHB-27e1adae11b5.p12'))) {
             $this->client->setAssertionCredentials(

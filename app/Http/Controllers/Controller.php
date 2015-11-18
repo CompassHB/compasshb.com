@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Http\Controllers;
+<?php
+
+namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;

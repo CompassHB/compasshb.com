@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Http\Controllers\Auth;
+<?php
+
+namespace CompassHB\Www\Http\Controllers\Auth;
 
 use CompassHB\Www\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;

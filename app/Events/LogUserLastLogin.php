@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Events;
+<?php
+
+namespace CompassHB\Www\Events;
 
 use CompassHB\Www\User;
 

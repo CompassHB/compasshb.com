@@ -18,7 +18,6 @@ use CompassHB\Www\Passage;
 |
 */
 
-
 $factory->define(User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
@@ -31,7 +30,7 @@ $factory->define(User::class, function (Faker\Generator $faker) {
 
 $factory->define(Passage::class, function (Faker\Generator $faker) {
     return [
-        'title' => 'Psalm ' . rand(1, 150),
+        'title' => 'Psalm '.rand(1, 150),
         'body' => $faker->paragraph,
         'published_at' => Carbon::now()->subDays(30),
         'user_id' => factory(User::class)->create()->id,
@@ -53,7 +52,7 @@ $factory->define(Series::class, function (Faker\Generator $faker) {
         'body' => $faker->paragraph,
         'user_id' => factory(User::class)->create()->id,
         'ministry' => head($faker->shuffle(array(null, 'sundayschool', 'youth'))),
-        'image' => 'https://dummyimage.com/600x400/000/fff.jpg'
+        'image' => 'https://dummyimage.com/600x400/000/fff.jpg',
     ];
 });
 
@@ -64,7 +63,7 @@ $factory->define(Sermon::class, function (Faker\Generator $faker) {
         'excerpt' => $faker->paragraph,
         'user_id' => factory(User::class)->create()->id,
         'teacher' => $faker->name,
-        'text' => 'Psalm ' . rand(1, 150),
+        'text' => 'Psalm '.rand(1, 150),
         'worksheet' => 'https://compasshb.s3.amazonaws.com/worksheets/1-And-the-Gospel-Rings-Out.pdf',
         'video' => 'https://vimeo.com/143216705',
         'audio' => 'http://compasshb.s3.amazonaws.com/media/and-the-gospel-rings-out.mp3',

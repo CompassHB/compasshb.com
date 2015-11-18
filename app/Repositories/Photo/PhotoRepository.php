@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Repositories\Photo;
+<?php
+
+namespace CompassHB\Www\Repositories\Photo;
 
 interface PhotoRepository
 {

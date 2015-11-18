@@ -10,7 +10,7 @@ class AddCurrentTeamColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->integer('current_team_id')->nullable();
         });
     }
@@ -20,7 +20,7 @@ class AddCurrentTeamColumn extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('current_team_id');
         });
     }

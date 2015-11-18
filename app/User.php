@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www;
+<?php
+
+namespace CompassHB\Www;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -84,7 +86,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /*
      * Teams
      */
-        /**
+    /**
      * Get all of the teams that the user belongs to.
      */
     public function teams()

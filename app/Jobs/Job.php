@@ -1,8 +1,10 @@
-<?php namespace CompassHB\Www\Jobs;
+<?php
+
+namespace CompassHB\Www\Jobs;
 
 use Illuminate\Bus\Queueable;
 
-abstract class Command
+abstract class Job
 {
     /*
     |--------------------------------------------------------------------------

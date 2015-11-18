@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Repositories\Photo;
+<?php
+
+namespace CompassHB\Www\Repositories\Photo;
 
 use Log;
 use Cache;
@@ -29,7 +31,7 @@ class SmugmugPhotoRepository implements PhotoRepository
         $xml = new \SimpleXmlElement($rawFeed);
         $results = array();
 
-        for ($i = 0; $i < $num; $i++) {
+        for ($i = 0; $i < $num; ++$i) {
             // Parse Image Link
                 $link = $xml->channel->item->link;
             $link = substr($link->asXML(), 6, -7);
@@ -72,8 +74,7 @@ class SmugmugPhotoRepository implements PhotoRepository
         $count = ($xml->channel->item->count() <= $num) ? $xml->channel->item->count() : $num;
 
         $i = 0;
-        while ($i < $count)
-{
+        while ($i < $count) {
             // Parse Image Link
             $link = $xml->channel->item[$i]->link;
             $link = substr($link->asXML(), 6, -7);
@@ -85,7 +86,7 @@ class SmugmugPhotoRepository implements PhotoRepository
             $image = str_replace('http://', 'https://', $image);
 
             $results[] = array($link, $image);
-            $i++;
+            ++$i;
         }
 
         Cache::add('getphotos'.$num, $results, '340');

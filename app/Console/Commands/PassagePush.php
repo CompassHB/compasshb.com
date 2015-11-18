@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Console\Commands;
+<?php
+
+namespace CompassHB\Www\Console\Commands;
 
 use Parse\ParsePush;
 use CompassHB\Www\Passage;
@@ -29,20 +31,20 @@ class PassagePush extends Command
     public function handle()
     {
         $passage = Passage::latest('published_at')->published()->take(1)->get();
-        $data = array("alert" => "Today's Scripture of the Day is ".$passage->first()->title);
+        $data = array('alert' => "Today's Scripture of the Day is ".$passage->first()->title);
 
         // Push to Channels
         ParsePush::send(array(
-          "channels" => ["ScriptureOfTheDay"],
-          "data" => $data,
+          'channels' => ['ScriptureOfTheDay'],
+          'data' => $data,
         ));
 
         // Push to Query
         $query = ParseInstallation::query();
-        $query->equalTo("design", "rad");
+        $query->equalTo('design', 'rad');
         ParsePush::send(array(
-          "where" => $query,
-          "data" => $data,
+          'where' => $query,
+          'data' => $data,
         ));
     }
 }

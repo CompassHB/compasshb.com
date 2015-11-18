@@ -10,8 +10,7 @@ class BlogTableSeeder extends Seeder
         DB::table('blogs')->delete();
 
         factory(Blog::class, 10)->create([
-          'video' => 'https://vimeo.com/134588165'
+          'video' => 'https://vimeo.com/134588165',
         ]);
-        
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Http\Controllers\Api;
+<?php
+
+namespace CompassHB\Www\Http\Controllers\Api;
 
 use Auth;
 use Response;

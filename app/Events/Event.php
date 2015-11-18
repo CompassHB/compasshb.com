@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Events;
+<?php
+
+namespace CompassHB\Www\Events;
 
 abstract class Event
 {

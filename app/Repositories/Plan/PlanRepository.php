@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Repositories\Plan;
+<?php
+
+namespace CompassHB\Www\Repositories\Plan;
 
 interface PlanRepository
 {

@@ -11,7 +11,7 @@ class PassageTableSeeder extends Seeder
 
         factory(Passage::class, 10)->create();
         factory(Passage::class, 1)->create([
-          'published_at' => \Carbon\Carbon::now()->subDays(1)
+          'published_at' => \Carbon\Carbon::now()->subDays(1),
         ]);
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace CompassHB\Www\Http\Requests;
+<?php
+
+namespace CompassHB\Www\Http\Requests;
 
 class SongRequest extends Request
 {

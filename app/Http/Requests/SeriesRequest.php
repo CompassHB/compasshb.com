@@ -1,5 +1,6 @@
-<?php namespace CompassHB\Www\Http\Requests;
+<?php
 
+namespace CompassHB\Www\Http\Requests;
 
 class SeriesRequest extends Request
 {

@@ -4,7 +4,6 @@ namespace CompassHB\Www\Console\Commands;
 
 use Mail;
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Passage;
 use Illuminate\Console\Command;
 
 class WorksheetReminder extends Command
