@@ -24,11 +24,7 @@ before_script:
    - php artisan key:generate
 
 script:
- - phpunit --coverage-clover=.clover
-
-after_script:
- - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
- - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then php ocular.phar code-coverage:upload --format=php-clover .clover; fi
+ - phpunit
 
 notifications:
   slack:

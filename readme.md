@@ -1,5 +1,5 @@
 # Compass Bible Church Huntington Beach
-[![Build Status](https://travis-ci.org/CompassHB/compasshb.com.svg?branch=master)](https://travis-ci.org/CompassHB/compasshb.com) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/CompassHB/compasshb.com/?branch=master)
+[![Build Status](https://travis-ci.org/CompassHB/compasshb.com.svg?branch=master)](https://travis-ci.org/CompassHB/compasshb.com)
 
 CompassHB is the main website app and source code for [compassHB.com](http://www.compasshb.com/).
 ## Getting Started
