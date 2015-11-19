@@ -6,7 +6,8 @@
 
 @section('content')
 
-	<h1 class="tk-seravek-web">Blog</h1>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">Blog & Videos</h1>
 
 <br/>
 <div class="panel panel-default">
@@ -37,6 +38,8 @@
       <p><a href="/blog/">View all blogs/videos</a></p>
       <p><a href="{{ route('feed.blog.xml') }}">RSS</a></p>
     </div>
+</div>
+
 </div>
 
 @endsection

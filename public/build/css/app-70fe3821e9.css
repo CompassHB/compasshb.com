@@ -6987,7 +6987,7 @@ button.close {
 }
 .navbar {
   border-top: 5px solid #497f9e;
-  height: 79px;
+  height: 100px;
   background-color: #FFF;
 }
 .navbar-header {
@@ -7000,7 +7000,7 @@ button.close {
   background-color: #FFF;
 }
 #logo {
-  height: 50px;
+  height: 60px;
   padding: 5px;
   margin-left: 20px;
 }
@@ -7016,9 +7016,9 @@ button.close {
   }
 }
 .navbar-default .navbar-nav > li > a {
-  padding: 27px 20px;
+  padding: 40px 20px;
   color: #393939;
-  font-size: 1.20em;
+  font-size: 1.40em;
 }
 .dropdown-menu li a:hover {
   color: #FFF;
@@ -7255,7 +7255,7 @@ label,
 .checkbox label {
   font-weight: 300;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  background-color: #F9F9F9;
+  background-color: #EEE;
 }
 .clickable:hover {
   text-decoration: none;

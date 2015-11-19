@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
-<h1 class="tk-seravek-web">Worship Songs</h1>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">Worship Songs</h1>
+
 <p>Original worship songs from Compass HB.</p>
 
 <div class="row">
@@ -65,5 +67,7 @@
         repeat: true,
     });
 </script>
+
+</div>
 
 @endsection

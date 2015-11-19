@@ -10,7 +10,9 @@
 	<style>.videocontainer {display: none;}</style>
 	@endif
 
-	<h1 class="tk-seravek-web">{{ $blog->title }}</h1>
+  <div class="Setting Box Box--Large Box--bright utility-flex">
+    <h1 class="Setting__heading tk-seravek-web">{{ $blog->title }}</h1>
+
 	<p>{{ $blog->byline }}</p>
 	<div class="videocontainer">{!! $blog->iframe !!}</div>
 
@@ -34,5 +36,7 @@
 
 <br/><br/><br/>
   @include('layouts.scripts-transcript')
+
+</div>
 
 @endsection

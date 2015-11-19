@@ -1,6 +1,8 @@
+<br/><br/>
+
 <footer id="footer" class="container-fluid" style="background-color: #FFF;">
 
-  <div class="row" style="background-image: url('https://compasshb.smugmug.com/photos/i-pgR29VG/0/X3/i-pgR29VG-X3.png'); background-repeat: repeat-x; background-size: 850px; background-position: center top; padding: 80px 40px 40px 40px; line-height: 2em; padding-top: 40px; background-color: #FFF;">
+  <div class="row" style="background-image: url('https://compasshb.smugmug.com/photos/i-pgR29VG/1/X3/i-pgR29VG-X3.png'); background-repeat: repeat-x; background-size: 850px; background-position: center bottom; padding: 80px 40px 40px 40px; line-height: 2em; padding-top: 40px; background-color: #FFF;">
 
     {{-- Compass Bible Church --}}
     <div class="col-md-2">
@@ -61,13 +63,6 @@
   </div>
 
   <div class="row" style="padding: 15px 30px; background-color: #222; min-height: 50px; font-weight: bold">
-    <a href="{{ route('who-we-are') }}" style="color: #FFF; padding-right: 10px;">Who We Are</a>
-    <a href="{{ route('distinctives') }}" style="color: #FFF; padding-right: 10px;">8 Distinctives</a>
-    <a href="{{ route('believe') }}" style="color: #FFF; padding-right: 10px;">What We Believe</a>
-    <a href="{{ route('evangelism') }}" style="color: #FFF; padding-right: 10px;">Ice Cream Evangelism</a>
-    <a href="{{ route('events.index') }}" style="color: #FFF; padding-right: 10px;">Events</a>
-    <a href="https://github.com/compasshb" style="color: #FFF; padding-right: 10px;">GitHub</a>
-    <a href="{{ route('search') }}" style="color: #FFF; padding-right: 10px;">Search</a>
     <span style="float: right; color: #AAA; font-weight: normal">© 2014-{{ date('Y') }} Compass Bible Church</span>
   </div>
 

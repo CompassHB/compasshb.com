@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
-<h1 class="tk-seravek-web">Home Fellowship Groups</h1>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">Home Fellowship Groups</h1>
+
 <br/><p>We want every adult in our church to be  part of a home fellowship group! We have groups Tuesday, Wednesday, Thursday and Friday nights ready for you to join! Stop by the Compass Connect table for more information or email info@compasshb.com</p><br/>
 
 <div class="row">
@@ -45,5 +47,6 @@
    </div>
 </div>
 
-@endsection
+</div>
 
+@endsection

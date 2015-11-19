@@ -6,7 +6,8 @@
 
 @section('content')
 
-	<h1 class="tk-seravek-web">Sermons</h1>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">Sermons</h1>
 
   <?php $i = 0; ?>
   @foreach ($sermons as $sermon)
@@ -46,5 +47,6 @@
 
     </div>
   </div>
+</div>
 
 @endsection

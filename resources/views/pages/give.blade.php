@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('side')
-    @include('layouts.side.whoweare')
-@endsection
+
 
 @section('content')
     <h1 class="tk-seravek-web">Give to Compass HB</h1>

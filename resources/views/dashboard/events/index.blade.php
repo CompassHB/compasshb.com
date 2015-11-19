@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-	<h2 class="tk-seravek-web">Events</h2>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">Events</h1>
 
     <div class="panel panel-default">
       <div class="panel-body">
@@ -44,4 +45,5 @@
       </div>
     </div>
 
+</div>
 @endsection

@@ -6,7 +6,8 @@
 
 @section('content')
 
-	<h1 class="tk-seravek-web">{{ $song->title }}</h1>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">{{ $song->title }}</h1>
 
 	<div class="videocontainer">
     {!! $song->iframe !!}
@@ -29,5 +30,7 @@
   @endunless
 
     @include('layouts.scripts-transcript')
+
+</div>
 
 @endsection

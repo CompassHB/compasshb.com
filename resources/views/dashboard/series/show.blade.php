@@ -6,7 +6,9 @@
 
 @section('content')
 
-	<h1 class="tk-seravek-web">{{ $series->title }}</h1><br/>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">{{ $series->title }}</h1>
+
   <p>{!! $series->body !!}</p>
 
   @foreach ($sermons as $sermon)
@@ -19,5 +21,7 @@
     </a>
   </div>
   @endforeach
+
+</div>
 
 @endsection

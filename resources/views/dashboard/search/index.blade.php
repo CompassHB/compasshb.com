@@ -2,8 +2,8 @@
 
 @section('content')
 
-	<h1 class="tk-seravek-web">Search Results</h1>
-  <br/><br/>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">Search Results</h1>
 
   <?php $empty = empty($results['hits']['hits']); ?>
   @if ($empty)
@@ -19,5 +19,6 @@
     </p>
     @endforeach
 
-@endsection
+</div>
 
+@endsection

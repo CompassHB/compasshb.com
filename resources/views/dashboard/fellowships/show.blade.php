@@ -6,7 +6,8 @@
 
 @section('content')
 
-	<h2 class="tk-seravek-web">{{ $event->name->text }}</h2>
+<div class="Setting Box Box--Large Box--bright utility-flex">
+  <h1 class="Setting__heading tk-seravek-web">{{ $event->name->text }}</h1>
 
 	<div class="row">
 	    <img src='{{ $event->logo->url }}' style="height: 250px;" /><br/><br/>
@@ -36,5 +37,6 @@
     <br/><br/>
 {{--     <img src="http://maps.google.com/maps/api/staticmap?zoom=11&size=650x150&sensor=false&markers=color:0x497F9B|{{ $event->venue->latitude }},{{ $event->venue->longitude }}" style="width: 650px; height: 150px;" /> --}}
 
+</div>
 
 @endsection
