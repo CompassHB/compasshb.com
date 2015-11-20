@@ -90,5 +90,8 @@ ul {
   direction: ltr;
   text-rendering: optimizeLegibility;
 }
+header .row {
+  background-color: #fff;
+}
 
 /*# sourceMappingURL=app2.css.map */
