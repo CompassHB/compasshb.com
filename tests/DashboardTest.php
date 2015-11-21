@@ -34,13 +34,13 @@ class DashboardTest extends TestCase
 
     public function testSermonDownload()
     {
-        // $this->call('GET', '/sermons/dont-forget-his-benefits/download');
+        // $this->call('GET', '/sermons/dont-forget-his-benefits/download.mp4');
         // $this->assertEquals(302, $this->statusCode());
     }
 
     public function testVideoDownload()
     {
-        // $this->call('GET', '/video/what-is-repentance/download');
+        // $this->call('GET', '/video/what-is-repentance/download.mp4');
         // $this->assertEquals(302, $this->statusCode());
     }
 

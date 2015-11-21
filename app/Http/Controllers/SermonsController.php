@@ -165,4 +165,12 @@ class SermonsController extends Controller
 
         return redirect()->to($video->getDownloadLink());
     }
+
+    public function downloadmp4()
+    {
+        $url = Request::url();
+        $redirect = substr($url, 0, strlen($url) -4);
+
+        return redirect()->to($redirect);
+    }
 }

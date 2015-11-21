@@ -15,7 +15,7 @@
 
     <div class="videocontainer">{!! $sermon->iframe !!}</div>
     <p>Text: {!! $sermon->text !!} |
-      <a href="{{  Request::url() }}/download">Download</a> |
+      <a href="{{  Request::url() }}/download.mp4">Download</a> |
       Plays: {{ $sermon->plays }}</p>
 
     <p>

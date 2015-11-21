@@ -84,7 +84,7 @@ class Sermon extends Model
             array_key_exists('ministry', $this->attributes) &&
             empty($this->attributes['audio']) &&
             $value != null) {
-            $job = $transcoder->saveAudio(route('sermons.show', str_slug($this->attributes['title']).'/download'), str_slug($this->attributes['title']));
+            $job = $transcoder->saveAudio(route('sermons.show', str_slug($this->attributes['title']).'/download.mp4'), str_slug($this->attributes['title']));
             $this->attributes['audio'] = $job->outputs[0]->url;
         }
     }

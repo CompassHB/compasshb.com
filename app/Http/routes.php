@@ -14,7 +14,7 @@ Route::resource('read', 'PassagesController', ['except' => ['destroy']]);
  * Route for sermons
  */
 Route::resource('sermons', 'SermonsController', ['except' => ['destroy']]);
-Route::get('sermons/{sermons}/download', [
+Route::get('sermons/{sermons}/download.mp4', [
     'as' => 'sermons.download',
     'uses' => 'SermonsController@download',
 ]);
@@ -23,7 +23,7 @@ Route::get('sermons/{sermons}/download', [
  * Route for videos
  */
 Route::resource('videos', 'SermonsController', ['except' => ['destroy']]);
-Route::get('videos/{videos}/download', [
+Route::get('videos/{videos}/download.mp4', [
     'as' => 'videos.download',
     'uses' => 'SermonsController@download',
 ]);
@@ -91,17 +91,17 @@ Route::get('search', [
  */
 Route::group(['prefix' => 'feed', 'as' => 'feed.'], function () {
 
-    Route::get('sermons',  [
+    Route::get('sermons', [
         'as' => 'sermons',
         'uses' => 'FeedsController@sermons',
     ]);
 
-    Route::get('sermonaudio',  [
+    Route::get('sermonaudio', [
         'as' => 'sermonaudio',
         'uses' => 'FeedsController@sermonaudio',
     ]);
 
-    Route::get('sermons.json',  [
+    Route::get('sermons.json', [
         'middleware' => 'cors',
         'as' => 'sermons.json',
         'uses' => 'FeedsController@json',

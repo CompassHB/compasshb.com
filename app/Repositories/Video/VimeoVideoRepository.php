@@ -235,7 +235,7 @@ class VimeoVideoRepository implements VideoRepository
 
         if ($video['status'] == '200') {
             $link = $video['body'];
-            $link = $link['download'];
+            $link = $link['files'];
             $link = $link[1];
             $link = $link['link'];
         }
