@@ -1,8 +1,8 @@
 <?php
 
-namespace CompassHB\Www\Repositories\Event;
+namespace CompassHB\Www\Contracts;
 
-interface EventRepository
+interface Events
 {
     public function events();
     public function event($id);

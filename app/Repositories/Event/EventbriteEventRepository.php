@@ -5,8 +5,10 @@ namespace CompassHB\Www\Repositories\Event;
 use Log;
 use Cache;
 use GuzzleHttp\Client;
+use CompassHB\Www\Contracts\Events as Contract;
 
-class EventbriteEventRepository implements EventRepository
+
+class EventbriteEventRepository implements Contract
 {
     private $minutes = 300;
     private $client;

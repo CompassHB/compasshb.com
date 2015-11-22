@@ -3,8 +3,8 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Repositories\Video\VideoRepository;
-use CompassHB\Www\Repositories\Event\EventRepository;
+use CompassHB\Www\Contracts\Video;
+use CompassHB\Www\Contracts\Events;
 
 class FellowshipsController extends Controller
 {
@@ -13,7 +13,7 @@ class FellowshipsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(VideoRepository $video, EventRepository $event)
+    public function index(Video $video, Events $event)
     {
         $sermon = Sermon::where('ministry', '=', null)->latest('published_at')->published()->take(1)->get()->first();
 
@@ -46,7 +46,7 @@ class FellowshipsController extends Controller
             ->with('title', 'Home Fellowship Groups');
     }
 
-    public function show(EventRepository $event, $id)
+    public function show(Events $event, $id)
     {
         $event = $event->event($id);
 

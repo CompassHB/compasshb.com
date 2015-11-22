@@ -3,8 +3,9 @@
 namespace CompassHB\Www\Repositories\Transcoder;
 
 use Bugsnag;
+use CompassHB\Www\Contracts\Transcoder as Contract;
 
-class ZencoderTranscoderRepository implements TranscoderRepository
+class ZencoderTranscoderRepository implements Contract
 {
     private $key;
     private $zencoder;

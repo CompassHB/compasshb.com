@@ -1,8 +1,8 @@
 <?php
 
-namespace CompassHB\Www\Repositories\Scripture;
+namespace CompassHB\Www\Contracts;
 
-interface ScriptureRepository
+interface Scripture
 {
     public function getScripture($passage);
     public function getAudioScripture($passage);

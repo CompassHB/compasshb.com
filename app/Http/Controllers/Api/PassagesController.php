@@ -5,7 +5,7 @@ namespace CompassHB\Www\Http\Controllers\Api;
 use Response;
 use CompassHB\Www\Passage;
 use CompassHB\Www\Http\Controllers\Controller;
-use CompassHB\Www\Repositories\Scripture\ScriptureRepository;
+use CompassHB\Www\Contracts\Scripture;
 
 class PassagesController extends Controller
 {
@@ -14,7 +14,7 @@ class PassagesController extends Controller
      *
      * @return Response
      */
-    public function index(ScriptureRepository $scripture)
+    public function index(Scripture $scripture)
     {
         $passages = Passage::latest('published_at')->published()->take(1)->get();
         $passage = $passages->first();

@@ -3,9 +3,10 @@
 namespace CompassHB\Www\Repositories\Upload;
 
 use Aws\S3\S3Client;
+use CompassHB\Www\Contracts\Upload as Contract;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class AwsUploadRepository implements UploadRepository
+class AwsUploadRepository implements Contract
 {
     private $client;
     private $key;

@@ -1,8 +1,8 @@
 <?php
 
-namespace CompassHB\Www\Repositories\Video;
+namespace CompassHB\Www\Contracts;
 
-interface VideoRepository
+interface Video
 {
     /**
      * Set the URL to the video page.

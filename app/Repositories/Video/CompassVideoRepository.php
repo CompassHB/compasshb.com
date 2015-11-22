@@ -2,7 +2,12 @@
 
 namespace CompassHB\Www\Repositories\Video;
 
-class CompassVideoRepository implements VideoRepository
+use CompassHB\Www\Contracts\Video as Contract;
+use CompassHB\Www\Repositories\Video\VimeoVideoRepository;
+use CompassHB\Www\Repositories\Video\YouTubeVideoRepository;
+use CompassHB\Www\Repositories\Video\FakeVideoRepository;
+
+class CompassVideoRepository implements Contract
 {
     private $service;
 

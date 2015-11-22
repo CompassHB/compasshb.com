@@ -8,8 +8,8 @@ use Request;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Http\Requests\SermonRequest;
-use CompassHB\Www\Repositories\Video\VideoRepository;
-use CompassHB\Www\Repositories\Upload\UploadRepository;
+use CompassHB\Www\Contracts\Video;
+use CompassHB\Www\Contracts\Upload;
 
 class SermonsController extends Controller
 {
@@ -26,7 +26,7 @@ class SermonsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(VideoRepository $video)
+    public function index(Video $video)
     {
         $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->published()->get();
 
@@ -60,7 +60,7 @@ class SermonsController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(SermonRequest $request, UploadRepository $upload)
+    public function store(SermonRequest $request, Upload $upload)
     {
         $sermon = new Sermon($request->all());
         $worksheet = Input::file('worksheet');
@@ -88,7 +88,7 @@ class SermonsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show(Sermon $sermon, VideoRepository $video)
+    public function show(Sermon $sermon, Video $video)
     {
         // Reserve /sermon URL for main service
         if (substr(Request::path(), 0, 8) === 'sermons/' &&
@@ -129,7 +129,7 @@ class SermonsController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Sermon $sermon, SermonRequest $request, UploadRepository $upload)
+    public function update(Sermon $sermon, SermonRequest $request, Upload $upload)
     {
         $worksheet = Input::file('worksheet');
         $bulletin = Input::file('bulletin');
@@ -159,7 +159,7 @@ class SermonsController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function download(Sermon $sermon, VideoRepository $video)
+    public function download(Sermon $sermon, Video $video)
     {
         $video->setUrl($sermon->video);
 

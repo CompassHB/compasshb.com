@@ -10,8 +10,8 @@ use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Passage;
 use CompassHB\Www\Contracts\Photos;
-use CompassHB\Www\Repositories\Video\VideoRepository;
-use CompassHB\Www\Repositories\Event\EventRepository;
+use CompassHB\Www\Contracts\Video;
+use CompassHB\Www\Contracts\Events;
 
 class PagesController extends Controller
 {
@@ -28,7 +28,7 @@ class PagesController extends Controller
      *
      * @return view
      */
-    public function home(Photos $photos, VideoRepository $videoClient, EventRepository $event)
+    public function home(Photos $photos, Video $videoClient, Events $event)
     {
         $featuredevents = $event->search('#featuredevent');
         $featuredevents = $featuredevents->events;
@@ -181,7 +181,7 @@ class PagesController extends Controller
         return view('feeds.manifest');
     }
 
-    public function sitemap(VideoRepository $video, EventRepository $event)
+    public function sitemap(Video $video, Events $event)
     {
         $blogs = Blog::published()->get();
         $sermons = Sermon::published()->get();
@@ -215,7 +215,7 @@ class PagesController extends Controller
             ->header('Content-Type', 'application/xml');
     }
 
-    public function events(EventRepository $event, $id = null)
+    public function events(Events $event, $id = null)
     {
         if ($id) {
 
@@ -248,7 +248,7 @@ class PagesController extends Controller
     /**
      * Clear the event cache when event management system sends a webhook callback.
      */
-    public function cleareventcache($auth, EventRepository $event)
+    public function cleareventcache($auth, Events $event)
     {
         if ($auth == env('EVENTBRITE_CALLBACK')) {
             Cache::forget('searchevent');

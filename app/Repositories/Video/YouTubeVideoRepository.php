@@ -5,7 +5,9 @@ namespace CompassHB\Www\Repositories\Video;
 use Log;
 use Cache;
 
-class YouTubeVideoRepository implements VideoRepository
+use CompassHB\Www\Contracts\Video as Contract;
+
+class YouTubeVideoRepository implements Contract
 {
     private $url;
     private $client;

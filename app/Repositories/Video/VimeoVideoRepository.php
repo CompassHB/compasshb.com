@@ -5,7 +5,9 @@ namespace CompassHB\Www\Repositories\Video;
 use Log;
 use Cache;
 
-class VimeoVideoRepository implements VideoRepository
+use CompassHB\Www\Contracts\Video as Contract;
+
+class VimeoVideoRepository implements Contract
 {
     private $url;
     private $vimeoClient;

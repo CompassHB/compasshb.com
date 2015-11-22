@@ -4,8 +4,8 @@ namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
 use CompassHB\Www\Blog;
+use CompassHB\Www\Contracts\Video;
 use CompassHB\Www\Http\Requests\BlogRequest;
-use CompassHB\Www\Repositories\Video\VideoRepository;
 
 class BlogsController extends Controller
 {
@@ -37,7 +37,7 @@ class BlogsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show(Blog $blog, VideoRepository $video, $locale = 'en')
+    public function show(Blog $blog, Video $video, $locale = 'en')
     {
         $languages = [];
         $blog->iframe = '';
@@ -66,7 +66,7 @@ class BlogsController extends Controller
             ->with('ogdescription', 'Compass Bible Church Huntington Beach');
     }
 
-    public function language(Blog $blog, VideoRepository $video, $locale)
+    public function language(Blog $blog, Video $video, $locale)
     {
         return $this->show($blog, $video, $locale);
     }

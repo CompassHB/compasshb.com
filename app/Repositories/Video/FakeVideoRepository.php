@@ -2,7 +2,9 @@
 
 namespace CompassHB\Www\Repositories\Video;
 
-class FakeVideoRepository implements VideoRepository
+use CompassHB\Www\Contracts\Video as Contract;
+
+class FakeVideoRepository implements Contract
 {
     public function setUrl($url)
     {

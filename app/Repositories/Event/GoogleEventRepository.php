@@ -2,7 +2,9 @@
 
 namespace CompassHB\Www\Repositories\Event;
 
-class GoogleEventRepository implements EventRepository
+use CompassHB\Www\Contracts\Events as Contract;
+
+class GoogleEventRepository implements Contract
 {
     private $client;
     private $email;

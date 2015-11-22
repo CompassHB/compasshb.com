@@ -40,15 +40,15 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /*
-         * EventRepository
+         * Event
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Event\EventRepository',
+            'CompassHB\Www\Contracts\Events',
             'CompassHB\Www\Repositories\Event\EventbriteEventRepository'
         );
 
         /*
-         * PhotoRepository
+         * Photo
          */
         $this->app->bind(
             'CompassHB\Www\Contracts\Photos',
@@ -59,20 +59,20 @@ class AppServiceProvider extends ServiceProvider
          * VideoRepository
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Video\VideoRepository',
+            'CompassHB\Www\Contracts\Video',
             'CompassHB\Www\Repositories\Video\CompassVideoRepository'
         );
 
         /*
-         * ScriptureRepository
+         * Scripture
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Scripture\ScriptureRepository',
+            'CompassHB\Www\Contracts\Scripture',
             'CompassHB\Www\Repositories\Scripture\EsvScriptureRepository'
         );
 
         /*
-         * PlanRepository
+         * Plan
          */
         $this->app->bind(
             'CompassHB\Www\Contracts\Plan',
@@ -80,18 +80,18 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /*
-         * UploadRepository
+         * Upload
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Upload\UploadRepository',
+            'CompassHB\Www\Contracts\Upload',
             'CompassHB\Www\Repositories\Upload\AwsUploadRepository'
         );
 
         /*
-         * TranscoderRepository
+         * Transcoder
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Transcoder\TranscoderRepository',
+            'CompassHB\Www\Contracts\Transcoder',
             'CompassHB\Www\Repositories\Transcoder\ZencoderTranscoderRepository'
         );
     }

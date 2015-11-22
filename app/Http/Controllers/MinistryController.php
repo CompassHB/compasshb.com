@@ -4,7 +4,7 @@ namespace CompassHB\Www\Http\Controllers;
 
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Repositories\Video\VideoRepository;
+use CompassHB\Www\Contracts\Video;
 
 class MinistryController extends Controller
 {
@@ -24,7 +24,7 @@ class MinistryController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function youth(VideoRepository $videoClient)
+    public function youth(Video $videoClient)
     {
         $series = Series::where('ministry', '=', 'youth')->get()->reverse();
         $sermons = Sermon::where('ministry', '=', 'youth')->latest('published_at')->published()->get();

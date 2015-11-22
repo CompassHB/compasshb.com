@@ -4,8 +4,9 @@ namespace CompassHB\Www\Repositories\Scripture;
 
 use Log;
 use Cache;
+use CompassHB\Www\Contracts\Scripture as Contract;
 
-class EsvScriptureRepository implements ScriptureRepository
+class EsvScriptureRepository implements Contract
 {
     private $apikey;
     private $options = 'include-footnotes=false&include-audio-link=false&audio-format=mp3';

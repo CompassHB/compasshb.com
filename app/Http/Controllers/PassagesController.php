@@ -6,8 +6,8 @@ use Auth;
 use Redirect;
 use CompassHB\Www\Passage;
 use CompassHB\Www\Contracts\Analytics;
+use CompassHB\Www\Contracts\Scripture;
 use CompassHB\Www\Http\Requests\PassageRequest;
-use CompassHB\Www\Repositories\Scripture\ScriptureRepository;
 
 class PassagesController extends Controller
 {
@@ -17,7 +17,7 @@ class PassagesController extends Controller
     protected $analytics;
     protected $scripture;
 
-    public function __construct(Analytics $analytics, ScriptureRepository $scripture)
+    public function __construct(Analytics $analytics, Scripture $scripture)
     {
         $this->analytics = $analytics;
         $this->scripture = $scripture;

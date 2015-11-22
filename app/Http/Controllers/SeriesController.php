@@ -5,7 +5,7 @@ namespace CompassHB\Www\Http\Controllers;
 use Auth;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Repositories\Video\VideoRepository;
+use CompassHB\Www\Contracts\Video;
 use CompassHB\Www\Http\Requests\SeriesRequest;
 
 class SeriesController extends Controller
@@ -58,7 +58,7 @@ class SeriesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show(Series $series, VideoRepository $video)
+    public function show(Series $series, Video $video)
     {
         $sermons = Sermon::where('series_id', '=', $series->id)->latest('published_at')->published()->get();
 

@@ -1,10 +1,11 @@
 <?php
 
-namespace CompassHB\Www\Repositories\Upload;
+namespace CompassHB\Www\Contracts;
+
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-interface UploadRepository
+interface Upload
 {
     public function uploadAndSaveS3(UploadedFile $file, $folder);
 }

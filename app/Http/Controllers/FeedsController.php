@@ -9,7 +9,7 @@ use Response;
 use Roumen\Feed\Feed;
 use CompassHB\Www\Song;
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Repositories\Video\VideoRepository;
+use CompassHB\Www\Contracts\Video;
 
 class FeedsController extends Controller
 {
@@ -66,7 +66,7 @@ class FeedsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function json(VideoRepository $video)
+    public function json(Video $video)
     {
         $data = array();
         $data['sermons'] = Sermon::where('ministry', '=', null)->orderBy('published_at', 'desc')->published()->limit(300)->get();

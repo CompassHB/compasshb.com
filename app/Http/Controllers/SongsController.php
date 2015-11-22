@@ -4,9 +4,9 @@ namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
 use CompassHB\Www\Song;
-use CompassHB\Www\Http\Requests\SongRequest;
 use CompassHB\Www\Contracts\Plan;
-use CompassHB\Www\Repositories\Video\VideoRepository;
+use CompassHB\Www\Contracts\Video;
+use CompassHB\Www\Http\Requests\SongRequest;
 
 class SongsController extends Controller
 {
@@ -23,7 +23,7 @@ class SongsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(VideoRepository $video, Plan $plan)
+    public function index(Video $video, Plan $plan)
     {
         $songs = Song::latest('published_at')->published()->get();
 
@@ -46,7 +46,7 @@ class SongsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show(Song $song, VideoRepository $video)
+    public function show(Song $song, Video $video)
     {
         $video->setUrl($song->video);
         $song->iframe = $video->getEmbedCode(true);
