@@ -7250,9 +7250,7 @@ body.search-mode .page-container {
   filter: none;
   -webkit-filter: none;
 }
-body,
-label,
-.checkbox label {
+body {
   font-weight: 300;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   background-color: #EEE;

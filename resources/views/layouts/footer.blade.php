@@ -1,3 +1,8 @@
+@if (Auth::check())
+
+  <br/><br/>
+  
+@else
 <br/><br/>
 
 <footer id="footer" class="container-fluid" style="background-color: #FFF;">
@@ -90,3 +95,4 @@
 
 </body>
 </html>
+@endif

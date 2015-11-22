@@ -11,12 +11,12 @@
 		<description>Reaching, teaching, and training people for Christ</description>
 		<language>en-us</language>
 		<copyright>&#x2117; &amp; &#xA9; 2015 Compass HB</copyright>
-		<link>{{ URL::to('/') }}/feed/sermons</link>
+		<link>{{ URL::to('/') }}/feed/sermons/</link>
 		<pubDate>{{ Carbon\Carbon::now()->toRfc2822String() }}</pubDate>
 		<itunes:image href="http://compasshb.smugmug.com/photos/i-kMfffrR/0/X3/i-kMfffrR-X3.jpg" />
 		<itunes:explicit>no</itunes:explicit>
 		<itunes:owner>
-  		<itunes:name>CompassHB</itunes:name>
+  		<itunes:name>Compass HB</itunes:name>
   		<itunes:email>info@compasshb.com</itunes:email>
 		</itunes:owner>
 		<itunes:author>Compass HB</itunes:author>

@@ -11,10 +11,13 @@ class UserTableSeeder extends Seeder
 
         factory(User::class, 9)->create();
 
-        User::create([
+        $user = User::create([
             'name' => 'admin',
             'email' => 'user@example.com',
             'password' => bcrypt('secret'),
         ]);
+
+        $user->teams()->sync([10]); // array of role ids
+
     }
 }

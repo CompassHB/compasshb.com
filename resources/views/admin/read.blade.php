@@ -9,10 +9,17 @@
 <div class="Setting Box Box--Large Box--bright utility-flex">
   <h2 class="Setting__heading tk-seravek-web">
     Scripture of the Day
-    <span class="Label utility-right">
-      <a href="{{ route('read.create') }}" class="btn btn-default">New Passage</a>
-    </span>
   </h2>
+
+<h4 class="tk-seravek-web">New Passage</h4>
+
+  @include('errors.list')
+
+  {!! Form::model($passage = new \CompassHB\Www\Passage, ['url' => 'read']) !!}
+    @include('admin.passages.form', ['submitButtonText' => 'Create Passage'])
+  {!! Form::close() !!}
+
+  <hr/>
 
   {{-- Scripture of the Day --}}
   <div class="panel panel-default">

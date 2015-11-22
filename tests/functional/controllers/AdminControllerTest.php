@@ -13,7 +13,7 @@ class AdminControllerTest extends TestCase
     public function a_user_must_be_signed_in_to_view_their_dashboard()
     {
         $this->visit('admin')
-           ->seePageIs('/auth/login');
+           ->seePageIs('/login');
     }
 
     /** @test **/

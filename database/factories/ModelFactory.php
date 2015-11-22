@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use CompassHB\Www\Blog;
+use CompassHB\Www\Team;
 use CompassHB\Www\User;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Series;
@@ -25,6 +26,13 @@ $factory->define(User::class, function (Faker\Generator $faker) {
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
         'last_login' => Carbon::now(),
+    ];
+});
+
+$factory->define(Team::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'owner_id' => factory(User::class)->create()->id,
     ];
 });
 
