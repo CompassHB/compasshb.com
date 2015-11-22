@@ -30,13 +30,13 @@ class AppServiceProvider extends ServiceProvider
         }
 
         /*
-         * AnalyticRepository
+         * Analytics
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Analytics\AnalyticRepository',
+            'CompassHB\Www\Contracts\Analytics',
             $this->app->environment() == 'local' ?
-                'CompassHB\Www\Repositories\Analytics\FakeAnalyticRepository' :
-                'CompassHB\Www\Repositories\Analytics\GoogleAnalyticRepository'
+            'CompassHB\Www\Repositories\Analytics\FakeAnalyticRepository' :
+            'CompassHB\Www\Repositories\Analytics\GoogleAnalyticRepository'
         );
 
         /*
@@ -51,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
          * PhotoRepository
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Photo\PhotoRepository',
+            'CompassHB\Www\Contracts\Photos',
             'CompassHB\Www\Repositories\Photo\SmugmugPhotoRepository'
         );
 
@@ -75,7 +75,7 @@ class AppServiceProvider extends ServiceProvider
          * PlanRepository
          */
         $this->app->bind(
-            'CompassHB\Www\Repositories\Plan\PlanRepository',
+            'CompassHB\Www\Contracts\Plan',
             'CompassHB\Www\Repositories\Plan\PcoPlanRepository'
         );
 

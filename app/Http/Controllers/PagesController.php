@@ -9,8 +9,8 @@ use CompassHB\Www\Song;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Passage;
+use CompassHB\Www\Contracts\Photos;
 use CompassHB\Www\Repositories\Video\VideoRepository;
-use CompassHB\Www\Repositories\Photo\PhotoRepository;
 use CompassHB\Www\Repositories\Event\EventRepository;
 
 class PagesController extends Controller
@@ -28,7 +28,7 @@ class PagesController extends Controller
      *
      * @return view
      */
-    public function home(PhotoRepository $photos, VideoRepository $videoClient, EventRepository $event)
+    public function home(Photos $photos, VideoRepository $videoClient, EventRepository $event)
     {
         $featuredevents = $event->search('#featuredevent');
         $featuredevents = $featuredevents->events;
@@ -131,7 +131,7 @@ class PagesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function photos(PhotoRepository $photos)
+    public function photos(Photos $photos)
     {
         $results = $photos->getRecentPhotos();
 

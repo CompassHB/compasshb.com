@@ -2,7 +2,9 @@
 
 namespace CompassHB\Www\Repositories\Analytics;
 
-class FakeAnalyticRepository implements AnalyticRepository
+use CompassHB\Www\Contracts\Analytics as Contract;
+
+class FakeAnalyticRepository implements Contract
 {
     public function getPageViews($path, $startDate, $endDate)
     {

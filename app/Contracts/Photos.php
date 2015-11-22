@@ -1,8 +1,8 @@
 <?php
 
-namespace CompassHB\Www\Repositories\Photo;
+namespace CompassHB\Www\Contracts;
 
-interface PhotoRepository
+interface Photos
 {
     public function getRecentPhotos();
     public function getPhotos($number);

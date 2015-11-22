@@ -54,7 +54,7 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost') . ('local' == env('APP_ENV') ? ':33060' : null),
+            'host'      => env('DB_HOST', 'localhost') . (('local' == env('APP_ENV') || 'testing' == env('APP_ENV')) && 'homestead' != gethostname() ? ':33060' : null),
             'database'  => env('DB_DATABASE', 'forge'),
             'username'  => env('DB_USERNAME', 'forge'),
             'password'  => env('DB_PASSWORD', ''),

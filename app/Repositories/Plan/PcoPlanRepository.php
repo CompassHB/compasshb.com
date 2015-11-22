@@ -6,13 +6,14 @@ use Cache;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
+use CompassHB\Www\Contracts\Plan as Contract;
 
 /**
  * Service for Planning Center API.
  *
  * @todo : exception handling
  */
-class PcoPlanRepository implements PlanRepository
+class PcoPlanRepository implements Contract
 {
     private $url = 'https://services.planningcenteronline.com/';
     private $consumerKey;

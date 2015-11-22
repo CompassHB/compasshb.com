@@ -4,8 +4,9 @@ namespace CompassHB\Www\Repositories\Photo;
 
 use Log;
 use Cache;
+use CompassHB\Www\Contracts\Photos as Contract;
 
-class SmugmugPhotoRepository implements PhotoRepository
+class SmugmugPhotoRepository implements Contract
 {
     private $url = 'https://compasshb.smugmug.com/hack/feed.mg?Type=nicknameRecentPhotos&Data=compasshb&format=rss200&Size=Medium';
 

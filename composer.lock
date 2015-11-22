@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.10.1",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "16258334537e989a65b682141cc027e1c3464017"
+                "reference": "d886f97f1bd18f99463dda09bf71ddf2b2a8364e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/16258334537e989a65b682141cc027e1c3464017",
-                "reference": "16258334537e989a65b682141cc027e1c3464017",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d886f97f1bd18f99463dda09bf71ddf2b2a8364e",
+                "reference": "d886f97f1bd18f99463dda09bf71ddf2b2a8364e",
                 "shasum": ""
             },
             "require": {
@@ -83,7 +83,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-11-13 00:45:01"
+            "time": "2015-11-19 21:27:23"
         },
         {
             "name": "bugsnag/bugsnag",
@@ -1187,16 +1187,16 @@
         },
         {
             "name": "league/flysystem-aws-s3-v3",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "7e4ce27d563cf251a26afc0017e726d5836e4d49"
+                "reference": "595e24678bf78f8107ebc9355d8376ae0eb712c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/7e4ce27d563cf251a26afc0017e726d5836e4d49",
-                "reference": "7e4ce27d563cf251a26afc0017e726d5836e4d49",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/595e24678bf78f8107ebc9355d8376ae0eb712c6",
+                "reference": "595e24678bf78f8107ebc9355d8376ae0eb712c6",
                 "shasum": ""
             },
             "require": {
@@ -1230,7 +1230,7 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "time": "2015-11-06 14:01:39"
+            "time": "2015-11-19 08:44:16"
         },
         {
             "name": "monolog/monolog",

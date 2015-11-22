@@ -5,7 +5,7 @@ namespace CompassHB\Www\Http\Controllers;
 use Auth;
 use CompassHB\Www\Song;
 use CompassHB\Www\Http\Requests\SongRequest;
-use CompassHB\Www\Repositories\Plan\PlanRepository;
+use CompassHB\Www\Contracts\Plan;
 use CompassHB\Www\Repositories\Video\VideoRepository;
 
 class SongsController extends Controller
@@ -23,7 +23,7 @@ class SongsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(VideoRepository $video, PlanRepository $plan)
+    public function index(VideoRepository $video, Plan $plan)
     {
         $songs = Song::latest('published_at')->published()->get();
 

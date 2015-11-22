@@ -1,8 +1,8 @@
 <?php
 
-namespace CompassHB\Www\Repositories\Analytics;
+namespace CompassHB\Www\Contracts;
 
-interface AnalyticRepository
+interface Analytics
 {
     public function getPageViews($path, $startDate, $endDate);
     public function getActiveUsers();

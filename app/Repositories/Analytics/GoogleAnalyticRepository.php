@@ -3,8 +3,9 @@
 namespace CompassHB\Www\Repositories\Analytics;
 
 use Log;
+use CompassHB\Www\Contracts\Analytics as Contract;
 
-class GoogleAnalyticRepository implements AnalyticRepository
+class GoogleAnalyticRepository implements Contract
 {
     private $email;
     private $service;
