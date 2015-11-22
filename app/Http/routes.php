@@ -272,6 +272,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 });
 
 
+// Settings Dashboard Routes...
+Route::get('settings', 'Settings\DashboardController@show');
+
+
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');

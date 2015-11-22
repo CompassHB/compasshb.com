@@ -1,25 +1,29 @@
 @if (Auth::check())
-  <header class="container-fluid">
-      <div class="row">
-          <nav class="navbar navbar-default navbar-static-top">
-                  <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                      </button>
-                      <a class="navbar-brand" href="{{ route('admin.index') }}">
-                          <img src="/CBC-HB-logo.png" id="logo" alt="Compass Bible Church Huntington Beach"/>
-                      </a>
-                  </div>
-                  <div class="collapse navbar-collapse" id="navbar">
-                      <ul class="nav navbar-nav navbar-right">
-                          <li>
-                              <a href="/logout" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log out</a>
-                          </li>
-                      </ul>
-                  </div>
-          </nav>
-      </div>
+<header class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ route('admin.index') }}">
+                        <img src="/CBC-HB-logo.png" id="logo" alt="Compass Bible Church Huntington Beach"/>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::User()->name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-left">
+                              <li><a href="/settings">Your Settings</a></li>
+                                <li><a href="/logout">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </div>
 </header>
 @else
   <header class="container-fluid">
