@@ -19,7 +19,7 @@
   @endif
 
   <div class="col-sm-9">
-  <div class="Box--shadow--big">
+  <div class="Box--shadow--big" style="width: 100%">
     <span class="Box--shadow--wrap">
       <a class="clickable latestsermon" href="{{ route('sermons.show', $prevsermon->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $prevsermon->othumbnail }}); background-position: center;">
       <p
