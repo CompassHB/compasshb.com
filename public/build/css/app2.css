@@ -1,3 +1,86 @@
+.boxer {
+  display: block;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  min-height: 132px;
+  background-size: cover;
+  background-position: center;
+}
+.Box {
+  background: #f6f6f6;
+  border: 1px solid #ddd;
+  border-bottom-width: 2px;
+  border-top: none;
+  border-radius: 3px;
+  padding: 17px;
+}
+.Box--bright {
+  background-color: #fff;
+}
+.Box--Large {
+  padding: 60px 40px;
+}
+.Box--shadow,
+.Box--shadow--big {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 21px;
+}
+.Box--shadow:after,
+.Box--shadow:before {
+  content: "";
+  position: absolute;
+  box-shadow: 0 15px 10px rgba(0,0,0,0.6);
+  left: 5px;
+  right: 50%;
+  bottom: 4px;
+  height: 30%;
+  z-index: -1;
+  border-radius: inherit;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: skewY(-5deg);
+  transform: skewY(-5deg);
+}
+.Box--shadow:after {
+  left: 50%;
+  right: 5px;
+  -webkit-transform: skewY(5deg);
+  transform: skewY(5deg);
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+.Box--shadow--big:after,
+.Box--shadow--big:before {
+  content: "";
+  position: absolute;
+  box-shadow: 0 15px 10px rgba(0,0,0,0.6);
+  left: 5px;
+  right: 50%;
+  bottom: 12px;
+  height: 30%;
+  z-index: -1;
+  border-radius: inherit;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: skewY(-2deg);
+  transform: skewY(-2deg);
+}
+.Box--shadow--big:after {
+  left: 50%;
+  right: 5px;
+  -webkit-transform: skewY(2deg);
+  transform: skewY(2deg);
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+.Box--shadow--wrap {
+  position: initial;
+}
 .utility-flex-container {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20,20 +103,6 @@ section {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-}
-.Box {
-  background: #f6f6f6;
-  border: 1px solid #ddd;
-  border-bottom-width: 2px;
-  border-top: none;
-  border-radius: 3px;
-  padding: 17px;
-}
-.Box--bright {
-  background-color: #fff;
-}
-.Box--Large {
-  padding: 60px 40px;
 }
 .Settings #main-nav ul {
   padding: 0;

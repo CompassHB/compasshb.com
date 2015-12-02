@@ -1,46 +1,30 @@
-// Utility
+// https://learnboost.github.io/stylus/
 
-.utility-flex-container
-	display flex
+@import 'components/boxes'
+@import 'components/utility'
 
-.utility-right
-	float: right !important
 
 section
 	margin-bottom 60px
 
 .Settings #main-nav
-	padding-top: 0;
-	padding-bottom: 0;
-	border-right: none;
-	margin-right: 5%;
-	flex: 1;
-	align-self: flex-start
-
-.Box
-	background: #f6f6f6;
-	border: 1px solid #ddd;
-	border-bottom-width: 2px;
-	border-top: none;
-	border-radius: 3px;
-	padding: 17px
-
-.Box--bright
-	background-color #fff
-
-.Box--Large
-	padding 60px 40px
+	padding-top 0
+	padding-bottom 0
+	border-right none
+	margin-right 5%
+	flex 1
+	align-self flex-start
 
 .Settings #main-nav ul
-	padding: 0
-	margin: 0
+	padding 0
+	margin 0
 	list-style none
 
 ul
-	display: block
+	display block
 
 .Settings #main-nav ul li.active
-	font-weight: 700
+	font-weight 700
 
 .Settings #main-nav ul li
 	border-bottom 1px solid #ddd

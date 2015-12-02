@@ -7165,8 +7165,7 @@ object.audio {
   text-transform: uppercase;
   display: block;
   margin: 0 auto;
-  border: 1px #555 solid;
-  min-height: 425px;
+  min-height: 438px;
   padding-top: 80px;
   width: 100%;
   background-size: cover;
@@ -7183,10 +7182,9 @@ object.audio {
   display: block;
   text-transform: uppercase;
   color: #fff;
-  border: 1px #555 solid;
   padding: 10px;
   width: 100%;
-  height: 132px;
+  min-height: 132px;
   background-size: cover;
 }
 #transcript {

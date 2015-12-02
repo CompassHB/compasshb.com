@@ -18,36 +18,47 @@
   </div>
   @endif
 
-  <div class="col-sm-9" style="padding: 0; background-color: #E5E4E2; margin-bottom: 11px">
-    <div style="padding: 6px; background-color: #555;">
+  <div class="col-sm-9">
+  <div class="Box--shadow--big">
+    <span class="Box--shadow--wrap">
       <a class="clickable latestsermon" href="{{ route('sermons.show', $prevsermon->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $prevsermon->othumbnail }}); background-position: center;">
       <p
-style="position: absolute; text-transform: none; top: -13px; right: 55px; padding: 4px 10px; font-size: 1.1em; background-color: #DD3F2E">Latest Sermon</p>
+style="position: absolute; text-transform: none; top: -20px; left: 45px; padding: 4px 10px; font-size: 1.1em; background-color: #DD3F2E">Latest Sermon</p>
         <br/><br/>
         <h1 class="tk-seravek-web">{{ $prevsermon->title }}</h1>
         <p style="padding: 20px;">{{{ $prevsermon->series->title or '' }}}</p>
         <p><i class="glyphicon glyphicon-play-circle large-icon"></i></p>
-        <div style="position: absolute; bottom: 0; left: 0; text-align: left; padding: 20px; color: #BBB">{{ $prevsermon->teacher }}<br/>{{ $prevsermon->text }}<br/>{{ $prevsermon->published_at->format('F j, Y') }}</div>
+        <div style="position: absolute; bottom: 0; left: 0; text-align: left; padding: 30px; color: #BBB">{{ $prevsermon->teacher }}<br/>{{ $prevsermon->text }}<br/>{{ $prevsermon->published_at->format('F j, Y') }}</div>
       </a>
-    </div>
+    </span>
   </div>
+</div>
+
 
   @if($passage)
-  <div class="col-sm-3" style="margin: 0px 0px 11px 0px">
-    <a class="clickable" href="{{ route('read.index') }}" style="display: block; text-transform: uppercase; color: #fff; padding: 10px;   border: 1px #555 solid; width: 100%; height: 132px; background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://compasshb.smugmug.com/photos/i-3BJkBgb/0/S/i-3BJkBgb-S.jpg); background-size: cover; background-position: center">
+  <div class="col-sm-3">
+  <div class="Box--shadow" style="width: 100%">
+    <span class="Box--shadow--wrap">
+    <a class="clickable boxer" href="{{ route('read.index') }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://compasshb.smugmug.com/photos/i-3BJkBgb/0/S/i-3BJkBgb-S.jpg);">
       <h4 class="tk-seravek-web">{{ $passage->title }}</h4>
       <p>Scripture of the Day</p>
-    </a>
+      </a>
+    </span>
   </div>
+</div>
   @endif
 
   @foreach(array_slice($fevents, 0,2) as $event)
-  <div class="col-sm-3"  style="margin: 10px 0px">
-    <a class="clickable featuredblog" href="/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $event->logo->url }});">
+  <div class="col-sm-3">
+  <div class="Box--shadow" style="width: 100%">
+    <span class="Box--shadow--wrap">
+    <a class="clickable featuredblog boxer" href="/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $event->logo->url }});">
       <h4 class="tk-seravek-web">{{ $event->name->text }}</h4>
       <p> {{ date("F j", strtotime($event->start->local)) }}</p>
     </a>
-  </div>
+  </span>
+</div>
+</div>
   @endforeach
 </div>
 
@@ -102,27 +113,18 @@ style="position: absolute; text-transform: none; top: -13px; right: 55px; paddin
     <div class="col-xs-10 col-xs-offset-1">
         <h2 class="tk-seravek-web"><a href="{{ route('sermons.index') }}">Sermons</a></h2>
         @foreach($sermons as $sermon)
-        <div class="col-sm-6 col-md-3">
-            <div class="thumbnail">
-                <img data-src="{{ $sermon->othumbnail }}" class="lazyload" alt="{{ $sermon->title }}"/>
-                <div class="caption">
-                    <h4>{{ $sermon->title }}</h4>
-                    <p><small>{{ date_format($sermon->published_at, 'F j, Y') }}</small><br/>
-                    {{ $sermon->text }}</p>
-                    <p><a href="{{ route('sermons.show', $sermon->slug) }}" class="btn btn-primary" role="button">Watch</a></p>
-                </div>
-            </div>
+          <div class="col-sm-6 col-md-3">
+          <div class="Box--shadow" style="width: 100%">
+            <span class="Box--shadow--wrap">
+              <a class="clickable featuredblog boxer" href="{{ route('sermons.show', $sermon->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $sermon->othumbnail }});">
+                <h4 class="tk-seravek-web">{{ $sermon->title }}</h4>
+                <p> {{ date("F j", strtotime($sermon->published_at)) }}<br/>{{ $sermon->text }}</p>
+                <br/><br/>
+              </a>
         </div>
+      </span>
+    </div>
         @endforeach
-        <div class="col-sm-6 col-md-3">
-            <div class="thumbnail">
-                <center><span class="glyphicon {{ $distinctives[0]['icon'] }}" style="font-size: 5em; padding: 25px;"></span></center>
-                <div class="caption">
-                    <h4>{{ $distinctives[0]['text'] }}</h4><br/>
-                    <p><a href="{{ route('distinctives') }}" class="btn btn-primary" role="button">Our Eight Distinctives</a></p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -134,15 +136,17 @@ style="position: absolute; text-transform: none; top: -13px; right: 55px; paddin
 
         @foreach($videos as $video)
         <div class="col-sm-6 col-md-6">
-            <div class="thumbnail">
-                <img data-src="{{ $video->othumbnail }}" class="lazyload" alt="{{ $video->title }}"/>
-                <div class="caption">
-                    <h4>{{ $video->title }}</h4>
-                    <p><small>{{ date_format($video->published_at, 'F j, Y') }}</small></p>
-                    <p><a href="{{ route('blog.show', $video->slug) }}" class="btn btn-primary" role="button">Watch</a></p>
-                </div>
-            </div>
-        </div>
+        <div class="Box--shadow" style="width: 100%">
+          <span class="Box--shadow--wrap">
+            <a class="clickable featuredblog boxer" href="{{ route('blog.show', $video->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $video->othumbnail }});">
+              <br/><br/>
+              <h4 class="tk-seravek-web">{{ $video->title }}</h4>
+              <p> {{ date("F j", strtotime($video->published_at)) }}<br/>{{ $sermon->text }}</p>
+              <br/><br/><br/><br/>
+            </a>
+          </div>
+        </span>
+      </div>
         @endforeach
 
     </div>

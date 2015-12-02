@@ -45,7 +45,7 @@ class PagesController extends Controller
             }
         }
 
-        $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->published()->take(3)->get();
+        $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->published()->take(4)->get();
         $prevsermon = $sermons->first();
         $nextsermon = Sermon::unpublished()->get();
 
