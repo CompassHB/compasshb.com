@@ -29,7 +29,9 @@
         "phpspec/phpspec": "~2.1",
         "satooshi/php-coveralls": "dev-master",
         "laracasts/generators": "^1.1",
-        "laravel/homestead": "^2.1"
+        "laravel/homestead": "^2.1",
+		"laraveldaily/quickadmin": "^0.2.10",
+		"phpdocumentor/phpdocumentor": "^2.8"
     },
 	"autoload": {
 		"classmap": [
