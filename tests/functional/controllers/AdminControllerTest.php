@@ -14,14 +14,12 @@ class AdminControllerTest extends TestCase
         parent::setUp();
     }
 
-    /** @test **/
     public function a_user_must_be_signed_in_to_view_their_dashboard()
     {
         $this->visit('admin')
            ->seePageIs('/login');
     }
 
-    /** @test **/
     public function a_users_dashboard_shows_all_new_posts_since_they_last_logged_in()
     {
         // Given we have two old posts

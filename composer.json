@@ -20,7 +20,8 @@
 		"graham-campbell/htmlmin": "^3.0",
 		"roumen/feed": "^2.9",
 		"zencoder/zencoder-php": "~2.2.0",
-		"substrike/forestall": "^0.1.0"
+		"substrike/forestall": "^0.1.0",
+		"squizlabs/php_codesniffer": "^2.4"
 	},
   "require-dev": {
 		"fzaninotto/faker": "~1.4",
