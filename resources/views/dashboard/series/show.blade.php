@@ -22,6 +22,8 @@
   </div>
   @endforeach
 
+<br style="clear: both"/>
+
 </div>
 
 @endsection
