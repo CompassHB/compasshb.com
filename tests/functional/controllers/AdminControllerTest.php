@@ -9,6 +9,11 @@ class AdminControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function __construct()
+    {
+        parent::setUp();
+    }
+
     /** @test **/
     public function a_user_must_be_signed_in_to_view_their_dashboard()
     {

@@ -5,9 +5,12 @@ php:
 
 sudo: false
 
-before_install: composer selfupdate
+before_install:
+  - phpenv config-rm xdebug.ini || true  
+  - composer selfupdate
 
-install: travis_retry composer install --no-interaction --prefer-source
+install:
+  - travis_retry composer install --no-interaction --prefer-source
 
 before_script:
    - sleep 10
