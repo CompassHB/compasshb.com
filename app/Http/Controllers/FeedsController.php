@@ -51,17 +51,6 @@ class FeedsController extends Controller
     }
 
     /**
-     * Generate XML of songs with MP3s.
-     * Used for the audio player on the songs page.
-     */
-    public function songs()
-    {
-        $songs = Song::latest('published_at')->published()->get()->shuffle();
-
-        return view('feeds.songs', compact('songs'));
-    }
-
-    /**
      * Feed to mobile app.
      *
      * @return \Illuminate\View\View
@@ -105,10 +94,10 @@ class FeedsController extends Controller
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
-           foreach ($posts as $post) {
-               // set item's title, author, url, pubdate, description and content
-               $feed->add($post->title, 'Compass HB', URL::to($post->slug), $post->created_at, $post->body, $post->body);
-           }
+            foreach ($posts as $post) {
+                // set item's title, author, url, pubdate, description and content
+                $feed->add($post->title, 'Compass HB', URL::to($post->slug), $post->created_at, $post->body, $post->body);
+            }
         }
 
         return $feed->render('atom');
@@ -132,10 +121,10 @@ class FeedsController extends Controller
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
-           foreach ($posts as $post) {
-               // set item's title, author, url, pubdate, description and content
-               $feed->add($post->title, 'Compass HB', URL::to($post->slug), $post->created_at, $post->body, $post->body);
-           }
+            foreach ($posts as $post) {
+                // set item's title, author, url, pubdate, description and content
+                $feed->add($post->title, 'Compass HB', URL::to($post->slug), $post->created_at, $post->body, $post->body);
+            }
         }
 
         return $feed->render('atom');

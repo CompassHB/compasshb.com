@@ -107,11 +107,6 @@ Route::group(['prefix' => 'feed', 'as' => 'feed.'], function () {
         'uses' => 'FeedsController@json',
     ]);
 
-    Route::get('songs.xml', [
-        'as' => 'songs.xml',
-        'uses' => 'FeedsController@songs',
-    ]);
-
     Route::get('blog.xml', [
         'as' => 'blog.xml',
         'uses' => 'FeedsController@blog',

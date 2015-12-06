@@ -17,22 +17,12 @@
         <img src="{{ $song->thumbnail }}" alt="{{ $song->title }}"/>
         <div class="caption">
           <h5 class="tk-seravek-web">{{ $song->title }}</h5>
-          <p>{{ $song->excerpt }}<br/><a href="{{ route('songs.show', $song->slug) }}" class="btn btn-default" role="button">Listen</a></p>
+          <p>{{ $song->excerpt }}<br/><a href="{{ route('songs.show', $song->slug) }}" class="btn btn-default" role="button">Watch</a></p>
+          <p><audio src="{{ $song->audio or '#'}}" controls></p>
         </div>
       </div>
     </div>
   @endforeach
-</div>
-
-<div class="row">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title tk-seravek-web">Audio Player</h3>
-    </div>
-    <div class="panel-body">
-      <div id="myElement"></div>
-    </div>
-  </div>
 </div>
 
 <div class="row">
@@ -56,17 +46,6 @@
     @endforeach
     </ol>
 </div>
-
-<script src="//jwpsrv.com/library/jA0rDsOIEeS9zw4AfQhyIQ.js"></script>
-<script>
-    jwplayer("myElement").setup({
-        playlist: "{{ route('feed.songs.xml') }}",
-        width: 500,
-        height: 30,
-        autostart: true,
-        repeat: true,
-    });
-</script>
 
 </div>
 

@@ -19,11 +19,6 @@ class FeedTest extends TestCase
         $this->visit('/feed/sermonaudio');
     }
 
-    public function testFeedSongs()
-    {
-        $this->visit('/feed/songs.xml');
-    }
-
     public function testFeedBlog()
     {
         $this->visit('/feed/blog.xml');
