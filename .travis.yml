@@ -6,7 +6,7 @@ php:
 sudo: false
 
 before_install:
-  - phpenv config-rm xdebug.ini || true  
+  - phpenv config-rm xdebug.ini || true
   - composer selfupdate
 
 install:
@@ -21,7 +21,7 @@ before_script:
    - php artisan key:generate
 
 script:
- - phpunit
+ - vendor/bin/phpunit
 
 notifications:
   slack:
