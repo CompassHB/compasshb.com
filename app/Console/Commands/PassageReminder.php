@@ -42,8 +42,7 @@ class PassageReminder extends Command
         if ($count < 5) {
             Mail::send('emails.reminder', ['count' => $count], function ($message) {
                 $message->subject('Post Scripture of the Day');
-                $message->to('brad@compasshb.com')
-                        ->to('evan.b.winslow@gmail.com');
+                $message->to('info@compasshb.com');
             });
         }
     }

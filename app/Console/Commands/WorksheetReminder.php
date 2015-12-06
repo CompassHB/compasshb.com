@@ -42,7 +42,7 @@ class WorksheetReminder extends Command
         if ($sermon->worksheet == null) {
             Mail::send('emails.worksheet-reminder', [], function ($message) {
                 $message->subject('Upload Sermon Worksheet');
-                $message->to('brad@compasshb.com');
+                $message->to('info@compasshb.com');
             });
         }
     }
