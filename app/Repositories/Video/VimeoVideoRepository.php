@@ -130,10 +130,26 @@ class VimeoVideoRepository implements Contract
 
                 // Converts subtitles (VTT) to HTML
                 if ($parse) {
-                    $response = preg_replace('/WEBVTT\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/', '<p class="paragraph"><data class="paragraph_time">$1</data><span class="paragraph_text" data-time="$1">', $response); // Opening paragraph no mark
-                    $response = preg_replace('/WEBVTT\n\nNOTE Paragraph\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/', '<p class="paragraph"><data class="paragraph_time">$1</data><span class="paragraph_text" data-time="$1">', $response); // Opening paragraph with mark
-                    $response = preg_replace('/NOTE Paragraph\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/', '</span></p><p class="paragraph"><data class="paragraph_time">$1</data><span class="paragraph_text" data-time="$1">', $response); // Other paragraphs
-                    $response = preg_replace('/\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/', '</span><span class="paragraph_text" data-time="$1">', $response); // Data timestamp
+                    $response = preg_replace(
+                        '/WEBVTT\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/',
+                        '<p class="paragraph"><data class="paragraph_time">$1</data><span class="paragraph_text" data-time="$1">',
+                        $response
+                    ); // Opening paragraph no mark
+                    $response = preg_replace(
+                        '/WEBVTT\n\nNOTE Paragraph\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/',
+                        '<p class="paragraph"><data class="paragraph_time">$1</data><span class="paragraph_text" data-time="$1">',
+                        $response
+                    ); // Opening paragraph with mark
+                    $response = preg_replace(
+                        '/NOTE Paragraph\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/',
+                        '</span></p><p class="paragraph"><data class="paragraph_time">$1</data><span class="paragraph_text" data-time="$1">',
+                        $response
+                    ); // Other paragraphs
+                    $response = preg_replace(
+                        '/\n\n([\d|\.|\:]+)\s--> [\d|\.|\:]+/',
+                        '</span><span class="paragraph_text" data-time="$1">',
+                        $response
+                    ); // Data timestamp
                     $response .= '</span></p>'; // Closing paragraph
                     $response = preg_replace('/.\d\d\d/', '', $response); // remove milliseconds
                 };

@@ -2,9 +2,7 @@
 
 namespace CompassHB\Www\Http\Controllers\Settings;
 
-use Auth;
 use Request;
-use CompassHB\Www\User;
 use CompassHB\Www\Http\Controllers\Controller;
 
 class DashboardController extends Controller

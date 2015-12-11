@@ -25,7 +25,8 @@ class GoogleEventRepository implements Contract
                     $this->email,
                     array($this->url),
                     file_get_contents(storage_path('keys/CompassHB-27e1adae11b5.p12'))
-            ));
+                )
+            );
         }
 
         $this->client->setClientId(env('GOOGLE_CLIENT_ID'));

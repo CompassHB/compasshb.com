@@ -3,7 +3,6 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
-use Redirect;
 use CompassHB\Www\Passage;
 use CompassHB\Www\Contracts\Analytics;
 use CompassHB\Www\Contracts\Scripture;

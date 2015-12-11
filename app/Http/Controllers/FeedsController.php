@@ -7,7 +7,6 @@ use URL;
 use Cache;
 use Response;
 use Roumen\Feed\Feed;
-use CompassHB\Www\Song;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Video;
 
@@ -123,7 +122,14 @@ class FeedsController extends Controller
 
             foreach ($posts as $post) {
                 // set item's title, author, url, pubdate, description and content
-                $feed->add($post->title, 'Compass HB', URL::to($post->slug), $post->created_at, $post->body, $post->body);
+                $feed->add(
+                    $post->title,
+                    'Compass HB',
+                    URL::to($post->slug),
+                    $post->created_at,
+                    $post->body,
+                    $post->body
+                );
             }
         }
 

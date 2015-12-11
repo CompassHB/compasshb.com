@@ -278,6 +278,9 @@ class PagesController extends Controller
             Cache::forget($latestsermon->video);
         }
 
-        return redirect('https://developers.facebook.com/tools/debug/og/object?q=https://www.compasshb.com/sermons/'.$latestsermon->slug);
+        return redirect(
+            'https://developers.facebook.com/tools/debug/og/object?q=https://www.compasshb.com/sermons/'.
+            $latestsermon->slug
+        );
     }
 }

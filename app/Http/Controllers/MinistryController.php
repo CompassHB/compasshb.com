@@ -100,6 +100,4 @@ class MinistryController extends Controller
         return view('ministries.college.index')
             ->with('title', 'The Underground');
     }
-
 }
-

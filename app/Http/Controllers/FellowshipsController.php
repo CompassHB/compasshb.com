@@ -26,7 +26,7 @@ class FellowshipsController extends Controller
         $events = array_filter($e, function ($var) {
                 // Filter out Home Fellowship Group events
                 return ($var->organizer_id == '8215662871');
-            });
+        });
 
         // Remove duplicates
         foreach (array_reverse($events) as $item) {

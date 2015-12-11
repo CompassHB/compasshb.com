@@ -2,7 +2,6 @@
 
 namespace CompassHB\Www\Http\Controllers\Api;
 
-use Auth;
 use Response;
 use CompassHB\Www\Blog;
 use CompassHB\Www\Http\Controllers\Controller;

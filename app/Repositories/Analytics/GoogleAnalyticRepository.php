@@ -24,7 +24,8 @@ class GoogleAnalyticRepository implements Contract
                     $this->email,
                     array($this->url),
                     file_get_contents(storage_path('keys/CompassHB-27e1adae11b5.p12'))
-            ));
+                )
+            );
         }
 
         $this->client->setClientId(env('GOOGLE_CLIENT_ID'));
@@ -37,6 +38,8 @@ class GoogleAnalyticRepository implements Contract
      * @param string $path
      * @param string $startDate
      * @param string $endDate
+     *
+     * @return view
      */
     public function getPageViews($path, $startDate, $endDate)
     {
@@ -75,7 +78,8 @@ class GoogleAnalyticRepository implements Contract
             $results = $this->service->data_realtime->get(
                 'ga:89284462',
                 'rt:activeUsers',
-                $optParams);
+                $optParams
+            );
         } catch (\Exception $e) {
             Log::warning('Connection refused to www.googleapis.com');
 

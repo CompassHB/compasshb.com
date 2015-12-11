@@ -16,7 +16,9 @@ class BusServiceProvider extends ServiceProvider
     {
         $dispatcher->mapUsing(function ($command) {
             return Dispatcher::simpleMapping(
-                $command, 'CompassHB\Www\Commands', 'CompassHB\Www\Handlers\Commands'
+                $command,
+                'CompassHB\Www\Commands',
+                'CompassHB\Www\Handlers\Commands'
             );
         });
     }
