@@ -35,7 +35,8 @@ class SongsController extends Controller
         $setlist = $plan->getSetList();
 
         return view('dashboard.songs.index', compact(
-            'songs', 'setlist'
+            'songs',
+            'setlist'
         ))->with('title', 'Worship Songs');
     }
 

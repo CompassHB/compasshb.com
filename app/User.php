@@ -91,6 +91,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function teams()
     {
-        return $this->belongsToMany(Team::class, 'team_user', 'user_id', 'team_id')->withPivot(['role'])->orderBy('name', 'asc');
+        return $this->belongsToMany(Team::class, 'team_user', 'user_id', 'team_id')
+            ->withPivot(['role'])
+            ->orderBy('name', 'asc');
     }
 }

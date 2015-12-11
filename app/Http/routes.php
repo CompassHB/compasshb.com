@@ -179,6 +179,7 @@ Route::get('events/{id?}/{slug?}', [
     'as' => 'events.index',
     'uses' => 'PagesController@events',
 ]);
+
 /***********************************************************************
  * Routes for ministry pages
  */
@@ -217,6 +218,14 @@ Route::group(['prefix' => 'sundayschool'], function () {
 Route::get('college', [
     'as' => 'college',
     'uses' => 'MinistryController@college',
+]);
+
+/*
+ * Route for women
+ */
+Route::get('women', [
+    'as' => 'women',
+    'uses' => 'MinistryController@women',
 ]);
 
 /*

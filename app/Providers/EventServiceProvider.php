@@ -35,23 +35,28 @@ class EventServiceProvider extends ServiceProvider
 
         // Create slugs on model save
         Sermon::saving(function ($object) {
-            $object->slug = isset($object->slug) == true ? $object->slug : makeSlugFromTitle(new Sermon(), $object->title);
+            $object->slug = isset($object->slug) == true ?
+                $object->slug : makeSlugFromTitle(new Sermon(), $object->title);
         });
 
         Series::saving(function ($object) {
-            $object->slug = isset($object->slug) == true ? $object->slug : makeSlugFromTitle(new Series(), $object->title);
+            $object->slug = isset($object->slug) == true ?
+                $object->slug : makeSlugFromTitle(new Series(), $object->title);
         });
 
         Passage::saving(function ($object) {
-            $object->slug = isset($object->slug) == true ? $object->slug : makeSlugFromTitle(new Passage(), $object->title);
+            $object->slug = isset($object->slug) == true ?
+                $object->slug : makeSlugFromTitle(new Passage(), $object->title);
         });
 
         Song::saving(function ($object) {
-            $object->slug = isset($object->slug) == true ? $object->slug : makeSlugFromTitle(new Song(), $object->title);
+            $object->slug = isset($object->slug) == true ?
+                $object->slug : makeSlugFromTitle(new Song(), $object->title);
         });
 
         Blog::saving(function ($object) {
-            $object->slug = isset($object->slug) == true ? $object->slug : makeSlugFromTitle(new Blog(), $object->title);
+            $object->slug = isset($object->slug) == true ?
+                $object->slug : makeSlugFromTitle(new Blog(), $object->title);
         });
     }
 }

@@ -39,7 +39,9 @@ class BoxcastReminder extends Command
     public function handle()
     {
         $client = new GuzzleHttp\Client();
-        $broadcastsResponse = $client->get('https://api.boxcast.com/channels/gnskfahu15wlwpvroe22/broadcasts?q=timeframe:future&l=1');
+        $broadcastsResponse = $client->get(
+            'https://api.boxcast.com/channels/gnskfahu15wlwpvroe22/broadcasts?q=timeframe:future&l=1'
+        );
         $broadcasts = json_decode($broadcastsResponse->getBody());
 
         if (isset($broadcasts[0])) {

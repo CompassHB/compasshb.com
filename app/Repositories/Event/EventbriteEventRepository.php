@@ -7,7 +7,6 @@ use Cache;
 use GuzzleHttp\Client;
 use CompassHB\Www\Contracts\Events as Contract;
 
-
 class EventbriteEventRepository implements Contract
 {
     private $minutes = 300;
@@ -61,10 +60,22 @@ class EventbriteEventRepository implements Contract
 
             try {
                 // Get first four pages of results
-                $page1 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=1&token='.env('EVENTBRITE_OAUTH_TOKEN'));
-                $page2 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=2&token='.env('EVENTBRITE_OAUTH_TOKEN'));
-                $page3 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=3&token='.env('EVENTBRITE_OAUTH_TOKEN'));
-                $page4 = $this->client->get('users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=4&token='.env('EVENTBRITE_OAUTH_TOKEN'));
+                $page1 = $this->client->get(
+                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=1&token='.
+                    env('EVENTBRITE_OAUTH_TOKEN')
+                );
+                $page2 = $this->client->get(
+                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=2&token='.
+                    env('EVENTBRITE_OAUTH_TOKEN')
+                );
+                $page3 = $this->client->get(
+                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=3&token='.
+                    env('EVENTBRITE_OAUTH_TOKEN')
+                );
+                $page4 = $this->client->get(
+                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=4&token='.
+                    env('EVENTBRITE_OAUTH_TOKEN')
+                );
 
                 $page1 = json_decode($page1->getBody());
                 $page2 = json_decode($page2->getBody());

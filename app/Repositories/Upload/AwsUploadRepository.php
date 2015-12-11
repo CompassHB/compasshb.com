@@ -31,7 +31,7 @@ class AwsUploadRepository implements Contract
 
     /**
      * Accepts a file from a form upload and
-     * saves it to AWS S3 returing the URL.
+     * saves it to AWS S3 returning the URL.
      *
      * @param  UploadedFile
      * @param  string

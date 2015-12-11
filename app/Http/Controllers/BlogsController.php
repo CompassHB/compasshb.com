@@ -60,10 +60,15 @@ class BlogsController extends Controller
             $texttrack = $video->getTextTracks(true, $locale);
         }
 
-        return view('dashboard.blogs.show',
-            compact('blog', 'coverimage', 'texttrack', 'languages'))
-            ->with('title', $blog->title)
-            ->with('ogdescription', 'Compass Bible Church Huntington Beach');
+        return view(
+            'dashboard.blogs.show',
+            compact(
+                'blog',
+                'coverimage',
+                'texttrack',
+                'languages'
+            )
+        )->with('title', $blog->title)->with('ogdescription', 'Compass Bible Church Huntington Beach');
     }
 
     public function language(Blog $blog, Video $video, $locale)

@@ -3,7 +3,6 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
-use Redirect;
 use CompassHB\Www\Passage;
 use CompassHB\Www\Contracts\Analytics;
 use CompassHB\Www\Contracts\Scripture;
@@ -48,7 +47,11 @@ class PassagesController extends Controller
         // For sidebar display
         $passages = Passage::latest('published_at')->published()->take(5)->get();
 
-        $analytics = $this->analytics->getPageViews('/read', $passage->published_at->format('Y-m-d'), $passage->published_at->format('Y-m-d'));
+        $analytics = $this->analytics->getPageViews(
+            '/read',
+            $passage->published_at->format('Y-m-d'),
+            $passage->published_at->format('Y-m-d')
+        );
         $analytics['activeUsers'] = $this->analytics->getActiveUsers();
 
         $passage->verses = $this->scripture->getScripture($passage->title);
@@ -57,7 +60,8 @@ class PassagesController extends Controller
         if ($today || $passage->published_at->isToday()) {
             $postflash = '';
             $title = 'Scripture of the Day';
-            if ((date('D') == 'Sun' || date('D') == 'Sat') && !$passage->published_at->isToday()) {
+            if ((date('D') == 'Sun' || date('D') == 'Sat') &&
+                !$passage->published_at->isToday()) {
                 $postflash = '<div class="alert alert-info" role="alert">Scripture of the Day is posted Monday through Friday.</div>';
             }
         } else {

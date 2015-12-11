@@ -102,8 +102,10 @@ class SermonsController extends Controller
         $coverimage = $video->getThumbnail();
         $sermon->plays = $video->getVideoPlays();
 
-        return view('dashboard.sermons.show',
-            compact('sermon', 'coverimage', 'texttrack', 'plays'))
+        return view(
+            'dashboard.sermons.show',
+            compact('sermon', 'coverimage', 'texttrack', 'plays')
+        )
             ->with('title', $sermon->title)
             ->with('ogdescription', $sermon->excerpt);
     }

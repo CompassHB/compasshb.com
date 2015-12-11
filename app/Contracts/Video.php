@@ -40,7 +40,7 @@ interface Video
      * The link to cover image.
      *
      * @param string $url
-     * @param bool   $large returns default thumbnail from the ombed call
+     * @param bool   $large returns default thumbnail from the oembed call
      *                      Set this to true if there is another way to grab a high resolution thumbnail
      *
      * @return string
