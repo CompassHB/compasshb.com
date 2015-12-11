@@ -151,6 +151,7 @@ return [
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Substrike\Forestall\ForestallServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*
@@ -201,7 +202,6 @@ return [
         'Bugsnag' => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
         'Html' => Illuminate\Html\HtmlFacade::class,
         'Form' => Illuminate\Html\FormFacade::class,
-        'SearchIndex' => Spatie\SearchIndex\SearchIndexFacade::class,
         'Feed' => Roumen\Feed\Facades\Feed::class,
     ],
 

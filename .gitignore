@@ -13,3 +13,4 @@ public/js
 storage/keys
 tests/logs
 vendor
+_ide_helper.php

@@ -179,6 +179,7 @@ Route::get('events/{id?}/{slug?}', [
     'as' => 'events.index',
     'uses' => 'PagesController@events',
 ]);
+
 /***********************************************************************
  * Routes for ministry pages
  */

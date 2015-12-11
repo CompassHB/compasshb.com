@@ -44,9 +44,10 @@ class MinistryController extends Controller
             ];
         }
 
-        return view('ministries.youth.index',
-            compact('sermons', 'series', 'prevsermon'))
-            ->with('title', 'The United');
+        return view(
+            'ministries.youth.index',
+            compact('sermons', 'series', 'prevsermon')
+        )->with('title', 'The United');
     }
 
     /**
@@ -57,11 +58,16 @@ class MinistryController extends Controller
     public function sundayschool()
     {
         $series = Series::where('ministry', '=', 'sundayschool')->get()->reverse();
-        $sermons = Sermon::where('ministry', '=', 'sundayschool')->where('series_id', '=', $series->first()->id)->latest('published_at')->published()->get();
+        $sermons = Sermon::where('ministry', '=', 'sundayschool')
+            ->where('series_id', '=', $series->first()->id)
+            ->latest('published_at')
+            ->published()
+            ->get();
 
-        return view('ministries.sundayschool.index',
-            compact('sermons', 'series'))
-            ->with('title', 'Sunday School');
+        return view(
+            'ministries.sundayschool.index',
+            compact('sermons', 'series')
+        )->with('title', 'Sunday School');
     }
 
     /**
@@ -78,9 +84,10 @@ class MinistryController extends Controller
             $sermon->image = $video->getThumbnail();
         }
 
-        return view('ministries.women.index',
-            compact('sermons'))
-            ->with('title', 'Women');
+        return view(
+            'ministries.women.index',
+            compact('sermons')
+        )->with('title', 'Women');
     }
 
     /**
@@ -93,4 +100,6 @@ class MinistryController extends Controller
         return view('ministries.college.index')
             ->with('title', 'The Underground');
     }
+
 }
+
