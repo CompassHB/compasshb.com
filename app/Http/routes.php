@@ -220,6 +220,14 @@ Route::get('college', [
 ]);
 
 /*
+ * Route for women
+ */
+Route::get('women', [
+    'as' => 'women',
+    'uses' => 'MinistryController@women',
+]);
+
+/*
  * Analytics Sitemap XML
  */
 Route::get('sitemap.xml', [
