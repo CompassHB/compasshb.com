@@ -18,12 +18,12 @@ class GoogleAnalyticRepository implements Contract
         $this->client = new \Google_Client();
         $this->client->setApplicationName('Compass HB');
 
-        if (file_exists(storage_path('keys/CompassHB-27e1adae11b5.p12'))) {
+        if (file_exists(storage_path('keys/CompassHB-c88b910b5e7b.p12'))) {
             $this->client->setAssertionCredentials(
                 new \Google_Auth_AssertionCredentials(
                     $this->email,
                     array($this->url),
-                    file_get_contents(storage_path('keys/CompassHB-27e1adae11b5.p12'))
+                    file_get_contents(storage_path('keys/CompassHB-c88b910b5e7b.p12'))
                 )
             );
         }
