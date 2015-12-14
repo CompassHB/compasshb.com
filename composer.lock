@@ -1925,16 +1925,16 @@
         },
         {
             "name": "roumen/feed",
-            "version": "v2.9.7",
+            "version": "v2.9.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RoumenDamianoff/laravel-feed.git",
-                "reference": "4611e281e28934b17c564be8f709ac99176cf5f9"
+                "reference": "dce91e2d7a912b7b4d6448cc3e7faef725b4c752"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-feed/zipball/4611e281e28934b17c564be8f709ac99176cf5f9",
-                "reference": "4611e281e28934b17c564be8f709ac99176cf5f9",
+                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-feed/zipball/dce91e2d7a912b7b4d6448cc3e7faef725b4c752",
+                "reference": "dce91e2d7a912b7b4d6448cc3e7faef725b4c752",
                 "shasum": ""
             },
             "require": {
@@ -1972,7 +1972,7 @@
                 "laravel",
                 "rss"
             ],
-            "time": "2015-11-02 19:03:05"
+            "time": "2015-12-11 18:20:14"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -4175,12 +4175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/satooshi/php-coveralls.git",
-                "reference": "afd0861d5e219bf8b3cca8957d9bb1f2004b76c2"
+                "reference": "51703dffb55f878e57f5673cd8c837f5f89f3096"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/afd0861d5e219bf8b3cca8957d9bb1f2004b76c2",
-                "reference": "afd0861d5e219bf8b3cca8957d9bb1f2004b76c2",
+                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/51703dffb55f878e57f5673cd8c837f5f89f3096",
+                "reference": "51703dffb55f878e57f5673cd8c837f5f89f3096",
                 "shasum": ""
             },
             "require": {
@@ -4203,7 +4203,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.7-dev"
+                    "dev-master": "0.8-dev"
                 }
             },
             "autoload": {
@@ -4230,7 +4230,7 @@
                 "github",
                 "test"
             ],
-            "time": "2015-12-10 14:16:22"
+            "time": "2015-12-14 18:13:30"
         },
         {
             "name": "sebastian/comparator",

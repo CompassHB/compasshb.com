@@ -40,7 +40,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function songs()
     {
-        return $this->hasMany(CompassHB\Www\Song::class);
+        return $this->hasMany(Song::class);
     }
 
     /**
