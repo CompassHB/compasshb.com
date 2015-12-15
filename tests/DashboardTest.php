@@ -59,6 +59,11 @@ class DashboardTest extends TestCase
         $this->visit('/pray');
     }
 
+    public function testCollege()
+    {
+        $this->visit('/college');
+    }
+
     public function testSongs()
     {
         $this->visit('/songs');
