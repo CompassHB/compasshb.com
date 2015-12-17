@@ -165,6 +165,11 @@ Route::get('give', [
     'uses' => 'PagesController@give',
 ]);
 
+Route::get('giving', [
+    'as' => 'giving',
+    'uses' => 'PagesController@giving',
+]);
+
 Route::get('ice-cream-evangelism', [
     'as' => 'evangelism',
     'uses' => 'PagesController@icecreamevangelism',

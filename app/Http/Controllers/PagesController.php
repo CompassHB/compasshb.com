@@ -161,6 +161,11 @@ class PagesController extends Controller
 
     public function give()
     {
+        return redirect('giving');
+    }
+
+    public function giving()
+    {
         return view('pages.give')
             ->with('title', 'Give');
     }
