@@ -3,17 +3,17 @@
 namespace CompassHB\Www\Console\Commands;
 
 use Mail;
-use CompassHB\Www\Passage;
 use Illuminate\Console\Command;
+use CompassHB\Www\Contracts\Events;
 
-class PassageReminder extends Command
+class FeaturedEventReminder extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'passage:reminder';
+    protected $signature = 'featuredevent:reminder';
 
     /**
      * The console command description.
@@ -35,13 +35,14 @@ class PassageReminder extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(Events $event)
     {
-        $count = Passage::latest('published_at')->unpublished()->count();
+        $featured = $event->search('#featured');
 
-        if ($count < 5) {
-            Mail::send('emails.reminder', ['count' => $count], function ($message) {
-                $message->subject('Post Scripture of the Day');
+        if ($featured->events == null)
+        {
+            Mail::send('emails.reminderevents', ['count' => $count], function ($message) {
+                $message->subject('Post Featured Event');
                 $message->to('info@compasshb.com');
             });
         }
