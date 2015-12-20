@@ -43,19 +43,19 @@
                           <li class="dropdown">
                               <a href="{{ route('who-we-are') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Who We Are <span class="caret"></span></a>
                               <ul class="dropdown-menu dropdown-menu-left">
-                                  <li><a href="{{ route('who-we-are') }}"><span class="glyphicon glyphicon-user"></span> Who We Are</a></li>
-                                  <li><a href="{{ route('distinctives') }}"><span class="glyphicon glyphicon-flag"></span> 8 Distinctives</a></li>
-                                  <li><a href="{{ route('believe') }}"><span class="glyphicon glyphicon-book"></span> What We Believe</a></li>
+                                  <li><a href="{{ route('who-we-are') }}"><i class="material-icons">person</i> Who We Are</a></li>
+                                  <li><a href="{{ route('distinctives') }}"><i class="material-icons">flag</i> 8 Distinctives</a></li>
+                                  <li><a href="{{ route('believe') }}"><i class="material-icons">library_books</i> What We Believe</a></li>
                               </ul>
                           </li>
                           <li class="dropdown">
                               <a href="{{ route('kids') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ministries <span class="caret"></span></a>
                               <ul class="dropdown-menu dropdown-menu-left">
-                                  <li><a href="{{ route('kids') }}"><span class="glyphicon glyphicon-pencil"></span>  Kids Ministry</a></li>
-                                  <li><a href="{{ route('youth') }}"><span class="glyphicon glyphicon-sunglasses"></span>  Youth Ministry</a></li>
-                                  <li><a href="{{ route('college') }}"><span class="glyphicon glyphicon-education"></span>  College Ministry</a></li>
-                                  <li><a href="{{ route('sundayschool') }}"><span class="glyphicon glyphicon-blackboard"></span>  Adult Sunday School</a></li>
-                                  <li><a href="{{ route('fellowship.index') }}"><span class="glyphicon glyphicon-header"></span> Home Fellowship Groups</a></li>
+                                  <li><a href="{{ route('kids') }}"><i class="material-icons">child_care</i>  Kids Ministry</a></li>
+                                  <li><a href="{{ route('youth') }}"><i class="material-icons">group</i>  Youth Ministry</a></li>
+                                  <li><a href="{{ route('college') }}"><i class="material-icons">domain</i>  College Ministry</a></li>
+                                  <li><a href="{{ route('sundayschool') }}"><i class="material-icons">free_breakfast</i>  Adult Sunday School</a></li>
+                                  <li><a href="{{ route('fellowship.index') }}"><i class="material-icons">home</i> Home Fellowship Groups</a></li>
                               </ul>
                           </li>
                           <li class="dropdown">
@@ -72,7 +72,7 @@
                               </ul>
                           </li>
                           <li><a href="{{ route('evangelism') }}">Ice Cream Evangelism</a></li>
-                          <li><a href="{{ route('search') }}" aria-label="Search" id="toggle-search-show"><span class="glyphicon glyphicon-search"></span></a>
+                          <li><a href="{{ route('search') }}" aria-label="Search" id="toggle-search-show"><i class="material-icons">search</i></a>
                           </li>
                       </ul>
                   </div>

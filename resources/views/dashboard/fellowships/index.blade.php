@@ -32,7 +32,7 @@
   </div>
   <div class="panel-body">
     <p>Worksheet questions are designed for the application of this week's sermon. Take some time to thoughtfully write out the answers. It is also helpful to discuss in a home fellowship group. If you would like more information on a home fellowship group, email info@compassHB.com.</p>
-    <p><a href="mailto:info@compasshb.com" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>  Sign Up</a></p>
+    <p><a href="mailto:info@compasshb.com" class="btn btn-primary"><i class="material-icons">email</i>  Sign Up</a></p>
   </div>
 </div>
 

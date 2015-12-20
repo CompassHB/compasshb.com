@@ -12,18 +12,8 @@ var elixir = require('laravel-elixir');
  |
  */
 
-
-/**
-  * Bootstrap / Less styles (old)
-  **/
 elixir(function(mix) {
     mix.sass('app.scss')
        .browserify('app.js')
        .version(['css/app.css', 'js/app.js']);
-
-    mix.copy(
-       'node_modules/bootstrap/dist/fonts',
-       'public/build/fonts'
-   )
-
 });

@@ -36,7 +36,7 @@
     @foreach($setlist as $song)
         @if (isset($song['link']))
         <a href="{{ $song['link'] }}" class="list-group-item">
-            <span class="glyphicon glyphicon-expand"></span>
+            <i class="material-icons">expand_more</i>
         @else
         <a href="#" class="list-group-item">
         @endif

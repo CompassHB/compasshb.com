@@ -14,7 +14,7 @@
             <p>Latest Sermon</p>
             <h1 class="tk-seravek-web">{{ $prevsermon->title }}</h1>
             <p>{{{ $prevsermon->series->title or '' }}}</p>
-            <p><i class="glyphicon glyphicon-play-circle large-icon"></i></p>
+            <p><i class="material-icons" style="font-size: 3em">play_circle_outline</i></p>
         </a>
     </div>
 

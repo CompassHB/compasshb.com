@@ -55,9 +55,9 @@
 
         <h4 class="tk-seravek-web">Contact</h4>
           <p>
-            <i class="glyphicon glyphicon-globe"></i> 5082 Argosy, Huntington Beach, CA 92649<br/>
-            <i class="glyphicon glyphicon-phone"></i> (714) 895-0034<br/>
-            <i class="glyphicon glyphicon-envelope"></i> <a href="mailto:info@compasshb.com">info@compasshb.com</a>
+            <i class="material-icons">map</i> 5082 Argosy, Huntington Beach, CA 92649<br/>
+            <i class="material-icons">phone</i> (714) 895-0034<br/>
+            <i class="material-icons">email</i> <a href="mailto:info@compasshb.com">info@compasshb.com</a>
           </p>
     </div>
   </div>
@@ -72,7 +72,7 @@
    <!-- Search - Open panel -->
   <div id="toggle-search" class="search-panel">
     <a href="/" class="search-panel__close js--toggle-search-mode" title="Exit the search mode">
-      <i class="glyphicon glyphicon-remove"></i>
+      <i class="material-icons">stop</i>
     </a>
     <div class="container">
       <div class="row">

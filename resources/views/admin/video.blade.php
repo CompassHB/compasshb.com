@@ -35,7 +35,7 @@
             <td><a href="{{ route('videos.edit', $sermon->slug) }}">{{ $sermon->title }}</a></td>
             <td>{{ $sermon->text }}</td>
             <td>{{ date_format($sermon->published_at, 'l, F j, Y') }}</td>
-            <td>{!! $sermon->worksheet ? '<span class="glyphicon glyphicon-ok"></span>' : '' !!}</td>
+            <td>{!! $sermon->worksheet ? '<i class="material-icons">done</i>' : '' !!}</td>
             <td>{{ $sermon->published_at->lt(\Carbon\Carbon::now()) ? 'Published' : 'Scheduled' }}</td>
           </tr>
         @endforeach

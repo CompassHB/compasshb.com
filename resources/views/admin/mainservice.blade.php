@@ -34,8 +34,8 @@
             <td><a href="{{ route('sermons.edit', $sermon->slug) }}">{{ $sermon->title }}</a></td>
             <td>{{ $sermon->text }}</td>
             <td>{{ date_format($sermon->published_at, 'l, F j, Y') }}</td>
-            <td>{!! $sermon->worksheet ? '<span class="glyphicon glyphicon-ok"></span>' : '' !!}
-                   {!! $sermon->bulletin ? '<span class="glyphicon glyphicon-asterisk"></span>' : '' !!}</td>
+            <td>{!! $sermon->worksheet ? '<i class="material-icons">done</i>' : '' !!}
+                   {!! $sermon->bulletin ? '<i class="material-icons">done_all</i>' : '' !!}</td>
             <td>{{ $sermon->published_at->lt(\Carbon\Carbon::now()) ? 'Published' : 'Scheduled' }}</td>
           </tr>
         @endforeach
