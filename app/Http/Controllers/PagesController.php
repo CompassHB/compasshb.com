@@ -53,18 +53,6 @@ class PagesController extends Controller
         $videos = Blog::whereNotNull('video')->latest('published_at')->published()->take(2)->get();
         $passage = Passage::latest('published_at')->published()->take(1)->get()->first();
 
-        $distinctives = [
-            ['text' => '1. The Bible is Central', 'icon' => 'library_books'],
-            ['text' => '2. We showcase expository preaching', 'icon' => 'fullscreen_exit'],
-            ['text' => '3. We seek to maintain a high view of God', 'icon' => 'satellite'],
-            ['text' => '4. We work to proclaim a biblical gospel', 'icon' => 'volumn_up'],
-            ['text' => '5. We have a genuine reliance on prayer', 'icon' => 'cloud_upload'],
-            ['text' => '6. We have highly committed participants', 'icon' => 'people'],
-            ['text' => '7. We will look to authentic & sacrificial leaders', 'icon' => 'person_pin'],
-            ['text' => '8. We will always be working to plant new churches', 'icon' => 'navigation'],
-        ];
-        shuffle($distinctives);
-
         foreach ($sermons as $sermon) {
             $videoClient->setUrl($sermon->video);
             $sermon->othumbnail = $videoClient->getThumbnail();
@@ -121,7 +109,6 @@ class PagesController extends Controller
             'blogs',
             'videos',
             'passage',
-            'distinctives'
         ))->with('images', $results)
             ->with('instagrams', $instagrams['data'])
             ->with('title', 'Compass HB - Huntington Beach');
