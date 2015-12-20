@@ -18,7 +18,6 @@
         <div class="caption">
           <h5 class="tk-seravek-web">{{ $song->title }}</h5>
           <p>{{ $song->excerpt }}<br/><a href="{{ route('songs.show', $song->slug) }}" class="btn btn-default" role="button">Watch</a> <a href="{{$song->audio}}" class="btn btn-default" role="button">Download</a></p>
-          <p><audio src="{{ $song->audio or '#'}}" controls></p>
         </div>
       </div>
     </div>

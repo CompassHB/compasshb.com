@@ -61,14 +61,12 @@
                           <li class="dropdown">
                               <a href="{{ route('sermons.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sermons <span class="caret"></span></a>
                               <ul class="dropdown-menu dropdown-menu-left">
-                                  <li><a href="{{ route('sermons.index') }}">Sermons</a></li>
-                                  <li><a href="{{ route('read.index') }}">Scripture of the Day</a></li>
-                                  <li role="separator" class="divider"></li>
-                                  <li><a href="{{ route('blog.index') }}">Blog</a></li>
-                                  <li><a href="{{ route('songs.index') }}">Songs</a></li>
-                                  <li><a href="{{ route('events.index') }}">Events</a></li>
-                                  <li role="separator" class="divider"></li>
-                                  <li><a href="{{ route('give') }}">Give</a></li>
+                                  <li><a href="{{ route('sermons.index') }}"><i class="material-icons">video_library</i> Sermons</a></li>
+                                  <li><a href="{{ route('read.index') }}"><i class="material-icons">library_books</i> Scripture of the Day</a></li>
+                                  <li><a href="{{ route('blog.index') }}"><i class="material-icons">announcement</i> Blog</a></li>
+                                  <li><a href="{{ route('songs.index') }}"><i class="material-icons">music_note</i> Songs</a></li>
+                                  <li><a href="{{ route('events.index') }}"><i class="material-icons">event</i> Events</a></li>
+                                  <li><a href="{{ route('give') }}"><i class="material-icons">card_giftcard</i> Give Online</a></li>
                               </ul>
                           </li>
                           <li><a href="{{ route('evangelism') }}">Ice Cream Evangelism</a></li>
