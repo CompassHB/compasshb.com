@@ -3,15 +3,20 @@
 namespace CompassHB\Www;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Series extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'title',
         'body',
         'image',
         'ministry',
     ];
+
+    protected $dates = ['published_at', 'deleted_at'];
 
     /**
      * Set the empty field to be null using

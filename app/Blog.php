@@ -3,9 +3,12 @@
 namespace CompassHB\Www;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'title',
         'body',
@@ -15,7 +18,7 @@ class Blog extends Model
         'published_at',
     ];
 
-    protected $dates = ['published_at'];
+    protected $dates = ['published_at', 'deleted_at'];
 
     /**
      * Set the empty video field to be null using
