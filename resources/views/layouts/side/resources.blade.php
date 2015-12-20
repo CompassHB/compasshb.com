@@ -31,8 +31,8 @@
 				<a href="{{ route('blog.index') }}">Blog</a>
 				<i class="material-icons">keyboard_arrow_right</i>
 			</li>
-      <li class="{{ setActive('give') }}">
-				<a href="{{ route('give') }}">Give</a>
+      <li class="{{ setActive('giving') }}">
+				<a href="{{ route('giving') }}">Give</a>
 				<i class="material-icons">keyboard_arrow_right</i>
 			</li>
 	</ul>

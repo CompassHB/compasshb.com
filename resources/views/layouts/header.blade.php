@@ -14,11 +14,8 @@
     <link href="/build/css/app2.css" rel="stylesheet">
 
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Droid+Serif" type="text/css" rel="stylesheet" media="screen,projection">
 
-    <!-- Scripts usually shouldn't come in <head> for performance, but this is
-         a font, so we need to load in <head> to avoid flash of unstyled text -->
-    <script src="//use.typekit.net/gdu1kdg.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>

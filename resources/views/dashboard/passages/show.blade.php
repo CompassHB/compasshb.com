@@ -10,7 +10,7 @@
   <p>{!! $postflash !!}</p>
 
   <div class="Setting Box Box--Large Box--bright utility-flex">
-    <h2 class="Setting__heading tk-seravek-web">{{ $passage->title }}</h2>
+    <h1 class="Setting__heading tk-seravek-web">{{ $passage->title }}</h1>
 
     {!! $passage->body !!}
     {!! $passage->verses !!}

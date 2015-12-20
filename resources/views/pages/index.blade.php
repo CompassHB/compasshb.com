@@ -62,13 +62,15 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
   @endforeach
 </div>
 
-<div class="row" style="background-color: #497f9e; padding: 0 0 15px 0; border-top: 3px solid #F9F9F9">
+<div class="row commission">
   <div class="col-sm-10 col-sm-offset-1">
-    <center>
-    <h3 style="color: #FFF; text-align: center; margin-bottom: 5px" class="tk-seravek-web">Compass HB exists to make disciples of Jesus Christ</h3>
-    <p style="color: #FFF; font-size: 1.25em">by <strong>reaching</strong> as many people as possible for Christ, <strong>teaching</strong> them to be like Christ, and <strong>training</strong> them to serve Christ.</p><br/>
-    <p><a href="{{ route('who-we-are') }}" class="btn btn-default">Find out more about Compass HB</a></p>
-    </center>
+    <p>
+        <span class="title">Compass HB exists to make disciples of Jesus Christ</span><br/>by
+        <span class="participle">reaching</span> as many people as possible for Christ,
+        <span class="participle">teaching</span> them to be like Christ, and
+        <span class="participle">training</span> them to serve Christ.<br/>
+        <a href="{{ route('who-we-are') }}" class="btn btn-default">Find out more about Compass HB</a>
+    </p>
   </div>
 </div>
 
@@ -78,8 +80,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
     <div class="col-md-4 text-center">
       <h2 class="tk-seravek-web">Sundays at<br/> 9am and 11am</h2>
       <br/>
-      <p>5082 Argosy Avenue</p>
-      <p>Huntington Beach, CA 92649</p>
+      <p>5082 Argosy Avenue<br/>Huntington Beach, CA 92649</p>
       <br/>
     </div>
     <div class="col-md-4 text-center" style="">
@@ -90,13 +91,13 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
     <div class="col-md-4 text-center">
       <h2 class="tk-seravek-web">Midweek</h2>
       <br/>
-      <h4><a href="{{ route('fellowship.index') }}">Home Fellowship Groups</a></h4>
+      <h5><a href="{{ route('fellowship.index') }}">Home Fellowship Groups</a></h5>
       <p>Tuesday, Wednesday, Thursday, and Friday</p>
       <br/>
-      <h4><a href="{{ route('kids') }}#awana">Awana for kids</a></h4>
+      <h5><a href="{{ route('kids') }}#awana">Awana for kids</a></h5>
       <p>Wednesday</p>
       <br/>
-      <h4><a href="{{ route('youth') }}">The United for Youth</a></h4>
+      <h5><a href="{{ route('youth') }}">The United for Youth</a></h5>
       <p>Thursday</p>
     </div>
   </div>

@@ -19,7 +19,7 @@
                 Pastor Bobby grew up as a pastor’s son, graduated from <a title="The Master's College" href="http://www.masters.edu" target="_blank">The Master’s College</a> and has been preaching weekly for over a decade. He is currently working on his graduate degree through <a title="Southern Baptist Theological Seminary" href="http://www.sbts.edu" target="_blank">Southern Baptist Theological Seminary</a>.
             </p>
             <p>
-                As we gather together every Sunday morning to hear from God’s word, Pastor Bobby will preach through the book of <a href="{{ URL::to('/') }}/sermon/">1st Thessalonians</a>, which is about the beginning of a church where "the word of the Lord sounded forth."
+                As we gather together every Sunday morning to hear from God’s word, Pastor Bobby will preach through the book of <a href="{{ route('sermons.index') }}">John</a>.
             </p>
             <ul style="color: #FFF;">
                 <li><a title="E-Mail" href="mailto:bobby@compasshb.com" target="_blank">E-Mail </a></li>

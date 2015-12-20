@@ -4,7 +4,8 @@
 @import "node_modules/bootstrap/less/bootstrap";
 
 // Custom Bootstrap Variables
-@grid-float-breakpoint: 	@screen-md-min; // Point at which the navbar switches between collapsed and horizontal mode. Changing this from the small default to medium.
+@grid-float-breakpoint: 	@screen-md-min; // Point at which the navbar switches between collapsed and horizontal mode.
+                                            // Changing this from the small default to medium.
 @brand-primary:         	#497F9E;
 
 /*
@@ -14,10 +15,12 @@
 @import (inline) "node_modules/medium-editor/dist/css/themes/default.css";
 
 // Custom styles for CompassHB.com
-@import '_navigation'; 		    // Menus
+@import '_navigation'; 		  // Menus
+@import '_typography';        // Fonts
 @import '_scriptureoftheday'; // Scripture of the Day
 @import '_dashboardnav';      // Styles for the "dashboard" fixed header
 @import '_homepage';          // Homepage drawer
 @import '_transcript';        // Video transcripts
 @import '_search';            // Search
+@import '_footer';
 @import '_base';              // General styles

@@ -1,13 +1,8 @@
-@if (Auth::check())
+@unless (Auth::check())
 
-  <br/><br/>
-  
-@else
-<br/><br/>
+  <footer id="footer" class="container-fluid">
 
-<footer id="footer" class="container-fluid" style="background-color: #FFF;">
-
-  <div class="row" style="background-image: url('https://compasshb.smugmug.com/photos/i-pgR29VG/1/X3/i-pgR29VG-X3.png'); background-repeat: repeat-x; background-size: 850px; background-position: center bottom; padding: 80px 40px 40px 40px; line-height: 2em; padding-top: 40px; background-color: #FFF;">
+  <div class="row">
 
     {{-- Compass Bible Church --}}
     <div class="col-md-2">
@@ -67,8 +62,8 @@
     </div>
   </div>
 
-  <div class="row" style="padding: 15px 30px; background-color: #222; min-height: 50px; font-weight: bold">
-    <span style="float: right; color: #AAA; font-weight: normal">© 2014-{{ date('Y') }} Compass Bible Church</span>
+  <div class="row" style="padding: 15px 30px; background-color: #222; min-height: 50px;">
+    <span style="float: right; color: #AAA; font-weight: normal; font-size: 1.25em">© 2014-{{ date('Y') }} Compass Bible Church Huntington Beach</span>
   </div>
 
 </footer>
@@ -95,4 +90,4 @@
 
 </body>
 </html>
-@endif
+@endunless
