@@ -47,6 +47,6 @@ class Kernel extends ConsoleKernel
                     ->at('20:02');
 
         $schedule->command('broadcast:refresh')
-                    ->everyThirtyMinutes();
+                    ->everyMinute();
     }
 }
