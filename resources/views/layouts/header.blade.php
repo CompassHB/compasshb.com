@@ -19,3 +19,7 @@
 
 <body>
 <div class="page-container">
+
+<div style="background-color: #4b7f9b; padding: 8px; color: #FFF; text-align: center">
+    Join us Christmas Eve for one service at 5pm!
+</div>

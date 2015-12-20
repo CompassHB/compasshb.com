@@ -37,7 +37,7 @@ class FeaturedEventReminder extends Command
      */
     public function handle(Events $event)
     {
-        $featured = $event->search('#featured');
+        $featured = $event->search('#compasshb');
 
         if ($featured->events == null)
         {
