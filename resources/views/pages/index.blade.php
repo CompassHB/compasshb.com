@@ -27,7 +27,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
         <br/><br/>
         <h1 class="tk-seravek-web">{{ $prevsermon->title }}</h1>
         <p style="padding: 20px;">{{{ $prevsermon->series->title or '' }}}</p>
-        <p><i class="glyphicon glyphicon-play-circle large-icon"></i></p>
+        <p><i class="material-icons" style="font-size: 3em">play_circle_outline</i></p>
         <div style="position: absolute; bottom: 0; left: 0; text-align: left; padding: 30px; color: #BBB">{{ $prevsermon->teacher }}<br/>{{ $prevsermon->text }}<br/>{{ $prevsermon->published_at->format('F j, Y') }}</div>
       </a>
     </span>
