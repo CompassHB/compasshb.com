@@ -11714,22 +11714,24 @@ return jQuery;
 		var gDelay = 125;
 		var dTimeout = 999;
 		var timeout = dTimeout;
+		var fastCallThreshold = 0;
 		var run = function(){
 			running = false;
 			lastTime = Date.now();
 			fn();
 		};
 		var afterAF = function(){
-			setImmediate(run);
+			setTimeout(run);
 		};
 		var getAF = function(){
 			rAF(afterAF);
 		};
 
 		if(requestIdleCallback){
-			gDelay = 99;
+			gDelay = 66;
+			fastCallThreshold = 22;
 			getAF = function(){
-				requestIdleCallback(run, timeout);
+				requestIdleCallback(run, {timeout: timeout});
 				if(timeout !== dTimeout){
 					timeout = dTimeout;
 				}
@@ -11737,7 +11739,7 @@ return jQuery;
 		}
 
 		return function(isPriority){
-
+			var delay;
 			if((isPriority = isPriority === true)){
 				timeout = 40;
 			}
@@ -11745,11 +11747,10 @@ return jQuery;
 			if(running){
 				return;
 			}
-			var delay = gDelay - (Date.now() - lastTime);
 
 			running =  true;
 
-			if(isPriority || delay < 0){
+			if(isPriority || (delay = gDelay - (Date.now() - lastTime)) < fastCallThreshold){
 				getAF();
 			} else {
 				setTimeout(getAF, delay);
@@ -11763,7 +11764,7 @@ return jQuery;
 
 		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom;
 
-		var defaultExpand, preloadExpand;
+		var defaultExpand, preloadExpand, hFac;
 
 		var regImg = /^img$/i;
 		var regIframe = /^iframe$/i;
@@ -11842,7 +11843,7 @@ return jQuery;
 					}
 
 					if(beforeExpandVal !== elemExpand){
-						eLvW = innerWidth + elemExpand;
+						eLvW = innerWidth + (elemExpand * hFac);
 						elvH = innerHeight + elemExpand;
 						elemNegativeExpand = elemExpand * -1;
 						beforeExpandVal = elemExpand;
@@ -11852,14 +11853,13 @@ return jQuery;
 
 					if ((eLbottom = rect.bottom) >= elemNegativeExpand &&
 						(eLtop = rect.top) <= elvH &&
-						(eLright = rect.right) >= elemNegativeExpand &&
+						(eLright = rect.right) >= elemNegativeExpand * hFac &&
 						(eLleft = rect.left) <= eLvW &&
 						(eLbottom || eLright || eLleft || eLtop) &&
 						((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
 						unveilElement(lazyloadElems[i]);
 						loadedSomething = true;
 						if(isLoading > 9){break;}
-						if(isLoading > 6){currentExpand = shrinkExpand;}
 					} else if(!loadedSomething && isCompleted && !autoLoadElem &&
 						isLoading < 4 && lowRuns < 4 && loadMode > 2 &&
 						(preloadElems[0] || lazySizesConfig.preloadAfterLoad) &&
@@ -12085,6 +12085,7 @@ return jQuery;
 
 				lazyloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass);
 				preloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass + ' ' + lazySizesConfig.preloadClass);
+				hFac = lazySizesConfig.hFac;
 
 				defaultExpand = lazySizesConfig.expand;
 				preloadExpand = defaultExpand * lazySizesConfig.expFactor;
@@ -12209,7 +12210,8 @@ return jQuery;
 			customMedia: {},
 			init: true,
 			expFactor: 1.7,
-			expand: docElem.clientHeight > 630 ? docElem.clientWidth > 890 ? 500 : 410 : 359,
+			hFac: 0.8,
+			expand: docElem.clientHeight > 600 ? docElem.clientWidth > 860 ? 500 : 410 : 359,
 			loadMode: 2
 		};
 
@@ -12692,6 +12694,9 @@ MediumEditor.extensions = {};
         // by rg89
         isIE: ((navigator.appName === 'Microsoft Internet Explorer') || ((navigator.appName === 'Netscape') && (new RegExp('Trident/.*rv:([0-9]{1,}[.0-9]{0,})').exec(navigator.userAgent) !== null))),
 
+        // if firefox
+        isFF: (navigator.userAgent.toLowerCase().indexOf('firefox') > -1),
+
         // http://stackoverflow.com/a/11752084/569101
         isMac: (window.navigator.platform.toUpperCase().indexOf('MAC') >= 0),
 
@@ -12798,7 +12803,7 @@ MediumEditor.extensions = {};
          * not affected in any way.
          */
         findOrCreateMatchingTextNodes: function (document, element, match) {
-            var treeWalker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false),
+            var treeWalker = document.createTreeWalker(element, NodeFilter.SHOW_ALL, null, false),
                 matchedNodes = [],
                 currentTextIndex = 0,
                 startReached = false,
@@ -12806,30 +12811,41 @@ MediumEditor.extensions = {};
                 newNode = null;
 
             while ((currentNode = treeWalker.nextNode()) !== null) {
-                if (!startReached && match.start < (currentTextIndex + currentNode.nodeValue.length)) {
-                    startReached = true;
-                    newNode = Util.splitStartNodeIfNeeded(currentNode, match.start, currentTextIndex);
-                }
-                if (startReached) {
-                    Util.splitEndNodeIfNeeded(currentNode, newNode, match.end, currentTextIndex);
-                }
-                if (startReached && currentTextIndex === match.end) {
-                    break; // Found the node(s) corresponding to the link. Break out and move on to the next.
-                } else if (startReached && currentTextIndex > (match.end + 1)) {
-                    throw new Error('PerformLinking overshot the target!'); // should never happen...
-                }
+                if (currentNode.nodeType > 3) {
+                    continue;
+                } else if (currentNode.nodeType === 3) {
+                    if (!startReached && match.start < (currentTextIndex + currentNode.nodeValue.length)) {
+                        startReached = true;
+                        newNode = Util.splitStartNodeIfNeeded(currentNode, match.start, currentTextIndex);
+                    }
+                    if (startReached) {
+                        Util.splitEndNodeIfNeeded(currentNode, newNode, match.end, currentTextIndex);
+                    }
+                    if (startReached && currentTextIndex === match.end) {
+                        break; // Found the node(s) corresponding to the link. Break out and move on to the next.
+                    } else if (startReached && currentTextIndex > (match.end + 1)) {
+                        throw new Error('PerformLinking overshot the target!'); // should never happen...
+                    }
 
-                if (startReached) {
-                    matchedNodes.push(newNode || currentNode);
-                }
+                    if (startReached) {
+                        matchedNodes.push(newNode || currentNode);
+                    }
 
-                currentTextIndex += currentNode.nodeValue.length;
-                if (newNode !== null) {
-                    currentTextIndex += newNode.nodeValue.length;
-                    // Skip the newNode as we'll already have pushed it to the matches
-                    treeWalker.nextNode();
+                    currentTextIndex += currentNode.nodeValue.length;
+                    if (newNode !== null) {
+                        currentTextIndex += newNode.nodeValue.length;
+                        // Skip the newNode as we'll already have pushed it to the matches
+                        treeWalker.nextNode();
+                    }
+                    newNode = null;
+                } else if (currentNode.tagName.toLowerCase() === 'img') {
+                    if (!startReached && (match.start <= currentTextIndex)) {
+                        startReached = true;
+                    }
+                    if (startReached) {
+                        matchedNodes.push(currentNode);
+                    }
                 }
-                newNode = null;
             }
             return matchedNodes;
         },
@@ -12897,6 +12913,10 @@ MediumEditor.extensions = {};
          * <blockquote> container, they are the elements returned.
          */
         splitByBlockElements: function (element) {
+            if (element.nodeType !== 3 && element.nodeType !== 1) {
+                return [];
+            }
+
             var toRet = [],
                 blockElementQuery = MediumEditor.util.blockContainerElementNames.join(',');
 
@@ -12908,7 +12928,7 @@ MediumEditor.extensions = {};
                 var child = element.childNodes[i];
                 if (child.nodeType === 3) {
                     toRet.push(child);
-                } else {
+                } else if (child.nodeType === 1) {
                     var blockElements = child.querySelectorAll(blockElementQuery);
                     if (blockElements.length === 0) {
                         toRet.push(child);
@@ -13107,12 +13127,13 @@ MediumEditor.extensions = {};
 
         execFormatBlock: function (doc, tagName) {
             // Get the top level block element that contains the selection
-            var blockContainer = Util.getTopBlockContainer(MediumEditor.selection.getSelectionStart(doc));
+            var blockContainer = Util.getTopBlockContainer(MediumEditor.selection.getSelectionStart(doc)),
+                childNodes;
 
             // Special handling for blockquote
             if (tagName === 'blockquote') {
                 if (blockContainer) {
-                    var childNodes = Array.prototype.slice.call(blockContainer.childNodes);
+                    childNodes = Array.prototype.slice.call(blockContainer.childNodes);
                     // Check if the blockquote has a block element as a child (nested blocks)
                     if (childNodes.some(function (childNode) {
                         return Util.isBlockContainer(childNode);
@@ -13142,6 +13163,28 @@ MediumEditor.extensions = {};
             if (Util.isIE) {
                 tagName = '<' + tagName + '>';
             }
+
+            // When FF or IE, we have to handle blockquote node seperately as 'formatblock' does not work.
+            // https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand#Commands
+            if (blockContainer && blockContainer.nodeName.toLowerCase() === 'blockquote') {
+                // For IE, just use outdent
+                if (Util.isIE && tagName === '<p>') {
+                    return doc.execCommand('outdent', false, tagName);
+                }
+
+                // For Firefox, make sure there's a nested block element before calling outdent
+                if (Util.isFF && tagName === 'p') {
+                    childNodes = Array.prototype.slice.call(blockContainer.childNodes);
+                    // If there are some non-block elements we need to wrap everything in a <p> before we outdent
+                    if (childNodes.some(function (childNode) {
+                        return !Util.isBlockContainer(childNode);
+                    })) {
+                        doc.execCommand('formatBlock', false, tagName);
+                    }
+                    return doc.execCommand('outdent', false, tagName);
+                }
+            }
+
             return doc.execCommand('formatBlock', false, tagName);
         },
 
@@ -13913,6 +13956,15 @@ MediumEditor.extensions = {};
                     start: start,
                     end: start + range.toString().length
                 };
+
+                // Range contains an image, check to see if the selection ends with that image
+                if (range.endOffset !== 0 && (range.endContainer.nodeName.toLowerCase() === 'img' || (range.endContainer.nodeType === 1 && range.endContainer.querySelector('img')))) {
+                    var trailingImageCount = this.getTrailingImageCount(root, selectionState, range.endContainer, range.endOffset);
+                    if (trailingImageCount) {
+                        selectionState.trailingImageCount = trailingImageCount;
+                    }
+                }
+
                 // If start = 0 there may still be an empty paragraph before it, but we don't care.
                 if (start !== 0) {
                     var emptyBlocksIndex = this.getIndexRelativeToAdjacentEmptyBlocks(doc, root, range.startContainer, range.startOffset);
@@ -13948,28 +14000,60 @@ MediumEditor.extensions = {};
                 nodeStack = [],
                 charIndex = 0,
                 foundStart = false,
+                foundEnd = false,
+                trailingImageCount = 0,
                 stop = false,
                 nextCharIndex;
 
             while (!stop && node) {
-                if (node.nodeType === 3) {
+                // Only iterate over elements and text nodes
+                if (node.nodeType > 3) {
+                    continue;
+                }
+
+                // If we hit a text node, we need to add the amount of characters to the overall count
+                if (node.nodeType === 3 && !foundEnd) {
                     nextCharIndex = charIndex + node.length;
                     if (!foundStart && selectionState.start >= charIndex && selectionState.start <= nextCharIndex) {
                         range.setStart(node, selectionState.start - charIndex);
                         foundStart = true;
                     }
                     if (foundStart && selectionState.end >= charIndex && selectionState.end <= nextCharIndex) {
-                        range.setEnd(node, selectionState.end - charIndex);
-                        stop = true;
+                        if (!selectionState.trailingImageCount) {
+                            range.setEnd(node, selectionState.end - charIndex);
+                            stop = true;
+                        } else {
+                            foundEnd = true;
+                        }
                     }
                     charIndex = nextCharIndex;
                 } else {
-                    var i = node.childNodes.length - 1;
-                    while (i >= 0) {
-                        nodeStack.push(node.childNodes[i]);
-                        i -= 1;
+                    if (selectionState.trailingImageCount && foundEnd) {
+                        if (node.nodeName.toLowerCase() === 'img') {
+                            trailingImageCount++;
+                        }
+                        if (trailingImageCount === selectionState.trailingImageCount) {
+                            // Find which index the image is in its parent's children
+                            var endIndex = 0;
+                            while (node.parentNode.childNodes[endIndex] !== node) {
+                                endIndex++;
+                            }
+                            range.setEnd(node.parentNode, endIndex + 1);
+                            stop = true;
+                        }
+                    }
+
+                    if (!stop && node.nodeType === 1) {
+                        // this is an element
+                        // add all its children to the stack
+                        var i = node.childNodes.length - 1;
+                        while (i >= 0) {
+                            nodeStack.push(node.childNodes[i]);
+                            i -= 1;
+                        }
                     }
                 }
+
                 if (!stop) {
                     node = nodeStack.pop();
                 }
@@ -14109,6 +14193,91 @@ MediumEditor.extensions = {};
             }
 
             return emptyBlocksCount;
+        },
+
+        getTrailingImageCount: function (root, selectionState, endContainer, endOffset) {
+            var lastNode = endContainer.childNodes[endOffset - 1];
+            while (lastNode.hasChildNodes()) {
+                lastNode = lastNode.lastChild;
+            }
+
+            var node = root,
+                nodeStack = [],
+                charIndex = 0,
+                foundStart = false,
+                foundEnd = false,
+                stop = false,
+                nextCharIndex,
+                trailingImages = 0;
+
+            while (!stop && node) {
+                // Only iterate over elements and text nodes
+                if (node.nodeType > 3) {
+                    continue;
+                }
+
+                if (node.nodeType === 3 && !foundEnd) {
+                    trailingImages = 0;
+                    nextCharIndex = charIndex + node.length;
+                    if (!foundStart && selectionState.start >= charIndex && selectionState.start <= nextCharIndex) {
+                        foundStart = true;
+                    }
+                    if (foundStart && selectionState.end >= charIndex && selectionState.end <= nextCharIndex) {
+                        foundEnd = true;
+                    }
+                    charIndex = nextCharIndex;
+                } else {
+                    if (node.nodeName.toLowerCase() === 'img') {
+                        trailingImages++;
+                    }
+
+                    if (node === lastNode) {
+                        stop = true;
+                    } else if (node.nodeType === 1) {
+                        // this is an element
+                        // add all its children to the stack
+                        var i = node.childNodes.length - 1;
+                        while (i >= 0) {
+                            nodeStack.push(node.childNodes[i]);
+                            i -= 1;
+                        }
+                    }
+                }
+
+                if (!stop) {
+                    node = nodeStack.pop();
+                }
+            }
+
+            return trailingImages;
+        },
+
+        // determine if the current selection contains any 'content'
+        // content being and non-white space text or an image
+        selectionContainsContent: function (doc) {
+            var sel = doc.getSelection();
+
+            // collapsed selection or selection withour range doesn't contain content
+            if (!sel || sel.isCollapsed || !sel.rangeCount) {
+                return false;
+            }
+
+            // if toString() contains any text, the selection contains some content
+            if (sel.toString().trim() !== '') {
+                return true;
+            }
+
+            // if selection contains only image(s), it will return empty for toString()
+            // so check for an image manually
+            var selectionNode = this.getSelectedParentElement(sel.getRangeAt(0));
+            if (selectionNode) {
+                if (selectionNode.nodeName.toLowerCase() === 'img' ||
+                    (selectionNode.nodeType === 1 && selectionNode.querySelector('img'))) {
+                    return true;
+                }
+            }
+
+            return false;
         },
 
         selectionInContentEditableFalse: function (contentWindow) {
@@ -15609,8 +15778,18 @@ MediumEditor.extensions = {};
         },
 
         checkLinkFormat: function (value) {
-            var re = /^(https?|ftps?|rtmpt?):\/\/|mailto:/;
-            return (re.test(value) ? '' : 'http://') + value;
+            // Matches any alphabetical characters followed by ://
+            // Matches protocol relative "//"
+            // Matches common external protocols "mailto:" "tel:" "maps:"
+            var urlSchemeRegex = /^([a-z]+:)?\/\/|^(mailto|tel|maps):/i,
+            // var te is a regex for checking if the string is a telephone number
+            telRegex = /^\+?\s?\(?(?:\d\s?\-?\)?){3,20}$/;
+            if (telRegex.test(value)) {
+                return 'tel:' + value;
+            } else {
+                // Check for URL scheme and default to http:// if none found
+                return (urlSchemeRegex.test(value) ? '' : 'http://') + value;
+            }
         },
 
         doFormCancel: function () {
@@ -17529,7 +17708,7 @@ MediumEditor.extensions = {};
             }
 
             // If we don't have a 'valid' selection -> hide toolbar
-            if (this.window.getSelection().toString().trim() === '' ||
+            if (!MediumEditor.selection.selectionContainsContent(this.document) ||
                 (this.allowMultiParagraphSelection === false && this.multipleBlockElementsSelected())) {
                 return this.hideToolbar();
             }
@@ -17718,9 +17897,20 @@ MediumEditor.extensions = {};
             // position the toolbar at left 0, so we can get the real width of the toolbar
             this.getToolbarElement().style.left = '0';
 
+            var range = selection.getRangeAt(0),
+                boundary = range.getBoundingClientRect();
+
+            // Handle selections with just images
+            if (!boundary || ((boundary.height === 0 && boundary.width === 0) && range.startContainer === range.endContainer)) {
+                // If there's a nested image, use that for the bounding rectangle
+                if (range.startContainer.nodeType === 1 && range.startContainer.querySelector('img')) {
+                    boundary = range.startContainer.querySelector('img').getBoundingClientRect();
+                } else {
+                    boundary = range.startContainer.getBoundingClientRect();
+                }
+            }
+
             var windowWidth = this.window.innerWidth,
-                range = selection.getRangeAt(0),
-                boundary = range.getBoundingClientRect(),
                 middleBoundary = (boundary.left + boundary.right) / 2,
                 toolbarElement = this.getToolbarElement(),
                 toolbarHeight = toolbarElement.offsetHeight,
@@ -17822,7 +18012,7 @@ MediumEditor.extensions = {};
             textContent = node.textContent,
             caretPositions = MediumEditor.selection.getCaretOffsets(node);
 
-        if ((textContent[caretPositions.left - 1] === undefined) || (textContent[caretPositions.left - 1] === ' ') || (textContent[caretPositions.left] === undefined)) {
+        if ((textContent[caretPositions.left - 1] === undefined) || (textContent[caretPositions.left - 1].trim() === '')) {
             event.preventDefault();
         }
     }
@@ -17944,6 +18134,14 @@ MediumEditor.extensions = {};
             node.parentElement.removeChild(node);
 
             event.preventDefault();
+        } else if (MediumEditor.util.isKey(event, MediumEditor.util.keyCode.BACKSPACE) &&
+                (MediumEditor.util.getClosestTag(node, 'blockquote') !== false) &&
+                MediumEditor.selection.getCaretOffsets(node).left === 0) {
+
+            // when cursor is at the begining of the element and the element is <blockquote>
+            // then pressing backspace key should change the <blockquote> to a <p> tag
+            event.preventDefault();
+            MediumEditor.util.execFormatBlock(this.options.ownerDocument, 'p');
         }
     }
 
@@ -18144,6 +18342,8 @@ MediumEditor.extensions = {};
     }
 
     function initElements() {
+        var isTextareaUsed = false;
+
         this.elements.forEach(function (element, index) {
             if (!this.options.disableEditing && !element.getAttribute('data-disable-editing')) {
                 element.setAttribute('contentEditable', true);
@@ -18155,15 +18355,18 @@ MediumEditor.extensions = {};
             element.setAttribute('medium-editor-index', index);
 
             if (element.hasAttribute('medium-editor-textarea-id')) {
-                this.on(element, 'input', function (event) {
-                    var target = event.target,
-                        textarea = target.parentNode.querySelector('textarea[medium-editor-textarea-id="' + target.getAttribute('medium-editor-textarea-id') + '"]');
-                    if (textarea) {
-                        textarea.value = this.serialize()[target.id].value;
-                    }
-                }.bind(this));
+                isTextareaUsed = true;
             }
         }, this);
+
+        if (isTextareaUsed) {
+            this.subscribe('editableInput', function (event, editable) {
+                var textarea = editable.parentNode.querySelector('textarea[medium-editor-textarea-id="' + editable.getAttribute('medium-editor-textarea-id') + '"]');
+                if (textarea) {
+                    textarea.value = this.serialize()[editable.id].value;
+                }
+            }.bind(this));
+        }
     }
 
     function attachHandlers() {
@@ -18316,7 +18519,8 @@ MediumEditor.extensions = {};
         }
 
         if (action === 'image') {
-            return this.options.ownerDocument.execCommand('insertImage', false, this.options.contentWindow.getSelection());
+            var src = this.options.contentWindow.getSelection().toString().trim();
+            return this.options.ownerDocument.execCommand('insertImage', false, src);
         }
 
         /* Issue: https://github.com/yabwe/medium-editor/issues/595
@@ -18766,7 +18970,7 @@ MediumEditor.extensions = {};
                         // but the selection is contained within the same block element
                         // we want to make sure we create a single link, and not multiple links
                         // which can happen with the built in browser functionality
-                        if (commonAncestorContainer.nodeType !== 3 && startContainerParentElement === endContainerParentElement) {
+                        if (commonAncestorContainer.nodeType !== 3 && commonAncestorContainer.textContent.length !== 0 && startContainerParentElement === endContainerParentElement) {
                             var parentElement = (startContainerParentElement || currentEditor),
                                 fragment = this.options.ownerDocument.createDocumentFragment();
 
@@ -18925,18 +19129,18 @@ MediumEditor.parseVersionString = function (release) {
 
 MediumEditor.version = MediumEditor.parseVersionString.call(this, ({
     // grunt-bump looks for this:
-    'version': '5.10.0'
+    'version': '5.12.0'
 }).version);
 
     return MediumEditor;
 }()));
 
 },{}],5:[function(require,module,exports){
+'use strict';
+
 /**
  * packages from node_modules
  **/
-'use strict';
-
 window.$ = window.jQuery = require('jquery');
 window.MediumEditor = require('medium-editor');
 
@@ -19001,3 +19205,5 @@ if ('serviceWorker' in navigator) {
 }
 
 },{}]},{},[5]);
+
+//# sourceMappingURL=app.js.map

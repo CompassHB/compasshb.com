@@ -1,8 +1,6 @@
 
 var elixir = require('laravel-elixir');
 
-require('laravel-elixir-stylus');
-
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -28,11 +26,4 @@ elixir(function(mix) {
        'public/build/fonts'
    )
 
-});
-
-/**
- * Stylus (new)
- **/
-elixir(function(mix) {
-   mix.stylus('app.styl', './public/build/css/app2.css')
 });
