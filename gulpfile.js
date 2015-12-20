@@ -19,7 +19,7 @@ require('laravel-elixir-stylus');
   * Bootstrap / Less styles (old)
   **/
 elixir(function(mix) {
-    mix.less('app.less')
+    mix.sass('app.scss')
        .browserify('app.js')
        .version(['css/app.css', 'js/app.js']);
 

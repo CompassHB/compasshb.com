@@ -1,7 +1,8 @@
 /* Top of every page */
 
 // Reset to override defaults
-.navbar {
+.navbar
+{
 	min-height: auto;
 	margin-bottom: auto;
 }
@@ -40,7 +41,12 @@
 	margin-right: 30px;
 }
 
-@media (min-width: @grid-float-breakpoint) {
+@mixin disabled
+{
+	@extend .disabled;
+}
+
+@media (min-width: $grid-float-breakpoint) {
 	.dropdown:hover .dropdown-menu
 	{
 		display: block;
@@ -51,7 +57,7 @@
 	}
 
 	.dropdown-toggle {
-		&:extend(.disabled);
+		@include disabled;
 	}
 
 }

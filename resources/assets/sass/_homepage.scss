@@ -8,7 +8,7 @@
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-lg-min) {
+@media (min-width: $screen-lg-min) {
   .drawer
   {
     padding: 20px 35px;
