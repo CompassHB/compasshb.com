@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 <h1 class="tk-seravek-web">Sunday School</h1>
 <p>Meets Sundays at 9AM at church for breakfast and teaching.</p><br/>
 
@@ -40,6 +41,6 @@
     </div>
 </div>
 @endforeach
-<br/><br/>
 
+<br style="clear: both"/><br/><br/><br/><br/><br/><br/><br/>
 @endsection
