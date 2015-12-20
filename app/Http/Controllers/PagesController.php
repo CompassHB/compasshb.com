@@ -108,7 +108,7 @@ class PagesController extends Controller
             'prevsermon',
             'blogs',
             'videos',
-            'passage',
+            'passage'
         ))->with('images', $results)
             ->with('instagrams', $instagrams['data'])
             ->with('title', 'Compass HB - Huntington Beach');
