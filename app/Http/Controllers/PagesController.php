@@ -30,7 +30,7 @@ class PagesController extends Controller
      */
     public function home(Photos $photos, Video $videoClient, Events $event)
     {
-        $featuredevents = $event->search('#compasshb');
+        $featuredevents = $event->search('#featuredevent');
         $featuredevents = $featuredevents->events;
 
         $fevents = [];
