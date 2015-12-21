@@ -45,7 +45,7 @@ class BroadcastRefresh extends Command
         $broadcastsResponse = $this->client->get(
             'https://api.boxcast.com/channels/gnskfahu15wlwpvroe22/broadcasts?q=timeframe:current%20timeframe:future&l=1'
         );
-        $broadcasts = json_decode($broadcastsResponse->getBody(), true);
+        $broadcasts = json_decode($broadcastsResponse->getBody());
 
         return $broadcasts[0] ?? null;
     }
@@ -58,7 +58,7 @@ class BroadcastRefresh extends Command
     public function handle()
     {
         $broadcast = $this->getNextBroadcast();
-        if (!$broadcast) {
+        if (!isset($broadcast->starts_at)) {
             return;
         }
 

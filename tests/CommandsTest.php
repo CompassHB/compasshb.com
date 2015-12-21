@@ -50,8 +50,8 @@ class CommandsTest extends TestCase
         // Create a mock subscriber and queue two responses.
         // One with a JSON array and one with the error message
         $mock = new MockHandler([
+            new Response(200, [], '[{}]'),
             new Response(200, [], '[]'),
-            new Response(200, [], '{}'),
         ]);
 
         $handler = \GuzzleHttp\HandlerStack::create($mock);
