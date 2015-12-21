@@ -1,5 +1,11 @@
 <?php
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Handler\MockHandler;
+use CompassHB\Www\Console\Commands\BroadcastRefresh;
+
+
 class CommandsTest extends TestCase
 {
 
@@ -36,6 +42,29 @@ class CommandsTest extends TestCase
     public function test_forestall()
     {
         $this->call('Substrike\Forestall\DatabaseBackup@now', '');
+    }
+
+
+    public function test_the_broadcast_refresh_command_handles_empty_responses()
+    {
+        // Create a mock subscriber and queue two responses.
+        // One with a JSON array and one with the error message
+        $mock = new MockHandler([
+            new Response(200, [], '[]'),
+            new Response(200, [], '{}'),
+        ]);
+
+        $handler = \GuzzleHttp\HandlerStack::create($mock);
+
+        $client = new Client(['handler' => $handler]);
+
+        $broadcast = new BroadcastRefresh($client);
+
+        // The following request will receive a 200 response from the plugin
+        $broadcast->handle();
+
+        // The following request will receive a 404 response from the plugin
+        $broadcast->handle();
     }
 
 }
