@@ -46,7 +46,7 @@ class SermonsController extends Controller
      */
     public function create()
     {
-        $series = Series::lists('title', 'id')->all();
+        $series = Series::pluck('title', 'id')->all();
         array_unshift($series, 'No Series');
 
         return view('admin.sermons.create')
@@ -124,7 +124,7 @@ class SermonsController extends Controller
      */
     public function edit(Sermon $sermon)
     {
-        $series = Series::lists('title', 'id')->all();
+        $series = Series::pluck('title', 'id')->all();
         array_unshift($series, 'No Series');
 
         return view('admin.sermons.edit', compact('sermon'))

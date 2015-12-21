@@ -182,9 +182,9 @@ class PagesController extends Controller
     {
         $blogs = Blog::published()->get();
         $sermons = Sermon::published()->get();
-        $passages = Passage::lists('slug');
-        $series = Series::lists('slug');
-        $songs = Song::lists('slug');
+        $passages = Passage::pluck('slug');
+        $series = Series::pluck('slug');
+        $songs = Song::pluck('slug');
         $events = $event->events();
 
         // Generate video thumbnails

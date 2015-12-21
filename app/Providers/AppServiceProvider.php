@@ -23,13 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         /*
-         * Laravel Generators for development
-         */
-        if ($this->app->environment() == 'local') {
-            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
-        }
-
-        /*
          * Analytics
          */
         $this->app->bind(

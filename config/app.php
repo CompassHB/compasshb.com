@@ -4,6 +4,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services your application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    'env' => env('APP_ENV', 'production'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |
@@ -27,6 +40,8 @@ return [
     */
 
     'url' => 'https://www.compasshb.com',
+
+    'envoyer.heartbeat' => env('ENVOYER_HEARTBEAT'),
 
     /*
     |--------------------------------------------------------------------------
@@ -113,13 +128,11 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-        Illuminate\Routing\ControllerServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -140,18 +153,16 @@ return [
         /*
          * Application Service Providers...
          */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         CompassHB\Www\Providers\AppServiceProvider::class,
-        CompassHB\Www\Providers\BusServiceProvider::class,
-        CompassHB\Www\Providers\ConfigServiceProvider::class,
         CompassHB\Www\Providers\EventServiceProvider::class,
         CompassHB\Www\Providers\RouteServiceProvider::class,
-        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,
-        GrahamCampbell\Parse\ParseServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
+        GrahamCampbell\Parse\ParseServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Substrike\Forestall\ForestallServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*
@@ -200,9 +211,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
-        'Html' => Illuminate\Html\HtmlFacade::class,
-        'Form' => Illuminate\Html\FormFacade::class,
         'Feed' => Roumen\Feed\Facades\Feed::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

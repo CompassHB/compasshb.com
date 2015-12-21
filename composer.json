@@ -8,31 +8,29 @@
   "license": "MIT",
   "require": {
     "php": ">=7.0",
-    "laravel/framework": "5.1.*",
-    "illuminate/html": "5.*",
+    "laravel/framework": "5.2.*",
     "bugsnag/bugsnag-laravel": "1.*",
     "vimeo/vimeo-api": "1.*",
     "guzzlehttp/guzzle": "6.*",
     "guzzlehttp/oauth-subscriber": "~0.3.0",
     "league/flysystem-aws-s3-v3": "~1.0",
     "graham-campbell/parse": "~2.0",
-    "graham-campbell/htmlmin": "^3.0",
+    "graham-campbell/htmlmin": "4.*",
     "roumen/feed": "^2.9",
     "zencoder/zencoder-php": "~2.2",
     "substrike/forestall": "^0.1.0",
     "squizlabs/php_codesniffer": "^2.4",
     "google/apiclient": "^1.1",
-    "barryvdh/laravel-ide-helper": "^2.1"
+    "barryvdh/laravel-ide-helper": "^2.1",
+    "laravelcollective/html": "dev-master"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "^0.9.4",
     "phpunit/phpunit": "~5.0",
-    "phpspec/phpspec": "~2.1",
     "satooshi/php-coveralls": "dev-master",
-    "laracasts/generators": "^1.1",
-    "laravel/homestead": "^2.1",
-    "laraveldaily/quickadmin": "^0.2.10"
+    "symfony/dom-crawler": "~3.0",
+    "symfony/css-selector": "~3.0"
   },
 	"autoload": {
       "classmap": [

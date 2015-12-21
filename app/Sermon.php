@@ -85,7 +85,7 @@ class Sermon extends Model
         $transcoder = new ZencoderTranscoderRepository();
 
         // Only transcode in production when there is a video file and the audio URL is blank.
-        if (env('APP_ENV') == 'production' &&
+        if (config('app.env') == 'production' &&
             array_key_exists('ministry', $this->attributes) &&
             empty($this->attributes['audio']) &&
             $value != null) {
