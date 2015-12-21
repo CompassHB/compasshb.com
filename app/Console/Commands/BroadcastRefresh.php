@@ -36,7 +36,7 @@ class BroadcastRefresh extends Command
         );
         $broadcasts = json_decode($broadcastsResponse->getBody());
 
-        return $broadcasts[0];
+        return $broadcasts[0] ?? '';
     }
 
     /**
