@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "95c6bdf153948320eae9120878c791d9",
-    "content-hash": "7f883b3460510d850019c983e4d8eed7",
+    "hash": "11f9a916bfa777920cb777439ec279a2",
+    "content-hash": "751380128b16cc2fb0b22d913c6e3f70",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4179,7 +4179,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/51703dffb55f878e57f5673cd8c837f5f89f3096",
+                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/f2fe833caef2c65620c11f5fabe60040df39339f",
                 "reference": "51703dffb55f878e57f5673cd8c837f5f89f3096",
                 "shasum": ""
             },
