@@ -26,6 +26,9 @@ class PagesController extends Controller
     /**
      * Controller for the homepage.
      *
+     * @param Photos $photos
+     * @param Video $videoClient
+     * @param Events $event
      * @return view
      */
     public function home(Photos $photos, Video $videoClient, Events $event)
@@ -117,6 +120,7 @@ class PagesController extends Controller
     /**
      * Populate the Photos page from Photo Client.
      *
+     * @param Photos $photos
      * @return \Illuminate\View\View
      */
     public function photos(Photos $photos)
@@ -240,6 +244,9 @@ class PagesController extends Controller
 
     /**
      * Clear the event cache when event management system sends a webhook callback.
+     * @param $auth
+     * @param Events $event
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function cleareventcache($auth, Events $event)
     {
@@ -263,6 +270,8 @@ class PagesController extends Controller
 
     /**
      * Clear the event cache when event management system sends a webhook callback.
+     * @param $auth
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function clearvideothumbcache($auth)
     {

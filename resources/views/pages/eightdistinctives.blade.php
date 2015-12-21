@@ -8,13 +8,13 @@
     <h1 class="tk-seravek-web">8 Distinctives</h1>
     <p>At Compass Bible Church we are called to make disciples of Christ (Matthew 28:18-20). As we do, we will always work to express and maintain these eight ministry values.<br/><br/></p>
     <div class="col-md-5 well">
-        <center><i class="material-icons">ibrary_books</i></center>
+        <div style="text-align: center;"><i class="material-icons">ibrary_books</i></div>
         <h3 class="tk-seravek-web">1. THE BIBLE IS CENTRAL</h3>
         <p>While the Bible is not an end in itself, it is certainly the indispensable &#8220;compass&#8221; for our knowledge and understanding of God and his plan for our lives.</p>
         <p>Psalm 43:3; Psalm 119:105; John 17:17; 1 Timothy 3:15</p>
     </div>
     <div class="col-md-5 col-md-offset-1 well">
-        <center><i class="material-icons">fullscreen_exit</i></center>
+        <div style="text-align: center;"><i class="material-icons">fullscreen_exit</i></div>
         <h3 class="tk-seravek-web">2. WE SHOWCASE EXPOSITORY PREACHING</h3>
         <p>Because God&#8217;s written revelation to us is &#8220;living and active and sharper than any two-edged sword&#8221; it is our intention to allow it to utilize Compass preachers to get to our hearts and minds as they open the word and let its message out. Our goal is that Compass pastors won&#8217;t use the Bible to preach their messages, but that the Bible will use Compass pastors to preach its message. God&#8217;s powerful and life-changing truth!</p>
         <p>Hebrews 4:12</p>

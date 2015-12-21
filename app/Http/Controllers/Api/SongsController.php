@@ -12,6 +12,7 @@ class SongsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Video $video
      * @return Response
      */
     public function index(Video $video)

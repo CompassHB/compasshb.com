@@ -28,7 +28,11 @@ class FeedsController extends Controller
     public function sermons()
     {
         $data = array();
-        $data['sermons'] = Sermon::where('ministry', '=', null)->published()->orderBy('published_at', 'desc')->limit(300)->get();
+        $data['sermons'] = Sermon::where('ministry', '=', null)
+                                ->published()
+                                ->orderBy('published_at', 'desc')
+                                ->limit(300)
+                                ->get();
 
         return Response::view('podcasts.video', $data, 200, [
             'Content-Type' => 'application/atom+xml; charset=UTF-8',
@@ -52,6 +56,7 @@ class FeedsController extends Controller
     /**
      * Feed to mobile app.
      *
+     * @param Video $video
      * @return \Illuminate\View\View
      */
     public function json(Video $video)

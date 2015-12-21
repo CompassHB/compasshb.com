@@ -2,6 +2,7 @@
 
 namespace CompassHB\Www\Repositories\Video;
 
+use GuzzleHttp\Client;
 use Log;
 use Cache;
 
@@ -16,7 +17,7 @@ class YouTubeVideoRepository implements Contract
 
     public function __construct()
     {
-        $this->client = new \GuzzleHttp\Client();
+        $this->client = new Client();
     }
 
     /**
@@ -32,9 +33,10 @@ class YouTubeVideoRepository implements Contract
     /**
      * Get oembed iframe.
      *
-     * @param string $url location of video
-     *
+     * @param bool $api
      * @return string
+     * @internal param string $url location of video
+     *
      */
     public function getEmbedCode($api = false)
     {
@@ -56,9 +58,9 @@ class YouTubeVideoRepository implements Contract
     /**
      * Make an oembed request and return the thumbnail.
      *
-     * @param string $url
-     *
+     * @param bool $large
      * @return string
+     * @internal param string $url
      */
     public function getThumbnail($large = false)
     {

@@ -21,6 +21,8 @@ class SongsController extends Controller
     /**
      * Show all songs.
      *
+     * @param Video $video
+     * @param Plan $plan
      * @return \Illuminate\View\View
      */
     public function index(Video $video, Plan $plan)
@@ -45,6 +47,7 @@ class SongsController extends Controller
      *
      * @param Song $song
      *
+     * @param Video $video
      * @return \Illuminate\View\View
      */
     public function show(Song $song, Video $video)

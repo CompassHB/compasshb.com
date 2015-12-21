@@ -20,7 +20,7 @@
 				<li><br/>
 				<a href="http://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}&t={{ $event->name->text }}">Facebook</a>&nbsp;&nbsp;
 			    <a href="http://twitter.com/share?text=Compass Bible Church Event: {{ $event->name->text }}&url={{ Request::url() }}&hashtags=compasshb">Twitter</a>&nbsp;&nbsp;
-			    <a href="https://plus.google.com/share?url={{ Request::url() }}" onclick="javascript:window.open(this.href,
+			    <a href="https://plus.google.com/share?url={{ Request::url() }}" onclick="window.open(this.href,
 	  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Google</a>&nbsp;&nbsp;
 			    <a href="mailto:?subject=Compass Bible Church Huntington Beach: Events {{ $event->name->text }}&body={{ Request::url() }}">Email</a></li>
 			</ul>

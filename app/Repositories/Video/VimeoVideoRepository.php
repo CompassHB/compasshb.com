@@ -2,10 +2,12 @@
 
 namespace CompassHB\Www\Repositories\Video;
 
+use GuzzleHttp\Client;
 use Log;
 use Cache;
 
 use CompassHB\Www\Contracts\Video as Contract;
+use Vimeo\Vimeo;
 
 class VimeoVideoRepository implements Contract
 {
@@ -24,8 +26,8 @@ class VimeoVideoRepository implements Contract
         $this->clientSecret = env('VIMEO_CLIENT_SECRET');
         $this->token = env('VIMEO_TOKEN');
 
-        $this->vimeoClient = new \Vimeo\Vimeo($this->clientId, $this->clientSecret, $this->token);
-        $this->client = new \GuzzleHttp\Client();
+        $this->vimeoClient = new Vimeo($this->clientId, $this->clientSecret, $this->token);
+        $this->client = new Client();
     }
 
     /**
@@ -41,9 +43,10 @@ class VimeoVideoRepository implements Contract
     /**
      * Get oembed iframe.
      *
-     * @param string $url location of video
-     *
+     * @param bool $api
      * @return string
+     * @internal param string $url location of video
+     *
      */
     public function getEmbedCode($api = false)
     {
@@ -97,9 +100,13 @@ class VimeoVideoRepository implements Contract
             return [];
         }
     }
+
     /**
      * Returns the WebVTT subtitles
      * and transcriptions/translations.
+     * @param bool $parse
+     * @param string $language
+     * @return mixed|string|void
      */
     public function getTextTracks($parse = false, $language = 'en')
     {
@@ -168,9 +175,10 @@ class VimeoVideoRepository implements Contract
     /**
      * Make an oembed request and return the thumbnail.
      *
-     * @param string $url
-     *
+     * @param bool $large
      * @return string
+     * @internal param string $url
+     *
      */
     public function getThumbnail($large = false)
     {
@@ -206,10 +214,9 @@ class VimeoVideoRepository implements Contract
     /**
      * Returns the largest thumbnail from a video from Vimeo
      * to display on the homepage banner.
-     *
-     * @param string $url
-     *
      * @return string
+     * @internal param string $url
+     *
      */
     private function getVideoThumb()
     {
@@ -238,10 +245,9 @@ class VimeoVideoRepository implements Contract
 
     /**
      * Link to download Vimeo video.
-     *
-     * @param string $videoUrl
-     *
      * @return string
+     * @internal param string $videoUrl
+     *
      */
     public function getDownloadLink()
     {
@@ -263,10 +269,9 @@ class VimeoVideoRepository implements Contract
 
     /**
      * Returns the play count stats.
-     *
-     * @param string $url
-     *
      * @return string
+     * @internal param string $url
+     *
      */
     public function getVideoPlays()
     {

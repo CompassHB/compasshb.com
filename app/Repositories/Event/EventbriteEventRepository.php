@@ -26,6 +26,7 @@ class EventbriteEventRepository implements Contract
      * List of events matching search term.
      *
      * @param string $query
+     * @return mixed
      */
     public function search($query)
     {
@@ -102,6 +103,7 @@ class EventbriteEventRepository implements Contract
      * Single event details.
      *
      * @param string $id
+     * @return mixed
      */
     public function event($id)
     {

@@ -33,10 +33,12 @@ class AwsUploadRepository implements Contract
      * Accepts a file from a form upload and
      * saves it to AWS S3 returning the URL.
      *
-     * @param  UploadedFile
-     * @param  string
-     *
+     * @param UploadedFile $file
+     * @param $folder
      * @return string
+     * @internal param $UploadedFile
+     * @internal param $string
+     *
      */
     public function uploadAndSaveS3(UploadedFile $file, $folder)
     {

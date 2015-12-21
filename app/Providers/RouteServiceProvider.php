@@ -3,6 +3,11 @@
 namespace CompassHB\Www\Providers;
 
 use Auth;
+use CompassHB\Www\Blog;
+use CompassHB\Www\Passage;
+use CompassHB\Www\Series;
+use CompassHB\Www\Sermon;
+use CompassHB\Www\Song;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -33,10 +38,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return \CompassHB\Www\Song::where('slug', $slug)->firstOrFail();
+                return Song::where('slug', $slug)->firstOrFail();
             }
 
-            return \CompassHB\Www\Song::where('slug', $slug)->firstOrFail();
+            return Song::where('slug', $slug)->firstOrFail();
         });
 
         /*
@@ -46,10 +51,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return \CompassHB\Www\Passage::where('slug', $slug)->firstOrFail();
+                return Passage::where('slug', $slug)->firstOrFail();
             }
 
-            return \CompassHB\Www\Passage::where('slug', $slug)->published()->firstOrFail();
+            return Passage::where('slug', $slug)->published()->firstOrFail();
         });
 
         /*
@@ -59,10 +64,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return \CompassHB\Www\Sermon::where('slug', $slug)->firstOrFail();
+                return Sermon::where('slug', $slug)->firstOrFail();
             }
 
-            return \CompassHB\Www\Sermon::where('slug', $slug)->published()->firstOrFail();
+            return Sermon::where('slug', $slug)->published()->firstOrFail();
         });
 
         /*
@@ -72,17 +77,17 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return \CompassHB\Www\Sermon::where('slug', $slug)->firstOrFail();
+                return Sermon::where('slug', $slug)->firstOrFail();
             }
 
-            return \CompassHB\Www\Sermon::where('slug', $slug)->published()->firstOrFail();
+            return Sermon::where('slug', $slug)->published()->firstOrFail();
         });
 
         /*
          * A sermon series is at /series/{slug}
          */
         $router->bind('series', function ($slug) {
-            return \CompassHB\Www\Series::where('slug', $slug)->firstOrFail();
+            return Series::where('slug', $slug)->firstOrFail();
         });
 
         /*
@@ -92,10 +97,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return \CompassHB\Www\Blog::where('slug', $slug)->firstOrFail();
+                return Blog::where('slug', $slug)->firstOrFail();
             }
 
-            return \CompassHB\Www\Blog::where('slug', $slug)->published()->firstOrFail();
+            return Blog::where('slug', $slug)->published()->firstOrFail();
         });
     }
 

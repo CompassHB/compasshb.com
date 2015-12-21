@@ -28,13 +28,11 @@
 				margin-bottom: 40px;
 			}
 		</style>
-    <script src="//use.typekit.net/gdu1kdg.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title tk-seravek-web">Be right back.</div>
+				<div class="title">Be right back.</div>
 			</div>
 		</div>
 	</body>

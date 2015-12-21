@@ -47,13 +47,14 @@ class BoxcastReminder extends Command
         if (isset($broadcasts[0])) {
             $broadcasts = $broadcasts[0];
             $startTime = new Carbon($broadcasts->starts_at);
+
+            if (!$broadcasts || Carbon::now()->addWeek()->lte($startTime)) {
+                Mail::send('emails.boxcast-reminder', [], function ($message) {
+                    $message->subject('Schedule Boxcast Livestream');
+                    $message->to('brad@compasshb.com');
+                });
+            }
         }
 
-        if (!$broadcasts || Carbon::now()->addWeek()->lte($startTime)) {
-            Mail::send('emails.boxcast-reminder', [], function ($message) {
-                $message->subject('Schedule Boxcast Livestream');
-                $message->to('brad@compasshb.com');
-            });
-        }
     }
 }

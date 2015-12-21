@@ -40,6 +40,7 @@ class PassagesController extends Controller
      *
      * @param Passage $passage
      *
+     * @param bool $today
      * @return \Illuminate\View\View
      */
     public function show(Passage $passage, $today = false)

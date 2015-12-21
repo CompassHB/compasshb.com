@@ -36,4 +36,5 @@
 				<i class="material-icons">keyboard_arrow_right</i>
 			</li>
 	</ul>
+  </nav>
 </section>

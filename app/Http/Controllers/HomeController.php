@@ -75,8 +75,7 @@ class HomeController extends Controller
 
     /**
      * Controller for route to admin page for Sunday School ministry.
-     *
-     * @return [type] [description]
+     * @return $this [type] [description]
      */
     public function video()
     {

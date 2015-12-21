@@ -24,6 +24,7 @@ class DatabaseBackup extends Command
     /**
      * Execute the console command.
      *
+     * @param Cloud $cloud
      * @return mixed
      */
     public function handle(Cloud $cloud)

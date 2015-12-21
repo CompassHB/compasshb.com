@@ -5,6 +5,7 @@ namespace CompassHB\Www\Exceptions;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
 use Bugsnag\BugsnagLaravel\BugsnagExceptionHandler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -14,7 +15,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        HttpException::class,
     ];
     /**
      * Report or log an exception.

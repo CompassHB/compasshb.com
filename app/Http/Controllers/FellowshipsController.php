@@ -11,6 +11,8 @@ class FellowshipsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Video $video
+     * @param Events $event
      * @return \Illuminate\View\View
      */
     public function index(Video $video, Events $event)

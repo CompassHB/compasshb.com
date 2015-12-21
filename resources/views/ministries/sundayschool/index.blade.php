@@ -9,7 +9,7 @@
 <h1 class="tk-seravek-web">Sunday School</h1>
 <p>Meets Sundays at 9AM at church for breakfast and teaching.</p><br/>
 
-<h3class="tk-seravek-web">Current Series: {{ $series->first()->title }}</h3>
+<h3 class="tk-seravek-web">Current Series: {{ $series->first()->title }}</h3>
 <p>{{ $series->first()->body }}</p>
 <table class="table table-striped">
 	<thead>
