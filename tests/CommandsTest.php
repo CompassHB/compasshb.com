@@ -2,6 +2,7 @@
 
 class CommandsTest extends TestCase
 {
+
     public function test_boxcast_reminder()
     {
         $this->call('boxcast:reminder', '');
@@ -10,6 +11,11 @@ class CommandsTest extends TestCase
     public function test_broadcast_refresh()
     {
         $this->call('broadcast:refresh', '');
+    }
+
+    public function test_featuredevent_reminder()
+    {
+        $this->call('featuredevent:reminder', '');
     }
 
     public function test_worksheet_reminder()
@@ -31,4 +37,5 @@ class CommandsTest extends TestCase
     {
         $this->call('Substrike\Forestall\DatabaseBackup@now', '');
     }
+
 }
