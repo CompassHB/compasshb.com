@@ -31,6 +31,8 @@ class BroadcastRefresh extends Command
     public function __construct(Client $client)
     {
         $this->client = $client;
+
+        parent::__construct();
     }
 
     /**
