@@ -142,7 +142,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
             <a class="clickable featuredblog boxer" href="{{ route('blog.show', $video->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $video->othumbnail }});">
               <br/><br/>
               <h4 class="tk-seravek-web">{{ $video->title }}</h4>
-              <p> {{ date("F j", strtotime($video->published_at)) }}<br/>{{ $sermon->text }}</p>
+              <p> {{ date("F j", strtotime($video->published_at)) }}</p>
               <br/><br/><br/><br/>
             </a>
           </span>
