@@ -14,9 +14,10 @@ interface Video
     /**
      * The embed code in HTML.
      *
-     * @param string $url
-     *
+     * @param bool $api
      * @return string
+     * @internal param string $url
+     *
      */
     public function getEmbedCode($api = false);
 
@@ -24,6 +25,8 @@ interface Video
      * Get the WebVTT (.vtt) caption file
      * attached to a video.
      *
+     * @param bool $parse
+     * @param string $language
      * @return string
      */
     public function getTextTracks($parse = false, $language = 'en');
@@ -39,11 +42,10 @@ interface Video
     /**
      * The link to cover image.
      *
-     * @param string $url
-     * @param bool   $large returns default thumbnail from the oembed call
+     * @param bool $large returns default thumbnail from the oembed call
      *                      Set this to true if there is another way to grab a high resolution thumbnail
-     *
      * @return string
+     * @internal param string $url
      */
     public function getThumbnail($large = false);
 

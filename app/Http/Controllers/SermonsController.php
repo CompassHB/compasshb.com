@@ -24,6 +24,7 @@ class SermonsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Video $video
      * @return \Illuminate\View\View
      */
     public function index(Video $video)
@@ -45,7 +46,7 @@ class SermonsController extends Controller
      */
     public function create()
     {
-        $series = Series::lists('title', 'id')->all();
+        $series = Series::pluck('title', 'id')->all();
         array_unshift($series, 'No Series');
 
         return view('admin.sermons.create')
@@ -55,10 +56,12 @@ class SermonsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Cloud
-     * @param SermonRequest
-     *
+     * @param SermonRequest $request
+     * @param Upload $upload
      * @return \Illuminate\Http\RedirectResponse
+     * @internal param $Cloud
+     * @internal param $SermonRequest
+     *
      */
     public function store(SermonRequest $request, Upload $upload)
     {
@@ -86,6 +89,8 @@ class SermonsController extends Controller
      * Display the specified resource.
      *
      *
+     * @param Sermon $sermon
+     * @param Video $video
      * @return \Illuminate\View\View
      */
     public function show(Sermon $sermon, Video $video)
@@ -114,11 +119,12 @@ class SermonsController extends Controller
      * Show the form for editing the specified resource.
      *
      *
+     * @param Sermon $sermon
      * @return \Illuminate\View\View
      */
     public function edit(Sermon $sermon)
     {
-        $series = Series::lists('title', 'id')->all();
+        $series = Series::pluck('title', 'id')->all();
         array_unshift($series, 'No Series');
 
         return view('admin.sermons.edit', compact('sermon'))
@@ -129,6 +135,9 @@ class SermonsController extends Controller
      * Update the specified resource in storage.
      *
      *
+     * @param Sermon $sermon
+     * @param SermonRequest $request
+     * @param Upload $upload
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Sermon $sermon, SermonRequest $request, Upload $upload)
@@ -157,9 +166,10 @@ class SermonsController extends Controller
     /**
      * Redirect to sermon download link.
      *
-     * @param Sermon
-     *
+     * @param Sermon $sermon
+     * @param Video $video
      * @return \Illuminate\Http\RedirectResponse
+     * @internal param $Sermon
      */
     public function download(Sermon $sermon, Video $video)
     {

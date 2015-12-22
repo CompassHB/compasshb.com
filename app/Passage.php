@@ -2,6 +2,7 @@
 
 namespace CompassHB\Www;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -29,7 +30,7 @@ class Passage extends Model
 
     public function setPublishedAtAttribute($date)
     {
-        $this->attributes['published_at'] = \Carbon\Carbon::parse($date);
+        $this->attributes['published_at'] = Carbon::parse($date);
     }
 
     /**
@@ -41,17 +42,17 @@ class Passage extends Model
      */
     public function getPublishedAtAttribute($date)
     {
-        return new \Carbon\Carbon($date);
+        return new Carbon($date);
     }
 
     public function scopeUnpublished($query)
     {
-        $query->where('published_at', '>', \Carbon\Carbon::now());
+        $query->where('published_at', '>', Carbon::now());
     }
 
     public function scopePublished($query)
     {
-        $query->where('published_at', '<=', \Carbon\Carbon::now());
+        $query->where('published_at', '<=', Carbon::now());
     }
 
     public function scopeSince($query, $date)

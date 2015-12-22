@@ -16,7 +16,8 @@ class DashboardController extends Controller
 
     /**
      * Show the settings dashboard.
-     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Request $request)
     {

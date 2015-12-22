@@ -40,6 +40,7 @@ class SeriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param SeriesRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(SeriesRequest $request)
@@ -56,6 +57,8 @@ class SeriesController extends Controller
      * Display the specified resource.
      *
      *
+     * @param Series $series
+     * @param Video $video
      * @return \Illuminate\View\View
      */
     public function show(Series $series, Video $video)
@@ -75,6 +78,7 @@ class SeriesController extends Controller
      * Show the form for editing the specified resource.
      *
      *
+     * @param Series $series
      * @return \Illuminate\View\View
      */
     public function edit(Series $series)
@@ -86,6 +90,8 @@ class SeriesController extends Controller
      * Update the specified resource in storage.
      *
      *
+     * @param Series $series
+     * @param SeriesRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Series $series, SeriesRequest $request)

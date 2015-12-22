@@ -23,8 +23,8 @@ function setActive($path, $active = 'active')
 /**
  * Create a model's slug.
  *
+ * @param $model
  * @param string $title
- *
  * @return string
  */
 function makeSlugFromTitle($model, $title)
@@ -39,10 +39,10 @@ function makeSlugFromTitle($model, $title)
 /**
  * Construct a route/url from a model and slug.
  *
- * @param string $model
+ * @param $type
  * @param string $slug
- *
  * @return string
+ * @internal param string $model
  */
 function makeRouteFromSlug($type, $slug)
 {

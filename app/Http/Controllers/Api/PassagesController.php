@@ -12,6 +12,7 @@ class PassagesController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Scripture $scripture
      * @return Response
      */
     public function index(Scripture $scripture)

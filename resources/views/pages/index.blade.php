@@ -106,7 +106,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 
 {{-- Parallax --}}
 <div class="row">
-    <div style="background-image: url(https://compasshb.smugmug.com/photos/i-WMM77kp/0/X3/i-WMM77kp-X3.jpg);padding-top: 250px; background-attachment: fixed; background-position: 50% 0px; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat;"></div>
+    <div style="background-image: url(https://compasshb.smugmug.com/photos/i-WMM77kp/0/X3/i-WMM77kp-X3.jpg);padding-top: 250px; background-attachment: fixed; background-position: 50% 0; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat;"></div>
 </div>
 
 {{-- Recent Sermons --}}
@@ -122,8 +122,8 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
                 <p> {{ date("F j", strtotime($sermon->published_at)) }}<br/>{{ $sermon->text }}</p>
                 <br/><br/>
               </a>
+            </span>
         </div>
-      </span>
     </div>
         @endforeach
     </div>
@@ -145,8 +145,8 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
               <p> {{ date("F j", strtotime($video->published_at)) }}<br/>{{ $sermon->text }}</p>
               <br/><br/><br/><br/>
             </a>
-          </div>
-        </span>
+          </span>
+        </div>
       </div>
         @endforeach
 

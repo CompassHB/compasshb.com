@@ -22,6 +22,7 @@ class MinistryController extends Controller
     /**
      * Controller for Youth Ministry page.
      *
+     * @param Video $videoClient
      * @return \Illuminate\View\View
      */
     public function youth(Video $videoClient)
@@ -73,6 +74,7 @@ class MinistryController extends Controller
     /**
      * Controller for Sunday School ministry page.
      *
+     * @param Video $video
      * @return \Illuminate\View\View
      */
     public function women(Video $video)

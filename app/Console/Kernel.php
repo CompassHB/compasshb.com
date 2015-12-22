@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call('Substrike\Forestall\DatabaseBackup@now')
             ->dailyAt('23:59')
-            ->thenPing(env('ENVOYER_HEARTBEAT'));
+            ->thenPing(config('app.envoyer_heartbeat'));
 
         $schedule->command('push:passage')
             ->dailyAt('06:45');

@@ -2,6 +2,7 @@
 
 namespace CompassHB\Www\Events;
 
+use Carbon\Carbon;
 use CompassHB\Www\User;
 
 class LogUserLastLogin
@@ -18,10 +19,11 @@ class LogUserLastLogin
      * Handle the event.
      *
      * @param User $user
+     * @param $remember
      */
     public function handle(User $user, $remember)
     {
-        $user->last_login = \Carbon\Carbon::now();
+        $user->last_login = Carbon::now();
         $user->save();
     }
 }

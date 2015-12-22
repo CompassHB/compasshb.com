@@ -33,15 +33,15 @@ class FeaturedEventReminder extends Command
     /**
      * Execute the console command.
      *
+     * @param Events $event
      * @return mixed
      */
     public function handle(Events $event)
     {
         $featured = $event->search('#featuredevent');
 
-        if ($featured->events == null)
-        {
-            Mail::send('emails.reminderevents', ['count' => $count], function ($message) {
+        if ($featured->events == null) {
+            Mail::send('emails.reminderevents', [], function ($message) {
                 $message->subject('Post Featured Event');
                 $message->to('info@compasshb.com');
             });

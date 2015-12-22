@@ -2,6 +2,7 @@
 
 namespace CompassHB\Www;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use CompassHB\Www\Repositories\Transcoder\ZencoderTranscoderRepository;
@@ -74,6 +75,7 @@ class Sermon extends Model
     /**
      * Set the empty field to be null using
      * a Laravel mutator function.
+     * @param $value
      */
     public function setVideoAttribute($value)
     {
@@ -83,7 +85,7 @@ class Sermon extends Model
         $transcoder = new ZencoderTranscoderRepository();
 
         // Only transcode in production when there is a video file and the audio URL is blank.
-        if (env('APP_ENV') == 'production' &&
+        if (config('app.env') == 'production' &&
             array_key_exists('ministry', $this->attributes) &&
             empty($this->attributes['audio']) &&
             $value != null) {
@@ -117,7 +119,7 @@ class Sermon extends Model
 
     public function setPublishedAtAttribute($date)
     {
-        $this->attributes['published_at'] = \Carbon\Carbon::parse($date);
+        $this->attributes['published_at'] = Carbon::parse($date);
     }
 
     /**
@@ -129,16 +131,16 @@ class Sermon extends Model
      */
     public function getPublishedAtAttribute($date)
     {
-        return new \Carbon\Carbon($date);
+        return new Carbon($date);
     }
 
     public function scopeUnpublished($query)
     {
-        $query->where('published_at', '>', \Carbon\Carbon::now());
+        $query->where('published_at', '>', Carbon::now());
     }
 
     public function scopePublished($query)
     {
-        $query->where('published_at', '<=', \Carbon\Carbon::now());
+        $query->where('published_at', '<=', Carbon::now());
     }
 }

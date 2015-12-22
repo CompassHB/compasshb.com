@@ -3,6 +3,7 @@
 namespace CompassHB\Www\Repositories\Plan;
 
 use Cache;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
@@ -76,8 +77,8 @@ class PcoPlanRepository implements Contract
 
             // Get Plan ID for most recent service
             foreach (array_reverse($plans) as $plan) {
-                $planDate = \Carbon\Carbon::parse($plan->dates);
-                $now = \Carbon\Carbon::now();
+                $planDate = Carbon::parse($plan->dates);
+                $now = Carbon::now();
 
                 if ($planDate->lt($now)) {
                     $planId = $plan->id;

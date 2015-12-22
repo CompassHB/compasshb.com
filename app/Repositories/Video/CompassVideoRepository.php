@@ -3,9 +3,6 @@
 namespace CompassHB\Www\Repositories\Video;
 
 use CompassHB\Www\Contracts\Video as Contract;
-use CompassHB\Www\Repositories\Video\VimeoVideoRepository;
-use CompassHB\Www\Repositories\Video\YouTubeVideoRepository;
-use CompassHB\Www\Repositories\Video\FakeVideoRepository;
 
 class CompassVideoRepository implements Contract
 {
@@ -32,9 +29,10 @@ class CompassVideoRepository implements Contract
     /**
      * Get oembed iframe.
      *
-     * @param string $url location of video
-     *
+     * @param bool $api
      * @return string
+     * @internal param string $url location of video
+     *
      */
     public function getEmbedCode($api = false)
     {
@@ -44,9 +42,9 @@ class CompassVideoRepository implements Contract
     /**
      * Make an oembed request and return the thumbnail.
      *
-     * @param string $url
-     *
+     * @param bool $large
      * @return string
+     * @internal param string $url
      */
     public function getThumbnail($large = false)
     {
@@ -56,10 +54,9 @@ class CompassVideoRepository implements Contract
     /**
      * Returns the largest thumbnail from a video from Vimeo
      * to display on the homepage banner.
-     *
-     * @param string $url
-     *
      * @return string
+     * @internal param string $url
+     *
      */
     private function getVideoThumb()
     {
@@ -68,10 +65,9 @@ class CompassVideoRepository implements Contract
 
     /**
      * Link to download Vimeo video.
-     *
-     * @param string $videoUrl
-     *
      * @return string
+     * @internal param string $videoUrl
+     *
      */
     public function getDownloadLink()
     {

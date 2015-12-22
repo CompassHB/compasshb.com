@@ -1,8 +1,6 @@
 <?php
 
 use CompassHB\Www\Song;
-use CompassHB\Www\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class SongsControllerTest extends TestCase
 {

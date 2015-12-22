@@ -35,6 +35,8 @@ class BlogsController extends Controller
      *
      * @param Blog $blog
      *
+     * @param Video $video
+     * @param string $locale
      * @return \Illuminate\View\View
      */
     public function show(Blog $blog, Video $video, $locale = 'en')
