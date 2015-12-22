@@ -2,8 +2,13 @@
 
 namespace CompassHB\Www\Repositories\Study;
 
+use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Study as Contract;
 
+/**
+ * Class StudyRepository
+ * @package CompassHB\Www\Repositories\Study
+ */
 class StudyRepository implements Contract
 {
     /**
@@ -13,7 +18,7 @@ class StudyRepository implements Contract
         'Genesis', 'Exodus', 'Leveticus', 'Numbers', 'Deuteronomy',
         'Joshua', 'Judges', 'Ruth', '1 Samuel', '2 Samuel', '1 Kings',
         '2 Kings', '1 Chronicles', '2 Chronicles', 'Ezra',
-        'Nehemiah', 'Esther', 'Job', 'Psalms', 'Proverbs',
+        'Nehemiah', 'Esther', 'Job', 'Psalm', 'Proverbs',
         'Ecclesiastes', 'Song of Solomon', 'Isaiah', 'Jeremiah',
         'Lamentations', 'Ezekiel', 'Daniel', 'Hosea', 'Joel',
         'Amos', 'Obadiah', 'Jonah', 'Micah', 'Nahum', 'Habakkuk',
@@ -42,19 +47,72 @@ class StudyRepository implements Contract
     private $study = [];
 
     /**
+     * looks for Bible verses
+     * @var string
+     */
+    private $regex_pattern = '/\b(Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Joshua|Judges|Ruth|1 Samuel|2 Samuel|1 Kings|2 Kings|1 Chronicles|2 Chronicles|Ezra|Nehemiah|Esther|Job|Psalm|Proverbs|Ecclesiastes|Song of Solomon|Isaiah|Jeremiah|Lamentations|Ezekiel|Daniel|Hosea|Joel|Amos|Obadiah|Jonah|Micah|Nahum|Habakkuk|Zephaniah|Haggai|Zechariah|Malachi|Matthew|Mark|Luke|John|Acts|Romans|1 Corinthians|2 Corinthians|Galatians|Ephesians|Philippians|Colossians|1 Thessalonians|2 Thessalonians|1 Timothy|2 Timothy|Titus|Philemon|Hebrews|James|1 Peter|2 Peter|1 John|2 John|3 John|Jude|Revelation)\s(\d{1,3})(:\d{1,3}(\-\d{1,3}(:\d{1,3})?)?)?/';
+
+
+    /**
      * StudyRepository constructor.
      */
     public function __construct()
     {
-        $bible = array_combine($this->books, $this->chapters);
+        $bible = [];
 
+        $i = 0;
+        foreach ($this->books as $book) {
+
+            $bible[$book] = array_fill(0, $this->chapters[$i], [0, 0]);
+            $i++;
+        }
+
+        $sermons = Sermon::where('ministry', '=', null)
+                        ->latest('published_at')
+                        ->published()
+                        ->get();
+
+        foreach ($sermons as $sermon) {
+
+            // text
+            $text = $this->search($sermon->text);
+            $i = 0;
+            while ($i < count($text[0])) {
+
+                $b = $text[1][$i];
+                $c = $text[2][$i];
+
+                // Add sermon
+                $bible[$b][$i][0] = 1;
+                $i++;
+
+            }
+
+//            // ref
+//            $ref = $this->search($sermon->body);
+//
+//            dd($ref);
+//
+//            $i = 0;
+//            while ($i < count($ref[0])) {
+//
+//                $b = $ref[1][$i];
+//                $c = $ref[2][$i];
+//
+//                // Add reference
+//                $bible[$b][$c][1]++;
+//                $i++;
+//
+//            }
+        }
+
+        // Create temporary study array to pass to controller
         foreach ($bible as $book => $chapters) {
+
             $i = 1;
-
-            while ($i <= $chapters) {
-
+            foreach ($chapters as $chapter) {
                 // Book, Chapter, Sermon, References
-                array_push($this->study, [$book, $i, rand(0, 1), rand(0, 10)]);
+                array_push($this->study, [$book, $i, $chapter[0], $chapter[1]]);
                 $i++;
             }
         }
@@ -68,5 +126,18 @@ class StudyRepository implements Contract
     public function get($chapter, $verse)
     {
         return $this->study;
+    }
+
+    /**
+     * @param $input_string
+     * @param $regex_pattern
+     * @return array
+     */
+    private function search($input)
+    {
+        // finds all matches
+        preg_match_all($this->regex_pattern, $input, $output);
+
+        return $output;
     }
 }
