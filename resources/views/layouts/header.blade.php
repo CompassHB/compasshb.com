@@ -14,6 +14,7 @@
 
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href='//fonts.googleapis.com/css?family=Fira+Sans:700' type='text/css' rel='stylesheet'>
 
 </head>
 
