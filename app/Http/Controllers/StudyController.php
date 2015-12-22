@@ -31,29 +31,29 @@ class StudyController extends Controller
                         break;
                     case 1:
                     case 2:
+                        $background = "ref-2";
+                        break;
                     case 3:
                     case 4:
-                        $background = "ref-2";
+                        $background = "ref-3";
                         break;
                     case 5:
                     case 6:
+                        $background = "ref-4";
+                        break;
                     case 7:
                     case 8:
-                        $background = "ref-3";
-                        break;
                     case 9:
                     case 10:
                     case 11:
                     case 12:
-                        $background = "ref-4";
-                        break;
                     default:
                         $background = "ref-5";
                         break;
                 }
 
                 if ($chapter[0] > 0) {
-                    $table .= '<li title="'. $book . ' ' . $i . '" class="'.$background.'"><a href="/study/' . urlencode(strtolower($book)) . '/' . $i . '/">&bull;</a></li>';
+                    $table .= '<li title="'. $book . ' ' . $i . '" class="'.$background.'" style="text-align: center; vertical-align: middle"><a href="/study/' . urlencode(strtolower($book)) . '/' . $i . '/"><i class="material-icons">lens</i></a></li>';
                 } else {
                     $table .= '<li title="'. $book . ' ' . $i . '" class="'.$background.'"></li>';
                 }

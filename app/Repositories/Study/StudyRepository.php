@@ -97,7 +97,11 @@ class StudyRepository implements Contract
                 $text_chapter = $ref[2][$i];
 
                 // Add reference
-                $bible[$text_book][$text_chapter - 1][1]++;
+                try {
+                    $bible[$text_book][$text_chapter - 1][1]++;
+                } catch(Exception $e) {
+
+                }
                 $i++;
 
             }
