@@ -79,43 +79,31 @@ class StudyRepository implements Contract
             $i = 0;
             while ($i < count($text[0])) {
 
-                $b = $text[1][$i];
-                $c = $text[2][$i];
+                $text_book = $text[1][$i];
+                $text_chapter = $text[2][$i];
 
                 // Add sermon
-                $bible[$b][$i][0] = 1;
+                $bible[$text_book][$text_chapter - 1][0] = 1;
                 $i++;
 
             }
 
-//            // ref
-//            $ref = $this->search($sermon->body);
-//
-//            dd($ref);
-//
-//            $i = 0;
-//            while ($i < count($ref[0])) {
-//
-//                $b = $ref[1][$i];
-//                $c = $ref[2][$i];
-//
-//                // Add reference
-//                $bible[$b][$c][1]++;
-//                $i++;
-//
-//            }
-        }
+            // ref
+            $ref = $this->search($sermon->body);
+            $i = 0;
+            while ($i < count($ref[0])) {
 
-        // Create temporary study array to pass to controller
-        foreach ($bible as $book => $chapters) {
+                $text_book = $ref[1][$i];
+                $text_chapter = $ref[2][$i];
 
-            $i = 1;
-            foreach ($chapters as $chapter) {
-                // Book, Chapter, Sermon, References
-                array_push($this->study, [$book, $i, $chapter[0], $chapter[1]]);
+                // Add reference
+                $bible[$text_book][$text_chapter - 1][1]++;
                 $i++;
+
             }
         }
+
+        $this->study = $bible;
     }
 
     /**
