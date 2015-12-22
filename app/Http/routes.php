@@ -55,6 +55,11 @@ Route::get('fellowship/{id}/{slug}', [
     'uses' => 'FellowshipsController@show',
 ]);
 
+Route::get('study/{book?}/{chapter?}', [
+    'as' => 'study',
+    'uses' => 'StudyController@index',
+]);
+
 /*
  * Route for homepage
  */
