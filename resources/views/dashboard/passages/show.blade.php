@@ -12,8 +12,9 @@
   <div class="Setting Box Box--Large Box--bright utility-flex">
     <h1 class="Setting__heading tk-seravek-web">{{ $passage->title }}</h1>
 
-    {!! $passage->body !!}
-    {!! $passage->verses !!}
+      {!! $passage->verses !!}
+
+      <pre style="white-space: pre-wrap !important; word-wrap: break-word"><strong>Bible Overview</strong><br/>{{ $passage->body }}</pre>
 
     <hr/>
 
