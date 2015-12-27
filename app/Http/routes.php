@@ -148,6 +148,13 @@ Route::group(['prefix' => 'api/v1'], function () {
     ]);
 });
 
+/**
+ * Routes for CompassHB.2016
+ */
+Route::resource('api/v2/sermons', 'Api\APIController', [
+    'except' => ['destroy', 'edit', 'create', 'store', 'update']
+]);
+
 Route::group(['prefix' => 'api/1.0'], function () {
     Route::get('getsermonlist.json', 'FeedsController@getsermonlist');
 });
