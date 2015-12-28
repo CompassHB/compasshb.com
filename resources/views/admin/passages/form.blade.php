@@ -5,7 +5,7 @@
 
 <div class="form-group">
 	{!! Form::label('body', 'Body:') !!}
-	{!! Form::text('body', null, ['class' => 'form-control']) !!}
+	{!! Form::textarea('body', null, ['class' => 'form-control compasshb-editor']) !!}
 </div>
 
 <div class="form-group">
@@ -16,3 +16,4 @@
 <div class="form-group">
 	{!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
 </div>
+

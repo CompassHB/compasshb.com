@@ -1,6 +1,7 @@
-@unless (Auth::check())
 
   <footer id="footer" class="container-fluid">
+
+    @if (!Auth::check())
 
   <div class="row">
 
@@ -62,6 +63,8 @@
     </div>
   </div>
 
+@endif
+
   <div class="row" style="padding: 15px 30px; background-color: #222; min-height: 50px;">
     <span style="float: right; color: #AAA; font-weight: normal; font-size: 1.25em">© 2014-{{ date('Y') }} Compass Bible Church Huntington Beach</span>
   </div>
@@ -90,4 +93,3 @@
 
 </body>
 </html>
-@endunless

@@ -14,7 +14,7 @@
 
       {!! $passage->verses !!}
 
-      <pre style="white-space: pre-wrap !important; word-wrap: break-word"><strong>Bible Overview</strong><br/>{{ $passage->body }}</pre>
+      <strong>Bible Overview</strong><br/>{!! $passage->body !!}
 
     <hr/>
 
