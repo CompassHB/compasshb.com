@@ -27,8 +27,8 @@ class MinistryController extends Controller
      */
     public function youth(Video $videoClient)
     {
-        $series = Series::where('ministry', '=', 'youth')->get()->reverse();
-        $sermons = Sermon::where('ministry', '=', 'youth')->latest('published_at')->published()->get();
+        $series = Series::where('ministryId', '=', 'youth')->get()->reverse();
+        $sermons = Sermon::where('ministryId', '=', 'youth')->latest('published_at')->published()->get();
         $prevsermon = $sermons->first();
 
         if ($prevsermon) {
@@ -58,8 +58,8 @@ class MinistryController extends Controller
      */
     public function sundayschool()
     {
-        $series = Series::where('ministry', '=', 'sundayschool')->get()->reverse();
-        $sermons = Sermon::where('ministry', '=', 'sundayschool')
+        $series = Series::where('ministryId', '=', 'sundayschool')->get()->reverse();
+        $sermons = Sermon::where('ministryId', '=', 'sundayschool')
             ->where('series_id', '=', $series->first()->id)
             ->latest('published_at')
             ->published()
@@ -79,7 +79,7 @@ class MinistryController extends Controller
      */
     public function women(Video $video)
     {
-        $sermons = Sermon::where('ministry', '=', 'women')->latest('published_at')->published()->get();
+        $sermons = Sermon::where('ministryId', '=', 'women')->latest('published_at')->published()->get();
 
         foreach ($sermons as $sermon) {
             $video->setUrl($sermon->video);

@@ -71,7 +71,7 @@ $factory->define(Series::class, function (Faker\Generator $faker) {
         'title' => $faker->sentence,
         'body' => $faker->paragraph,
         'user_id' => factory(User::class)->create()->id,
-        'ministry' => head($faker->shuffle(array(null, 'sundayschool', 'youth'))),
+        'ministryId' => head($faker->shuffle(array(null, 'sundayschool', 'youth'))),
         'image' => 'https://dummyimage.com/600x400/000/fff.jpg',
     ];
 });
@@ -88,7 +88,7 @@ $factory->define(Sermon::class, function (Faker\Generator $faker) {
         'video' => 'https://vimeo.com/143216705',
         'audio' => 'http://compasshb.s3.amazonaws.com/media/and-the-gospel-rings-out.mp3',
         'published_at' => Carbon::now()->subDays(30),
-        'ministry' => head($faker->shuffle(array(null, 'sundayschool', 'youth'))),
+        'ministryId' => head($faker->shuffle(array(null, 'sundayschool', 'youth'))),
 //        'series_id' => factory(Series::class)->create()->id,
     ];
 });

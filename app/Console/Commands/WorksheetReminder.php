@@ -37,7 +37,7 @@ class WorksheetReminder extends Command
      */
     public function handle()
     {
-        $sermon = Sermon::where('ministry', '=', null)->latest('published_at')->published()->get()->first();
+        $sermon = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->get()->first();
 
         if ($sermon->worksheet == null) {
             Mail::send('emails.worksheet-reminder', [], function ($message) {

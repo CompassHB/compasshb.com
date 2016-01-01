@@ -29,7 +29,7 @@ class SermonsController extends Controller
      */
     public function index(Video $video)
     {
-        $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->published()->get();
+        $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->get();
 
         foreach ($sermons as $sermon) {
             $video->setUrl($sermon->video);
@@ -97,7 +97,7 @@ class SermonsController extends Controller
     {
         // Reserve /sermon URL for main service
         if (substr(Request::path(), 0, 8) === 'sermons/' &&
-            $sermon->ministry !== null) {
+            $sermon->ministryId !== null) {
             return redirect('/videos/'.$sermon->alias);
         }
 

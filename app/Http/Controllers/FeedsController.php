@@ -28,7 +28,7 @@ class FeedsController extends Controller
     public function sermons()
     {
         $data = array();
-        $data['sermons'] = Sermon::where('ministry', '=', null)
+        $data['sermons'] = Sermon::where('ministryId', '=', null)
                                 ->published()
                                 ->orderBy('published_at', 'desc')
                                 ->limit(300)
@@ -46,7 +46,7 @@ class FeedsController extends Controller
      */
     public function sermonaudio()
     {
-        $data['sermons'] = Sermon::where('ministry', '=', null)->published()->orderBy('published_at', 'desc')->limit(300)->get();
+        $data['sermons'] = Sermon::where('ministryId', '=', null)->published()->orderBy('published_at', 'desc')->limit(300)->get();
 
         return Response::view('podcasts.audio', $data, 200, [
             'Content-Type' => 'application/atom+xml; charset=UTF-8',
@@ -62,7 +62,7 @@ class FeedsController extends Controller
     public function json(Video $video)
     {
         $data = array();
-        $data['sermons'] = Sermon::where('ministry', '=', null)->orderBy('published_at', 'desc')->published()->limit(300)->get();
+        $data['sermons'] = Sermon::where('ministryId', '=', null)->orderBy('published_at', 'desc')->published()->limit(300)->get();
 
         // Retrieve coverart
         foreach ($data['sermons'] as $sermon) {

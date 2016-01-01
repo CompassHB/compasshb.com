@@ -17,7 +17,7 @@ class FellowshipsController extends Controller
      */
     public function index(Video $video, Events $event)
     {
-        $sermon = Sermon::where('ministry', '=', null)->latest('published_at')->published()->take(1)->get()->first();
+        $sermon = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->take(1)->get()->first();
 
         $video->setUrl($sermon->video);
         $sermon->iframe = $video->getEmbedCode();

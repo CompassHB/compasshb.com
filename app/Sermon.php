@@ -69,7 +69,7 @@ class Sermon extends Model
      */
     public function setMinistryAttribute($value)
     {
-        $this->attributes['ministry'] = $value ? $value : null;
+        $this->attributes['ministryId'] = $value ? $value : null;
     }
 
     /**
@@ -86,7 +86,7 @@ class Sermon extends Model
 
         // Only transcode in production when there is a video file and the audio URL is blank.
         if (config('app.env') == 'production' &&
-            array_key_exists('ministry', $this->attributes) &&
+            array_key_exists('ministryId', $this->attributes) &&
             empty($this->attributes['audio']) &&
             $value != null) {
             $job = $transcoder->saveAudio(

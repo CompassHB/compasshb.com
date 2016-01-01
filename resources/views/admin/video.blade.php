@@ -31,7 +31,7 @@
       <tbody>
         @foreach ($sermons as $sermon)
           <tr>
-            <td>{{ $sermon->ministry }}</td>
+            <td>{{ $sermon->ministryId }}</td>
             <td><a href="{{ route('videos.edit', $sermon->alias) }}">{{ $sermon->title }}</a></td>
             <td>{{ $sermon->text }}</td>
             <td>{{ date_format($sermon->published_at, 'l, F j, Y') }}</td>

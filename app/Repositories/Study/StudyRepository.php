@@ -67,7 +67,7 @@ class StudyRepository implements Contract
             $i++;
         }
 
-        $sermons = Sermon::where('ministry', '=', null)
+        $sermons = Sermon::where('ministryId', '=', null)
                         ->latest('published_at')
                         ->published()
                         ->get();

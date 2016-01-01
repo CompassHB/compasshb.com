@@ -26,7 +26,7 @@ class Series extends Model
      */
     public function setMinistryAttribute($value)
     {
-        $this->attributes['ministry'] = $value ? $value : null;
+        $this->attributes['ministryId'] = $value ? $value : null;
     }
 
     /**

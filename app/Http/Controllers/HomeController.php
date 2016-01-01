@@ -49,8 +49,8 @@ class HomeController extends Controller
 
     public function mainservice()
     {
-        $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->paginate(15);
-        $series = Series::where('ministry', '=', null)->paginate(15);
+        $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->paginate(15);
+        $series = Series::where('ministryId', '=', null)->paginate(15);
         $blogs = Blog::latest('published_at')->paginate(15);
 
         return view('admin.mainservice', compact('sermons', 'blogs', 'series'))
@@ -79,8 +79,8 @@ class HomeController extends Controller
      */
     public function video()
     {
-        $sermons = Sermon::whereNotNull('ministry')->latest('published_at')->paginate(15);
-        $series = Series::whereNotNull('ministry')->paginate(15);
+        $sermons = Sermon::whereNotNull('ministryId')->latest('published_at')->paginate(15);
+        $series = Series::whereNotNull('ministryId')->paginate(15);
 
         return view('admin.video', compact('sermons', 'series'))
             ->with('title', 'Admin - Videos');

@@ -48,7 +48,7 @@ class PagesController extends Controller
             }
         }
 
-        $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->published()->take(4)->get();
+        $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->take(4)->get();
         $prevsermon = $sermons->first();
         $nextsermon = Sermon::unpublished()->get();
 
@@ -182,9 +182,9 @@ class PagesController extends Controller
     {
         $blogs = Blog::published()->get();
         $sermons = Sermon::published()->get();
-        $passages = Passage::pluck('slug');
-        $series = Series::pluck('slug');
-        $songs = Song::pluck('slug');
+        $passages = Passage::pluck('alias');
+        $series = Series::pluck('alias');
+        $songs = Song::pluck('alias');
         $events = $event->events();
 
         // Generate video thumbnails
@@ -276,7 +276,7 @@ class PagesController extends Controller
     public function clearvideothumbcache($auth)
     {
         if ($auth == env('EVENTBRITE_CALLBACK')) {
-            $latestsermon = Sermon::where('ministry', '=', null)->latest('published_at')->published()->get()->first();
+            $latestsermon = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->get()->first();
             Cache::forget($latestsermon->video);
         }
 

@@ -12,7 +12,7 @@ class APIController extends Controller
 {
     public function index(Video $video)
     {
-        $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->published()->get();
+        $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->get();
 
         foreach ($sermons as $sermon) {
             $video->setUrl($sermon->video);

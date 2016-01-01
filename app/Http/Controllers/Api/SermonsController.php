@@ -15,7 +15,7 @@ class SermonsController extends Controller
      */
     public function index()
     {
-        $sermons = Sermon::where('ministry', '=', null)->latest('published_at')->published()->get();
+        $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->get();
 
         return Response::json($sermons->toArray());
     }
