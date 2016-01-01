@@ -25,7 +25,7 @@
       <tbody>
         @foreach ($songs as $song)
           <tr>
-            <td><a href="{{ route('songs.edit', $song->slug) }}">{{ $song->title }}</a></td>
+            <td><a href="{{ route('songs.edit', $song->alias) }}">{{ $song->title }}</a></td>
           </tr>
         @endforeach
       </tbody>

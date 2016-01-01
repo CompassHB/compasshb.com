@@ -20,7 +20,7 @@
   @if ($languages)
     <p>Choose your language:
     @foreach ($languages as $language)
-      <a href="/blog/{{ $blog->slug }}/{{ $language }}">{{ $language }}</a>,
+      <a href="/blog/{{ $blog->alias }}/{{ $language }}">{{ $language }}</a>,
     @endforeach
     </p>
     <hr/>

@@ -22,7 +22,8 @@
     "squizlabs/php_codesniffer": "^2.4",
     "google/apiclient": "^1.1",
     "barryvdh/laravel-ide-helper": "^2.1",
-    "laravelcollective/html": "dev-master"
+    "laravelcollective/html": "dev-master",
+    "doctrine/dbal": "^2.5"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

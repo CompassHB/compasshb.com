@@ -19,12 +19,12 @@
 		@foreach ($sermons as $sermon)
 			<item>
 				<title>{{ $sermon->title }}</title>
-				<link>{{ route('sermons.show', $sermon->slug) }}</link>
+				<link>{{ route('sermons.show', $sermon->alias) }}</link>
 				<itunes:subtitle>{{ $sermon->byline }} {{ $sermon->text }}</itunes:subtitle>
 				<enclosure url="{{ $sermon->audio }}" length="160000000" type="audio/x-mp4" />
 				<description>{{ $sermon->byline }} {{ $sermon->text }}</description>
 				<pubDate>{{ $sermon->published_at->toRfc2822String() }}</pubDate>
-				<guid>{{ route('sermons.show', $sermon->slug) }}</guid>
+				<guid>{{ route('sermons.show', $sermon->alias) }}</guid>
 			</item>
 		@endforeach
 	</channel>

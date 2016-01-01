@@ -31,7 +31,7 @@
       <tbody>
         @foreach ($sermons as $sermon)
           <tr>
-            <td><a href="{{ route('sermons.edit', $sermon->slug) }}">{{ $sermon->title }}</a></td>
+            <td><a href="{{ route('sermons.edit', $sermon->alias) }}">{{ $sermon->title }}</a></td>
             <td>{{ $sermon->text }}</td>
             <td>{{ date_format($sermon->published_at, 'l, F j, Y') }}</td>
             <td>{!! $sermon->worksheet ? '<i class="material-icons">done</i>' : '' !!}
@@ -56,7 +56,7 @@
       <tbody>
         @foreach ($series as $s)
           <tr>
-            <td><a href="{{ route('series.edit', $s->slug) }}">{{ $s->title }}</a></td>
+            <td><a href="{{ route('series.edit', $s->alias) }}">{{ $s->title }}</a></td>
           </tr>
         @endforeach
       </tbody>
@@ -78,7 +78,7 @@
       <tbody>
         @foreach ($blogs as $blog)
           <tr>
-            <td><a href="{{ route('blog.edit', $blog->slug) }}">{{ $blog->title }}</a></td>
+            <td><a href="{{ route('blog.edit', $blog->alias) }}">{{ $blog->title }}</a></td>
             <td>{{ date_format($blog->published_at, 'Y-m-d l') }}</td>
             <td>{{ $blog->published_at->lt(\Carbon\Carbon::now()) ? 'Published' : 'Scheduled' }}</td>
           </tr>

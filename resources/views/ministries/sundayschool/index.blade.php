@@ -22,7 +22,7 @@
     <tbody>
     @foreach ($sermons as $sermon)
       	<tr>
-        	<td><a href="{{ route('sermons.show', $sermon->slug) }}">{{ $sermon->title }}</a></td>
+        	<td><a href="{{ route('sermons.show', $sermon->alias) }}">{{ $sermon->title }}</a></td>
         	<td>{{ $sermon->teacher }}</td>
         	<td>{{ date_format($sermon->published_at, 'l, F j, Y') }}</td>
       	</tr>
@@ -35,7 +35,7 @@
 <div class="col-sm-6 col-md-4" style="height: 300px;">
     <div class="thumbnail" style="width: 310px; height: 150px; background-image: url('{{ $s->image }}'); background-size: cover; background-position: top center; padding-top: 150px">
     	<div class="caption">
-        	<h3><a href="{{ route('series.show', $s->slug) }}">{{ $s->title }}</a></h3>
+        	<h3><a href="{{ route('series.show', $s->alias) }}">{{ $s->title }}</a></h3>
         	<p>{{ $s->body }}</p>
       	</div>
     </div>

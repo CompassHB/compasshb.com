@@ -29,13 +29,13 @@
 		@foreach ($sermons as $sermon)
 			<item>
 				<title>{{ $sermon->title }}</title>
-				<link>{{ route('sermons.show', $sermon->slug) }}</link>
+				<link>{{ route('sermons.show', $sermon->alias) }}</link>
 				<itunes:subtitle>{{ $sermon->byline }} {{ $sermon->text }}</itunes:subtitle>
 				<itunes:summary>{{ $sermon->byline }} {{ $sermon->text }}</itunes:summary>
-				<enclosure url="http://www.compasshb.com/sermons/{{ $sermon->slug }}/download.mp4" length="160000000" type="video/mp4" />
+				<enclosure url="http://www.compasshb.com/sermons/{{ $sermon->alias }}/download.mp4" length="160000000" type="video/mp4" />
 				<description>{{ $sermon->byline }} {{ $sermon->text }}</description>
 				<pubDate>{{ $sermon->published_at->toRfc2822String() }}</pubDate>
-				<guid>{{ route('sermons.show', $sermon->slug) }}</guid>
+				<guid>{{ route('sermons.show', $sermon->alias) }}</guid>
 			</item>
 		@endforeach
 	</channel>

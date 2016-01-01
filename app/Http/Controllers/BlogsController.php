@@ -56,7 +56,7 @@ class BlogsController extends Controller
             // SHow the english if requested
             // locale not supported
             if (!in_array($locale, $languages) && $locale != 'en') {
-                return redirect('/blog/'.$blog->slug);
+                return redirect('/blog/'.$blog->alias);
             }
 
             $texttrack = $video->getTextTracks(true, $locale);

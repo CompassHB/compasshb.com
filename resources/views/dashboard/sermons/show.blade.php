@@ -10,7 +10,7 @@
   <h1 class="Setting__heading tk-seravek-web">{{ $sermon->title }}</h1>
 
     @if ($sermon->series)
-      <p><a href="{{ route('series.show', $sermon->series->slug) }}" >{{{ $sermon->series->title or '' }}}</a></p><br/>
+      <p><a href="{{ route('series.show', $sermon->series->alias) }}" >{{{ $sermon->series->title or '' }}}</a></p><br/>
     @endif
 
     <div class="videocontainer">{!! $sermon->iframe !!}</div>

@@ -38,10 +38,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return Song::where('slug', $slug)->firstOrFail();
+                return Song::where('alias', $slug)->firstOrFail();
             }
 
-            return Song::where('slug', $slug)->firstOrFail();
+            return Song::where('alias', $slug)->firstOrFail();
         });
 
         /*
@@ -51,10 +51,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return Passage::where('slug', $slug)->firstOrFail();
+                return Passage::where('alias', $slug)->firstOrFail();
             }
 
-            return Passage::where('slug', $slug)->published()->firstOrFail();
+            return Passage::where('alias', $slug)->published()->firstOrFail();
         });
 
         /*
@@ -64,10 +64,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return Sermon::where('slug', $slug)->firstOrFail();
+                return Sermon::where('alias', $slug)->firstOrFail();
             }
 
-            return Sermon::where('slug', $slug)->published()->firstOrFail();
+            return Sermon::where('alias', $slug)->published()->firstOrFail();
         });
 
         /*
@@ -77,17 +77,17 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return Sermon::where('slug', $slug)->firstOrFail();
+                return Sermon::where('alias', $slug)->firstOrFail();
             }
 
-            return Sermon::where('slug', $slug)->published()->firstOrFail();
+            return Sermon::where('alias', $slug)->published()->firstOrFail();
         });
 
         /*
          * A sermon series is at /series/{slug}
          */
         $router->bind('series', function ($slug) {
-            return Series::where('slug', $slug)->firstOrFail();
+            return Series::where('alias', $slug)->firstOrFail();
         });
 
         /*
@@ -97,10 +97,10 @@ class RouteServiceProvider extends ServiceProvider
 
             // Logged in users can see future posts
             if (Auth::check()) {
-                return Blog::where('slug', $slug)->firstOrFail();
+                return Blog::where('alias', $slug)->firstOrFail();
             }
 
-            return Blog::where('slug', $slug)->published()->firstOrFail();
+            return Blog::where('alias', $slug)->published()->firstOrFail();
         });
     }
 

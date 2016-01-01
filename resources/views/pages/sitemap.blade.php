@@ -92,7 +92,7 @@
 {{--Dynamic Pages--}}
 @foreach($sermons as $sermon)
 <url>
-    <loc>{{ Request::root() . '/sermons/' . $sermon->slug }}</loc>
+    <loc>{{ Request::root() . '/sermons/' . $sermon->alias }}</loc>
     <priority>0.9</priority>
     <changefreq>daily</changefreq>
     @if ($sermon->image != null)
@@ -108,7 +108,7 @@
 
 @foreach($blogs as $blog)
 <url>
-    <loc>{{ Request::root() . '/blog/' . $blog->slug }}</loc>
+    <loc>{{ Request::root() . '/blog/' . $blog->alias }}</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
     @if ($blog->image != null)

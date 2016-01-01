@@ -34,7 +34,7 @@
       <tbody>
         @foreach ($passages as $index => $passage)
           <tr>
-            <td><a href="{{ route('read.edit', $passage->slug) }}">{{ $passage->title }}</a></td>
+            <td><a href="{{ route('read.edit', $passage->alias) }}">{{ $passage->title }}</a></td>
             <td>{{ date_format($passage->published_at, 'l, F j, Y') }}</td>
             <td>{{ $passage->published_at->lt(\Carbon\Carbon::now()) ? 'Published' : 'Scheduled' }}</td>
           </tr>

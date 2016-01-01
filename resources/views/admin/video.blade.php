@@ -32,7 +32,7 @@
         @foreach ($sermons as $sermon)
           <tr>
             <td>{{ $sermon->ministry }}</td>
-            <td><a href="{{ route('videos.edit', $sermon->slug) }}">{{ $sermon->title }}</a></td>
+            <td><a href="{{ route('videos.edit', $sermon->alias) }}">{{ $sermon->title }}</a></td>
             <td>{{ $sermon->text }}</td>
             <td>{{ date_format($sermon->published_at, 'l, F j, Y') }}</td>
             <td>{!! $sermon->worksheet ? '<i class="material-icons">done</i>' : '' !!}</td>
@@ -56,7 +56,7 @@
       <tbody>
         @foreach ($series as $s)
           <tr>
-            <td><a href="{{ route('series.edit', $s->slug) }}">{{ $s->title }}</a></td>
+            <td><a href="{{ route('series.edit', $s->alias) }}">{{ $s->title }}</a></td>
           </tr>
         @endforeach
       </tbody>

@@ -98,7 +98,7 @@ class SermonsController extends Controller
         // Reserve /sermon URL for main service
         if (substr(Request::path(), 0, 8) === 'sermons/' &&
             $sermon->ministry !== null) {
-            return redirect('/videos/'.$sermon->slug);
+            return redirect('/videos/'.$sermon->alias);
         }
 
         $video->setUrl($sermon->video);

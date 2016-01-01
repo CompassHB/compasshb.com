@@ -103,7 +103,7 @@ class FeedsController extends Controller
                 $feed->add(
                     $post->title,
                     'Compass HB',
-                    URL::to($post->slug),
+                    URL::to($post->alias),
                     $post->created_at,
                     $post->body,
                     $post->body
@@ -137,7 +137,7 @@ class FeedsController extends Controller
                 $feed->add(
                     $post->title,
                     'Compass HB',
-                    URL::to($post->slug),
+                    URL::to($post->alias),
                     $post->created_at,
                     $post->body,
                     $post->body

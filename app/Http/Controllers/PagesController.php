@@ -282,7 +282,7 @@ class PagesController extends Controller
 
         return redirect(
             'https://developers.facebook.com/tools/debug/og/object?q=https://www.compasshb.com/sermons/'.
-            $latestsermon->slug
+            $latestsermon->alias
         );
     }
 }
