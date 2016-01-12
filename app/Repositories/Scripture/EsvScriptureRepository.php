@@ -72,10 +72,11 @@ class EsvScriptureRepository implements Contract
 
             $headers = $audioResponse->getHeaders();
 
+
             if (isset($headers['X-Guzzle-Redirect-History'])) {
-                $response = end($headers['X-Guzzle-Redirect-History']);
+                return end($headers['X-Guzzle-Redirect-History']);
             } else {
-                $response = null;
+                return null;
             }
 
         });
