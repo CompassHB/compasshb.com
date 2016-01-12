@@ -123,6 +123,14 @@ Route::group(['prefix' => 'feed', 'as' => 'feed.'], function () {
     ]);
 });
 
+/**
+ * Routes for pages
+ */
+Route::get('goody-two-shoes', [
+           'as' => 'goody-two-shoes',
+           'uses' => 'PagesController@goodytwoshoes',
+       ]);
+
 /*
  * Routes for APIs
  */

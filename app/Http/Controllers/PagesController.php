@@ -173,6 +173,13 @@ class PagesController extends Controller
             ->with('title', 'What We Believe');
     }
 
+
+    public function goodytwoshoes()
+    {
+        return view('pages.goodytwoshoes')
+            ->with('title', 'Goody Two Shoes');
+    }
+
     public function manifest()
     {
         return view('feeds.manifest');
