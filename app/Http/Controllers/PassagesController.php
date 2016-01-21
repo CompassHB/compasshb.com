@@ -52,7 +52,7 @@ class PassagesController extends Controller
         // For social sharing
         // @TODO: edit after Bible Overview
         $coverimage = 'https://compasshb.smugmug.com/photos/i-w6dnZK2/0/S/i-w6dnZK2-S.jpg';
-        $ogdescription = $passage->title . ' - Bible Overview';
+        $ogdescription = 'Read one chapter a day of every book of the Bible along with us.';
 
         $analytics = $this->analytics->getPageViews(
             '/read',
@@ -66,18 +66,16 @@ class PassagesController extends Controller
 
         if ($today || $passage->published_at->isToday()) {
             $postflash = '';
-            $title = 'Scripture of the Day';
             if ((date('D') == 'Sun' || date('D') == 'Sat') &&
                 !$passage->published_at->isToday()) {
                 $postflash = '<div class="alert alert-info" role="alert">Scripture of the Day is posted Monday through Friday.</div>';
             }
         } else {
-            $title = $passage->title;
             $postflash = '<div class="alert alert-info" role="alert"><strong>New Post!</strong> You are reading an old post. For today\'s, <a href="/read">click here.</a></div>';
         }
 
         return view('dashboard.passages.show', compact('passage', 'passages', 'postflash', 'analytics', 'coverimage', 'ogdescription'))
-            ->with('title', $title);
+            ->with('title', $passage->title . ' - Bible Overview');
     }
 
     /**
