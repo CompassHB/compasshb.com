@@ -45,8 +45,14 @@ class PassagesController extends Controller
      */
     public function show(Passage $passage, $today = false)
     {
+
         // For sidebar display
         $passages = Passage::latest('published_at')->published()->take(5)->get();
+
+        // For social sharing
+        // @TODO: edit after Bible Overview
+        $coverimage = 'https://compasshb.smugmug.com/photos/i-w6dnZK2/0/S/i-w6dnZK2-S.jpg';
+        $ogdescription = $passage->title . ' - Bible Overview';
 
         $analytics = $this->analytics->getPageViews(
             '/read',
@@ -70,7 +76,7 @@ class PassagesController extends Controller
             $postflash = '<div class="alert alert-info" role="alert"><strong>New Post!</strong> You are reading an old post. For today\'s, <a href="/read">click here.</a></div>';
         }
 
-        return view('dashboard.passages.show', compact('passage', 'passages', 'postflash', 'analytics'))
+        return view('dashboard.passages.show', compact('passage', 'passages', 'postflash', 'analytics', 'coverimage', 'ogdescription'))
             ->with('title', $title);
     }
 
