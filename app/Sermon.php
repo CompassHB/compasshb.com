@@ -21,7 +21,7 @@ class Sermon extends Model
         'teacher',
         'text',
         'video',
-        'ministry',
+        'ministryId',
         'series_id',
         'published_at',
     ];
