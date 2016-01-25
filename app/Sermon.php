@@ -67,7 +67,7 @@ class Sermon extends Model
      *
      * @param $value
      */
-    public function setMinistryAttribute($value)
+    public function setMinistryIdAttribute($value)
     {
         $this->attributes['ministryId'] = $value ? $value : null;
     }
