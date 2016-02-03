@@ -246,6 +246,14 @@ Route::get('college', [
 ]);
 
 /*
+ * Route for men
+ */
+Route::get('men', [
+    'as' => 'men',
+    'uses' => 'MinistryController@men',
+]);
+
+/*
  * Route for women
  */
 Route::get('women', [

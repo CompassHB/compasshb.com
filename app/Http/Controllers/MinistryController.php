@@ -72,7 +72,28 @@ class MinistryController extends Controller
     }
 
     /**
-     * Controller for Sunday School ministry page.
+     * Controller for men ministry page.
+     *
+     * @param Video $video
+     * @return \Illuminate\View\View
+     */
+    public function men(Video $video)
+    {
+        $sermons = Sermon::where('ministryId', '=', 'men')->latest('published_at')->published()->get();
+
+        foreach ($sermons as $sermon) {
+            $video->setUrl($sermon->video);
+            $sermon->image = $video->getThumbnail();
+        }
+
+        return view(
+            'ministries.men.index',
+            compact('sermons')
+        )->with('title', 'Men');
+    }
+
+    /**
+     * Controller for Women ministry page.
      *
      * @param Video $video
      * @return \Illuminate\View\View
