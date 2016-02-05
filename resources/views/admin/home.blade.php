@@ -11,7 +11,7 @@
 @endif
 
 <div class="Setting Box Box--Large Box--bright utility-flex">
-  <h2 class="Setting__heading tk-seravek-web">Admin</h2>
+  <h2 class="Setting__heading tk-seravek-web">Administration</h2>
 
   <p>
   	<strong>Shortcuts:</strong><br/>
