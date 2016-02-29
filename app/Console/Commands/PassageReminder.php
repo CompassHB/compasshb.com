@@ -39,11 +39,10 @@ class PassageReminder extends Command
     {
         $count = Passage::latest('published_at')->unpublished()->count();
 
-        if ($count < 5) {
+        if ($count < 3) {
             Mail::send('emails.reminder', ['count' => $count], function ($message) {
                 $message->subject('Post Scripture of the Day');
-                $message->to('katie@compasshb.com')
-                        ->to('bobby@compasshb.com');
+                $message->to('bill@compasshb.com');
             });
         }
     }
