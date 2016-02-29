@@ -19,15 +19,6 @@
   	<a href="/api/v1/clearvideothumbcache/{{ env('EVENTBRITE_CALLBACK') }}">Force Video Thumbnail Sync (Clears latest sermon thumb cache)</a><br/>
   </p>
 
-  <h3>New since last login</h3>
-  @if (count($posts) > 0)
-    @foreach($posts as $post)
-      <p>{{ $post->title }} - Published {{ $post->published_at->diffForHumans() }}</p>
-    @endforeach
-  @else
-    <p>Nothing new</p>
-  @endif
-
 </div>
 
 @endsection

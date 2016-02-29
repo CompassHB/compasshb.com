@@ -82,69 +82,71 @@ class FeedsController extends Controller
 
     public function blog()
     {
-        $feed = new Feed();
-        $feed->make();
-        $feed->setCache(60);
-        if (!$feed->isCached()) {
-            $posts = DB::table('blogs')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $feed->title = 'Compass HB Blog';
-            $feed->description = 'Compass Bible Church Huntington Beach Blog';
-            $feed->logo = 'https://pbs.twimg.com/profile_images/497102522255818752/EcsbtxPb.jpeg';
-            $feed->link = URL::to('feed/blog.xml');
-            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $posts[0]->created_at;
-            $feed->lang = 'en';
-            $feed->setShortening(true); // true or false
-            $feed->setTextLimit(100); // maximum length of description text
-
-            foreach ($posts as $post) {
-                // set item's title, author, url, pubdate, description and content
-                $feed->add(
-                    $post->title,
-                    'Compass HB',
-                    URL::to($post->alias),
-                    $post->created_at,
-                    $post->body,
-                    $post->body
-                );
-            }
-        }
-
-        return $feed->render('atom');
+//        $feed = new Feed();
+//        $feed->make();
+//        $feed->setCache(60);
+//        if (!$feed->isCached()) {
+//            $posts = DB::table('blogs')->orderBy('created_at', 'desc')->take(20)->get();
+//
+//            $feed->title = 'Compass HB Blog';
+//            $feed->description = 'Compass Bible Church Huntington Beach Blog';
+//            $feed->logo = 'https://pbs.twimg.com/profile_images/497102522255818752/EcsbtxPb.jpeg';
+//            $feed->link = URL::to('feed/blog.xml');
+//            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+//            $feed->pubdate = $posts[0]->created_at;
+//            $feed->lang = 'en';
+//            $feed->setShortening(true); // true or false
+//            $feed->setTextLimit(100); // maximum length of description text
+//
+//            foreach ($posts as $post) {
+//                // set item's title, author, url, pubdate, description and content
+//                $feed->add(
+//                    $post->title,
+//                    'Compass HB',
+//                    URL::to($post->alias),
+//                    $post->created_at,
+//                    $post->body,
+//                    $post->body
+//                );
+//            }
+//        }
+//
+//        return $feed->render('atom');
+        return ;
     }
 
     public function read()
     {
-        $feed = new Feed();
-        $feed->make();
-        $feed->setCache(60);
-        if (!$feed->isCached()) {
-            $posts = DB::table('passages')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $feed->title = 'Compass HB Scripture of the Day';
-            $feed->description = 'Compass Bible Church Huntington Beach Scripture of the Day';
-            $feed->logo = 'https://pbs.twimg.com/profile_images/497102522255818752/EcsbtxPb.jpeg';
-            $feed->link = URL::to('feed/blog.xml');
-            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $posts[0]->created_at;
-            $feed->lang = 'en';
-            $feed->setShortening(true); // true or false
-            $feed->setTextLimit(100); // maximum length of description text
-
-            foreach ($posts as $post) {
-                // set item's title, author, url, pubdate, description and content
-                $feed->add(
-                    $post->title,
-                    'Compass HB',
-                    URL::to($post->alias),
-                    $post->created_at,
-                    $post->body,
-                    $post->body
-                );
-            }
-        }
-
-        return $feed->render('atom');
+//        $feed = new Feed();
+//        $feed->make();
+//        $feed->setCache(60);
+//        if (!$feed->isCached()) {
+//            $posts = DB::table('passages')->orderBy('created_at', 'desc')->take(20)->get();
+//
+//            $feed->title = 'Compass HB Scripture of the Day';
+//            $feed->description = 'Compass Bible Church Huntington Beach Scripture of the Day';
+//            $feed->logo = 'https://pbs.twimg.com/profile_images/497102522255818752/EcsbtxPb.jpeg';
+//            $feed->link = URL::to('feed/blog.xml');
+//            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+//            $feed->pubdate = $posts[0]->created_at;
+//            $feed->lang = 'en';
+//            $feed->setShortening(true); // true or false
+//            $feed->setTextLimit(100); // maximum length of description text
+//
+//            foreach ($posts as $post) {
+//                // set item's title, author, url, pubdate, description and content
+//                $feed->add(
+//                    $post->title,
+//                    'Compass HB',
+//                    URL::to($post->alias),
+//                    $post->created_at,
+//                    $post->body,
+//                    $post->body
+//                );
+//            }
+//        }
+//
+//        return $feed->render('atom');
+        return;
     }
 }

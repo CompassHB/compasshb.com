@@ -38,12 +38,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Passage::since($this->user->last_login)
-                    ->published()
-                    ->latest('published_at')
-                    ->get();
-
-        return view('admin.home', compact('posts'))
+        return view('admin.home')
             ->with('title', 'Admin');
     }
 

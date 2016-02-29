@@ -114,6 +114,48 @@ class MinistryController extends Controller
     }
 
     /**
+     * Controller for marriage ministry page.
+     *
+     * @param Video $video
+     * @return \Illuminate\View\View
+     */
+    public function marriage(Video $video)
+    {
+        $sermons = Sermon::where('ministryId', '=', 'marriage')->latest('published_at')->published()->get();
+
+        foreach ($sermons as $sermon) {
+            $video->setUrl($sermon->video);
+            $sermon->image = $video->getThumbnail();
+        }
+
+        return view(
+            'ministries.marriage.index',
+            compact('sermons')
+        )->with('title', 'Marriage');
+    }
+
+    /**
+     * Controller for parenting ministry page.
+     *
+     * @param Video $video
+     * @return \Illuminate\View\View
+     */
+    public function parenting(Video $video)
+    {
+        $sermons = Sermon::where('ministryId', '=', 'parenting')->latest('published_at')->published()->get();
+
+        foreach ($sermons as $sermon) {
+            $video->setUrl($sermon->video);
+            $sermon->image = $video->getThumbnail();
+        }
+
+        return view(
+            'ministries.parenting.index',
+            compact('sermons')
+        )->with('title', 'Parenting');
+    }
+
+    /**
      * Controller for College Ministry page.
      *
      * @return \Illuminate\View\View

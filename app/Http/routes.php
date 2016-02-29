@@ -262,6 +262,14 @@ Route::get('women', [
 ]);
 
 /*
+ * Route for marriage
+ */
+Route::get('marriage', [
+    'as' => 'marriage',
+    'uses' => 'MinistryController@marriage',
+]);
+
+/*
  * Analytics Sitemap XML
  */
 Route::get('sitemap.xml', [
