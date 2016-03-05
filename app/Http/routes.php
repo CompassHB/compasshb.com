@@ -262,6 +262,13 @@ Route::get('women', [
 ]);
 
 /*
+ * Routes for landing pages
+ */
+Route::get('bunnyrun', ['as' => 'bunnyrun',
+    'uses' => 'PagesController@bunnyrun',
+]);
+
+/*
  * Route for marriage
  */
 Route::get('marriage', [

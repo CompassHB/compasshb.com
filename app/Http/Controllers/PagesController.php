@@ -185,6 +185,11 @@ class PagesController extends Controller
         return view('feeds.manifest');
     }
 
+    public function bunnyrun()
+    {
+        return redirect('https://www.compasshb.com/events/22334601394/bunny-run-and-chase/');
+    }
+
     public function sitemap(Video $video, Events $event)
     {
         $blogs = Blog::published()->get();
