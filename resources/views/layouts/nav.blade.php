@@ -27,6 +27,11 @@
 </header>
 @else
   <header class="container-fluid">
+    <div class="row" style="background-color: #DCDCDC; padding: 5px 25px;">
+    <center>
+        <div><a href="/bunnyrun"><img src="https://img.evbuc.com/https%3A%2F%2Fimg.evbuc.com%2Fhttp%253A%252F%252Fcdn.evbuc.com%252Fimages%252F19064765%252F143787969150%252F1%252Foriginal.jpg%3Frect%3D0%252C25%252C894%252C447%26s%3Dad2cab4333e335f993a90fc2971f0fad?h=200&w=450&s=af4a6f2cd4042944379abceec9bee08f" style="height: 50px; margin-right: 20px"></a><strong>The Bunny Run</strong> is a community event Saturday March 19th at Central Park in Huntington Beach. <a href="/bunnyrun" class="btn btn-primary btn-sm">Sign-Up</a></div>
+       </center>
+    </div>
       <div class="row">
           <nav class="navbar navbar-default navbar-static-top">
                   <div class="navbar-header">
