@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="Setting Box Box--Large Box--bright utility-flex">
-  <h1 class="Setting__heading tk-seravek-web">Blog & Videos</h1>
+  <h1 class="Setting__heading tk-seravek-web">Videos</h1>
 
 <br/>
 <div class="panel panel-default">
