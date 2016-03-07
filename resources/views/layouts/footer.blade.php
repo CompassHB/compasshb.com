@@ -26,13 +26,10 @@
     <div class="col-md-2">
       <h4 class="tk-seravek-web">Resources</h4>
       <p>
-        <a href="{{ route('read.index') }}">Read</a><br/>
-        <a href="{{ route('events.index') }}">Events</a><br/>
+        <a href="{{ route('read.index') }}">Scripture of the Day</a><br/>
         <a href="{{ route('sermons.index') }}">Sermons</a><br/>
-        <a href="{{ route('fellowship.index') }}">Fellowship</a><br/>
         <a href="{{ route('songs.index') }}">Worship</a><br/>
-        <a href="{{ route('blog.index') }}">Blog</a><br/>
-        <a href="{{ route('pray') }}">Pray</a><br/>
+        <a href="{{ route('blog.index') }}">Videos</a><br/>
       </p>
     </div>
 
@@ -50,15 +47,13 @@
 
     {{-- Contact Us --}}
     <div class="col-md-4 " style="border-left: 1px solid #EEE; padding-left: 40px;">
-      <p><a href="{{ route('give') }}" title="Give" class="btn btn-primary" style="padding: 10px 60px">Give</a></p><br/>
-      <p><strong>The word of the Lord sounded forth...</strong><br/><em>- 1 Thessalonians 1:8</em></p>
-      <p><a href="{{route('sermons.show', 'our-mission-statement')}}">Our Mission Statement</a></p><br/>
+      <p><a href="{{ route('give') }}" title="Give" class="btn btn-primary" style="padding: 10px 60px">Give</a></p>
 
         <h4 class="tk-seravek-web">Contact</h4>
           <p>
             <i class="material-icons">map</i> 5082 Argosy, Huntington Beach, CA 92649<br/>
             <i class="material-icons">phone</i> (714) 895-0034<br/>
-            <i class="material-icons">email</i> <a href="mailto:info@compasshb.com">info@compasshb.com</a>
+            <i class="material-icons">email</i> <a href="mailto:info@compasshb.com">info@compasshb.com</a><br/>
           </p>
     </div>
   </div>
