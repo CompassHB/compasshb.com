@@ -190,7 +190,12 @@ class PagesController extends Controller
         return redirect('https://www.compasshb.com/events/22334601394/bunny-run-and-chase/');
     }
 
-    public function sitemap(Video $video, Events $event)
+    public function resurrectionweek()
+    {
+        return redirect('https://www.compasshb.com/events/22662635553/resurrection-week/');
+    }
+
+        public function sitemap(Video $video, Events $event)
     {
         $blogs = Blog::published()->get();
         $sermons = Sermon::published()->get();
