@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'host' => 'smtp.mandrillapp.com',
+    'host' => 'smtp.mailgun.org',
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'info@compasshb.com', 'name' => 'CompassHB.com'],
+    'from' => ['address' => 'no-reply@mg.compasshb.com', 'name' => 'CompassHB No Reply'],
 
     /*
     |--------------------------------------------------------------------------
