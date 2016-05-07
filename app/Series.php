@@ -13,7 +13,7 @@ class Series extends Model
         'title',
         'body',
         'image',
-        'ministry',
+        'ministryId',
     ];
 
     protected $dates = ['published_at', 'deleted_at'];
