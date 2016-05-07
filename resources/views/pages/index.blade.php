@@ -39,7 +39,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
   <div class="col-sm-3">
   <div class="Box--shadow" style="width: 100%">
     <span class="Box--shadow--wrap">
-    <a class="clickable boxer" href="{{ route('read.index') }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://compasshb.smugmug.com/photos/i-w6dnZK2/0/S/i-w6dnZK2-S.jpg);">
+    <a class="clickable boxer" href="{{ route('read.index') }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://compasshb.smugmug.com/Compass-Web-Graphics/Compass-HB-Graphics/n-KxJFC/i-VKPPW8P/0/S/i-VKPPW8P-S.jpg);">
       <h4 class="tk-seravek-web">{{ $passage->title }}</h4>
       <p>Scripture of the Day</p>
       </a>
