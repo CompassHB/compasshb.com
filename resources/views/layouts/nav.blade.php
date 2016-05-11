@@ -46,6 +46,7 @@
                                   <li><a href="{{ route('who-we-are') }}"><i class="material-icons">person</i> Who We Are</a></li>
                                   <li><a href="{{ route('distinctives') }}"><i class="material-icons">flag</i> 8 Distinctives</a></li>
                                   <li><a href="{{ route('believe') }}"><i class="material-icons">library_books</i> What We Believe</a></li>
+                                  <li><a href="{{ route('evangelism') }}">Ice Cream Evangelism</a></li>
                               </ul>
                           </li>
                           <li class="dropdown">
@@ -60,18 +61,17 @@
                                   <li><a href="{{ route('women') }}"><i class="material-icons">account_circle</i>  Womens Ministry</a></li>
                               </ul>
                           </li>
+                          <li><a href="{{ route('sermons.index') }}">Sermons</a></li>
                           <li class="dropdown">
-                              <a href="{{ route('sermons.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sermons <span class="caret"></span></a>
+                              <a href="{{ route('blog.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
                               <ul class="dropdown-menu dropdown-menu-left">
-                                  <li><a href="{{ route('sermons.index') }}"><i class="material-icons">video_library</i> Sermons</a></li>
                                   <li><a href="{{ route('read.index') }}"><i class="material-icons">library_books</i> Scripture of the Day</a></li>
-                                  <li><a href="{{ route('blog.index') }}"><i class="material-icons">announcement</i> Blog</a></li>
+                                  <li><a href="{{ route('blog.index') }}"><i class="material-icons">announcement</i> Videos</a></li>
                                   <li><a href="{{ route('songs.index') }}"><i class="material-icons">music_note</i> Songs</a></li>
                                   <li><a href="{{ route('events.index') }}"><i class="material-icons">event</i> Events</a></li>
                                   <li><a href="{{ route('give') }}"><i class="material-icons">card_giftcard</i> Give Online</a></li>
                               </ul>
                           </li>
-                          <li><a href="{{ route('evangelism') }}">Ice Cream Evangelism</a></li>
                           <li><a href="{{ route('search') }}" aria-label="Search" id="toggle-search-show"><i class="material-icons">search</i></a>
                           </li>
                       </ul>
