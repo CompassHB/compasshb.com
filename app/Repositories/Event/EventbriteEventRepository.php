@@ -69,21 +69,22 @@ class EventbriteEventRepository implements Contract
                     'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=2&token='.
                     env('EVENTBRITE_OAUTH_TOKEN')
                 );
-                $page3 = $this->client->get(
-                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=3&token='.
-                    env('EVENTBRITE_OAUTH_TOKEN')
-                );
-                $page4 = $this->client->get(
-                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=4&token='.
-                    env('EVENTBRITE_OAUTH_TOKEN')
-                );
+//			Get 2 pages instead of 4 because attemping to get pages that don't exist return a 400 error that needs to be handled
+//                $page3 = $this->client->get(
+//                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=3&token='.
+//                    env('EVENTBRITE_OAUTH_TOKEN')
+//                );
+//                $page4 = $this->client->get(
+//                    'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=4&token='.
+//                    env('EVENTBRITE_OAUTH_TOKEN')
+//                );
 
                 $page1 = json_decode($page1->getBody());
                 $page2 = json_decode($page2->getBody());
-                $page3 = json_decode($page3->getBody());
-                $page4 = json_decode($page4->getBody());
+//                $page3 = json_decode($page3->getBody());
+//                $page4 = json_decode($page4->getBody());
 
-                $results = array_merge($page1->events, $page2->events, $page3->events, $page4->events);
+                $results = array_merge($page1->events, $page2->events);
 
                 return $results;
             } catch (\Exception $e) {
