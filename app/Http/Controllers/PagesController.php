@@ -242,6 +242,11 @@ class PagesController extends Controller
             // All Events
             $events = $event->events();
 
+            // Filter out Home Fellowship Group events
+            $events = array_filter($events, function ($var) {
+                return ($var->organizer_id != '8215662871');
+            });
+			
 			dd($events);
 
             // Events accepting registrations
