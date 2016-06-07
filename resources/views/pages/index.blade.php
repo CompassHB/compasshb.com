@@ -156,7 +156,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 {{-- Photos --}}
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
-        <h2 class="tk-seravek-web"><a href="{{ route('photos') }}">Photos</a></h2>
+        <h2 class="tk-seravek-web"><a href="http://compasshb.smugmug.com/PhotoArchive">Photos</a></h2>
 
         @foreach($images as $image)
         <div class="col-md-3" style="padding-bottom: 10px">

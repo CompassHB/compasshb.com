@@ -10,7 +10,7 @@
     <div class="row">
 
     <h1 class="tk-seravek-web">Photos</h1>
-    <p>View more photos at <a href="http://photos.compasshb.com/">http://photos.compasshb.com/</a></p>
+    <p>View more photos at <a href="https://compasshb.smugmug.com/PhotoArchive">http://photos.compasshb.com/</a></p>
 
 
       <div id="js-masonry">
