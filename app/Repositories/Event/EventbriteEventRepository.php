@@ -67,7 +67,7 @@ class EventbriteEventRepository implements Contract
                 );
              //   $page2 = $this->client->get(
              //       'users/me/owned_events/?expand=organizer,venue&status=live%2Cstarted&order_by=start_asc&page=2&token='.
-                    env('EVENTBRITE_OAUTH_TOKEN')
+              //      env('EVENTBRITE_OAUTH_TOKEN')
              //   );
 //			Get 2 pages instead of 4 because attemping to get pages that don't exist return a 400 error that needs to be handled
 //                $page3 = $this->client->get(
