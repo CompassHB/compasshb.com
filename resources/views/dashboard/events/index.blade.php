@@ -30,20 +30,5 @@
     @endforeach
     </ul>
 
-    <br/><br/><br/>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title tk-seravek-web">Online Registration</h3>
-      </div>
-      <div class="panel-body">
-        @foreach ($registrations as $registration)
-            <p>
-                     <a href='/events/{{ $registration->id }}/{{ str_slug($registration->name->text, "-") }}/'>{{ $registration->name->text }}</a><br/>
-                <small>{{ date("l F j, Y", strtotime($registration->start->local)) }}</small>
-            </p>
-        @endforeach
-      </div>
-    </div>
-
 </div>
 @endsection
