@@ -8,27 +8,29 @@
 <div class="Setting Box Box--Large Box--bright utility-flex">
   <h1 class="Setting__heading tk-seravek-web">Events</h1>
 
+    <?php $i = 0; ?>
+  @foreach ($events as $event)
+  <div class="col-md-4" {!! ($i % 3) ? 'style="margin-top: 20px;"' : 'style="clear: left; margin-top: 20px;"' !!}>
+    <a href='/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/' class="btn btn-default" style="float: right"
+	@if (isset($event->logo->url))
+		style="background-image: url({{ $event->logo->url }}); background-size: cover; width: 200px; height: 125px; display: block;"
+	@endif
+	></a>
+      <h4 class="tk-seravek-web">{{ $event->name->text }}</h4>
+      <p>{{ date("l, F j, Y", strtotime($event->start->local)) }}</p>
+    </a>
+  </div>
+  <?php ++$i; ?>
+  @endforeach
+
+  <br style="clear: both"/>
+
     <div class="panel panel-default">
       <div class="panel-body">
         <p>The schedule of mid-week home fellowship groups is available at the <a href="/fellowship">Fellowship</a> page.</p>
       </div>
     </div>
 
-    <ul class="list-group">
-    @foreach ($events as $event)
-        <li class="list-group-item">
-            <h4>{{ date("F j, Y (l)", strtotime($event->start->local)) }}</h4>
-            <a href='/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/' class="btn btn-default" style="float: right">Details</a>
-            @if (isset($event->logo->url))
-              <img src='{{ $event->logo->url }}' style="float: left; width: 250px; padding-right: 20px" />
-            @endif
-            <h5><a href='/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/'>{{ $event->name->text }}</a></h5>
-            <p style="clear: right">Organizer: {{ $event->organizer->name }}<br/>Venue: {{ $event->venue->name }}</p>
-            <p>{!! substr($event->description->html, 0, 244) !!}... <a href='/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/'>More</a></p>
-        <br style="clear: both"/>
-        </li>
-    @endforeach
-    </ul>
-
 </div>
 @endsection
+

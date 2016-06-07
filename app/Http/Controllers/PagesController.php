@@ -246,8 +246,6 @@ class PagesController extends Controller
             $events = array_filter($events, function ($var) {
                 return ($var->organizer_id != '8215662871');
             });
-			
-			dd($events);
 
             // Events accepting registrations
             // $registrations = array_filter($events, function ($var) {
