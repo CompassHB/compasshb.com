@@ -12,7 +12,7 @@
   @foreach ($events as $event)
   <div class="col-md-4" {!! ($i % 3) ? 'style="margin-top: 20px;"' : 'style="clear: left; margin-top: 20px;"' !!}>
     <a href='/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/' class="btn btn-default" style="float: right"
-	@if (isset($event->logo->url))
+	@if ($event->logo)
 		style="background-image: url({{ $event->logo->url }}); background-size: cover; width: 200px; height: 125px; display: block;"
 	@endif
 	></a>
