@@ -112,7 +112,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 {{-- Recent Sermons --}}
 <div class="row" style="background: none; background-color: #fff; padding-bottom: 20px;">
     <div class="col-xs-10 col-xs-offset-1">
-        <h2 class="tk-seravek-web"><a href="{{ route('sermons.index') }}">Sermons</a></h2>
+        <h2 class="tk-seravek-web"><a href="{{ route('sermons.index') }}" class="btn btn-default">Sermons</a></h2>
         @foreach($sermons as $sermon)
           <div class="col-sm-6 col-md-3">
           <div class="Box--shadow" style="width: 100%">
@@ -133,7 +133,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 {{-- Recent Videos --}}
 <div class="row" style="background: none; background-color: #dddddd; padding-bottom: 20px;">
     <div class="col-xs-10 col-xs-offset-1">
-        <h2 class="tk-seravek-web"><a href="{{ route('blog.index') }}">Videos</a></h2>
+        <h2 class="tk-seravek-web"><a href="{{ route('blog.index') }}" class="btn btn-default">Videos</a></h2>
 
         @foreach($videos as $video)
         <div class="col-sm-6 col-md-6">
@@ -156,7 +156,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 {{-- Photos --}}
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
-        <h2 class="tk-seravek-web"><a href="http://compasshb.smugmug.com/PhotoArchive">Photos</a></h2>
+        <h2 class="tk-seravek-web"><a href="http://compasshb.smugmug.com/PhotoArchive" class="btn btn-default">Photos</a></h2>
 
         @foreach($images as $image)
         <div class="col-md-3" style="padding-bottom: 10px">
@@ -170,11 +170,11 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 <div class="row" style="background: none; background-color: #fff; padding-bottom: 40px;">
   <div class="col-xs-10 col-xs-offset-1">
     <div class="col-md-5">
-            <h2 class="tk-seravek-web"><a href="https://www.facebook.com/CompassHB">Facebook</a></h2>
+            <h2 class="tk-seravek-web"><a href="https://www.facebook.com/CompassHB" class="btn btn-default">Facebook</a></h2>
       <div class="fb-like-box" data-href="https://www.facebook.com/CompassHB" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
     </div>
     <div class="col-md-7">
-        <h2 class="tk-seravek-web"><a href="https://www.twitter.com/compasshb">Tweets</a></h2><br/>
+        <h2 class="tk-seravek-web"><a href="https://www.twitter.com/compasshb" class="btn btn-default">Tweets</a></h2><br/>
         <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/BradMSmith/lists/compasshb" data-widget-id="566872417012690945" data-chrome="noheader">Tweets from https://twitter.com/BradMSmith/lists/compasshb</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>    </div>
 </div>
 <br/><br/>&nbsp;<br/><br/>
@@ -183,7 +183,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 {{-- Instagram --}}
 <div class="row" style="background: none; background-color: #fff; padding-bottom: 20px;">
     <div class="col-xs-10 col-xs-offset-1">
-        <h2 class="tk-seravek-web"><a href="https://www.instagram.com/compasshb">Instagram</a></h2>
+        <h2 class="tk-seravek-web"><a href="https://www.instagram.com/compasshb" class="btn btn-default">Instagram</a></h2>
 
         @foreach($instagrams as $instagram)
         <div class="col-sm-6 col-md-3">
