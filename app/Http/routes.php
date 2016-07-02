@@ -270,6 +270,9 @@ Route::get('bunnyrun', ['as' => 'bunnyrun',
 Route::get('resurrectionweek', ['as' => 'bunnyrun',
     'uses' => 'PagesController@resurrectionweek',
 ]);
+Route::get('greatawakening', ['as' => 'greatawakening',
+    'uses' => 'PagesController@greatawakening',
+]);
 /*
  * Route for marriage
  */

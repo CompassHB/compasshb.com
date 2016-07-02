@@ -190,6 +190,11 @@ class PagesController extends Controller
         return redirect('https://www.compasshb.com/events/22334601394/bunny-run-and-chase/');
     }
 
+    public function greatawakening()
+    {
+        return redirect('https://www.compasshb.com/events/26274982179/great-awakening-week/');
+    }
+
     public function resurrectionweek()
     {
         return redirect('https://www.compasshb.com/events/22662635553/resurrection-week/');
