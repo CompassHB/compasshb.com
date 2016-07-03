@@ -4,6 +4,7 @@ namespace CompassHB\Www\Http\Controllers;
 
 use Log;
 use Cache;
+use GuzzleHttp\Client;
 use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
 use CompassHB\Www\Series;
@@ -96,7 +97,7 @@ class PagesController extends Controller
             $instagrams['data'] = [];
         }
 
-        /*
+        /*Pages
          * Smugmug
          */
         $results = $photos->getPhotos(8);
@@ -192,7 +193,15 @@ class PagesController extends Controller
 
     public function greatawakening()
     {
-        return redirect('https://www.compasshb.com/events/26274982179/great-awakening-week/');
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/pages', [
+            'query' => ['filter[name]' => 'greatawakening']
+        ])->getBody();
+
+        $page = json_decode($body);
+        $page = $page[0];
+        
+        return view('dashboard.landing.show', compact('page'));
     }
 
     public function resurrectionweek()
