@@ -14,10 +14,10 @@
   @foreach ($songs as $song)
     <div class="col-md-4">
       <div class="thumbnail">
-        <img src="{{ $song->thumbnail }}" alt="{{ $song->title }}"/>
+        <img src="{{ isset($song->_embedded->{'wp:featuredmedia'}[0]->source_url) ? $song->_embedded->{'wp:featuredmedia'}[0]->source_url : '' }}" alt="{{ $song->title->rendered }}"/>
         <div class="caption">
-          <h5 class="tk-seravek-web">{{ $song->title }}</h5>
-          <p>{{ $song->excerpt }}<br/><a href="{{ route('songs.show', $song->alias) }}" class="btn btn-default" role="button">Watch</a> <a href="{{$song->audio}}" class="btn btn-default" role="button">Download</a></p>
+          <h5 class="tk-seravek-web">{{ $song->title->rendered }}</h5>
+          <p><br/><a href="{{ route('songs.show', $song->slug) }}" class="btn btn-default" role="button">Watch</a> <a href="{{$song->acf->audio_url}}" class="btn btn-default" role="button">Download</a></p>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
+use GuzzleHttp\Client;
 use CompassHB\Www\Song;
 use CompassHB\Www\Contracts\Plan;
 use CompassHB\Www\Contracts\Video;
@@ -27,11 +28,18 @@ class SongsController extends Controller
      */
     public function index(Video $video, Plan $plan)
     {
-        $songs = Song::latest('published_at')->published()->get();
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => '9' // worship songs
+            ]
+        ])->getBody();
+
+        $songs = json_decode($body);
 
         foreach ($songs as $song) {
-            $video->setUrl($song->video);
-            $song->thumbnail = $video->getThumbnail();
+            $video->setUrl($song->acf->video_url);
         }
 
         $setlist = $plan->getSetList();
