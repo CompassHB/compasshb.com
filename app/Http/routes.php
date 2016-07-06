@@ -3,7 +3,16 @@
 /*
  * Route for songs.
  */
-Route::resource('songs', 'SongsController', ['except' => ['destroy']]);
+//Route::resource('songs', 'SongsController', ['except' => ['destroy']]);
+Route::get('songs', [
+    'as' => 'songs.index',
+    'uses' => 'SongsController@index'
+]);
+
+Route::get('songs/{song}', [
+    'as' => 'songs.show',
+    'uses' => 'SongsController@show'
+]);
 
 /*
  * Route for passages
@@ -312,10 +321,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         'uses' => 'HomeController@mainservice',
     ]);
 
-    Route::get('songs', [
-        'as' => 'songs',
-        'uses' => 'HomeController@songs',
-    ]);
+//    Route::get('songs', [
+//        'as' => 'songs',
+//        'uses' => 'HomeController@songs',
+//    ]);
 
     Route::get('read', [
         'as' => 'read',

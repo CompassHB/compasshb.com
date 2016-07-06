@@ -2,23 +2,13 @@
 
 namespace CompassHB\Www\Http\Controllers;
 
-use Auth;
 use GuzzleHttp\Client;
 use CompassHB\Www\Song;
 use CompassHB\Www\Contracts\Plan;
 use CompassHB\Www\Contracts\Video;
-use CompassHB\Www\Http\Requests\SongRequest;
 
 class SongsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth', ['only' => ['edit', 'update', 'create', 'store', 'destroy']]);
-    }
-
     /**
      * Show all songs.
      *
@@ -29,10 +19,9 @@ class SongsController extends Controller
     public function index(Video $video, Plan $plan)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('http://api.compasshb.com/worship/wp-json/wp/v2/posts?embed', [
             'query' => [
-                '_embed' => true,
-                'filter[cat]' => '9' // worship songs
+                '_embed' => true
             ]
         ])->getBody();
 
@@ -58,70 +47,32 @@ class SongsController extends Controller
      * @param Video $video
      * @return \Illuminate\View\View
      */
-    public function show(Song $song, Video $video)
+    public function show($song, Video $video)
     {
-        $video->setUrl($song->video);
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/worship/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[name]' => $song
+            ]
+        ])->getBody();
+
+        $song = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($song))
+        {
+            abort(404);
+        } else {
+            $song = $song[0];
+        }
+
+        $video->setUrl($song->acf->video_url);
         $song->iframe = $video->getEmbedCode(true);
         $texttrack = $video->getTextTracks(true);
 
         return view('dashboard.songs.show', compact('song', 'texttrack'))
-            ->with('title', $song->title);
+            ->with('title', $song->title->rendered);
     }
 
-    /**
-     * Edit an existing song.
-     *
-     * @param Song $song
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit(Song $song)
-    {
-        return view('admin.songs.edit', compact('song'))->with('title', 'Edit Song');
-    }
-
-    /**
-     * Update a song.
-     *
-     * @param Song        $song
-     * @param SongRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Song $song, SongRequest $request)
-    {
-        $song->update($request->all());
-
-        return redirect()
-            ->route('admin.songs')
-            ->with('message', 'Success! Your song was updated.');
-    }
-
-    /**
-     * Show the page to create a new song.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('admin.songs.create');
-    }
-
-    /**
-     * Store a new song.
-     *
-     * @param SongRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(SongRequest $request)
-    {
-        $song = new Song($request->all());
-
-        Auth::user()->songs()->save($song);
-
-        return redirect()
-            ->route('admin.songs')
-            ->with('message', 'Success! Your song was saved.');
-    }
 }

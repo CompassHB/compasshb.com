@@ -18,11 +18,6 @@
 
         <i class="material-icons">keyboard_arrow_right</i>
       </li>
-      <li class="{{ setActive('admin/songs') }}">
-        <a href="{{ route('admin.songs') }}">Worship</a>
-
-        <i class="material-icons">keyboard_arrow_right</i>
-      </li>
     </ul>
   </nav>
 </section>
