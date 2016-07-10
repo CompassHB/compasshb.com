@@ -10,14 +10,15 @@
 
     <?php $i = 0; ?>
   @foreach ($events as $event)
-  <div class="col-md-4" {!! ($i % 3) ? 'style="margin-top: 20px;"' : 'style="clear: left; margin-top: 20px;"' !!}>
-    <a href='/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/'
-	@if ($event->logo)
-		style="background-image: url({!! $event->logo->url !!}); background-size: cover; width: 200px; height: 125px; display: block;"
+
+        <div class="col-md-4" {!! ($i % 3) ? 'style="margin-top: 20px;"' : 'style="clear: left; margin-top: 20px;"' !!}>
+    <a href='/events/{{ $event->slug }}'
+	@if (isset($event->_embedded->{'wp:featuredmedia'}[0]->source_url))
+		style="background-image: url({!! $event->_embedded->{'wp:featuredmedia'}[0]->source_url !!}); background-size: cover; width: 200px; height: 125px; display: block;"
 	@endif
 ></a>
-      <h4 class="tk-seravek-web">{{ $event->name->text }}</h4>
-      <p>{{ date("l, F j, Y", strtotime($event->start->local)) }}</p>
+      <h4 class="tk-seravek-web">{{ $event->title->rendered }}</h4>
+      <p>{{ date("l, F j, Y", strtotime($event->date)) }}</p>
     </a>
   </div>
   <?php ++$i; ?>

@@ -33,14 +33,6 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /*
-         * Event
-         */
-        $this->app->bind(
-            'CompassHB\Www\Contracts\Events',
-            'CompassHB\Www\Repositories\Event\EventbriteEventRepository'
-        );
-
-        /*
          * Photo
          */
         $this->app->bind(

@@ -6,7 +6,6 @@ use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Passage;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -31,12 +30,7 @@ class EventServiceProvider extends ServiceProvider
             $object->alias = isset($object->alias) == true ?
                 $object->alias : makeSlugFromTitle(new Series(), $object->title);
         });
-
-        Passage::saving(function ($object) {
-            $object->alias = isset($object->alias) == true ?
-                $object->alias : makeSlugFromTitle(new Passage(), $object->title);
-        });
-
+        
         Song::saving(function ($object) {
             $object->alias = isset($object->alias) == true ?
                 $object->alias : makeSlugFromTitle(new Song(), $object->title);

@@ -3,9 +3,9 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'compasshb';
-    var disqus_url = '{{ route('read.show', $passage->alias) }}/';
-    var disqus_title = '{{ $passage->title }} - Compass Bible Church';
-    var disqus_identifier = 'read-{{ $passage->id }}';
+    var disqus_url = '{{ route('read.show', $passage->slug) }}/';
+    var disqus_title = '{{ $passage->title->rendered }} - Compass Bible Church';
+    // var disqus_identifier = 'read-{{ $passage->id }}';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

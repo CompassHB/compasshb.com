@@ -40,7 +40,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
   <div class="Box--shadow" style="width: 100%">
     <span class="Box--shadow--wrap">
     <a class="clickable boxer" href="{{ route('read.index') }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://compasshb.smugmug.com/Compass-Web-Graphics/Compass-HB-Graphics/n-KxJFC/i-VKPPW8P/0/S/i-VKPPW8P-S.jpg);">
-      <h4 class="tk-seravek-web">{{ $passage->title }}</h4>
+      <h4 class="tk-seravek-web">{{ $passage->title->rendered }}</h4>
       <p>Scripture of the Day</p>
       </a>
     </span>
@@ -48,13 +48,13 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 </div>
   @endif
 
-  @foreach(array_slice($fevents, 0,2) as $event)
+  @foreach(array_slice($featuredevents, 0,2) as $event)
   <div class="col-sm-3">
   <div class="Box--shadow" style="width: 100%">
     <span class="Box--shadow--wrap">
-    <a class="clickable featuredblog boxer" href="/events/{{ $event->id }}/{{ str_slug($event->name->text, "-") }}/" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $event->logo->url }});">
-      <h4 class="tk-seravek-web">{{ $event->name->text }}</h4>
-      <p> {{ date("F j", strtotime($event->start->local)) }}</p>
+    <a class="clickable featuredblog boxer" href="/events/{{ $event->slug }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $event->_embedded->{'wp:featuredmedia'}[0]->source_url }});">
+      <h4 class="tk-seravek-web">{{ $event->title->rendered }}</h4>
+      <p> {{ date("F j", strtotime($event->date)) }}</p>
     </a>
   </span>
 </div>

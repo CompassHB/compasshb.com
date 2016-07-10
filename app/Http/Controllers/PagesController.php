@@ -9,7 +9,6 @@ use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Passage;
 use CompassHB\Www\Contracts\Photos;
 use CompassHB\Www\Contracts\Video;
 use CompassHB\Www\Contracts\Events;
@@ -32,22 +31,20 @@ class PagesController extends Controller
      * @param Events $event
      * @return view
      */
-    public function home(Photos $photos, Video $videoClient, Events $event)
+    public function home(Photos $photos, Video $videoClient)
     {
-        $featuredevents = $event->search('#featuredevent');
-        $featuredevents = $featuredevents->events;
 
-        $fevents = [];
-        // Remove duplicates/recurring events
-        foreach ($featuredevents as $item) {
-            if (isset($item->series_id)) {
-                if (!isset($fevents[$item->series_id])) {
-                    $fevents[$item->series_id] = $item;
-                }
-            } else {
-                $fevents[$item->id] = $item;
-            }
-        }
+        // Featured Events
+        $client = new Client();
+
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/events', [
+            'query' => [
+                '_embed' => true
+
+            ]
+        ])->getBody();
+
+        $featuredevents = json_decode($body);
 
         $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->take(4)->get();
         $prevsermon = $sermons->first();
@@ -55,7 +52,16 @@ class PagesController extends Controller
 
         $blogs = Blog::latest('published_at')->published()->take(2)->get();
         $videos = Blog::whereNotNull('video')->latest('published_at')->published()->take(2)->get();
-        $passage = Passage::latest('published_at')->published()->take(1)->get()->first();
+
+        // get single passages
+        $body = $client->get('http://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true
+            ]
+        ])->getBody();
+
+        $passage = json_decode($body);
+        $passage = $passage[0];
 
         foreach ($sermons as $sermon) {
             $videoClient->setUrl($sermon->video);
@@ -107,7 +113,7 @@ class PagesController extends Controller
         return view('pages.index', compact(
             'broadcast',
             'sermons',
-            'fevents',
+            'featuredevents',
             'nextsermon',
             'prevsermon',
             'blogs',
@@ -213,7 +219,7 @@ class PagesController extends Controller
     {
         $blogs = Blog::published()->get();
         $sermons = Sermon::published()->get();
-        $passages = Passage::pluck('alias');
+//        $passages = Passage::pluck('alias');
         $series = Series::pluck('alias');
         $songs = Song::pluck('alias');
         $events = $event->events();
@@ -243,35 +249,47 @@ class PagesController extends Controller
             ->header('Content-Type', 'application/xml');
     }
 
-    public function events(Events $event, $id = null)
+    public function eventsindex()
     {
-        if ($id) {
 
-            // Single Event Page
-            $event = $event->event($id);
+        $client = new Client();
 
-            return view('dashboard.events.show', compact('event'));
-        } else {
+         $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/events', [
+                'query' => [
+                    '_embed' => true
+                ]
+            ])->getBody();
 
-            // All Events
-            $events = $event->events();
+            $events = json_decode($body);
 
-            // Filter out Home Fellowship Group events
-            $events = array_filter($events, function ($var) {
-                return ($var->organizer_id != '8215662871');
-            });
-
-            // Events accepting registrations
-            // $registrations = array_filter($events, function ($var) {
-
-                // If the ticket is not hidden or it has the hashtag #registrations
-                // return (!$var->ticket_classes[0]->hidden ||
-                //        strpos($var->description->text, '#registration'));
-            // });
 
             return view('dashboard.events.index', compact('events'));
-        }
     }
+
+    public function eventsshow($event) {
+
+        $client = new Client();
+            $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/events', [
+                'query' => [
+                    '_embed' => true,
+                    'filter[name]' => $event,
+
+                ]
+            ])->getBody();
+
+            $events = json_decode($body);
+
+            // Handle 404 if event does not exist in API
+            if (empty($event))
+            {
+                abort(404);
+            } else {
+                $events = $events[0];
+            }
+
+            return view('dashboard.events.show', compact('events'));
+
+        }
 
     /**
      * Clear the event cache when event management system sends a webhook callback.

@@ -15,7 +15,6 @@
 
   <p>
   	<strong>Shortcuts:</strong><br/>
-  	<a href="/api/v1/cleareventcache/{{ env('EVENTBRITE_CALLBACK') }}">Force Eventbrite Sync (Clears all event page caches)</a><br/>
   	<a href="/api/v1/clearvideothumbcache/{{ env('EVENTBRITE_CALLBACK') }}">Force Video Thumbnail Sync (Clears latest sermon thumb cache)</a><br/>
   </p>
 

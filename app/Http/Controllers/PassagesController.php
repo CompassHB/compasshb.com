@@ -3,7 +3,7 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
-use CompassHB\Www\Passage;
+use GuzzleHttp\Client;
 use CompassHB\Www\Contracts\Analytics;
 use CompassHB\Www\Contracts\Scripture;
 use CompassHB\Www\Http\Requests\PassageRequest;
@@ -30,9 +30,18 @@ class PassagesController extends Controller
      */
     public function index()
     {
-        $passage = Passage::latest('published_at')->published()->first();
+        // get single passages
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true
+            ]
+        ])->getBody();
 
-        return $this->show($passage, true);
+        $passage = json_decode($body);
+        $passage = $passage[0];
+        
+        return $this->show($passage->slug, true);
     }
 
     /**
@@ -43,31 +52,55 @@ class PassagesController extends Controller
      * @param bool $today
      * @return \Illuminate\View\View
      */
-    public function show(Passage $passage, $today = false)
+    public function show($passage, $today = false)
     {
+        // get single passages
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[name]' => $passage
+            ]
+        ])->getBody();
+
+        $passage = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($passage)) {
+            abort(404);
+        } else {
+            $passage = $passage[0];
+        }
 
         // For sidebar display
-        $passages = Passage::latest('published_at')->published()->take(5)->get();
+        $body = $client->get('http://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                'filter[per_page]' => 5
+            ]
+        ])->getBody();
+
+        $passages = json_decode($body);
 
         // For social sharing
         // @TODO: edit after Bible Overview
         $coverimage = 'https://compasshb.smugmug.com/photos/i-w6dnZK2/0/S/i-w6dnZK2-S.jpg';
         $ogdescription = 'Read one chapter a day of every book of the Bible along with us.';
 
+        $date = strtotime($passage->date);
+
         $analytics = $this->analytics->getPageViews(
             '/read',
-            $passage->published_at->format('Y-m-d'),
-            $passage->published_at->format('Y-m-d')
+            date('Y-m-d', $date),
+            date('Y-m-d', $date)
         );
         $analytics['activeUsers'] = $this->analytics->getActiveUsers();
 
-        $passage->verses = $this->scripture->getScripture($passage->title);
-        $passage->audio = $this->scripture->getAudioScripture($passage->title);
+        $passage->verses = $this->scripture->getScripture($passage->title->rendered);
+        $passage->audio = $this->scripture->getAudioScripture($passage->title->rendered);
 
-        if ($today || $passage->published_at->isToday()) {
+        if ($today || date('Y-m-d') == date('Y-m-d', $date)) {
             $postflash = '';
-            if ((date('D') == 'Sun' || date('D') == 'Sat') &&
-                !$passage->published_at->isToday()) {
+            if ((date('D') == 'Sun' || date('D') == 'Sat') && date('Y-m-d') != date('Y-m-d', $date)) {
                 $postflash = '<div class="alert alert-info" role="alert">Scripture of the Day is posted Monday through Friday.</div>';
             }
         } else {
@@ -75,63 +108,6 @@ class PassagesController extends Controller
         }
 
         return view('dashboard.passages.show', compact('passage', 'passages', 'postflash', 'analytics', 'coverimage', 'ogdescription'))
-            ->with('title', $passage->title . ' - Bible Overview');
-    }
-
-    /**
-     * Edit an existing passage.
-     *
-     * @param Passage $passage
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit(Passage $passage)
-    {
-        return view('admin.passages.edit', compact('passage'));
-    }
-
-    /**
-     * Update a passage.
-     *
-     * @param Passage        $passage
-     * @param PassageRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Passage $passage, PassageRequest $request)
-    {
-        $passage->update($request->all());
-
-        return redirect()
-            ->route('admin.read')
-            ->with('message', 'Success! Your Scripture of the Day was saved.');
-    }
-
-    /**
-     * Show the page to create a new passage.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('admin.passages.create');
-    }
-
-    /**
-     * Store a new passage.
-     *
-     * @param PassageRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(PassageRequest $request)
-    {
-        $passage = new Passage($request->all());
-
-        Auth::user()->passages()->save($passage);
-
-        return redirect()
-            ->route('admin.read')
-            ->with('message', 'Success! Your Scripture of the Day was saved.');
+            ->with('title', $passage->title->rendered . ' - Bible Overview');
     }
 }

@@ -5,16 +5,17 @@
 @endsection
 
 @section('content')
-<link rel="canonical" href="{{ route('read.show', $passage->alias) }}/" />
+
+<link rel="canonical" href="{{ route('read.show', $passage->slug) }}/" />
 
   <p>{!! $postflash !!}</p>
 
   <div class="Setting Box Box--Large Box--bright utility-flex">
-    <h1 class="Setting__heading tk-seravek-web">{{ $passage->title }}</h1>
+    <h1 class="Setting__heading tk-seravek-web">{{ $passage->title->rendered }}</h1>
 
       {!! $passage->verses !!}
 
-      <strong>Bible Overview</strong><br/>{!! $passage->body !!}
+      <strong>Bible Overview</strong><br/>{!! $passage->content->rendered !!}
 
     <hr/>
 
@@ -28,7 +29,7 @@
       <h5 class="tk-seravek-web">This Week</h5>
         <ul>
         @foreach ($passages as $p)
-          <li><a href="{{ route('read.show', $p->alias) }}">{{ $p->title }}</a></li>
+          <li><a href="{{ route('read.show', $p->slug) }}">{{ $p->title->rendered }}</a></li>
         @endforeach
         </ul>
 

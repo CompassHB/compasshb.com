@@ -3,7 +3,6 @@
 /*
  * Route for songs.
  */
-//Route::resource('songs', 'SongsController', ['except' => ['destroy']]);
 Route::get('songs', [
     'as' => 'songs.index',
     'uses' => 'SongsController@index'
@@ -17,7 +16,16 @@ Route::get('songs/{song}', [
 /*
  * Route for passages
  */
-Route::resource('read', 'PassagesController', ['except' => ['destroy']]);
+Route::get('read', [
+    'as' => 'read.index',
+    'uses' => 'PassagesController@index'
+]);
+
+Route::get('read/{passage}', [
+    'as' => 'read.show',
+    'uses' => 'PassagesController@show'
+]);
+
 
 /*
  * Route for sermons
@@ -209,9 +217,14 @@ Route::get('what-we-believe', [
     'uses' => 'PagesController@whatwebelieve',
 ]);
 
-Route::get('events/{id?}/{slug?}', [
+// Events
+Route::get('events/', [
     'as' => 'events.index',
-    'uses' => 'PagesController@events',
+    'uses' => 'PagesController@eventsindex',
+]);
+Route::get('events/{event}', [
+    'as' => 'events.show',
+    'uses' => 'PagesController@eventsshow',
 ]);
 
 /***********************************************************************
@@ -321,10 +334,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         'uses' => 'HomeController@mainservice',
     ]);
 
-//    Route::get('songs', [
-//        'as' => 'songs',
-//        'uses' => 'HomeController@songs',
-//    ]);
 
     Route::get('read', [
         'as' => 'read',
