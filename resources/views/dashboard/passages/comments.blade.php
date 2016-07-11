@@ -5,7 +5,7 @@
     var disqus_shortname = 'compasshb';
     var disqus_url = '{{ route('read.show', $passage->slug) }}/';
     var disqus_title = '{{ $passage->title->rendered }} - Compass Bible Church';
-    // var disqus_identifier = 'read-{{ $passage->id }}';
+    var disqus_identifier = 'read-{{ $passage->id }}';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
@@ -14,3 +14,4 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
+P

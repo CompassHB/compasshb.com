@@ -163,10 +163,6 @@ Route::group(['prefix' => 'api/v1'], function () {
         ]);
     Route::resource('series', 'Api\SeriesController', ['except' => ['destroy']]);
     Route::resource('blog', 'Api\BlogController', ['except' => ['destroy']]);
-    Route::get('cleareventcache/{auth?}', [
-        'as' => 'cleareventcache',
-        'uses' => 'PagesController@cleareventcache',
-    ]);
     Route::get('clearvideothumbcache/{auth?}', [
         'as' => 'clearvideothumbcache',
         'uses' => 'PagesController@clearvideothumbcache',

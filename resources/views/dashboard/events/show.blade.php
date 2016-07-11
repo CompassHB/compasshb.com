@@ -9,7 +9,7 @@
 <div class="Setting Box Box--Large Box--bright utility-flex">
   <h1 class="Setting__heading tk-seravek-web">{{ $events->title->rendered }}</h1>
 
-    <h4>{{ date("l F j, Y", strtotime($events->date)) }}</h4><br/><br/>
+    <h4>{{ date("l F j, Y", strtotime($events->_EventStartDate)) }}</h4><br/><br/>
 
 	<div class="row">
 		@if (isset($events->_embedded->{'wp:featuredmedia'}[0]->source_url))

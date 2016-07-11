@@ -18,7 +18,7 @@
 	@endif
 ></a>
       <h4 class="tk-seravek-web">{{ $event->title->rendered }}</h4>
-      <p>{{ date("l, F j, Y", strtotime($event->date)) }}</p>
+      <p>{{ date("l, F j, Y", strtotime($event->_EventStartDate)) }}</p>
     </a>
   </div>
   <?php ++$i; ?>

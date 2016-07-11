@@ -10,22 +10,6 @@
 
 <br/><p>We want every adult in our church to be  part of a home fellowship group! We have groups Tuesday, Wednesday, Thursday and Friday nights ready for you to join! Stop by the Compass Connect table for more information or email info@compasshb.com</p><br/>
 
-<div class="row">
-  @foreach ($hfg as $group)
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <img src="{{ $group->logo->url }}" alt="{{ $group->name->text }}"/>
-        <div class="caption">
-          <h5 class="tk-seravek-web">
-            <a href='/fellowship/{{ $group->id }}/{{ str_slug($group->name->text, "-") }}/'>{{ $group->name->text }}</a>
-          </h5>
-          <p>Next meeting: {{ date("F j", strtotime($group->start->local)) }}</p>
-        </div>
-      </div>
-    </div>
-  @endforeach
-</div>
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title tk-seravek-web">About</h3>

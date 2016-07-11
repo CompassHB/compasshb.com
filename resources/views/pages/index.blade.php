@@ -54,7 +54,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
     <span class="Box--shadow--wrap">
     <a class="clickable featuredblog boxer" href="/events/{{ $event->slug }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $event->_embedded->{'wp:featuredmedia'}[0]->source_url }});">
       <h4 class="tk-seravek-web">{{ $event->title->rendered }}</h4>
-      <p> {{ date("F j", strtotime($event->date)) }}</p>
+      <p> {{ date("F j", strtotime($event->_EventStartDate)) }}</p>
     </a>
   </span>
 </div>

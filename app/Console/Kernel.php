@@ -18,8 +18,7 @@ class Kernel extends ConsoleKernel
         'CompassHB\Www\Console\Commands\PassageReminder',
         'CompassHB\Www\Console\Commands\WorksheetReminder',
         'CompassHB\Www\Console\Commands\BoxcastReminder',
-        'CompassHB\Www\Console\Commands\BroadcastRefresh',
-        'CompassHB\Www\Console\Commands\FeaturedEventReminder'
+        'CompassHB\Www\Console\Commands\BroadcastRefresh'
     ];
 
     /**

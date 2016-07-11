@@ -11,7 +11,6 @@ use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Photos;
 use CompassHB\Www\Contracts\Video;
-use CompassHB\Www\Contracts\Events;
 
 class PagesController extends Controller
 {
@@ -37,14 +36,14 @@ class PagesController extends Controller
         // Featured Events
         $client = new Client();
 
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/events', [
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tribe_events', [
             'query' => [
                 '_embed' => true
-
             ]
         ])->getBody();
 
         $featuredevents = json_decode($body);
+        $featuredevents = array_reverse($featuredevents);
 
         $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->take(4)->get();
         $prevsermon = $sermons->first();
@@ -215,14 +214,16 @@ class PagesController extends Controller
         return redirect('https://www.compasshb.com/events/22662635553/resurrection-week/');
     }
 
-        public function sitemap(Video $video, Events $event)
+        public function sitemap(Video $video)
     {
         $blogs = Blog::published()->get();
         $sermons = Sermon::published()->get();
 //        $passages = Passage::pluck('alias');
+            $passages = [];
         $series = Series::pluck('alias');
         $songs = Song::pluck('alias');
-        $events = $event->events();
+//        $events = $event->events();
+            $events = [];
 
         // Generate video thumbnails
         foreach ($sermons as $sermon) {
@@ -240,9 +241,7 @@ class PagesController extends Controller
         }
 
         // Keep only Home Fellowship Group events
-        $fellowships = array_filter($events, function ($var) {
-            return ($var->organizer_id == '8215662871');
-        });
+        $fellowships = [];
 
         return response()
             ->view('pages.sitemap', compact('sermons', 'blogs', 'passages', 'series', 'songs', 'events', 'fellowships'))
@@ -254,13 +253,14 @@ class PagesController extends Controller
 
         $client = new Client();
 
-         $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/events', [
+         $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tribe_events', [
                 'query' => [
                     '_embed' => true
                 ]
             ])->getBody();
 
             $events = json_decode($body);
+            $events = array_reverse($events);
 
 
             return view('dashboard.events.index', compact('events'));
@@ -269,7 +269,7 @@ class PagesController extends Controller
     public function eventsshow($event) {
 
         $client = new Client();
-            $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/events', [
+            $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tribe_events', [
                 'query' => [
                     '_embed' => true,
                     'filter[name]' => $event,
@@ -290,27 +290,7 @@ class PagesController extends Controller
             return view('dashboard.events.show', compact('events'));
 
         }
-
-    /**
-     * Clear the event cache when event management system sends a webhook callback.
-     * @param $auth
-     * @param Events $event
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function cleareventcache($auth, Events $event)
-    {
-        if ($auth == env('EVENTBRITE_CALLBACK')) {
-            Cache::forget('searchevent');
-            Cache::forget('events');
-
-            // Warm the cache
-            $event->events();
-            $event->search('#featuredevents');
-        }
-
-        return redirect()
-            ->route('home');
-    }
+    
 
     public function search()
     {
@@ -318,7 +298,7 @@ class PagesController extends Controller
     }
 
     /**
-     * Clear the event cache when event management system sends a webhook callback.
+     * Clear the video cache when video management system sends a webhook callback.
      * @param $auth
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
