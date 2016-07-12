@@ -8,11 +8,6 @@
 
         <i class="material-icons">keyboard_arrow_right</i>
       </li>
-      <li class="{{ setActive('admin/read') }}">
-        <a href="{{ route('admin.read') }}">Scripture of the Day</a>
-
-        <i class="material-icons">keyboard_arrow_right</i>
-      </li>
       <li class="{{ setActive('admin/video') }}">
         <a href="{{ route('admin.video') }}">Post a Video</a>
 

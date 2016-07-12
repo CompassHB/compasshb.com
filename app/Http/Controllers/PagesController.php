@@ -5,7 +5,6 @@ namespace CompassHB\Www\Http\Controllers;
 use Log;
 use Cache;
 use GuzzleHttp\Client;
-use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
@@ -49,8 +48,16 @@ class PagesController extends Controller
         $prevsermon = $sermons->first();
         $nextsermon = Sermon::unpublished()->get();
 
-        $blogs = Blog::latest('published_at')->published()->take(2)->get();
-        $videos = Blog::whereNotNull('video')->latest('published_at')->published()->take(2)->get();
+        // get two videos
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 12,
+                'per_page' => 4
+            ]
+        ])->getBody();
+
+        $videos = json_decode($body);
 
         // get single passages
         $body = $client->get('http://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
@@ -65,11 +72,6 @@ class PagesController extends Controller
         foreach ($sermons as $sermon) {
             $videoClient->setUrl($sermon->video);
             $sermon->othumbnail = $videoClient->getThumbnail();
-        }
-
-        foreach ($videos as $video) {
-            $videoClient->setUrl($video->video);
-            $video->othumbnail = $videoClient->getThumbnail();
         }
 
         if ($prevsermon) {
@@ -115,7 +117,6 @@ class PagesController extends Controller
             'featuredevents',
             'nextsermon',
             'prevsermon',
-            'blogs',
             'videos',
             'passage'
         ))->with('images', $results)
@@ -216,7 +217,7 @@ class PagesController extends Controller
 
         public function sitemap(Video $video)
     {
-        $blogs = Blog::published()->get();
+//        $blogs = Blog::published()->get();
         $sermons = Sermon::published()->get();
 //        $passages = Passage::pluck('alias');
             $passages = [];
@@ -233,18 +234,11 @@ class PagesController extends Controller
             }
         }
 
-        foreach ($blogs as $blog) {
-            if (isset($blog->video)) {
-                $video->setUrl($blog->video);
-                $blog->image = $video->getThumbnail();
-            }
-        }
-
         // Keep only Home Fellowship Group events
         $fellowships = [];
 
         return response()
-            ->view('pages.sitemap', compact('sermons', 'blogs', 'passages', 'series', 'songs', 'events', 'fellowships'))
+            ->view('pages.sitemap', compact('sermons', 'passages', 'series', 'songs', 'events', 'fellowships'))
             ->header('Content-Type', 'application/xml');
     }
 

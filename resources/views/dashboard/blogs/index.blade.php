@@ -21,8 +21,8 @@
     <tbody>
       @foreach ($blogs as $blog)
       <tr>
-        <td><a href="{{ route('blog.show', $blog->alias) }}">{{ $blog->title }}</a></td>
-        <td>{{ date_format($blog->published_at, 'l, F j, Y') }}</td>
+        <td><a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title->rendered }}</a></td>
+        <td>{{ date('l, F j, Y' ,strtotime($blog->date)) }}</td>
       </tr>
       @endforeach
     </tbody>

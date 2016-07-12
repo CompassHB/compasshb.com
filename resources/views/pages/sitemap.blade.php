@@ -106,21 +106,6 @@
 </url>
 @endforeach
 
-@foreach($blogs as $blog)
-<url>
-    <loc>{{ Request::root() . '/blog/' . $blog->alias }}</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-    @if ($blog->image != null)
-    <video:video>
-        <video:player_loc allow_embed="yes">{{ $blog->video }}</video:player_loc>
-        <video:thumbnail_loc>{{ $blog->image }}</video:thumbnail_loc>
-        <video:title>{{ $blog->title }}</video:title>
-    </video:video>
-    @endif
-</url>
-@endforeach
-
 @foreach($passages as $slug)
 <url>
     <loc>{{ Request::root() . '/read/' . $slug }}</loc>

@@ -89,19 +89,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->bind('series', function ($slug) {
             return Series::where('alias', $slug)->firstOrFail();
         });
-
-        /*
-         * A blog is at /blog/{slug}
-         */
-        $router->bind('blog', function ($slug) {
-
-            // Logged in users can see future posts
-            if (Auth::check()) {
-                return Blog::where('alias', $slug)->firstOrFail();
-            }
-
-            return Blog::where('alias', $slug)->published()->firstOrFail();
-        });
+        
     }
 
     /**

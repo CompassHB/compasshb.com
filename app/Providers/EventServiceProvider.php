@@ -31,14 +31,5 @@ class EventServiceProvider extends ServiceProvider
                 $object->alias : makeSlugFromTitle(new Series(), $object->title);
         });
         
-        Song::saving(function ($object) {
-            $object->alias = isset($object->alias) == true ?
-                $object->alias : makeSlugFromTitle(new Song(), $object->title);
-        });
-
-        Blog::saving(function ($object) {
-            $object->alias = isset($object->alias) == true ?
-                $object->alias : makeSlugFromTitle(new Blog(), $object->title);
-        });
     }
 }

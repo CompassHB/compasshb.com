@@ -3,9 +3,8 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
-use CompassHB\Www\Blog;
+use GuzzleHttp\Client;
 use CompassHB\Www\Contracts\Video;
-use CompassHB\Www\Http\Requests\BlogRequest;
 
 class BlogsController extends Controller
 {
@@ -24,7 +23,15 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::latest('published_at')->published()->get();
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[posts_per_page]' => 500
+            ]
+        ])->getBody();
+
+        $blogs = json_decode($body);
 
         return view('dashboard.blogs.index', compact('blogs'))
             ->with('title', 'Blog');
@@ -39,99 +46,37 @@ class BlogsController extends Controller
      * @param string $locale
      * @return \Illuminate\View\View
      */
-    public function show(Blog $blog, Video $video, $locale = 'en')
+    public function show($blog, Video $video, $locale = 'en')
     {
-        $languages = [];
-        $blog->iframe = '';
-        $texttrack = '';
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[name]' => $blog
+            ]
+        ])->getBody();
 
-        if (!empty($blog->video)) {
-            $video->setUrl($blog->video);
+        $blog = json_decode($body);
 
-            $blog->iframe = $video->getEmbedCode(true);
-            $coverimage = $video->getThumbnail();
-
-            $languages = $video->getLanguages();
-
-            // SHow the english if requested
-            // locale not supported
-            if (!in_array($locale, $languages) && $locale != 'en') {
-                return redirect('/blog/'.$blog->alias);
-            }
-
-            $texttrack = $video->getTextTracks(true, $locale);
+        // Handle 404 if page does not exist in API
+        if (empty($blog))
+        {
+            abort(404);
+        } else {
+            $blog = $blog[0];
         }
 
         return view(
             'dashboard.blogs.show',
             compact(
-                'blog',
-                'coverimage',
-                'texttrack',
-                'languages'
+                'blog'
             )
-        )->with('title', $blog->title)->with('ogdescription', 'Compass Bible Church Huntington Beach');
+        )->with('title', $blog->title->rendered)->with('ogdescription', 'Compass Bible Church Huntington Beach');
     }
 
-    public function language(Blog $blog, Video $video, $locale)
+    public function language($blog, $locale, Video $video)
     {
         return $this->show($blog, $video, $locale);
     }
-
-    /**
-     * Edit an existing blog.
-     *
-     * @param Blog $blog
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit(Blog $blog)
-    {
-        return view('admin.blogs.edit', compact('blog'));
-    }
-
-    /**
-     * Update a blog.
-     *
-     * @param Blog        $blog
-     * @param BlogRequest $request
-     *
-     * @return Response
-     */
-    public function update(Blog $blog, BlogRequest $request)
-    {
-        $blog->update($request->all());
-
-        return redirect()
-            ->route('admin.index')
-            ->with('message', 'Success! Your blog was updated.');
-    }
-
-    /**
-     * Show the page to create a new blog.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('admin.blogs.create');
-    }
-
-    /**
-     * Store a new blog.
-     *
-     * @param BlogRequest $request
-     *
-     * @return Response
-     */
-    public function store(BlogRequest $request)
-    {
-        $blog = new Blog($request->all());
-
-        Auth::user()->blogs()->save($blog);
-
-        return redirect()
-            ->route('admin.index')
-            ->with('message', 'Success! Your blog was saved.');
-    }
+    
 }

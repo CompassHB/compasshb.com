@@ -53,10 +53,14 @@ Route::resource('series', 'SeriesController', ['except' => ['destroy']]);
 /*
  * Route for blogs
  */
-Route::resource('blog', 'BlogsController', ['except' => ['destroy']]);
-Route::get('blog/{blog}/{locale}', [
-    'as' => 'blogs.language',
-    'uses' => 'BlogsController@language',
+Route::get('blog', [
+    'as' => 'blog.index',
+    'uses' => 'BlogsController@index'
+]);
+
+Route::get('blog/{blog}', [
+    'as' => 'blog.show',
+    'uses' => 'BlogsController@show'
 ]);
 
 /*
@@ -162,7 +166,6 @@ Route::group(['prefix' => 'api/v1'], function () {
             'except' => ['destroy'],
         ]);
     Route::resource('series', 'Api\SeriesController', ['except' => ['destroy']]);
-    Route::resource('blog', 'Api\BlogController', ['except' => ['destroy']]);
     Route::get('clearvideothumbcache/{auth?}', [
         'as' => 'clearvideothumbcache',
         'uses' => 'PagesController@clearvideothumbcache',

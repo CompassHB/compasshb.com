@@ -65,29 +65,6 @@
 
   {!! $series->render() !!}
 
-  {{-- Blogs --}}
-  <div class="panel panel-default">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Blog</th>
-          <th>Publish Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($blogs as $blog)
-          <tr>
-            <td><a href="{{ route('blog.edit', $blog->alias) }}">{{ $blog->title }}</a></td>
-            <td>{{ date_format($blog->published_at, 'Y-m-d l') }}</td>
-            <td>{{ $blog->published_at->lt(\Carbon\Carbon::now()) ? 'Published' : 'Scheduled' }}</td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-
-  {!! $blogs->render() !!}
 </div>
 
 @endsection

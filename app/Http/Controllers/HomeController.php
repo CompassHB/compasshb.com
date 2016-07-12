@@ -2,7 +2,6 @@
 
 namespace CompassHB\Www\Http\Controllers;
 
-use CompassHB\Www\Blog;
 use CompassHB\Www\Song;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Series;
