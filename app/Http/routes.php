@@ -273,6 +273,10 @@ Route::get('men', [
     'as' => 'men',
     'uses' => 'MinistryController@men',
 ]);
+Route::get('sermons/men/{sermon}', [
+    'as' => 'mensermon',
+    'uses' => 'MinistryController@mensermon',
+]);
 
 /*
  * Route for women
@@ -280,6 +284,10 @@ Route::get('men', [
 Route::get('women', [
     'as' => 'women',
     'uses' => 'MinistryController@women',
+]);
+Route::get('messages/women/{message}', [
+    'as' => 'womenmessage',
+    'uses' => 'MinistryController@womenmessage',
 ]);
 
 /*

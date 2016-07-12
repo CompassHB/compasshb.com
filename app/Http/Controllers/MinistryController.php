@@ -2,6 +2,7 @@
 
 namespace CompassHB\Www\Http\Controllers;
 
+use GuzzleHttp\Client;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Video;
@@ -77,18 +78,50 @@ class MinistryController extends Controller
      * @param Video $video
      * @return \Illuminate\View\View
      */
-    public function men(Video $video)
+    public function men()
     {
-        $sermons = Sermon::where('ministryId', '=', 'men')->latest('published_at')->published()->get();
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[posts_per_page]' => 500
+            ]
+        ])->getBody();
 
-        foreach ($sermons as $sermon) {
-            $video->setUrl($sermon->video);
-            $sermon->image = $video->getThumbnail();
-        }
+        $sermons = json_decode($body);
+     //   dd($sermons);
 
         return view(
             'ministries.men.index',
             compact('sermons')
+        )->with('title', 'Men');
+    }
+
+    public function mensermon($sermon)
+    {
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[name]' => $sermon
+            ]
+        ])->getBody();
+
+        $sermons = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($sermons))
+        {
+            abort(404);
+        } else {
+            $sermon = $sermons[0];
+        }
+
+      //  dd($sermon);
+
+        return view(
+            'dashboard.sermons.shownew',
+            compact('sermon')
         )->with('title', 'Men');
     }
 
@@ -98,18 +131,49 @@ class MinistryController extends Controller
      * @param Video $video
      * @return \Illuminate\View\View
      */
-    public function women(Video $video)
+    public function women()
     {
-        $sermons = Sermon::where('ministryId', '=', 'women')->latest('published_at')->published()->get();
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/women/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[posts_per_page]' => 500
+            ]
+        ])->getBody();
 
-        foreach ($sermons as $sermon) {
-            $video->setUrl($sermon->video);
-            $sermon->image = $video->getThumbnail();
-        }
+        $sermons = json_decode($body);
 
         return view(
             'ministries.women.index',
             compact('sermons')
+        )->with('title', 'Women');
+    }
+
+    public function womenmessage($sermon)
+    {
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/women/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[name]' => $sermon
+            ]
+        ])->getBody();
+
+        $sermons = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($sermons))
+        {
+            abort(404);
+        } else {
+            $sermon = $sermons[0];
+        }
+
+        //  dd($sermon);
+
+        return view(
+            'dashboard.sermons.shownew',
+            compact('sermon')
         )->with('title', 'Women');
     }
 
