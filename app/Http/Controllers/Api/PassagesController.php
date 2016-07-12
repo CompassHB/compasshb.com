@@ -3,7 +3,7 @@
 namespace CompassHB\Www\Http\Controllers\Api;
 
 use Response;
-use CompassHB\Www\Passage;
+use GuzzleHTTP\Client;
 use CompassHB\Www\Http\Controllers\Controller;
 use CompassHB\Www\Contracts\Scripture;
 
@@ -17,12 +17,21 @@ class PassagesController extends Controller
      */
     public function index(Scripture $scripture)
     {
-        $passages = Passage::latest('published_at')->published()->take(1)->get();
-        $passage = $passages->first();
-        $passage->verses = $scripture->getScripture($passage->title);
-        $passage->audio = $scripture->getAudioScripture($passage->title);
+        // get single passages
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true
+            ]
+        ])->getBody();
 
-        return Response::json($passage->toArray());
+        $passage = json_decode($body);
+        $passage = $passage[0];
+
+        $passage->verses = $scripture->getScripture($passage->title->rendered);
+        $passage->audio = $scripture->getAudioScripture($passage->title->rendered);
+
+        return Response::json($passage);
     }
 
     /**
