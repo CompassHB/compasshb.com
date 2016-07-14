@@ -1,6 +1,6 @@
 <div class="form-group">
 	{!! Form::label('ministry', 'Category:') !!}
-	{!! Form::select('ministryId', array('parenting' => 'Parenting', 'marriage' => 'Marriage', 'men' => 'Men', 'women' => 'Women', 'men' => 'Men', 'sundayschool' => 'Sunday School', null => 'Main Service', 'youth' => 'The United'), null, ['class' => 'form-control']) !!}
+	{!! Form::select('ministryId', array('parenting' => 'Parenting', 'marriage' => 'Marriage', 'men' => 'Men', 'women' => 'Women', 'men' => 'Men', 'sundayschool' => 'Sunday School', null => 'Main Service'), null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

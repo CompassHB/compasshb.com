@@ -15,7 +15,7 @@
 
 <div class="form-group">
 	{!! Form::label('ministry', 'Ministry:') !!}
-	{!! Form::select('ministryId', array('youth' => 'The United (Youth)', 'sundayschool' => 'Sunday School', null => 'Main Service'), null, ['class' => 'form-control']) !!}
+	{!! Form::select('ministryId', array('sundayschool' => 'Sunday School', null => 'Main Service'), null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
