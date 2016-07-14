@@ -9,16 +9,15 @@
 <div class="Setting Box Box--Large Box--bright utility-flex">
     <h1 class="Setting__heading tk-seravek-web">{{ $sermon->title->rendered }}</h1>
 
-    @if ($sermon->acf->series)
+    @if ($sermon->acf)
     <p><a href="/series/men/{{ $sermon->acf->series->slug }}" >{{{ $sermon->acf->series->name or '' }}}</a></p><br/>
     @endif
 
     <div class="videocontainer">{!! $sermon->content->rendered !!}</div>
-    @if ($sermon->acf->text != null)
-    <p>Text: {!! $sermon->acf->text !!} |
+        @if ($sermon->acf != null)
+            <p>Text: {!! $sermon->acf->text !!} |
         @endif
         <a href="{{  Request::url() }}/download.mp4">Download</a> |
-
 
 
     <br/><br/><br/>

@@ -290,7 +290,7 @@ Route::get('women', [
     'as' => 'women',
     'uses' => 'MinistryController@women',
 ]);
-Route::get('messages/women/{message}', [
+Route::get('women/messages/{message}', [
     'as' => 'womenmessage',
     'uses' => 'MinistryController@womenmessage',
 ]);

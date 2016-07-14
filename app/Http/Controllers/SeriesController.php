@@ -3,6 +3,7 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use Auth;
+use GuzzleHttp\Client;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Video;
@@ -21,7 +22,12 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = Series::all()->reverse();
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tags?embed')->getBody();
+
+        $series = array_reverse(json_decode($body));
+
+        dd($series);
 
         return view('dashboard.series.index', compact('series'))
             ->with('title', 'Sermon Series');

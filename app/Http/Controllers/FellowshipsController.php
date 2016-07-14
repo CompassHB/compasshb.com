@@ -25,10 +25,9 @@ class FellowshipsController extends Controller
             ->with('title', 'Home Fellowship Groups');
     }
 
-    public function show(Events $event, $id)
+    public function show($id)
     {
-        $event = $event->event($id);
-
+        $event = [];
         return view('dashboard.fellowships.show', compact('event'));
     }
 }
