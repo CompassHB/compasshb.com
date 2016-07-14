@@ -19,11 +19,6 @@ class CommandsTest extends TestCase
         $this->call('broadcast:refresh', '');
     }
 
-    public function test_featuredevent_reminder()
-    {
-        $this->call('featuredevent:reminder', '');
-    }
-
     public function test_worksheet_reminder()
     {
         $this->call('worksheet:reminder', '');

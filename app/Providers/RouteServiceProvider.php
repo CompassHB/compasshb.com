@@ -4,7 +4,6 @@ namespace CompassHB\Www\Providers;
 
 use Auth;
 use CompassHB\Www\Blog;
-use CompassHB\Www\Passage;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Song;
@@ -42,19 +41,6 @@ class RouteServiceProvider extends ServiceProvider
             }
 
             return Song::where('alias', $slug)->firstOrFail();
-        });
-
-        /*
-         * A passage is at /read/{slug}
-         */
-        $router->bind('read', function ($slug) {
-
-            // Logged in users can see future posts
-            if (Auth::check()) {
-                return Passage::where('alias', $slug)->firstOrFail();
-            }
-
-            return Passage::where('alias', $slug)->published()->firstOrFail();
         });
 
         /*

@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call('TeamTableSeeder');
         $this->call('UserTableSeeder');
         $this->call('SongTableSeeder');
-        $this->call('PassageTableSeeder');
         $this->call('SermonTableSeeder');
         $this->call('SeriesTableSeeder');
         $this->call('BlogTableSeeder');

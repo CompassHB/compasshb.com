@@ -7,7 +7,6 @@ use CompassHB\Www\User;
 use CompassHB\Www\Song;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Series;
-use CompassHB\Www\Passage;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,15 +33,6 @@ $factory->define(Team::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'owner_id' => factory(User::class)->create()->id,
-    ];
-});
-
-$factory->define(Passage::class, function (Faker\Generator $faker) {
-    return [
-        'title' => 'Psalm '.rand(1, 150),
-        'body' => $faker->paragraph,
-        'published_at' => Carbon::now()->subDays(30),
-        'user_id' => factory(User::class)->create()->id,
     ];
 });
 

@@ -5,7 +5,6 @@ namespace CompassHB\Www\Http\Controllers;
 use CompassHB\Www\Song;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Series;
-use CompassHB\Www\Passage;
 
 class HomeController extends Controller
 {
@@ -45,7 +44,6 @@ class HomeController extends Controller
     {
         $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->paginate(15);
         $series = Series::where('ministryId', '=', null)->paginate(15);
-        $blogs = Blog::latest('published_at')->paginate(15);
 
         return view('admin.mainservice', compact('sermons', 'blogs', 'series'))
             ->with('title', 'Admin - Main Service');
@@ -57,14 +55,6 @@ class HomeController extends Controller
 
         return view('admin.songs', compact('songs'))
             ->with('title', 'Admin - Songs');
-    }
-
-    public function read()
-    {
-        $passages = Passage::latest('published_at')->paginate(15);
-
-        return view('admin.read', compact('passages'))
-            ->with('title', 'Admin - Scripture of the Day');
     }
 
     /**
