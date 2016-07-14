@@ -1,7 +1,6 @@
 <?php
 
 use Carbon\Carbon;
-use CompassHB\Www\Blog;
 use CompassHB\Www\Team;
 use CompassHB\Www\User;
 use CompassHB\Www\Song;
@@ -33,15 +32,6 @@ $factory->define(Team::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'owner_id' => factory(User::class)->create()->id,
-    ];
-});
-
-$factory->define(Blog::class, function (Faker\Generator $faker) {
-    return [
-        'title' => $faker->sentence,
-        'body' => $faker->paragraph,
-        'published_at' => Carbon::now()->subDays(30),
-        'user_id' => factory(User::class)->create()->id,
     ];
 });
 

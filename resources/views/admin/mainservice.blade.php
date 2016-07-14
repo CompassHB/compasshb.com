@@ -12,7 +12,6 @@
     <span class="Label utility-right">
       <a href="{{ route('sermons.create') }}" class="btn btn-default">New Sermon</a>
       <a href="{{ route('series.create') }}" class="btn btn-default">New Series</a>
-      <a href="{{ route('blog.create') }}" class="btn btn-default">New Blog</a>
     </span>
   </h2>
 

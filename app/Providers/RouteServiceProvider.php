@@ -3,7 +3,6 @@
 namespace CompassHB\Www\Providers;
 
 use Auth;
-use CompassHB\Www\Blog;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Song;

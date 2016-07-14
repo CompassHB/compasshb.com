@@ -246,6 +246,11 @@ Route::get('youth', [
     'uses' => 'MinistryController@youth',
 ]);
 
+Route::get('youth/sermons/{sermon}', [
+    'as' => 'youthsermon',
+    'uses' => 'MinistryController@youthsermon',
+]);
+
 /*
  * Route for Sunday School ministry
  */

@@ -28,28 +28,54 @@ class MinistryController extends Controller
      */
     public function youth(Video $videoClient)
     {
-        $series = Series::where('ministryId', '=', 'youth')->get()->reverse();
-        $sermons = Sermon::where('ministryId', '=', 'youth')->latest('published_at')->published()->get();
-        $prevsermon = $sermons->first();
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/youth/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 1
+            ]
+        ])->getBody();
 
-        if ($prevsermon) {
-            $videoClient->setUrl($prevsermon->video);
-            $prevsermon->othumbnail = $videoClient->getThumbnail();
+        $sermons = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($sermons))
+        {
+            abort(404);
         } else {
-            $prevsermon = (object) [
-                'title' => '{{ Sermon title here }}',
-                'slug' => 'sermon-slug-here',
-                'othumbnail' => 'https://dummyimage.com/600x400/000/fff.jpg',
-                'series' => (object) [
-                    'title' => '{{ Series title here }}',
-                ],
-            ];
+            $sermon = $sermons[0];
         }
 
         return view(
             'ministries.youth.index',
-            compact('sermons', 'series', 'prevsermon')
+            compact('sermon')
         )->with('title', 'The United');
+    }
+
+    public function youthsermon($sermon)
+    {
+        $client = new Client();
+        $body = $client->get('http://api.compasshb.com/youth/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[name]' => $sermon
+            ]
+        ])->getBody();
+
+        $sermons = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($sermons))
+        {
+            abort(404);
+        } else {
+            $sermon = $sermons[0];
+        }
+
+        return view(
+            'dashboard.sermons.shownew',
+            compact('sermon')
+        )->with('title', 'Youth');
     }
 
     /**

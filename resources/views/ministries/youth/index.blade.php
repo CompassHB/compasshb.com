@@ -10,10 +10,10 @@
     <p>Jr. High and High School students meets Sundays at 11am and Thursdays at 6:30PM.</p>
 
     <div class="col-sm-9" style="text-align: center">
-        <a class="clickable latestsermon" href="{{ route('sermons.show', $prevsermon->alias) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $prevsermon->othumbnail }}); background-position: center;  min-height: 300px; padding-top: 60px; margin-bottom: 40px;">
+        <a class="clickable latestsermon" href="/youth/sermons/{{ $sermon->slug }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url }}); background-position: center;  min-height: 300px; padding-top: 60px; margin-bottom: 40px;">
             <p>Latest Sermon</p>
-            <h1 class="tk-seravek-web">{{ $prevsermon->title }}</h1>
-            <p>{{{ $prevsermon->series->title or '' }}}</p>
+            <h1 class="tk-seravek-web">{{ $sermon->title->rendered }}</h1>
+            <p>{{{ $sermon->acf->series->name or '' }}}</p>
             <p><i class="material-icons" style="font-size: 3em">play_circle_outline</i></p>
         </a>
     </div>
