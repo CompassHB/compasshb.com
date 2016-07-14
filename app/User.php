@@ -86,16 +86,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany(Series::class);
     }
 
-    /*
-     * Teams
-     */
-    /**
-     * Get all of the teams that the user belongs to.
-     */
-    public function teams()
-    {
-        return $this->belongsToMany(Team::class, 'team_user', 'user_id', 'team_id')
-            ->withPivot(['role'])
-            ->orderBy('name', 'asc');
-    }
 }

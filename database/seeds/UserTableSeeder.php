@@ -17,7 +17,5 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('secret'),
         ]);
 
-        $user->teams()->sync([10]); // array of role ids
-
     }
 }

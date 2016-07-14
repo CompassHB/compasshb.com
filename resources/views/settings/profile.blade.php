@@ -11,11 +11,6 @@
 
         <i class="material-icons">keyboard_arrow_right</i>
       </li>
-      <li class="teams">
-        <a href="#">Teams</a>
-
-        <i class="material-icons">keyboard_arrow_right</i>
-      </li>
       <li class="security">
         <a href="#">Security</a>
 
