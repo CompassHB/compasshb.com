@@ -48,7 +48,15 @@ Route::get('videos/{videos}/download.mp4', [
 /*
  * Route for sermon series
  */
-Route::resource('series', 'SeriesController', ['except' => ['destroy']]);
+Route::get('series', [
+    'as' => 'series.index',
+    'uses' => 'SeriesController@index'
+]);
+
+Route::get('series/{item}', [
+    'as' => 'series.show',
+    'uses' => 'SeriesController@show'
+]);
 
 /*
  * Route for blogs
