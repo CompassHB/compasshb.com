@@ -21,7 +21,7 @@ class SeriesController extends Controller
     public function index()
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tags?embed')->getBody();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tags?embed')->getBody();
 
         $series = array_reverse(json_decode($body));
 
@@ -40,7 +40,7 @@ class SeriesController extends Controller
     public function show($item, Video $video)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tags', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tags', [
             'query' => [
                 'slug' => $item
             ]
@@ -56,7 +56,7 @@ class SeriesController extends Controller
             $series = $series[0];
         }
 
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
                 'filter[cat]' => 1,

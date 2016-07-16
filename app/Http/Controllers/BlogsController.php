@@ -24,9 +24,10 @@ class BlogsController extends Controller
     public function index()
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
+                'filter[cat]' => 12,
                 'filter[posts_per_page]' => 500
             ]
         ])->getBody();
@@ -49,7 +50,7 @@ class BlogsController extends Controller
     public function show($blog, Video $video, $locale = 'en')
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
                 'filter[name]' => $blog

@@ -30,7 +30,15 @@ Route::get('read/{passage}', [
 /*
  * Route for sermons
  */
-Route::resource('sermons', 'SermonsController', ['except' => ['destroy']]);
+Route::get('sermons', [
+    'as' => 'sermons.index',
+    'uses' => 'SermonsController@index'
+]);
+
+Route::get('sermons/{sermon}', [
+    'as' => 'sermons.show',
+    'uses' => 'SermonsController@show'
+]);
 Route::get('sermons/{sermons}/download.mp4', [
     'as' => 'sermons.download',
     'uses' => 'SermonsController@download',

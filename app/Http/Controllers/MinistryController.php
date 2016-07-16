@@ -73,7 +73,7 @@ class MinistryController extends Controller
         }
 
         return view(
-            'dashboard.sermons.shownew',
+            'dashboard.sermons.show',
             compact('sermon')
         )->with('title', 'Youth');
     }
@@ -146,7 +146,7 @@ class MinistryController extends Controller
       //  dd($sermon);
 
         return view(
-            'dashboard.sermons.shownew',
+            'dashboard.sermons.show',
             compact('sermon')
         )->with('title', 'Men');
     }
@@ -198,7 +198,7 @@ class MinistryController extends Controller
         //  dd($sermon);
 
         return view(
-            'dashboard.sermons.shownew',
+            'dashboard.sermons.show',
             compact('sermon')
         )->with('title', 'Women');
     }

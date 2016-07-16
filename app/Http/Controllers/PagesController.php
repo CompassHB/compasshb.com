@@ -35,7 +35,7 @@ class PagesController extends Controller
         // Featured Events
         $client = new Client();
 
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tribe_events', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tribe_events', [
             'query' => [
                 '_embed' => true
             ]
@@ -49,7 +49,7 @@ class PagesController extends Controller
         $nextsermon = Sermon::unpublished()->get();
 
         // get two videos
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
                 'filter[cat]' => 12,
@@ -200,7 +200,7 @@ class PagesController extends Controller
     public function greatawakening()
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/pages', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages', [
             'query' => ['filter[name]' => 'greatawakening']
         ])->getBody();
 
@@ -247,7 +247,7 @@ class PagesController extends Controller
 
         $client = new Client();
 
-         $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tribe_events', [
+         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tribe_events', [
                 'query' => [
                     '_embed' => true
                 ]
@@ -263,7 +263,7 @@ class PagesController extends Controller
     public function eventsshow($event) {
 
         $client = new Client();
-            $body = $client->get('http://api.compasshb.com/wp-json/wp/v2/tribe_events', [
+            $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tribe_events', [
                 'query' => [
                     '_embed' => true,
                     'filter[name]' => $event,
