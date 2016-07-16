@@ -14,7 +14,6 @@
     "guzzlehttp/guzzle": "6.*",
     "guzzlehttp/oauth-subscriber": "~0.3.0",
     "league/flysystem-aws-s3-v3": "~1.0",
-    "graham-campbell/parse": "~2.0",
     "graham-campbell/htmlmin": "4.*",
     "roumen/feed": "^2.10",
     "zencoder/zencoder-php": "~2.2",

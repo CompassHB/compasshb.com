@@ -160,7 +160,6 @@ return [
         CompassHB\Www\Providers\EventServiceProvider::class,
         CompassHB\Www\Providers\RouteServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
-        GrahamCampbell\Parse\ParseServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Substrike\Forestall\ForestallServiceProvider::class,
     ],
