@@ -44,9 +44,16 @@ class PagesController extends Controller
         $featuredevents = json_decode($body);
         $featuredevents = array_reverse($featuredevents);
 
-        $sermons = Sermon::where('ministryId', '=', null)->latest('published_at')->published()->take(4)->get();
-        $prevsermon = $sermons->first();
-        $nextsermon = Sermon::unpublished()->get();
+        // get four sermons
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 1,
+                'per_page' => 4
+            ]
+        ])->getBody();
+
+        $sermons = json_decode($body);
 
         // get two videos
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts?embed', [
@@ -68,26 +75,6 @@ class PagesController extends Controller
 
         $passage = json_decode($body);
         $passage = $passage[0];
-
-        foreach ($sermons as $sermon) {
-            $videoClient->setUrl($sermon->video);
-            $sermon->othumbnail = $videoClient->getThumbnail();
-        }
-
-        if ($prevsermon) {
-            $videoClient->setUrl($prevsermon->video);
-            $prevsermon->othumbnail = $videoClient->getThumbnail();
-            $prevsermon->plays = $videoClient->getVideoPlays();
-        } else {
-            $prevsermon = (object) [
-                'title' => '{{Sermon title here}}',
-                'slug' => 'sermon-slug-here',
-                'othumbnail' => 'https://dummyimage.com/600x400/000/fff.jpg',
-                'series' => (object) [
-                    'title' => '{{Series title here}}',
-                ],
-            ];
-        }
 
         /*
          * Instagram
@@ -115,8 +102,6 @@ class PagesController extends Controller
             'broadcast',
             'sermons',
             'featuredevents',
-            'nextsermon',
-            'prevsermon',
             'videos',
             'passage'
         ))->with('images', $results)

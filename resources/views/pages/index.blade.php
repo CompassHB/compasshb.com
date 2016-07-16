@@ -21,14 +21,14 @@
   <div class="col-sm-9">
   <div class="Box--shadow--big" style="width: 100%">
     <span class="Box--shadow--wrap">
-      <a class="clickable latestsermon" href="{{ route('sermons.show', $prevsermon->alias) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $prevsermon->othumbnail }}); background-position: center;">
+      <a class="clickable latestsermon" href="{{ route('sermons.show', $sermons[0]->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $sermons[0]->_embedded->{'wp:featuredmedia'}[0]->source_url or '#' }}); background-position: center;">
       <p
 style="position: absolute; text-transform: none; top: -20px; left: 45px; padding: 4px 10px; font-size: 1.1em; background-color: #DD3F2E">Latest Sermon</p>
         <br/><br/>
-        <h1 class="tk-seravek-web">{{ $prevsermon->title }}</h1>
-        <p style="padding: 20px;">{{{ $prevsermon->series->title or '' }}}</p>
+        <h1 class="tk-seravek-web">{{ $sermons[0]->title->rendered }}</h1>
+        <p style="padding: 20px;">{{ $sermons[0]->acf->series->name or '' }}</p>
         <p><i class="material-icons" style="font-size: 3em">play_circle_outline</i></p>
-        <div style="position: absolute; bottom: 0; left: 0; text-align: left; padding: 30px; color: #BBB">{{ $prevsermon->teacher }}<br/>{{ $prevsermon->text }}<br/>{{ $prevsermon->published_at->format('F j, Y') }}</div>
+        <div style="position: absolute; bottom: 0; left: 0; text-align: left; padding: 30px; color: #BBB">{{ $sermons[0]->_embedded->author[0]->name }}<br/>{{ $sermons[0]->acf->text }}<br/>{{ date('F j, Y', strtotime($sermons[0]->date)) }}</div>
       </a>
     </span>
   </div>
@@ -117,9 +117,9 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
           <div class="col-sm-6 col-md-3">
           <div class="Box--shadow" style="width: 100%">
             <span class="Box--shadow--wrap">
-              <a class="clickable featuredblog boxer" href="{{ route('sermons.show', $sermon->alias) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $sermon->othumbnail }});">
-                <h4 class="tk-seravek-web">{{ $sermon->title }}</h4>
-                <p> {{ date("F j", strtotime($sermon->published_at)) }}<br/>{{ $sermon->text }}</p>
+              <a class="clickable featuredblog boxer" href="{{ route('sermons.show', $sermon->slug) }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url or '#' }});">
+                <h4 class="tk-seravek-web">{{ $sermon->title->rendered }}</h4>
+                <p> {{ date('F j, Y', strtotime($sermon->date)) }}<br/>{{ $sermon->acf->text }}</p>
                 <br/><br/>
               </a>
             </span>
