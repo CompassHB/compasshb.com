@@ -276,6 +276,12 @@ class PagesController extends Controller
         return redirect()->route('home');
     }
 
+    public function admin()
+    {
+        return redirect('https://api.compasshb.com/wp-admin/');
+    }
+
+
     /**
      * Clear the video cache when video management system sends a webhook callback.
      * @param $auth

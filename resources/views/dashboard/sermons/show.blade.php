@@ -20,6 +20,7 @@
         <a href="{{  Request::url() }}/download.mp4">Download</a> | <a href="{{ $sermon->acf->worksheet->url or '#' }}">Worksheet</a>
 
 
+
     <br/><br/><br/>
     <div class="panel panel-default">
         <div class="panel-heading">
