@@ -79,7 +79,7 @@ class SermonsController extends Controller
             compact('sermon', 'coverimage', 'texttrack', 'plays')
         )
             ->with('title', strip_tags($sermon->title->rendered))
-            ->with('ogdescription', strip_tags($sermon->excerpt->rendered));
+            ->with('ogdescription', strip_tags($sermon->excerpt->rendered) . ' - Compass Bible Church Huntington Beach');
     }
 
     /**
