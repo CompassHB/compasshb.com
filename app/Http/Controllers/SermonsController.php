@@ -72,12 +72,14 @@ class SermonsController extends Controller
             $sermon = $sermon[0];
         }
 
+        $coverimage = $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url;
+
         return view(
             'dashboard.sermons.show',
             compact('sermon', 'coverimage', 'texttrack', 'plays')
         )
-            ->with('title', $sermon->title->rendered)
-            ->with('ogdescription', $sermon->excerpt->rendered);
+            ->with('title', strip_tags($sermon->title->rendered))
+            ->with('ogdescription', strip_tags($sermon->excerpt->rendered));
     }
 
     /**
