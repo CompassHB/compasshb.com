@@ -270,14 +270,18 @@ Route::get('youth/sermons/{sermon}', [
 /*
  * Route for Sunday School ministry
  */
-Route::group(['prefix' => 'sundayschool'], function () {
-
-    Route::get('/', [
-        'as' => 'sundayschool',
-        'uses' => 'MinistryController@sundayschool',
-    ]);
-
-});
+Route::get('sundayschool', [
+    'as' => 'sundayschool',
+    'uses' => 'MinistryController@sundayschool',
+]);
+Route::get('sundayschool/messages/{sermon}', [
+    'as' => 'sundayschoolsermon',
+    'uses' => 'MinistryController@sundayschoolsermon',
+]);
+Route::get('sundayschool/series/{item}', [
+    'as' => 'sundayschoolseries',
+    'uses' => 'SeriesController@showsundayschool',
+]);
 
 /*
  * Route for college ministry
@@ -294,7 +298,7 @@ Route::get('men', [
     'as' => 'men',
     'uses' => 'MinistryController@men',
 ]);
-Route::get('sermons/men/{sermon}', [
+Route::get('men/sermons/{sermon}', [
     'as' => 'mensermon',
     'uses' => 'MinistryController@mensermon',
 ]);
@@ -322,13 +326,6 @@ Route::get('resurrectionweek', ['as' => 'bunnyrun',
 ]);
 Route::get('greatawakening', ['as' => 'greatawakening',
     'uses' => 'PagesController@greatawakening',
-]);
-/*
- * Route for marriage
- */
-Route::get('marriage', [
-    'as' => 'marriage',
-    'uses' => 'MinistryController@marriage',
 ]);
 
 /*

@@ -69,4 +69,37 @@ class SeriesController extends Controller
         return view('dashboard.series.show', compact('series', 'sermons'))
             ->with('title', $series->name);
     }
+
+    public function showsundayschool($item, Video $video)
+    {
+        $client = new Client();
+        $body = $client->get('https://api.compasshb.com/sunday-school/wp-json/wp/v2/tags', [
+            'query' => [
+                'slug' => $item
+            ]
+        ])->getBody();
+
+        $series = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($series))
+        {
+            abort(404);
+        } else {
+            $series = $series[0];
+        }
+
+        $body = $client->get('https://api.compasshb.com/sunday-school/wp-json/wp/v2/posts', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 1,
+                'tags' => $series->id
+            ]
+        ])->getBody();
+
+        $sermons = json_decode($body);
+
+        return view('dashboard.series.showsundayschool', compact('series', 'sermons'))
+            ->with('title', $series->name);
+    }
 }

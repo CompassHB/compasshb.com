@@ -19,7 +19,7 @@ class SongsController extends Controller
     public function index(Video $video, Plan $plan)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/worship/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/worship/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true
             ]
@@ -50,7 +50,7 @@ class SongsController extends Controller
     public function show($song, Video $video)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/worship/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/worship/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
                 'filter[name]' => $song

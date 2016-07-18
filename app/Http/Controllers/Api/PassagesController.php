@@ -19,7 +19,7 @@ class PassagesController extends Controller
     {
         // get single passages
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true
             ]

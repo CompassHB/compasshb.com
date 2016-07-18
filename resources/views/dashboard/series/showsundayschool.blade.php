@@ -16,8 +16,8 @@
 
   @foreach ($sermons as $sermon)
   <div class="col-md-4">
-    <a href="{{ route('sermons.show', $sermon->slug) }}" style="background-image: url({{ $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url or ''}}); background-size: cover; background-position: center center; width: 200px; height: 125px; display: block;"></a>
-      <h4 class="tk-seravek-web"><a href="{{ route('sermons.show', $sermon->slug) }}" >{{ $sermon->title->rendered }}</a></h4>
+    <a href="/sundayschool/messages/{{ $sermon->slug }}" style="background-image: url({{ $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url or ''}}); background-size: cover; background-position: center center; width: 200px; height: 125px; display: block;"></a>
+      <h4 class="tk-seravek-web"><a href="/sundayschool/messages/{{ $sermon->slug }}" >{{ $sermon->title->rendered }}</a></h4>
       <p>{{ $sermon->acf->text }}<br/>
       {{-- date_format($sermon->published_at, 'l, F j, Y') --}}<br/>
       {{ $sermon->_embedded->author[0]->name }}</p>

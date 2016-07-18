@@ -9,8 +9,8 @@
 <h1 class="tk-seravek-web">Sunday School</h1>
 <p>Meets Sundays at 9AM at church for breakfast and teaching.</p><br/>
 
-<h3 class="tk-seravek-web">Current Series: {{ $series->first()->title }}</h3>
-<p>{{ $series->first()->body }}</p>
+<h3 class="tk-seravek-web">Current Series: {{ $series[0]->name }}</h3>
+<p>{{ $series[0]->description }}</p>
 <table class="table table-striped">
 	<thead>
     	<tr>
@@ -22,21 +22,21 @@
     <tbody>
     @foreach ($sermons as $sermon)
       	<tr>
-        	<td><a href="{{ route('sermons.show', $sermon->alias) }}">{{ $sermon->title }}</a></td>
-        	<td>{{ $sermon->teacher }}</td>
-        	<td>{{ date_format($sermon->published_at, 'l, F j, Y') }}</td>
+        	<td><a href="/sundayschool/messages/{{ $sermon->slug }}">{{ $sermon->title->rendered }}</a></td>
+        	<td>{{ $sermon->_embedded->author[0]->name }}</td>
+        	<td>{{ date('l, F j, Y', strtotime($sermon->date)) }}</td>
       	</tr>
      @endforeach
     </tbody>
 </table>
 
+<br/><br/>
 <h3 class="tk-seravek-web">All Sunday School Series</h3>
 @foreach ($series as $s)
 <div class="col-sm-6 col-md-4" style="height: 300px;">
-    <div class="thumbnail" style="width: 310px; height: 150px; background-image: url('{{ $s->image }}'); background-size: cover; background-position: top center; padding-top: 150px">
+    <div class="thumbnail" style="width: 310px; height: 150px; background-image: url('{{ $s->acf->series_image->url or '' }}'); background-size: cover; background-position: top center; padding-top: 150px">
     	<div class="caption">
-        	<h3><a href="{{ route('series.show', $s->alias) }}">{{ $s->title }}</a></h3>
-        	<p>{{ $s->body }}</p>
+        	<h3><a href="/sundayschool/series/{{ $s->slug }}">{{ $s->name }}</a></h3>
       	</div>
     </div>
 </div>

@@ -3,8 +3,6 @@
 namespace CompassHB\Www\Http\Controllers;
 
 use GuzzleHttp\Client;
-use CompassHB\Www\Series;
-use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Video;
 
 class MinistryController extends Controller
@@ -29,7 +27,7 @@ class MinistryController extends Controller
     public function youth(Video $videoClient)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/youth/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/youth/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
                 'filter[cat]' => 1
@@ -55,7 +53,7 @@ class MinistryController extends Controller
     public function youthsermon($sermon)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/youth/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/youth/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
                 'filter[name]' => $sermon
@@ -85,18 +83,53 @@ class MinistryController extends Controller
      */
     public function sundayschool()
     {
-        $series = Series::where('ministryId', '=', 'sundayschool')->get()->reverse();
-        $sermons = Sermon::where('ministryId', '=', 'sundayschool')
-            ->where('series_id', '=', $series->first()->id)
-            ->latest('published_at')
-            ->published()
-            ->get();
+        $client = new Client();
+        $body = $client->get('https://api.compasshb.com/sunday-school/wp-json/wp/v2/posts?embed', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 1
+            ]
+        ])->getBody();
+
+        $sermons = json_decode($body);
+
+        $body = $client->get('https://api.compasshb.com/sunday-school/wp-json/wp/v2/tags?embed')->getBody();
+
+        $series = array_reverse(json_decode($body));
 
         return view(
             'ministries.sundayschool.index',
             compact('sermons', 'series')
         )->with('title', 'Sunday School');
     }
+
+
+    public function sundayschoolsermon($sermon)
+    {
+        $client = new Client();
+        $body = $client->get('https://api.compasshb.com/sunday-school/wp-json/wp/v2/posts', [
+            'query' => [
+                '_embed' => true,
+                'filter[name]' => $sermon
+            ]
+        ])->getBody();
+
+        $sermons = json_decode($body);
+
+        // Handle 404 if page does not exist in API
+        if (empty($sermons))
+        {
+            abort(404);
+        } else {
+            $sermon = $sermons[0];
+        }
+
+        return view(
+            'dashboard.sermons.show',
+            compact('sermon')
+        )->with('title', 'Sunday School');
+    }
+
 
     /**
      * Controller for men ministry page.
@@ -107,7 +140,7 @@ class MinistryController extends Controller
     public function men()
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
                 'filter[posts_per_page]' => 500
@@ -126,7 +159,7 @@ class MinistryController extends Controller
     public function mensermon($sermon)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
                 'filter[name]' => $sermon
@@ -160,7 +193,7 @@ class MinistryController extends Controller
     public function women()
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/women/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/women/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
                 'filter[posts_per_page]' => 500
@@ -178,7 +211,7 @@ class MinistryController extends Controller
     public function womenmessage($sermon)
     {
         $client = new Client();
-        $body = $client->get('http://api.compasshb.com/women/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/women/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
                 'filter[name]' => $sermon
@@ -201,48 +234,6 @@ class MinistryController extends Controller
             'dashboard.sermons.show',
             compact('sermon')
         )->with('title', 'Women');
-    }
-
-    /**
-     * Controller for marriage ministry page.
-     *
-     * @param Video $video
-     * @return \Illuminate\View\View
-     */
-    public function marriage(Video $video)
-    {
-        $sermons = Sermon::where('ministryId', '=', 'marriage')->latest('published_at')->published()->get();
-
-        foreach ($sermons as $sermon) {
-            $video->setUrl($sermon->video);
-            $sermon->image = $video->getThumbnail();
-        }
-
-        return view(
-            'ministries.marriage.index',
-            compact('sermons')
-        )->with('title', 'Marriage');
-    }
-
-    /**
-     * Controller for parenting ministry page.
-     *
-     * @param Video $video
-     * @return \Illuminate\View\View
-     */
-    public function parenting(Video $video)
-    {
-        $sermons = Sermon::where('ministryId', '=', 'parenting')->latest('published_at')->published()->get();
-
-        foreach ($sermons as $sermon) {
-            $video->setUrl($sermon->video);
-            $sermon->image = $video->getThumbnail();
-        }
-
-        return view(
-            'ministries.parenting.index',
-            compact('sermons')
-        )->with('title', 'Parenting');
     }
 
     /**

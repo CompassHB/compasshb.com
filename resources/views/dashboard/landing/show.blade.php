@@ -10,8 +10,8 @@
       {!! $page->content->rendered !!}
 
   </div>
-    <link rel='stylesheet' id='siteorigin-panels-front-css'  href='http://api.compasshb.com/wp-content/plugins/siteorigin-panels/css/front.css?ver=2.4.9' type='text/css' media='all' />
-    <link rel='stylesheet' id='sow-image-default-1c389ca87c1a-css'  href='http://api.compasshb.com/wp-content/uploads/siteorigin-widgets/sow-image-default-1c389ca87c1a.css?ver=4.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='siteorigin-panels-front-css'  href='https://api.compasshb.com/wp-content/plugins/siteorigin-panels/css/front.css?ver=2.4.9' type='text/css' media='all' />
+    <link rel='stylesheet' id='sow-image-default-1c389ca87c1a-css'  href='https://api.compasshb.com/wp-content/uploads/siteorigin-widgets/sow-image-default-1c389ca87c1a.css?ver=4.5.3' type='text/css' media='all' />
 
     <br/><br/><br/>
 @endsection
