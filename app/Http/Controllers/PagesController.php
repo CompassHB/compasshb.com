@@ -200,30 +200,18 @@ class PagesController extends Controller
         return redirect('https://www.compasshb.com/events/22662635553/resurrection-week/');
     }
 
-        public function sitemap(Video $video)
+    public function sitemap(Video $video)
     {
-//        $blogs = Blog::published()->get();
-        $sermons = Sermon::published()->get();
-//        $passages = Passage::pluck('alias');
-            $passages = [];
-        $series = Series::pluck('alias');
-        $songs = Song::pluck('alias');
-//        $events = $event->events();
-            $events = [];
-
-        // Generate video thumbnails
-        foreach ($sermons as $sermon) {
-            if (isset($sermon->video)) {
-                $video->setUrl($sermon->video);
-                $sermon->image = $video->getThumbnail();
-            }
-        }
-
-        // Keep only Home Fellowship Group events
+        $blogs = [];
+        $sermons = [];
+        $passages = [];
+        $series = [];
+        $songs = [];
+        $events = [];
         $fellowships = [];
 
         return response()
-            ->view('pages.sitemap', compact('sermons', 'passages', 'series', 'songs', 'events', 'fellowships'))
+            ->view('pages.sitemap', compact('sermons', 'passages', 'series', 'songs', 'events', 'fellowships', 'blogs'))
             ->header('Content-Type', 'application/xml');
     }
 

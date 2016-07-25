@@ -67,12 +67,10 @@ class BlogsController extends Controller
             $blog = $blog[0];
         }
 
-        return view(
-            'dashboard.blogs.show',
-            compact(
-                'blog'
-            )
-        )->with('title', $blog->title->rendered)->with('ogdescription', 'Compass Bible Church Huntington Beach');
+        $coverimage = $blog->_embedded->{'wp:featuredmedia'}[0]->source_url;
+
+        return view('dashboard.blogs.show', compact('blog', 'coverimage'))
+            ->with('title', $blog->title->rendered)->with('ogdescription', 'Compass Bible Church Huntington Beach');
     }
 
     public function language($blog, $locale, Video $video)
