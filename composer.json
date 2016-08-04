@@ -17,11 +17,9 @@
     "graham-campbell/htmlmin": "4.*",
     "roumen/feed": "^2.10",
     "zencoder/zencoder-php": "~2.2",
-    "substrike/forestall": "^0.1.0",
     "squizlabs/php_codesniffer": "^2.4",
     "google/apiclient": "^1.1",
     "barryvdh/laravel-ide-helper": "^2.1",
-    "laravelcollective/html": "dev-master",
     "doctrine/dbal": "^2.5"
   },
   "require-dev": {

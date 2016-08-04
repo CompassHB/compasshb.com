@@ -12,10 +12,10 @@ class DashboardTest extends TestCase
         // $this->visit('/read/matthew-1');
     }
 
-    public function testFellowship()
-    {
-        $this->visit('/fellowship');
-    }
+    // public function testFellowship()
+    // {
+    //     $this->visit('/fellowship');
+    // }
 
     public function testSermons()
     {

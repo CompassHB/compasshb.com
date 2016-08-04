@@ -155,13 +155,11 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
         CompassHB\Www\Providers\AppServiceProvider::class,
         CompassHB\Www\Providers\EventServiceProvider::class,
         CompassHB\Www\Providers\RouteServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
-        Substrike\Forestall\ForestallServiceProvider::class,
     ],
 
     /*
@@ -211,8 +209,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
         'Feed' => Roumen\Feed\Facades\Feed::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

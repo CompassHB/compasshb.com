@@ -9,15 +9,15 @@ class FeedTest extends TestCase
   //      $this->assertEquals(404, $this->statusCode());
     }
 
-    public function testFeedSermons()
-    {
-        $this->visit('/feed/sermons');
-    }
+    // public function testFeedSermons()
+    // {
+    //     $this->visit('/feed/sermons');
+    // }
 
-    public function testFeedSermonAudio()
-    {
-        $this->visit('/feed/sermonaudio');
-    }
+    // public function testFeedSermonAudio()
+    // {
+    //     $this->visit('/feed/sermonaudio');
+    // }
 
     public function testFeedBlog()
     {

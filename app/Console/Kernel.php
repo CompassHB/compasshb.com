@@ -26,11 +26,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call('Substrike\Forestall\DatabaseBackup@now')
-            ->dailyAt('23:59')
-            ->thenPing(config('app.envoyer_heartbeat'));
-
-
         $schedule->command('boxcast:reminder')
             ->dailyAt('20:01');
 
