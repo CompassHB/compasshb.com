@@ -37,7 +37,8 @@ class PagesController extends Controller
 
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tribe_events', [
             'query' => [
-                '_embed' => true
+                '_embed' => true,
+                'filter[tribe_events_cat]' => 'Show on Homepage'
             ]
         ])->getBody();
 
