@@ -2,11 +2,9 @@
 
 namespace CompassHB\Www\Http\Controllers;
 
-use DB;
-use URL;
 use Cache;
 use Response;
-use Roumen\Feed\Feed;
+use GuzzleHttp\Client;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Video;
 
@@ -28,11 +26,22 @@ class FeedsController extends Controller
     public function sermons()
     {
         $data = array();
-        $data['sermons'] = Sermon::where('ministryId', '=', null)
-                                ->published()
-                                ->orderBy('published_at', 'desc')
-                                ->limit(300)
-                                ->get();
+//        $data['sermons'] = Sermon::where('ministryId', '=', null)
+//                                ->published()
+//                                ->orderBy('published_at', 'desc')
+//                                ->limit(300)
+//                                ->get();
+
+        $client = new Client();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 1,
+                'filter[posts_per_page]' => 500
+            ]
+        ])->getBody();
+
+        $data['sermons'] = json_decode($body);
 
         return Response::view('podcasts.video', $data, 200, [
             'Content-Type' => 'application/atom+xml; charset=UTF-8',
@@ -46,7 +55,18 @@ class FeedsController extends Controller
      */
     public function sermonaudio()
     {
-        $data['sermons'] = Sermon::where('ministryId', '=', null)->published()->orderBy('published_at', 'desc')->limit(300)->get();
+ //       $data['sermons'] = Sermon::where('ministryId', '=', null)->published()->orderBy('published_at', 'desc')->limit(300)->get();
+
+        $client = new Client();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 1,
+                'filter[posts_per_page]' => 500
+            ]
+        ])->getBody();
+
+        $data['sermons'] = json_decode($body);
 
         return Response::view('podcasts.audio', $data, 200, [
             'Content-Type' => 'application/atom+xml; charset=UTF-8',
@@ -62,18 +82,16 @@ class FeedsController extends Controller
     public function json(Video $video)
     {
         $data = array();
-        $data['sermons'] = Sermon::where('ministryId', '=', null)->orderBy('published_at', 'desc')->published()->limit(300)->get();
+        $client = new Client();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
+            'query' => [
+                '_embed' => true,
+                'filter[cat]' => 1,
+                'filter[posts_per_page]' => 500
+            ]
+        ])->getBody();
 
-        // Retrieve coverart
-        foreach ($data['sermons'] as $sermon) {
-            if (!Cache::has($sermon->video)) {
-                $video->setUrl($sermon->video);
-                Cache::add($sermon->video, $video->getThumbnail(), 1440);
-            }
-
-            $sermon->othumbnail = Cache::get($sermon->video);
-            $sermon->date = $sermon->published_at->format('F, j Y');
-        }
+        $data['sermons'] = json_decode($body);
 
         return Response::view('feeds.json', $data, 200, [
             'Content-Type' => 'application/json; charset=UTF-8',
