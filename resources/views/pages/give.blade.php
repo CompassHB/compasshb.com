@@ -12,7 +12,7 @@
         <p>Access our online system to schedule a recurring gift or to make a one-time gift using your checking account or credit card.</p>
         <p>
             - <a href="https://compassbiblechurch.ccbchurch.com">Login Here (manage existing account)</a><br/>
-            - <a href="https://compassbiblechurch.ccbchurch.com/w_sign_up.php">Register Here (first-time users - select Compass HB)</a>
+            - <a href="https://compassbiblechurch.ccbchurch.com/form_response.php?id=1286">Register Here (first-time users - select Compass HB)</a>
         </p><br/>
 
         <h4 class="tk-seravek-web"><i class="material-icons">card_giftcard</i> One Time Gift</h4>
