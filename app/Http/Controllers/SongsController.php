@@ -31,8 +31,9 @@ class SongsController extends Controller
             $video->setUrl($song->acf->video_url);
         }
 
-        $setlist = $plan->getSetList();
-
+        // $setlist = $plan->getSetList();
+        $setlist = [];
+        
         return view('dashboard.songs.index', compact(
             'songs',
             'setlist'
