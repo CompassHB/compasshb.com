@@ -7,13 +7,7 @@
   <div style="width: 75%; margin: 0 auto 10px auto">
     <h2 class="tk-seravek-web" style="float: left; color: #FFF">Live Stream</h2>
     <br style="clear: both"/>
-    <div id="boxcast-widget-{{$broadcast->channel_id}}"></div>
-    <script src="https://assets.boxcast.com/widget.js"
-            data-action="boxcast-widget-load"
-            data-handle="{{$broadcast->channel_id}}"
-            data-options="version=3"
-            async>
-    </script>
+    <div id="boxcast-widget-gnskfahu15wlwpvroe22"></div><script type="text/javascript" charset="utf-8">(function(d, s, c, o) {var js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];var h = (('https:' == document.location.protocol) ? 'https:' : 'http:');js.src = h + '//js.boxcast.com/v3.min.js';js.onload = function() { boxcast.noConflict()('#boxcast-widget-'+c).loadChannel(c, o); };js.charset = 'utf-8';fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'gnskfahu15wlwpvroe22', {"showTitle":0,"showDescription":0,"showHighlights":0,"showRelated":false,"defaultVideo":"closest","market":"church","showCountdown":true}));</script>
     <br/>
   </div>
   @endif
