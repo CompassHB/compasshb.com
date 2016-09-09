@@ -133,13 +133,27 @@ class PagesController extends Controller
 
     public function whoweare()
     {
-        return view('pages.whoweare')
+                $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=who-we-are')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.whoweare', compact('content'))
             ->with('title', 'Who We Are');
     }
 
     public function eightdistinctives()
     {
-        return view('pages.eightdistinctives')
+            $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=8-distinctives')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.eightdistinctives', compact('content'))
             ->with('title', '8 Distinctives');
     }
 
@@ -150,19 +164,40 @@ class PagesController extends Controller
 
     public function giving()
     {
-        return view('pages.give')
+        $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=giving')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.give', compact('content'))
             ->with('title', 'Give');
     }
 
     public function icecreamevangelism()
     {
-        return view('pages.icecreamevangelism')
+        $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=ice-cream-evangelism')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.icecreamevangelism', compact('content'))
             ->with('title', 'Ice Cream Evangelism');
     }
 
     public function whatwebelieve()
     {
-        return view('pages.whatwebelieve')
+                $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=what-we-believe')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.whatwebelieve', compact('content'))
             ->with('title', 'What We Believe');
     }
 
