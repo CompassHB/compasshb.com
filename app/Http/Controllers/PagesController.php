@@ -31,10 +31,14 @@ class PagesController extends Controller
      */
     public function home(Photos $photos, Video $videoClient)
     {
-
-        // Featured Events
+        // Scripture of the Day Logo
         $client = new Client();
 
+        $body = $client->get('https://api.compasshb.com/wp-json/compasshb/v1/site_logo/8')->getBody();
+        $scripture_logo = json_decode($body);
+        $scripture_logo = $scripture_logo[0];
+
+        // Featured Events
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tribe_events', [
             'query' => [
                 '_embed' => true,
@@ -104,7 +108,8 @@ class PagesController extends Controller
             'sermons',
             'featuredevents',
             'videos',
-            'passage'
+            'passage',
+            'scripture_logo'
         ))->with('images', $results)
             ->with('instagrams', $instagrams['data'])
             ->with('title', 'Compass HB - Huntington Beach');

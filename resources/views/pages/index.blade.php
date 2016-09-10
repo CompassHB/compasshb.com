@@ -33,7 +33,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
   <div class="col-sm-3">
   <div class="Box--shadow" style="width: 100%">
     <span class="Box--shadow--wrap">
-    <a class="clickable boxer" href="{{ route('read.index') }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://api.compasshb.com/reading/wp-content/uploads/sites/8/2016/09/COMPASSHB_SEEJESUS-e1472946106599.jpg);">
+    <a class="clickable boxer" href="{{ route('read.index') }}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ $scripture_logo }});">
       <h4 class="tk-seravek-web">{{ $passage->title->rendered }}</h4>
       <p>Scripture of the Day</p>
       </a>
