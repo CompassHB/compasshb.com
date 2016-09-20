@@ -73,6 +73,10 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
   <div class="col-sm-10 col-sm-offset-1">
     <div class="col-md-4 text-center">
       <h2 class="tk-seravek-web">Sundays at<br/> 9am and 11am</h2>
+      <h2 className="tk-seravek-web">
+          Saturdays at 6:30pm <br/>
+          Sundays at 9am and 11am
+     </h2>
       <br/>
       <p>5082 Argosy Avenue<br/>Huntington Beach, CA 92649</p>
       <br/>
