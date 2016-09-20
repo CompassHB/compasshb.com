@@ -72,8 +72,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
 <div class="row" style="background: none; background-color: #f7f7f7; padding-top: 30px; padding-bottom: 30px;">
   <div class="col-sm-10 col-sm-offset-1">
     <div class="col-md-4 text-center">
-      <h2 class="tk-seravek-web">Sundays at<br/> 9am and 11am</h2>
-      <h2 className="tk-seravek-web">
+      <h2 class="tk-seravek-web">
           Saturdays at 6:30pm <br/>
           Sundays at 9am and 11am
      </h2>
