@@ -35,7 +35,7 @@ class SermonsController extends Controller
             'query' => [
                 '_embed' => true,
                 'filter[cat]' => 1,
-                'filter[posts_per_page]' => 500
+                'per_page' => 100
             ]
         ])->getBody();
 
