@@ -79,19 +79,6 @@ Route::get('blog/{blog}', [
     'uses' => 'BlogsController@show'
 ]);
 
-/*
- * Route for fellowship
- */
-Route::get('fellowship', [
-    'as' => 'fellowship.index',
-    'uses' => 'FellowshipsController@index',
-]);
-
-Route::get('fellowship/{id}/{slug}', [
-    'as' => 'fellowship.show',
-    'uses' => 'FellowshipsController@show',
-]);
-
 Route::get('study/{book?}/{chapter?}', [
     'as' => 'study',
     'uses' => 'StudyController@index',
