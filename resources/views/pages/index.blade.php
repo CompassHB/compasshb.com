@@ -88,7 +88,7 @@ style="position: absolute; text-transform: none; top: -20px; left: 45px; padding
     <div class="col-md-4 text-center">
       <h2 class="tk-seravek-web">Midweek</h2>
       <br/>
-      <h5><a href="{{ route('fellowship.index') }}">Home Fellowship Groups</a></h5>
+      <h5>Home Fellowship Groups</h5>
       <p>Tuesday, Wednesday, Thursday, and Friday</p>
       <br/>
       <h5><a href="{{ route('kids') }}#awana">Awana for kids</a></h5>
