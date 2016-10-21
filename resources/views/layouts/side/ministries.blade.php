@@ -23,11 +23,7 @@
 
 					<i class="material-icons">keyboard_arrow_right</i>
 				</li>
-        <li class="{{ setActive('fellowship') }}">
-					<a href="{{ route('fellowship.index') }}">Home Fellowship Groups</a>
-
-					<i class="material-icons">keyboard_arrow_right</i>
-				</li>
+      
 	</ul>
   </nav>
 </section>
