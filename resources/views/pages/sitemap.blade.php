@@ -14,11 +14,6 @@
     <changefreq>daily</changefreq>
 </url>
 <url>
-    <loc>{{ Request::root() . '/fellowships' }}</loc>
-    <priority>1.0</priority>
-    <changefreq>daily</changefreq>
-</url>
-<url>
     <loc>{{ Request::root() . '/sermons' }}</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
@@ -135,14 +130,6 @@
     <loc>{{ Request::root() . '/events/' . $event->id . '/' . str_slug($event->name->text) }}</loc>
     <priority>0.9</priority>
     <changefreq>daily</changefreq>
-</url>
-@endforeach
-
-@foreach($fellowships as $fellowship)
-<url>
-    <loc>{{ Request::root() . '/fellowship/' . $fellowship->id . '/' . str_slug($fellowship->name->text) }}</loc>
-    <priority>0.7</priority>
-    <changefreq>weekly</changefreq>
 </url>
 @endforeach
 
