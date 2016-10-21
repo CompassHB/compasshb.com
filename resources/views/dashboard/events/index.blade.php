@@ -28,7 +28,7 @@
 
     <div class="panel panel-default">
       <div class="panel-body">
-        <p>The schedule of mid-week home fellowship groups is available at the <a href="/fellowship">Fellowship</a> page.</p>
+        
       </div>
     </div>
 
