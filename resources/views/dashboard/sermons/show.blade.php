@@ -14,11 +14,12 @@
     @endif
 
     <!-- div class="videocontainer"></div -->
-    <div>{!! $sermon->content->rendered !!}</div>
-        @if ($sermon->acf != null)
-            <p>Text: {!! $sermon->acf->text !!} |
+    <p>
+    @if ($sermon->acf != null)
+            Text: {!! $sermon->acf->text !!} |
         @endif
-        <a href="{{  Request::url() }}/download.mp4">Download</a> | <a href="{{ $sermon->acf->worksheet->url or '#' }}">Worksheet</a>
+        <a href="{{  Request::url() }}/download.mp4">Download</a> | <a href="{{ $sermon->acf->worksheet->url or '#' }}">Worksheet</a></p>
+    <div>{!! $sermon->content->rendered !!}</div>
 
 
 
