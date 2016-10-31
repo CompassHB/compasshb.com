@@ -13,7 +13,8 @@
     <p><a href="/series/men/{{ $sermon->acf->series->slug }}" >{{{ $sermon->acf->series->name or '' }}}</a></p><br/>
     @endif
 
-    <div class="videocontainer">{!! $sermon->content->rendered !!}</div>
+    <!-- div class="videocontainer"></div -->
+    <div>{!! $sermon->content->rendered !!}</div>
         @if ($sermon->acf != null)
             <p>Text: {!! $sermon->acf->text !!} |
         @endif
