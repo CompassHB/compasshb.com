@@ -6,25 +6,6 @@
 
 @section('content')
 
-<style>
-/* Simply add this custom CSS to the site to fix the issues with the Lazy Load for Videos Plugin */
-.wpb_video_widget .wpb_video_wrapper,
-.responsive-video-wrap,
-.responsive-audio-wrap {
-    padding: 0 !important;
-    position: static !important;
-}
-.wpb_video_widget .wpb_wrapper iframe,
-.responsive-video-wrap iframe,
-.responsive-audio-wrap iframe,
-.responsive-video-wrap object,
-.responsive-audio-wrap object,
-.responsive-video-wrap embed,
-.responsive-audio-wrap embed {
-    position: static !important;
-}
-</style>
-
 <div class="Setting Box Box--Large Box--bright utility-flex">
     <h1 class="Setting__heading tk-seravek-web">{{ $sermon->title->rendered }}</h1>
 
@@ -32,7 +13,6 @@
     <p><a href="/series/men/{{ $sermon->acf->series->slug }}" >{{{ $sermon->acf->series->name or '' }}}</a></p><br/>
     @endif
 
-    <!-- div class="videocontainer"></div -->
     <p>
     @if ($sermon->acf != null)
             Text: {!! $sermon->acf->text !!} |
