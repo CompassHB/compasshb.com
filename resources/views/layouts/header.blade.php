@@ -15,6 +15,7 @@
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif" type="text/css" rel="stylesheet" media="screen,projection">
     <link href='//fonts.googleapis.com/css?family=Fira+Sans:700' type='text/css' rel='stylesheet'>
+    <link rel="stylesheet" id="wpex-style-css" href="https://api.compasshb.com/wp-content/themes/theme/style.css" type="text/css" media="all">
     <link rel='stylesheet' id='js_composer_front-css'  href='https://api.compasshb.com/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=4.12.1' type='text/css' media='all' />
 
 </head>
