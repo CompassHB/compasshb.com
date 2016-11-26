@@ -12,8 +12,8 @@
   <?php $i = 0; ?>
   @foreach ($sermons as $sermon)
   <div class="col-md-4" {!! ($i % 3) ? 'style="margin-top: 20px;"' : 'style="clear: left; margin-top: 20px;"' !!}>
-    <a href="/sermons/men/{{ $sermon->slug }}" style="background-image: url({{ $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url }}); background-size: cover; width: 200px; height: 125px; display: block;"></a>
-      <h4 class="tk-seravek-web"><a href="/sermons/men/{{ $sermon->slug }}" >{{ $sermon->title->rendered }}</a></h4>
+    <a href="/men/sermons/{{ $sermon->slug }}" style="background-image: url({{ $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url }}); background-size: cover; width: 200px; height: 125px; display: block;"></a>
+      <h4 class="tk-seravek-web"><a href="/men/sermons/{{ $sermon->slug }}" >{{ $sermon->title->rendered }}</a></h4>
       <p>{{ $sermon->acf->text }}<br/>
         {{ isset($sermon->acf->series->name) ? $sermon->acf->series->name : ''  }}<br/>
       {{ date('l, F j, Y', strtotime($sermon->date)) }}<br/>
