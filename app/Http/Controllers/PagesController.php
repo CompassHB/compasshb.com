@@ -161,6 +161,19 @@ class PagesController extends Controller
         return view('pages.eightdistinctives', compact('content'))
             ->with('title', '8 Distinctives');
     }
+    
+    public function sotd()
+    {
+        $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=sotd')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.sotd', compact('content'))
+            ->with('title', 'Scripture of the Day (SOTD)');
+    }
 
     public function give()
     {
