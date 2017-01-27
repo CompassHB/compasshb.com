@@ -260,7 +260,7 @@ Route::get('youth/sermons/{sermon}', [
 ]);
 
 /*
- * Route for Sunday School ministry
+ * Route for Bible Class ministry
  */
 Route::get('sundayschool', [
     'as' => 'sundayschool',

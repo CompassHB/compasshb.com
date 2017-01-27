@@ -77,7 +77,7 @@ class MinistryController extends Controller
     }
 
     /**
-     * Controller for Sunday School ministry page.
+     * Controller for Bible Class ministry page.
      *
      * @return \Illuminate\View\View
      */
@@ -100,7 +100,7 @@ class MinistryController extends Controller
         return view(
             'ministries.sundayschool.index',
             compact('sermons', 'series')
-        )->with('title', 'Sunday School');
+        )->with('title', 'Bible Class');
     }
 
 
@@ -127,7 +127,7 @@ class MinistryController extends Controller
         return view(
             'dashboard.sermons.show',
             compact('sermon')
-        )->with('title', 'Sunday School');
+        )->with('title', 'Bible Class');
     }
 
 
