@@ -55,7 +55,7 @@
                                   <li><a href="{{ route('kids') }}"><i class="material-icons">child_care</i>  Kids Ministry</a></li>
                                   <li><a href="{{ route('youth') }}"><i class="material-icons">group</i>  Youth Ministry</a></li>
                                   <li><a href="{{ route('college') }}"><i class="material-icons">domain</i>  College Ministry</a></li>
-                                  <li><a href="{{ route('sundayschool') }}"><i class="material-icons">free_breakfast</i>  Adult Sunday School</a></li>
+                                  <li><a href="{{ route('sundayschool') }}"><i class="material-icons">free_breakfast</i>  Bible Class</a></li>
                                   <li><a href="{{ route('men') }}"><i class="material-icons">account_box</i>  Mens Ministry</a></li>
                                   <li><a href="{{ route('women') }}"><i class="material-icons">account_circle</i>  Womens Ministry</a></li>
                               </ul>

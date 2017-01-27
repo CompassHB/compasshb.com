@@ -19,7 +19,7 @@
 					<i class="material-icons">keyboard_arrow_right</i>
 				</li>
         <li class="{{ setActive('sundayschool') }}">
-					<a href="{{ route('sundayschool') }}">Adult Sunday School</a>
+					<a href="{{ route('sundayschool') }}">Bible Class</a>
 
 					<i class="material-icons">keyboard_arrow_right</i>
 				</li>

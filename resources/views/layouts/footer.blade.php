@@ -17,7 +17,7 @@
         <a href="{{ route('kids') }}">Kids</a><br/>
         <a href="{{ route('youth') }}">Youth</a><br/>
         <a href="{{ route('college') }}">College</a><br/>
-        <a href="{{ route('sundayschool') }}">Adult Sunday School</a><br/>
+        <a href="{{ route('sundayschool') }}">Bible Class</a><br/>
       </p><br/>
 
     </div>
