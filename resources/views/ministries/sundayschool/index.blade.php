@@ -9,27 +9,6 @@
 <h1 class="tk-seravek-web">Bible Class</h1>
 <p>Meets Sundays at 9AM at church for breakfast and teaching.</p><br/>
 
-<h3 class="tk-seravek-web">Current Series: {{ $series[0]->name }}</h3>
-<p>{{ $series[0]->description }}</p>
-<table class="table table-striped">
-	<thead>
-    	<tr>
-        	<th>Title</th>
-        	<th>Teacher</th>
-        	<th>Date</th>
-      	</tr>
-    </thead>
-    <tbody>
-    @foreach ($sermons as $sermon)
-      	<tr>
-        	<td><a href="/sundayschool/messages/{{ $sermon->slug }}">{{ $sermon->title->rendered }}</a></td>
-        	<td>{{ $sermon->_embedded->author[0]->name }}</td>
-        	<td>{{ date('l, F j, Y', strtotime($sermon->date)) }}</td>
-      	</tr>
-     @endforeach
-    </tbody>
-</table>
-
 <br/><br/>
 <h3 class="tk-seravek-web">All Bible Class Series</h3>
 @foreach ($series as $s)
