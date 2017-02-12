@@ -70,7 +70,7 @@ class SermonsController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[name]' => $sermon
+                'slug' => $sermon
             ]
         ])->getBody();
 
