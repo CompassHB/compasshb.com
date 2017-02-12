@@ -140,7 +140,7 @@ class PagesController extends Controller
     {
                 $client = new Client();
 
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=who-we-are')->getBody();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=who-we-are')->getBody();
 
         $content = json_decode($body);
         $content = $content[0]->content->rendered;
@@ -153,7 +153,7 @@ class PagesController extends Controller
     {
             $client = new Client();
 
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=8-distinctives')->getBody();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=8-distinctives')->getBody();
 
         $content = json_decode($body);
         $content = $content[0]->content->rendered;
@@ -166,7 +166,7 @@ class PagesController extends Controller
     {
         $client = new Client();
 
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=sotd')->getBody();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=sotd')->getBody();
 
         $content = json_decode($body);
         $content = $content[0]->content->rendered;
@@ -184,7 +184,7 @@ class PagesController extends Controller
     {
         $client = new Client();
 
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=giving')->getBody();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=giving')->getBody();
 
         $content = json_decode($body);
         $content = $content[0]->content->rendered;
@@ -197,7 +197,7 @@ class PagesController extends Controller
     {
         $client = new Client();
 
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=ice-cream-evangelism')->getBody();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=ice-cream-evangelism')->getBody();
 
         $content = json_decode($body);
         $content = $content[0]->content->rendered;
@@ -210,7 +210,7 @@ class PagesController extends Controller
     {
                 $client = new Client();
 
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?filter[name]=what-we-believe')->getBody();
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=what-we-believe')->getBody();
 
         $content = json_decode($body);
         $content = $content[0]->content->rendered;
@@ -240,7 +240,7 @@ class PagesController extends Controller
     {
         $client = new Client();
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages', [
-            'query' => ['filter[name]' => 'greatawakening']
+            'query' => ['slug' => 'greatawakening']
         ])->getBody();
 
         $page = json_decode($body);
@@ -293,7 +293,7 @@ class PagesController extends Controller
             $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/tribe_events', [
                 'query' => [
                     '_embed' => true,
-                    'filter[name]' => $event,
+                    'slug' => $event,
 
                 ]
             ])->getBody();
