@@ -53,7 +53,7 @@ class BlogsController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
-                'filter[name]' => $blog
+                'slug' => $blog
             ]
         ])->getBody();
 
