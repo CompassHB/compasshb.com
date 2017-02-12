@@ -56,7 +56,7 @@ class MinistryController extends Controller
         $body = $client->get('https://api.compasshb.com/youth/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
-                'filter[name]' => $sermon
+                'slug' => $sermon
             ]
         ])->getBody();
 
@@ -110,7 +110,7 @@ class MinistryController extends Controller
         $body = $client->get('https://api.compasshb.com/sunday-school/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[name]' => $sermon
+                'slug' => $sermon
             ]
         ])->getBody();
 
@@ -162,7 +162,7 @@ class MinistryController extends Controller
         $body = $client->get('https://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
-                'filter[name]' => $sermon
+                'slug' => $sermon
             ]
         ])->getBody();
 
@@ -214,7 +214,7 @@ class MinistryController extends Controller
         $body = $client->get('https://api.compasshb.com/women/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[name]' => $sermon
+                'slug' => $sermon
             ]
         ])->getBody();
 
