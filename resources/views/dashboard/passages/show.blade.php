@@ -15,8 +15,6 @@
 
       {!! $passage->verses !!}
 
-      <strong>Bible Overview</strong><br/>{!! $passage->content->rendered !!}
-
     <hr/>
 
     <p>
