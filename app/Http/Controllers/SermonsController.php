@@ -34,7 +34,7 @@ class SermonsController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
+                'categories' => 1,
                 'per_page' => 100
             ]
         ])->getBody();
@@ -45,7 +45,7 @@ class SermonsController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
+                'categories' => 1,
                 'per_page' => 100,
                 'page' => 2
             ]
