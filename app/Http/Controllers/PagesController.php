@@ -233,7 +233,7 @@ class PagesController extends Controller
 
     public function bunnyrun()
     {
-        return redirect('https://www.compasshb.com/events/22334601394/bunny-run-and-chase/');
+        return redirect('https://www.compasshb.com/events/bunny-run/');
     }
 
     public function greatawakening()
