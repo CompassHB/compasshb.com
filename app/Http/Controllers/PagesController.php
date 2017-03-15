@@ -53,7 +53,7 @@ class PagesController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
+                'categories' => 1,
                 'per_page' => 4
             ]
         ])->getBody();
@@ -61,10 +61,10 @@ class PagesController extends Controller
         $sermons = json_decode($body);
 
         // get two videos
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts?embed', [
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 12,
+                'categories' => 12,
                 'per_page' => 4
             ]
         ])->getBody();
