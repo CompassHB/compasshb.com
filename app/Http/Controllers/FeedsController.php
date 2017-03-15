@@ -37,7 +37,7 @@ class FeedsController extends Controller
             'query' => [
                 '_embed' => true,
                 'categories' => 1,
-                'per_page' => 500
+                'per_page' => 100
             ]
         ])->getBody();
 
@@ -62,7 +62,7 @@ class FeedsController extends Controller
             'query' => [
                 '_embed' => true,
                 'categories' => 1,
-                'per_page' => 500
+                'per_page' => 100
             ]
         ])->getBody();
 
@@ -87,7 +87,7 @@ class FeedsController extends Controller
             'query' => [
                 '_embed' => true,
                 'categories' => 1,
-                'per_page' => 500
+                'per_page' => 100
             ]
         ])->getBody();
 

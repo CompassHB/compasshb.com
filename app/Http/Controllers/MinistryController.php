@@ -143,7 +143,7 @@ class MinistryController extends Controller
         $body = $client->get('https://api.compasshb.com/men/wp-json/wp/v2/posts?embed', [
             'query' => [
                 '_embed' => true,
-                'per_page' => 500
+                'per_page' => 100
             ]
         ])->getBody();
 
@@ -196,7 +196,7 @@ class MinistryController extends Controller
         $body = $client->get('https://api.compasshb.com/women/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'per_page' => 500
+                'per_page' => 100
             ]
         ])->getBody();
 
