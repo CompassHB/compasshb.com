@@ -28,7 +28,7 @@ class BlogsController extends Controller
             'query' => [
                 '_embed' => true,
                 'categories' => 12,
-                'filter[posts_per_page]' => 500
+                'per_page' => 500
             ]
         ])->getBody();
 

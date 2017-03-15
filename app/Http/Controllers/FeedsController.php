@@ -36,8 +36,8 @@ class FeedsController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
-                'filter[posts_per_page]' => 500
+                'categories' => 1,
+                'per_page' => 500
             ]
         ])->getBody();
 
@@ -61,8 +61,8 @@ class FeedsController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
-                'filter[posts_per_page]' => 500
+                'categories' => 1,
+                'per_page' => 500
             ]
         ])->getBody();
 
@@ -86,8 +86,8 @@ class FeedsController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
-                'filter[posts_per_page]' => 500
+                'categories' => 1,
+                'per_page' => 500
             ]
         ])->getBody();
 

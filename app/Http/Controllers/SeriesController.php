@@ -59,7 +59,7 @@ class SeriesController extends Controller
         $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
+                'categories' => 1,
                 'tags' => $series->id
             ]
         ])->getBody();
@@ -92,7 +92,7 @@ class SeriesController extends Controller
         $body = $client->get('https://api.compasshb.com/sunday-school/wp-json/wp/v2/posts', [
             'query' => [
                 '_embed' => true,
-                'filter[cat]' => 1,
+                'categories' => 1,
                 'tags' => $series->id
             ]
         ])->getBody();

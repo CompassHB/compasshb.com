@@ -75,7 +75,7 @@ class PassagesController extends Controller
         // For sidebar display
         $body = $client->get('https://api.compasshb.com/reading/wp-json/wp/v2/posts?embed', [
             'query' => [
-                'filter[per_page]' => 5
+                'per_page' => 5
             ]
         ])->getBody();
 
