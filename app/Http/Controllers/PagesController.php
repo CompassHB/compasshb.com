@@ -182,15 +182,7 @@ class PagesController extends Controller
 
     public function giving()
     {
-        $client = new Client();
-
-        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=giving')->getBody();
-
-        $content = json_decode($body);
-        $content = $content[0]->content->rendered;
-
-        return view('pages.give', compact('content'))
-            ->with('title', 'Give');
+           return redirect('https://pushpay.com/pay/compasshb/');
     }
 
     public function icecreamevangelism()
