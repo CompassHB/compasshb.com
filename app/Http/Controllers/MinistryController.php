@@ -12,12 +12,6 @@ class MinistryController extends Controller
      *
      * @return \Illuminate\View\View
      */
-//    public function kids()
-//    {
-//        return view('ministries.kids.index')
-//            ->with('title', 'Kids Ministry');
-//    }
-
     public function kids()
     {
         $client = new Client();
