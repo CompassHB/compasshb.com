@@ -12,9 +12,22 @@ class MinistryController extends Controller
      *
      * @return \Illuminate\View\View
      */
+//    public function kids()
+//    {
+//        return view('ministries.kids.index')
+//            ->with('title', 'Kids Ministry');
+//    }
+
     public function kids()
     {
-        return view('ministries.kids.index')
+        $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/kids/wp-json/wp/v2/pages?slug=kids')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('ministries.kids.index', compact('content'))
             ->with('title', 'Kids Ministry');
     }
 
