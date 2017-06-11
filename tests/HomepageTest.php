@@ -64,13 +64,6 @@ class HomepageTest extends TestCase
         $this->visit('/events');
     }
 
-    public function test_it_loads_the_give_page()
-    {
-        $this->visit('/')
-             ->click('Give')
-             ->SeePageIs('/giving');
-    }
-
     public function test_it_loads_the_sitemap()
     {
         $this->visit('/sitemap.xml');
