@@ -64,17 +64,14 @@ class EsvScriptureRepository implements Contract
 
             $url = $this->url.'?key='.$this->apikey.'&passage='.urlencode($passage).'&'.$this->audioOptions;
 
-            $audioResponse = $this->client->get($url, [
-                'allow_redirects' => [
-                    'track_redirects' => true
-                ]
-            ]);
-
-            /* Check for 502 (error). */
-            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            if ($httpCode == 502) {
-                Log::warning('Connection refused to  www.esvapi.org for mp3');
-
+            try {
+                $audioResponse = $this->client->get($url, [
+                    'allow_redirects' => [
+                        'track_redirects' => true
+                    ]
+                ]);
+            }
+            catch (\Exception $e) {
                 return 'http://www.compasshb.com';
             }
 
