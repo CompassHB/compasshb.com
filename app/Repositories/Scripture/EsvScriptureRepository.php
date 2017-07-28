@@ -70,6 +70,14 @@ class EsvScriptureRepository implements Contract
                 ]
             ]);
 
+            /* Check for 502 (error). */
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            if ($httpCode == 502) {
+                Log::warning('Connection refused to  www.esvapi.org for mp3');
+
+                return 'http://www.compasshb.com';
+            }
+
             $headers = $audioResponse->getHeaders();
 
 
