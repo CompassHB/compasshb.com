@@ -8,7 +8,17 @@ Route::get('songs', [
     'uses' => 'SongsController@index'
 ]);
 
+Route::get('worship', [
+    'as' => 'songs.index',
+    'uses' => 'SongsController@index'
+]);
+
 Route::get('songs/{song}', [
+    'as' => 'songs.show',
+    'uses' => 'SongsController@show'
+]);
+
+Route::get('worship/{song}', [
     'as' => 'songs.show',
     'uses' => 'SongsController@show'
 ]);
