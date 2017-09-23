@@ -179,6 +179,11 @@ class PagesController extends Controller
     {
         return redirect('giving');
     }
+    
+    public function worship()
+    {
+        return redirect('https://compasshb.bandcamp.com/album/footsteps-of-jesus');
+    }
 
     public function giving()
     {
