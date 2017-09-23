@@ -66,7 +66,7 @@
                               <ul class="dropdown-menu dropdown-menu-left">
                                   <li><a href="{{ route('read.index') }}"><i class="material-icons">library_books</i> Scripture of the Day</a></li>
                                   <li><a href="{{ route('blog.index') }}"><i class="material-icons">announcement</i> Videos</a></li>
-                                  <li><a href="{{ route('songs.index') }}"><i class="material-icons">music_note</i> Songs</a></li>
+                                  <li><a href="/worship"><i class="material-icons">music_note</i> Songs</a></li>
                                   <li><a href="{{ route('events.index') }}"><i class="material-icons">event</i> Events</a></li>
                                   <li><a href="https://compasshb.smugmug.com/PhotoArchive"><i class="material-icons">camera</i> Photos</a></li>
                                   <li><a href="{{ route('give') }}"><i class="material-icons">card_giftcard</i> Give Online</a></li>

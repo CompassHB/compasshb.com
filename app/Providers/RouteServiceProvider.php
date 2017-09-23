@@ -5,7 +5,6 @@ namespace CompassHB\Www\Providers;
 use Auth;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
-use CompassHB\Www\Song;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -28,19 +27,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         parent::boot($router);
-
-        /*
-         * A song is at /songs/{slug}
-         */
-        $router->bind('songs', function ($slug) {
-
-            // Logged in users can see future posts
-            if (Auth::check()) {
-                return Song::where('alias', $slug)->firstOrFail();
-            }
-
-            return Song::where('alias', $slug)->firstOrFail();
-        });
 
         /*
          * A sermon is at /sermons/{slug}

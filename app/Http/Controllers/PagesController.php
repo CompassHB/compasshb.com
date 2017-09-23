@@ -5,7 +5,6 @@ namespace CompassHB\Www\Http\Controllers;
 use Log;
 use Cache;
 use GuzzleHttp\Client;
-use CompassHB\Www\Song;
 use CompassHB\Www\Series;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Contracts\Photos;

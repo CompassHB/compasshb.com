@@ -12,7 +12,7 @@
 				<i class="material-icons">keyboard_arrow_right</i>
 			</li>
 	    <li class="{{ setActive('songs') }}">
-				<a href="{{ route('songs.index') }}">Worship</a>
+				<a href="/worship">Worship</a>
 				<i class="material-icons">keyboard_arrow_right</i>
 			</li>
 	    <li class="{{ setActive('blog') }}">

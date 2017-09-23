@@ -58,9 +58,6 @@ function makeRouteFromSlug($type, $slug)
         case 'read':
             $route = 'read.show';
             break;
-        case 'worship':
-            $route = 'songs.show';
-            break;
         case 'series':
             $route = 'series.show';
             break;

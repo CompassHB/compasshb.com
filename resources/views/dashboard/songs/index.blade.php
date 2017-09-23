@@ -17,7 +17,6 @@
         <img src="{{ isset($song->_embedded->{'wp:featuredmedia'}[0]->source_url) ? $song->_embedded->{'wp:featuredmedia'}[0]->source_url : '' }}" alt="{{ $song->title->rendered }}"/>
         <div class="caption">
           <h5 class="tk-seravek-web">{{ $song->title->rendered }}</h5>
-          <p><br/><a href="{{ route('songs.show', $song->slug) }}" class="btn btn-default" role="button">Watch</a> <a href="{{$song->acf->audio_url}}" class="btn btn-default" role="button">Download</a></p>
         </div>
       </div>
     </div>

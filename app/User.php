@@ -36,15 +36,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     protected $dates = ['deleted_at'];
 
-    /**
-     * A user can have many songs.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function songs()
-    {
-        return $this->hasMany(Song::class);
-    }
 
     /**
      * A user can have many passages.

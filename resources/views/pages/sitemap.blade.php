@@ -29,7 +29,7 @@
     <changefreq>weekly</changefreq>
 </url>
 <url>
-    <loc>{{ Request::root() . '/songs' }}</loc>
+    <loc>{{ Request::root() . '/worship' }}</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
 </url>
@@ -119,7 +119,7 @@
 
 @foreach($songs as $slug)
 <url>
-    <loc>{{ Request::root() . '/songs/' . $slug }}</loc>
+    <loc>{{ Request::root() . '/worship/' . $slug }}</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
 </url>

@@ -3,7 +3,6 @@
 use Carbon\Carbon;
 use CompassHB\Www\Team;
 use CompassHB\Www\User;
-use CompassHB\Www\Song;
 use CompassHB\Www\Sermon;
 use CompassHB\Www\Series;
 
@@ -32,17 +31,6 @@ $factory->define(Team::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'owner_id' => factory(User::class)->create()->id,
-    ];
-});
-
-$factory->define(Song::class, function (Faker\Generator $faker) {
-    return [
-        'title' => $faker->word,
-        'body' => $faker->paragraph,
-        'excerpt' => $faker->paragraph,
-        'video' => 'https://vimeo.com/148841127',
-        'published_at' => Carbon::now()->subDays(30),
-        'user_id' => factory(User::class)->create()->id,
     ];
 });
 

@@ -28,7 +28,7 @@
       <p>
         <a href="{{ route('read.index') }}">Scripture of the Day</a><br/>
         <a href="{{ route('sermons.index') }}">Sermons</a><br/>
-        <a href="{{ route('songs.index') }}">Worship</a><br/>
+        <a href="/worship">Worship</a><br/>
         <a href="{{ route('blog.index') }}">Videos</a><br/>
       </p>
     </div>
