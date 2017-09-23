@@ -1,29 +1,6 @@
 <?php
 
 /*
- * Route for songs.
- */
-Route::get('songs', [
-    'as' => 'songs.index',
-    'uses' => 'SongsController@index'
-]);
-
-Route::get('worship', [
-    'as' => 'songs.index',
-    'uses' => 'SongsController@index'
-]);
-
-Route::get('songs/{song}', [
-    'as' => 'songs.show',
-    'uses' => 'SongsController@show'
-]);
-
-Route::get('worship/{song}', [
-    'as' => 'songs.show',
-    'uses' => 'SongsController@show'
-]);
-
-/*
  * Route for passages
  */
 Route::get('read', [
@@ -169,7 +146,6 @@ Route::get('goody-two-shoes', [
  * Routes for APIs
  */
 Route::group(['prefix' => 'api/v1'], function () {
-    Route::resource('songs', 'Api\SongsController', ['except' => ['destroy']]);
     Route::get('passages', [
         'middleware' => 'cors',
         'uses' => 'Api\PassagesController@index',
@@ -202,6 +178,11 @@ Route::group(['prefix' => 'api/1.0'], function () {
 Route::get('who-we-are', [
     'as' => 'who-we-are',
     'uses' => 'PagesController@whoweare',
+]);
+
+Route::get('worship', [
+    'as' => 'worship',
+    'uses' => 'PagesController@worship',
 ]);
 
 Route::get('eight-distinctives', [
