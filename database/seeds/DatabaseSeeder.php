@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call('UserTableSeeder');
-        $this->call('SongTableSeeder');
         $this->call('SermonTableSeeder');
         $this->call('SeriesTableSeeder');
     }
