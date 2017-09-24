@@ -14,7 +14,6 @@ install:
 
 before_script:
    - sleep 10
-   - mysql -e 'create database travis;'
    - php artisan migrate:install
    - php artisan migrate:refresh --seed
    - php -r "copy('.env.example', '.env');"
