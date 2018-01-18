@@ -190,6 +190,11 @@ Route::get('eight-distinctives', [
     'uses' => 'PagesController@eightdistinctives',
 ]);
 
+Route::get('equipped', [
+    'as' => 'equipped',
+    'uses' => 'PagesController@equipped',
+]);
+
 Route::get('sotd', [
     'as' => 'sotd',
     'uses' => 'PagesController@sotd',
