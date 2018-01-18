@@ -214,6 +214,21 @@ class PagesController extends Controller
         return view('pages.whatwebelieve', compact('content'))
             ->with('title', 'What We Believe');
     }
+    
+    public function equipped()
+    {
+                $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=equipped')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.equipped', compact('content'))
+            ->with('title', 'Equipped');
+    }
+    
+    
 
 
     public function goodytwoshoes()
