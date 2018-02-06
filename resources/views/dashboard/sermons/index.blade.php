@@ -35,6 +35,20 @@
   </div>
   <?php ++$i; ?>
   @endforeach
+  
+  <?php // sermons 3 hack
+  $i = 0; ?>
+  @foreach ($sermons3 as $sermon)
+  <div class="col-md-4" {!! ($i % 3) ? 'style="margin-top: 20px;"' : 'style="clear: left; margin-top: 20px;"' !!}>
+    <a href="{{ route('sermons.show', $sermon->slug) }}" style="background-image: url({{ $sermon->_embedded->{'wp:featuredmedia'}[0]->source_url}}); background-size: cover; width: 200px; height: 125px; display: block;"></a>
+      <h4 class="tk-seravek-web"><a href="{{ route('sermons.show', $sermon->slug) }}" >{{ $sermon->title->rendered }}</a></h4>
+      <p>{{ $sermon->acf->text or '' }}<br/>
+      {{ date('l, F j, Y', strtotime($sermon->date)) }}<br/>
+      {{ $sermon->_embedded->author[0]->name }}</p>
+    </a>
+  </div>
+  <?php ++$i; ?>
+  @endforeach
 
   <br style="clear: both"/>
 
