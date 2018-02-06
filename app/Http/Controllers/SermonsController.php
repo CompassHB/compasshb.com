@@ -52,8 +52,20 @@ class SermonsController extends Controller
         ])->getBody();
 
         $sermons2 = json_decode($body);
+        
+        // page 3 hack
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/posts', [
+            'query' => [
+                '_embed' => true,
+                'categories' => 1,
+                'per_page' => 100,
+                'page' => 3
+            ]
+        ])->getBody();
 
-        return view('dashboard.sermons.index', compact('sermons', 'sermons2'));
+        $sermons3 = json_decode($body);
+
+        return view('dashboard.sermons.index', compact('sermons', 'sermons2', 'sermons3'));
     }
 
     /**
