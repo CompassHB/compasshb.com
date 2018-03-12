@@ -220,6 +220,11 @@ Route::get('what-we-believe', [
     'uses' => 'PagesController@whatwebelieve',
 ]);
 
+Route::get('littlesaigon', [
+    'as' => 'littlesaigon',
+    'uses' => 'PagesController@littlesaigon',
+]);
+
 // Events
 Route::get('events/', [
     'as' => 'events.index',
