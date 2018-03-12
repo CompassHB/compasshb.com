@@ -215,6 +215,19 @@ class PagesController extends Controller
             ->with('title', 'What We Believe');
     }
     
+    public function littlesaigon()
+    {
+        $client = new Client();
+
+        $body = $client->get('https://api.compasshb.com/wp-json/wp/v2/pages?slug=little-saigon')->getBody();
+
+        $content = json_decode($body);
+        $content = $content[0]->content->rendered;
+
+        return view('pages.littlesaigon', compact('content'))
+            ->with('title', 'Little Saigon  ');
+    }
+    
     public function equipped()
     {
                 $client = new Client();
