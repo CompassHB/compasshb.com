@@ -10,11 +10,12 @@
 
   <p>{!! $postflash !!}</p>
   
-        <h4>Pray a Psalm a Day Videos</h4>
-      <p>Watch the <a href="https://vimeo.com/channels/1364252">videos for Pray Psalm a Day here</a>. Uploaded daily.</p>
 
   <div class="Setting Box Box--Large Box--bright utility-flex">
-    <h1 class="Setting__heading tk-seravek-web">{{ $passage->title->rendered }}</h1>
+        <h4>Pray a Psalm a Day Videos</h4>
+      <p>Watch the <a href="https://vimeo.com/channels/1364252">videos for Pray Psalm a Day here</a>. Uploaded after the live session ends daily.</p>
+
+<h1 class="Setting__heading tk-seravek-web">{{ $passage->title->rendered }}</h1>
 
       {!! $passage->verses !!}
 
