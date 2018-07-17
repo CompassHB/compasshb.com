@@ -12,9 +12,6 @@
   
 
   <div class="Setting Box Box--Large Box--bright utility-flex">
-        <h4>Pray a Psalm a Day Videos</h4>
-      <p>Read and pray with us LIVE every Monday to Friday at 7AM!<br/>
-      <a href="https://vimeo.com/channels/1364252">You can watch the uploaded videos here</a>.</p>
 
 <h1 class="Setting__heading tk-seravek-web">{{ $passage->title->rendered }}</h1>
 
