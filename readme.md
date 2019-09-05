@@ -23,3 +23,6 @@ The master branch is automatically deployed to [http://staging.compasshb.com/](h
 
 ## Contribution
 Thank you for considering contributing to CompassHB.com. Send in a [pull request](https://help.github.com/articles/using-pull-requests/) or attend the next "tech night" to get involved.
+
+## Links
+www.bugsnag.com
