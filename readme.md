@@ -25,6 +25,5 @@ The master branch is automatically deployed to [http://staging.compasshb.com/](h
 Thank you for considering contributing to CompassHB.com. Send in a [pull request](https://help.github.com/articles/using-pull-requests/) or attend the next "tech night" to get involved.
 
 ## Links
-![Bugsnag] 
-(https://marketing-assets.pivotaltracker.com/marketing_assets/integrations/2013/bugsnag_logo-76e2ba9743bf7871135a111a84124cd4ad712fa2550b1b57e17a264c028226fb.png)
+![Bugsnag](https://marketing-assets.pivotaltracker.com/marketing_assets/integrations/2013/bugsnag_logo-76e2ba9743bf7871135a111a84124cd4ad712fa2550b1b57e17a264c028226fb.png)
 www.bugsnag.com
