@@ -9,7 +9,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "bootstrap-sass": "^3.0.0",
-    "jquery": "^2.1.4",
+    "jquery": "^3.5.0",
     "lazysizes": "^1.3.1",
     "medium-editor": "^5.10.0"
   },
